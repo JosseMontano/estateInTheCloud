@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+
 import styled from "styled-components";
 
 const Snackbar = styled.div`
-  display: none;
+  display: block;
   min-width: 250px;
   margin-left: -125px;
   background-color: #333;
@@ -68,30 +68,12 @@ const Snackbar = styled.div`
 
 interface params {
   msg: string;
-  flag: boolean;
-  handleFunc: () => void;
 }
 
 const Index = (params: params) => {
-  const [sendSoon, setSendSoon] = useState(false);
-  const refToast = useRef(document.createElement("div"));
-  const execToast = () => {
-    refToast.current.style.display = "block";
-    setTimeout(function () {
-      refToast.current.style.display = "none";
-    }, 3000);
-  };
-
-  useEffect(() => {
-    if (params.flag) {
-      execToast();
-      params.handleFunc();
-    }
-  });
-
   return (
     <>
-      <Snackbar ref={refToast}>{params.msg}</Snackbar>
+      <Snackbar>{params.msg}</Snackbar>
     </>
   );
 };

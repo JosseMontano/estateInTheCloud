@@ -30,9 +30,13 @@ export const Input = styled.input`
   width: 90%;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 `;
-export const Label = styled.label<{ colorText:string }>`
+export const Label = styled.label<{ colorText: string }>`
   font-size: 22px;
   margin-top: 10px;
   color: ${(props) => props.colorText};
+`;
+export const ErrorCss = styled.p`
+font-weight: bold;
+color: #dc3545;
 `;
 //the margin global is 10px

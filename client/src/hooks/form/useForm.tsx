@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { signIn } from "../../services/auth";
 import { FormLogin } from "./../../interface/formLogin";
+
+import {ToastContext} from '../../context/toast' //toast
+
 
 export const UseForm = (
   initialForm: FormLogin,
@@ -11,14 +14,26 @@ export const UseForm = (
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(false);
 
+
+  const { handleToast } = useContext(ToastContext); //toast
+
+
+
   const handleSend = async (form: FormLogin) => {
     try {
-      const { email, password } = form;
-      const response = await signIn(email, password);
+      setLoading(true);
+      const res = await signIn(form);
+      //start toast
+      if(res?.status === 200){
+        handleToast('El proceso fue exitoso')
+      } else{
+        handleToast('Ha ocurrido un error')
+      }
+      //end toast
       setLoading(false);
       setResponse(true);
-      setForm(initialForm);
-      setTimeout(() => setResponse(false), 5000);
+      setTimeout(() => setResponse(false), 3000);
+      // setForm(initialForm); //if want cleam the inputs
     } catch (err) {
       console.log(err);
     }

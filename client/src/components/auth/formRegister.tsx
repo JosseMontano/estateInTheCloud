@@ -7,12 +7,12 @@ import {
   ColorText,
 } from "../../styles/globals";
 import { signUp } from "../../services/auth";
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Toast from "../toast";
+import Message from "../message";
 import { codeToken } from "../../utilities/code";
 import Button from "./button";
-
+import {ToastContext} from '../../context/toast'
 const Container = styled.form``;
 
 const Form = () => {
@@ -24,6 +24,7 @@ const Form = () => {
   const navigate = useNavigate();
 
   const handleSignUp = async (e: SyntheticEvent) => {
+
     e.preventDefault();
     const res = await signUp(userName, email, password);
     if (res.auth) {
@@ -54,6 +55,9 @@ const Form = () => {
       text: "Volver",
     },
   ];
+
+  const { toast } = useContext(ToastContext);
+
   return (
     <Container>
       <Label colorText={ColorText}>Gmail</Label>
@@ -65,7 +69,7 @@ const Form = () => {
       {data.map((v, i) => (
         <Button key={i} {...v} />
       ))}
-      <Toast msg={msg} flag={flag ? true : false} handleFunc={handleFunc} />
+     <Message msg={toast} />
     </Container>
   );
 };

@@ -1,0 +1,1 @@
+export const signInMessageResponse = "the email doesnt exists"
