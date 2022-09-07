@@ -34,7 +34,10 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
 
     res.json({ auth: true, token });
   } catch (error) {
-    next(error);
+    return res.status(401).json({
+      auth: false,
+      msg:error,
+    });
   }
 };
 
