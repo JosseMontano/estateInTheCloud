@@ -11,8 +11,8 @@ import {
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "../../hooks/form/useForm";
-import { FormLogin } from "../../interface/formLogin";
+import { UseForm } from "../../hooks/form/useFormLogin";
+import { FormLogin } from "../../interface/formAuth";
 import Loader from "../loader";
 import Message from "../message";
 import { ToastContext } from "../../context/toast";

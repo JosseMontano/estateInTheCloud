@@ -1,4 +1,10 @@
 *{
     margin: 0px;
     padding: 0px;
+    object-fit: cover;
 }
+.slick{
+    margin: 50px;
+}
+
+  

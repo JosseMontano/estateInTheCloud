@@ -1,4 +1,4 @@
-import { FormLogin } from "../interface/formLogin";
+import { FormLogin, FormRegister } from "../interface/formAuth";
 import { http } from "./http";
 
 export const signIn = async (form: FormLogin) => {
@@ -18,21 +18,19 @@ export const signIn = async (form: FormLogin) => {
   }
 };
 
-export const signUp = async (
-  username: string,
-  email: string,
-  password: string
-) => {
-  const response = await fetch(`${http}signup`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
-  });
-
-  const result = await response.json();
-  return result;
+export const signUp = async (form: FormRegister) => {
+  try {
+    const response = await fetch(`${http}signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: form.username,
+        email: form.email,
+        password: form.password,
+      }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
 };

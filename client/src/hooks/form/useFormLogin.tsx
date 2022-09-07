@@ -1,8 +1,9 @@
 import React, { useState,useContext } from "react";
 import { signIn } from "../../services/auth";
-import { FormLogin } from "./../../interface/formLogin";
+import { FormLogin } from "../../interface/formAuth";
 
 import {ToastContext} from '../../context/toast' //toast
+import { useNavigate } from "react-router";
 
 
 export const UseForm = (
@@ -16,7 +17,7 @@ export const UseForm = (
 
 
   const { handleToast } = useContext(ToastContext); //toast
-
+  const navigate = useNavigate();
 
 
   const handleSend = async (form: FormLogin) => {
@@ -26,6 +27,7 @@ export const UseForm = (
       //start toast
       if(res?.status === 200){
         handleToast('El proceso fue exitoso')
+        navigate(`/home`);
       } else{
         handleToast('Ha ocurrido un error')
       }
