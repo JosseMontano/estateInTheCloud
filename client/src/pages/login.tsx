@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
 import Form from "../components/auth/formLogin";
+
 const Container = styled.div`
   display: grid;
   place-content: center;

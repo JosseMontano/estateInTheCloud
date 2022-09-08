@@ -1,5 +1,6 @@
 import { FormLogin, FormRegister } from "../interface/formAuth";
 import { http } from "./http";
+import {Perfil} from '../utilities/cookie'
 
 export const signIn = async (form: FormLogin) => {
   try {
@@ -34,3 +35,22 @@ export const signUp = async (form: FormRegister) => {
     console.log(error);
   }
 };
+
+export const getEmail = async() => {
+  const tk = Perfil()
+  try {
+    const response = await fetch(`${http}me`, {
+      method: 'GET',
+      headers: {
+        token: tk
+      }
+    });
+  
+    if (response.ok) {
+      const result = await response.json();
+      return result
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}

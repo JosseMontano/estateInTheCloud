@@ -1,45 +1,59 @@
+import React from "react";
+import { Title, ColorText } from "../../styles/globals";
+import Slider from "react-slick";
+import Card from "./card";
+import {Rick} from '../../models/rick'
 
-import styled from "styled-components";
-const Container = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 300px;
-  height: 400px;
-  &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-`;
-const Content = styled.div`
-  padding: 2px 16px;
-  margin: 10px;
-`;
-const Img = styled.img`
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-`;
-const H4 = styled.h4`
-font-size: 22px;
-`
-const P = styled.p`
-font-size: 18px;
-`
-interface Rick {
-    name: string;
-    species: string;
-    status: string;
-    image: string;
-  }
-const Index = (v:Rick) => {
+interface Params{
+    title:string,
+    data:Rick[]
+}
+const Index = (v:Params) => {
+  //settings that use the slider
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
-    <Container>
-      <Img className="img" src={v.image} alt="Avatar" />
-      <Content>
-        <H4>John Doe</H4>
-        <P>Architect & Engineer</P>
-      </Content>
-    </Container>
+    <>
+      <Title colorText={ColorText}>{v.title}</Title>
+      <Slider {...settings} className="slick">
+        {v.data.map((va, i) => (
+          <Card key={i} {...va} />
+        ))}
+      </Slider>
+    </>
   );
 };
-export default Index
 
+export default Index;

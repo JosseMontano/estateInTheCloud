@@ -39,4 +39,9 @@ export const ErrorCss = styled.p`
 font-weight: bold;
 color: #dc3545;
 `;
+export const Title = styled.h2<{ colorText: string }>`
+  font-size: 32px;
+  font-weight: bold;
+  color: ${(props) => props.colorText};
+`;
 //the margin global is 10px

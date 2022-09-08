@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import { ColorText } from "../../styles/globals";
+import { ColorText, Title } from "../../styles/globals";
 
 const Container = styled.div`
   display: grid;
   place-content: center;
   padding: 30px;
 `;
-const Title = styled.h2<{ colorText: string }>`
-  font-size: 32px;
-  font-weight: bold;
-  color: ${(props) => props.colorText};
-`;
+
 const TextP = styled.p`
   margin: 10px 0px;
   color: #b9b9b9;

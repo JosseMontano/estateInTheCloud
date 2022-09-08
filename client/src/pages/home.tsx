@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import HomeCom  from "../components/home";
+import Navbar from "../components/navbar";
+import Img1 from "../assets/home/fondo1.jpg";
+import Slider from '../components/home'
+import {Rick} from '../models/rick'
 const Container = styled.div`
- height: 100vh;
   width: 100%;
-  background: #0f2027;
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
 `;
-
-interface Rick {
-  name: string;
-  species: string;
-  status: string;
-  image: string;
-}
+const Img = styled.img`
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+`;
 const Home = () => {
   const [data, setData] = useState<Rick[]>([]);
   const getRicky = async () => {
@@ -32,7 +28,6 @@ const Home = () => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result.results);
         setData(result.results);
       }
     } catch (err) {
@@ -42,48 +37,35 @@ const Home = () => {
   useEffect(() => {
     getRicky();
   }, []);
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+ 
+  let dataComplete = [
+    {
+      title: "Mas recientes",
+      data: data,
+    },
+    {
+      title: "Todos",
+      data: data,
+    },
+    {
+      title: "Recomendado",
+      data: data,
+    },
+    {
+      title: "Solo para ti",
+      data: data,
+    },
+  ];
   return (
     <Container>
-      <h2>Recomendado</h2>
-      <Slider {...settings} className='slick'>
-        {data.map((v, i) => (
-          <HomeCom key={i} {...v} />
-        ))}
-      </Slider>
+      <Navbar />
+      <Img src={Img1} alt="" />
+      {/* Show all the estates */}
+      {dataComplete.map((v, i) => (
+        <>
+         <Slider key={i} {...v} />
+        </>
+      ))}
     </Container>
   );
 };

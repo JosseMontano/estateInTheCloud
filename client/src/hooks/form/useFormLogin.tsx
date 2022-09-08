@@ -1,10 +1,10 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { signIn } from "../../services/auth";
 import { FormLogin } from "../../interface/formAuth";
 
-import {ToastContext} from '../../context/toast' //toast
+import { ToastContext } from "../../context/toast"; //toast
 import { useNavigate } from "react-router";
-
+import { codeToken } from "../../utilities/cookie";
 
 export const UseForm = (
   initialForm: FormLogin,
@@ -15,21 +15,22 @@ export const UseForm = (
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(false);
 
-
   const { handleToast } = useContext(ToastContext); //toast
   const navigate = useNavigate();
-
 
   const handleSend = async (form: FormLogin) => {
     try {
       setLoading(true);
       const res = await signIn(form);
+      const tkn = (await res?.json()).token;
+
       //start toast
-      if(res?.status === 200){
-        handleToast('El proceso fue exitoso')
+      if (res?.status === 200) {
+        handleToast("El proceso fue exitoso");
+        codeToken(tkn);
         navigate(`/home`);
-      } else{
-        handleToast('Ha ocurrido un error')
+      } else {
+        handleToast("Ha ocurrido un error");
       }
       //end toast
       setLoading(false);

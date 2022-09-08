@@ -13,4 +13,6 @@ export const Descifrar = (txt: string) => {
   return txtDescifrado;
 };
 
+
+
 export default cookies;
