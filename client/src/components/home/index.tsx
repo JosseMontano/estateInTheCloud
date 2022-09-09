@@ -1,59 +1,31 @@
-import React from "react";
-import { Title, ColorText } from "../../styles/globals";
-import Slider from "react-slick";
-import Card from "./card";
-import {Rick} from '../../models/rick'
+import Navbar from "../navbar";
+import Img1 from "../../assets/home/fondo1.jpg";
+import Slider from "../home/content";
+import styled from "styled-components";
+import { Rick } from "../../models/rick";
 
-interface Params{
-    title:string,
-    data:Rick[]
+const Img = styled.img`
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+`;
+
+interface Params {
+  dataComplete: { title: string; data: Rick[] }[];
 }
-const Index = (v:Params) => {
-  //settings that use the slider
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+const index = (params: Params) => {
   return (
     <>
-      <Title colorText={ColorText}>{v.title}</Title>
-      <Slider {...settings} className="slick">
-        {v.data.map((va, i) => (
-          <Card key={i} {...va} />
-        ))}
-      </Slider>
+      <Navbar />
+      <Img src={Img1} alt="" />
+      {/* Show all the estates */}
+      {params.dataComplete.map((v, i) => (
+        <>
+          <Slider key={i} {...v} />
+        </>
+      ))}
     </>
   );
 };
 
-export default Index;
+export default index;

@@ -44,4 +44,7 @@ export const Title = styled.h2<{ colorText: string }>`
   font-weight: bold;
   color: ${(props) => props.colorText};
 `;
+export const ContainerMargin = styled.div`
+margin: 50px;
+`
 //the margin global is 10px

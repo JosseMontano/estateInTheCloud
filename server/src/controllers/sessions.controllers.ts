@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { json } from "stream/consumers";
 const { jwtEnv } = require("../config");
 const bcrypt = require("bcryptjs");
 const pool = require("../db");
@@ -36,7 +37,7 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     return res.status(401).json({
       auth: false,
-      msg:error,
+      msg: error,
     });
   }
 };
@@ -80,8 +81,24 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
   });
   res.json({ auth: true, token });
 };
+const verifyValidateToken = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.headers["token"];
+  const tkn = jwt.verify(token, jwtEnv.secret);
+  if (tkn.id >0)
+    return res.status(200).json({
+      message: true,
+    });
+  return res.status(500).json({
+      message: false,
+    });
+};
 module.exports = {
   signUp,
   me,
   signIn,
+  verifyValidateToken,
 };

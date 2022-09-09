@@ -54,3 +54,21 @@ export const getEmail = async() => {
     console.error(err);
   }
 }
+
+export const validateTokenExits = async()=>{
+  const tk = Perfil()
+    const response = await fetch(`${http}verifyToken`, {
+      method: 'GET',
+      headers: {
+        token: tk
+      }
+    });
+    return await response.json()
+    /*if (response.ok) {
+      const result = await response.json();
+      console.log(result);
+    }
+  } catch (err) {
+    console.error(err);
+  }*/
+}

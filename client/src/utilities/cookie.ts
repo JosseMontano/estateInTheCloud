@@ -16,7 +16,6 @@ export const Perfil = () => {
     const t = Descifrar(tk);
     return t;
   } else {
-    alert("no esta logueado");
     return "";
   }
 };

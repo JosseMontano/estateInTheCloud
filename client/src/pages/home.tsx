@@ -2,42 +2,36 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import Navbar from "../components/navbar";
-import Img1 from "../assets/home/fondo1.jpg";
-import Slider from '../components/home'
-import {Rick} from '../models/rick'
+import { Rick } from "../models/rick";
+import { verifyLogged } from "../utilities/verifyLogged";
+import { useNavigate } from "react-router";
+import { getRicky } from "../services/estate";
+import Loader from "../components/loader";
+import Content from "../components/home";
+
 const Container = styled.div`
   width: 100%;
 `;
-const Img = styled.img`
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-`;
+
 const Home = () => {
   const [data, setData] = useState<Rick[]>([]);
-  const getRicky = async () => {
-    try {
-      const response = await fetch(
-        "https://rickandmortyapi.com/api/character",
-        {
-          method: "GET",
-          headers: {},
-        }
-      );
+  let navigate = useNavigate();
 
-      if (response.ok) {
-        const result = await response.json();
-        setData(result.results);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  const handleVerifyUser = async () => {
+    const logged = await verifyLogged();
+    if (!logged) navigate("/");
   };
+
+  const handleGetData = async () => {
+    const getData = await getRicky();
+    setData(getData);
+  };
+
   useEffect(() => {
-    getRicky();
+    handleVerifyUser();
+    handleGetData();
   }, []);
- 
+
   let dataComplete = [
     {
       title: "Mas recientes",
@@ -56,16 +50,16 @@ const Home = () => {
       data: data,
     },
   ];
+
   return (
     <Container>
-      <Navbar />
-      <Img src={Img1} alt="" />
-      {/* Show all the estates */}
-      {dataComplete.map((v, i) => (
+      {dataComplete.length > 0 ? (
         <>
-         <Slider key={i} {...v} />
+          <Content dataComplete={dataComplete} />
         </>
-      ))}
+      ) : (
+        <Loader />
+      )}
     </Container>
   );
 };

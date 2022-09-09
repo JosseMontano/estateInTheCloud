@@ -20,7 +20,8 @@ const A = styled.span`
   border-radius: 3px;
   text-transform: uppercase;
   &:hover {
-    background: #1b9bff;
+    background: #ffffff;
+    color:#000;
     transition: 0.5s;
   }
   @media (max-width: 952px) {
