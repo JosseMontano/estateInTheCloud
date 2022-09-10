@@ -47,4 +47,6 @@ export const Title = styled.h2<{ colorText: string }>`
 export const ContainerMargin = styled.div`
 margin: 50px;
 `
+export const marginGlobal = "50px"
+export const marginInElements = "15px"
 //the margin global is 10px

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { ColorBtn } from "../../styles/globals";
 import Check from "./check";
 import ContainerLinks from "./containerLinks";
-import HandlerGetEmail from "./getEmail";
+import {HandlerGetNameUser, HandlerGetEmail} from "./getEmail";
 
 const Nav = styled.nav<{ ColorBtn: string }>`
   background: ${(props) => props.ColorBtn};
@@ -28,11 +28,17 @@ const Logo = styled.label`
 
 const Index = () => {
   const [nameUser, setNameUser] = useState("");
+  const [email, setEmail] = useState("")
+  const navigate = useNavigate();
   const CallGetEmail = async () => {
-    const aux = await HandlerGetEmail();
+    const aux = await HandlerGetNameUser();
+    const emailAux = await HandlerGetEmail();
+    setEmail(emailAux);
     setNameUser(aux);
   };
-
+  const handleRedirect = () => {
+    navigate(`/profile/${email}`);
+  };
   useEffect(() => {
     CallGetEmail();
   }, []);
@@ -40,7 +46,7 @@ const Index = () => {
     <>
       <Nav ColorBtn={"#162b33"}>
         <Check />
-        <Logo>{nameUser}</Logo>
+        <Logo onClick={() => handleRedirect()}>{nameUser}</Logo>
         <ContainerLinks />
       </Nav>
     </>

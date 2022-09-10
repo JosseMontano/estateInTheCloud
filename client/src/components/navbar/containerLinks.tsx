@@ -32,11 +32,11 @@ const ContainerLinks = () => {
       url: "",
     },
     {
-      text: "Segundo",
+      text: "Casas",
       url: "",
     },
     {
-      text: "Tercero",
+      text: "Departamentos",
       url: "",
     },  {
       text: "Salir",

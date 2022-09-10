@@ -44,6 +44,9 @@ const Links = (v: Enlace) => {
         navigate("/");
       }
     }
+    if (text === "Inicio") {
+        navigate("/home");
+    }
   };
   return (
     <Container>
