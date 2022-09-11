@@ -1,5 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import { json } from "stream/consumers";
+
+
+var cookieParser = require('cookie-parser');
+var CryptoJS = require("crypto-js");
+
 const { jwtEnv } = require("../config");
 const bcrypt = require("bcryptjs");
 const pool = require("../db");
@@ -79,15 +84,26 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
   const token = jwt.sign({ id: result.rows[0].id }, jwtEnv.secret, {
     expiresIn: 60 * 60 * 24,
   });
+
+  /*COOKIES */
+  const tokenEncrypt = CryptoJS.AES.encrypt(JSON.stringify(token),'8021947cbba').toString()
+  res.cookie("token" , tokenEncrypt);
   res.json({ auth: true, token });
 };
+
+
+
+
 const verifyValidateToken = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.headers["token"];
-  const tkn = jwt.verify(token, jwtEnv.secret);
+  //const token = req.headers["token"];
+  const token = req.cookies.token
+  var bytes  = CryptoJS.AES.decrypt(token, '8021947cbba');
+var decryptedtoken = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+ const tkn = jwt.verify(decryptedtoken, jwtEnv.secret);
   if (tkn.id >0)
     return res.status(200).json({
       message: true,

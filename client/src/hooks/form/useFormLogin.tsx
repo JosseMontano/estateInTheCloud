@@ -22,12 +22,11 @@ export const UseForm = (
     try {
       setLoading(true);
       const res = await signIn(form);
-      const tkn = (await res?.json()).token;
-
+   //   const tkn = (await res?.json()).token;
       //start toast
       if (res?.status === 200) {
         handleToast("El proceso fue exitoso");
-        codeToken(tkn);
+      //  codeToken(tkn);
         navigate(`/home`);
       } else {
         handleToast("Ha ocurrido un error");

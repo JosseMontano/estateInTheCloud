@@ -1,18 +1,18 @@
 import { FormLogin, FormRegister } from "../interface/formAuth";
 import { http } from "./http";
-import {Perfil} from '../utilities/cookie'
+import { Perfil } from "../utilities/cookie";
 
 export const signIn = async (form: FormLogin) => {
   try {
     const response = await fetch(`${http}signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include", // This here
       body: JSON.stringify({
         email: form.email,
         password: form.password,
       }),
     });
-    // const result = await response.json();
     return response;
   } catch (error) {
     console.log(error);
@@ -36,39 +36,33 @@ export const signUp = async (form: FormRegister) => {
   }
 };
 
-export const getEmail = async() => {
-  const tk = Perfil()
+export const getEmail = async () => {
   try {
-    const response = await fetch(`${http}me`, {
-      method: 'GET',
-      headers: {
-        token: tk
-      }
+    const response = await fetch(`${http}me` , {
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
     });
-  
     if (response.ok) {
       const result = await response.json();
-      return result
+      return result;
     }
   } catch (err) {
     console.error(err);
   }
-}
+};
 
-export const validateTokenExits = async()=>{
-  const tk = Perfil()
-    const response = await fetch(`${http}verifyToken`, {
-      method: 'GET',
-      headers: {
-        token: tk
-      }
-    });
-    return await response.json()
-    /*if (response.ok) {
+export const validateTokenExits = async () => {
+  const response = await fetch(`${http}verifyToken`, {
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  });
+  const res = await response.json();
+  return res;
+  /*if (response.ok) {
       const result = await response.json();
       console.log(result);
     }
   } catch (err) {
     console.error(err);
   }*/
-}
+};

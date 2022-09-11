@@ -53,15 +53,16 @@ const Home = () => {
 
   return (
     <>
-      <Container>
-        {dataComplete.length > 0 ? (
-          <>
-            <Content dataComplete={dataComplete} />
-          </>
-        ) : (
-          <Loader />
-        )}
-      </Container>
+        <Container>
+          {dataComplete.length > 0 ? (
+            <>
+              <Content dataComplete={dataComplete} />
+            </>
+          ) : (
+            <Loader />
+          )}
+        </Container>;
+
     </>
   );
 };
