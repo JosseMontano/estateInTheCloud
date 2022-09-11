@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Enlace } from "../../models/nav";
-import { logOut } from "../../utilities/cookie";
+import { logOut } from "../../services/auth";
 const Container = styled.li`
   display: inline-block;
   line-height: 80px;
@@ -39,8 +39,8 @@ const Links = (v: Enlace) => {
   const navigate = useNavigate();
   const handleLogout = async (text: string) => {
     if (text === "Salir") {
-      var flag = logOut();
-      if (flag) {
+      var flag = await logOut();
+      if (!flag) {
         navigate("/");
       }
     }

@@ -1,6 +1,6 @@
 import { FormLogin, FormRegister } from "../interface/formAuth";
 import { http } from "./http";
-import { Perfil } from "../utilities/cookie";
+
 
 export const signIn = async (form: FormLogin) => {
   try {
@@ -58,11 +58,19 @@ export const validateTokenExits = async () => {
   });
   const res = await response.json();
   return res;
-  /*if (response.ok) {
+};
+
+export const logOut = async() => {
+  try {
+    const response = await fetch(`${http}logout` , {
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+    if (response.ok) {
       const result = await response.json();
-      console.log(result);
+      return result.auth;
     }
   } catch (err) {
     console.error(err);
-  }*/
-};
+  }
+}

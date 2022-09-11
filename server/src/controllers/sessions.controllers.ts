@@ -91,7 +91,10 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
   res.json({ auth: true, token });
 };
 
-
+const logOut = async (req: Request, res: Response, next: NextFunction) => {
+  res.clearCookie("token");
+  res.json({ auth: false });
+ }
 
 
 const verifyValidateToken = (
@@ -117,4 +120,5 @@ module.exports = {
   me,
   signIn,
   verifyValidateToken,
+  logOut
 };

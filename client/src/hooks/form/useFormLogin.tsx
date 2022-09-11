@@ -4,7 +4,6 @@ import { FormLogin } from "../../interface/formAuth";
 
 import { ToastContext } from "../../context/toast"; //toast
 import { useNavigate } from "react-router";
-import { codeToken } from "../../utilities/cookie";
 
 export const UseForm = (
   initialForm: FormLogin,
