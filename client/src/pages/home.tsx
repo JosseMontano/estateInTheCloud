@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
@@ -52,15 +52,17 @@ const Home = () => {
   ];
 
   return (
-    <Container>
-      {dataComplete.length > 0 ? (
-        <>
-          <Content dataComplete={dataComplete} />
-        </>
-      ) : (
-        <Loader />
-      )}
-    </Container>
+    <>
+      <Container>
+        {dataComplete.length > 0 ? (
+          <>
+            <Content dataComplete={dataComplete} />
+          </>
+        ) : (
+          <Loader />
+        )}
+      </Container>
+    </>
   );
 };
 

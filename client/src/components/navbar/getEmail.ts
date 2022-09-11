@@ -1,16 +1,10 @@
 import { getEmail } from "../../services/auth";
 
-const checkSignIn = (user: string) => {
-  if (user != "") {
-    return user;
-  }
-  return "Welcome";
-};
 
 export const HandlerGetNameUser = async () => {
   var nameUser;
   const res = await getEmail();
-  nameUser = checkSignIn(res.username);
+  nameUser = res.username;
   return nameUser;
 };
 
