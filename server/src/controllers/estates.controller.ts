@@ -17,7 +17,6 @@ const getAllEstates = async (
 };
 
 const getEstate = async (req: Request, res: Response, next: NextFunction) => {
-  //validar que el id sea entero
   try {
     const { id } = req.params;
     const result = await pool.query("select * from estate where id = $1", [id]);

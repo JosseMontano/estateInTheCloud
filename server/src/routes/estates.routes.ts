@@ -10,7 +10,6 @@ const {
 } = require("../controllers/estates.controller");
 
 router.get("/estate", getAllEstates);
-
 router.get("/estate/:id", getEstate);
 router.post("/estate", createEstate);
 router.put("/estate/:id", updateEstate);
