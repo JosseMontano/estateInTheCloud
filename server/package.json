@@ -19,6 +19,7 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/pg": "^8.6.5",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.31.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",

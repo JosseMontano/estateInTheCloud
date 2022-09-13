@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 
-
 const pool = require("../db");
 
 const getAllEstates = async (
@@ -9,7 +8,7 @@ const getAllEstates = async (
   next: NextFunction
 ) => {
   try {
-    const allEstate = await pool.query("select * from estate");
+    const allEstate = await pool.query("select * from real_estates");
     res.json(allEstate.rows);
   } catch (error: any) {
     next(error);
@@ -19,7 +18,7 @@ const getAllEstates = async (
 const getEstate = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const result = await pool.query("select * from estate where id = $1", [id]);
+    const result = await pool.query("select * from real_estates where id = $1", [id]);
     if (result.rows.length === 0)
       return res.status(404).json({
         message: "Not found",
@@ -36,11 +35,11 @@ const createEstate = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { title, description } = req.body;
+  const { title, description, id_user } = req.body;
   try {
     const result = await pool.query(
-      "insert into estate (title, description) values ($1, $2) returning *",
-      [title, description]
+      "insert into real_estates (title, description, id_user) values ($1, $2, $3) returning *",
+      [title, description, id_user]
     );
     res.json(result.rows[0]);
   } catch (error: any) {
@@ -55,7 +54,7 @@ const deleteEstate = async (
 ) => {
   try {
     const { id } = req.params;
-    const result = await pool.query("delete from estate where id = $1", [id]);
+    const result = await pool.query("delete from real_estates where id = $1", [id]);
     if (result.rowCount === 0)
       return res.status(404).json({
         message: "Not found",
@@ -73,10 +72,10 @@ const updateEstate = async (
 ) => {
   try {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { title, description, id_user } = req.body;
     const result = await pool.query(
-      "update estate set title=$1, description=$2 where id=$3 returning *",
-      [title, description, id]
+      "update real_estates set title=$1, description=$2, id_user=$3 where id=$3 returning *",
+      [title, description, id_user, id]
     );
     if (result.rows.length === 0)
       return res.status(404).json({
