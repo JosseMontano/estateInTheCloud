@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import Casa from "../../../assets/casa.jpg";
-
+import {RealEstate} from '../../../interface/realEstate'
 const Containersoon = styled.div`
   justify-self: center;
 `;
 const Img = styled.img`
   height: 300px;
+  width: 300px;
   object-fit: cover;
   margin-top: 15px;
   @media screen and (max-width: 1450px) {
@@ -18,10 +19,10 @@ const Img = styled.img`
     height: 240px;
   }
 `;
-const ContentImg = () => {
+const ContentImg = (v:RealEstate) => {
   return (
     <Containersoon>
-      <Img src={Casa} alt="" />
+      <Img src={v.url} alt="" />
     </Containersoon>
   );
 };

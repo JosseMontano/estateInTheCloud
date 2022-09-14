@@ -5,7 +5,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
 import Profile from "./pages/profile";
-import RealEstateData from "./pages/realEstateData";
+import RealEstateData from "./pages/realEstate/createRealEstate";
 
 const App = () => {
   return (

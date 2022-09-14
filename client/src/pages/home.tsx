@@ -2,19 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { Rick } from "../interface/rick";
+import { RealEstate } from "../interface/realEstate";
 import { verifyLogged } from "../utilities/verifyLogged";
 import { useNavigate } from "react-router";
-import { getRicky } from "../services/estate";
 import Loader from "../components/loader";
 import Content from "../components/home";
-
+import { getRealEstateAll } from "../services/realEstate";
 const Container = styled.div`
   width: 100%;
 `;
 
 const Home = () => {
-  const [data, setData] = useState<Rick[]>([]);
+  const [data, setData] = useState<RealEstate[]>([]);
   let navigate = useNavigate();
 
   const handleVerifyUser = async () => {
@@ -22,14 +21,14 @@ const Home = () => {
     if (!logged) navigate("/");
   };
 
-  const handleGetData = async () => {
-    const getData = await getRicky();
-    setData(getData);
+  const handleGetRealEstate = async () => {
+    const resp = await getRealEstateAll();
+    setData(resp);
   };
 
   useEffect(() => {
     handleVerifyUser();
-    handleGetData();
+    handleGetRealEstate();
   }, []);
 
   let dataComplete = [
@@ -53,16 +52,16 @@ const Home = () => {
 
   return (
     <>
-        <Container>
-          {dataComplete.length > 0 ? (
-            <>
-              <Content dataComplete={dataComplete} />
-            </>
-          ) : (
-            <Loader />
-          )}
-        </Container>;
-
+      <Container>
+        {dataComplete.length > 0 ? (
+          <>
+            <Content dataComplete={dataComplete} />
+          </>
+        ) : (
+          <Loader />
+        )}
+      </Container>
+      ;
     </>
   );
 };

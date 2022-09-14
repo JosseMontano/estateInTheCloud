@@ -2,7 +2,7 @@ import Navbar from "../navbar";
 import Img1 from "../../assets/home/fondo1.jpg";
 import Slider from "../home/content";
 import styled from "styled-components";
-import { Rick } from "../../interface/rick";
+import { RealEstate } from "../../interface/realEstate";
 
 const Img = styled.img`
   width: 100%;
@@ -11,7 +11,7 @@ const Img = styled.img`
 `;
 const ContainerSlider = styled.div``;
 interface Params {
-  dataComplete: { title: string; data: Rick[] }[];
+  dataComplete: { title: string; data: RealEstate[] }[];
 }
 const index = (params: Params) => {
   return (

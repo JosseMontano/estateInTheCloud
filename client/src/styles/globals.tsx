@@ -66,10 +66,8 @@ export const ContainerInputFile = styled.div`
 `;
 
 export const InputFile = styled.input`
-  opacity: 0;
-  width: 200px;
-  height: 32px;
-  display: inline-block;
+  margin-top: 15px;
+  color: #fff;
 `;
 
 export const Label = styled.label<{ colorText: string }>`

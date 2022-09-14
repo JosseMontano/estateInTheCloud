@@ -1,24 +1,18 @@
-import { ToastContext } from "../context/toast";
+import { ToastContext } from "../../context/toast";
 import {
   ColorBtn,
   Input,
   Label,
   ColorText,
-  ErrorCss,
   Button,
   TextArea,
   InputFile,
-  ContainerInputFile,
-} from "../styles/globals";
-
+} from "../../styles/globals";
 import { useContext, useState } from "react";
-
 import styled from "styled-components";
-
-import Message from "../components/message";
-import { NameUserContext } from "../context/nameUser";
-
-import { saveRealEstate } from "../services/realEstateData";
+import Message from "../../components/message";
+import { NameUserContext } from "../../context/nameUser";
+import { saveRealEstate } from "../../services/realEstate";
 
 const Container = styled.div`
   height: 100vh;
@@ -65,9 +59,7 @@ const Index = () => {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
-
       <Label colorText={ColorText}>Description</Label>
-
       <TextArea
         cols={40}
         rows={7}
@@ -76,9 +68,7 @@ const Index = () => {
         required
       />
 
-      <ContainerInputFile>
-        <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
-      </ContainerInputFile>
+      <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
 
       <Button ColorBtn={ColorBtn} onClick={() => sendData()}>
         Save

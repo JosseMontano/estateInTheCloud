@@ -11,25 +11,31 @@ const getAllEstates = async (
   next: NextFunction
 ) => {
   try {
-    const allEstate = await pool.query("select * from real_estates");
+    const allEstate = await pool.query(
+      "select rp.id, p.url, p.public_id, re.title, re.description, u.email from real_estates_photos rp , photos p, real_estates re, users u where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id"
+    );
     res.json(allEstate.rows);
   } catch (error: any) {
     next(error);
   }
 };
 
-const getEstate = async (req: Request, res: Response, next: NextFunction) => {
+const getEstateByUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { id } = req.params;
     const result = await pool.query(
-      "select * from real_estates where id = $1",
-      [id]
+      `select rp.id, p.url, p.public_id, re.title, re.description, u.email from real_estates_photos rp , photos p, real_estates re, users u where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.id_user=${id}`,
     );
+
     if (result.rows.length === 0)
       return res.status(404).json({
         message: "Not found",
       });
-    res.json(result.rows[0]);
+    res.json(result.rows);
     //res.json(result.rows);
   } catch (error: any) {
     next(error);
@@ -60,12 +66,12 @@ const createEstate = async (
       );
       await fs.remove(f.tempFilePath);
       const idPhoto = resPhoto.rows[0].id;
-      
+
       //save in table relational
       const resTableRelational = await pool.query(
         "insert into real_estates_photos (id_photo, id_real_estate) values ($1, $2) returning *",
-        [idPhoto, id_real_estate ]
-      )
+        [idPhoto, id_real_estate]
+      );
       res.json(resTableRelational.rows[0]);
     }
 
@@ -119,7 +125,7 @@ const updateEstate = async (
 };
 module.exports = {
   getAllEstates,
-  getEstate,
+  getEstateByUser,
   createEstate,
   deleteEstate,
   updateEstate,

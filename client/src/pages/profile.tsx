@@ -5,9 +5,10 @@ import { marginGlobal, ColorText } from "../styles/globals";
 import Navbar from "../components/navbar";
 import AuxNav from "../components/navbar/auxNav";
 import Publication from "../components/profile/publication";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { verifyLogged } from "../utilities/verifyLogged";
-
+import { getRealEstateProfil } from "../services/realEstate";
+import { NameUserContext } from "../context/nameUser";
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -16,55 +17,32 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const Profile = () => {
   const { email } = useParams();
-
+  const [data, setData] = useState([]);
+  const { idUser } = useContext(NameUserContext);
   let navigate = useNavigate();
   const handleVerifyUser = async () => {
     const logged = await verifyLogged();
     if (!logged) navigate("/");
   };
-  
+  const handlegetRealEstate = async () => {
+    const resp = await getRealEstateProfil(idUser);
+    console.log(resp);
+    setData(resp);
+  };
   useEffect(() => {
     handleVerifyUser();
+    handlegetRealEstate();
   }, []);
-  let data = [
-    {
-      iter: 1,
-    },
-    {
-      iter: 2,
-    },
-    {
-      iter: 3,
-    },
-    {
-      iter: 4,
-    },
-    {
-      iter: 5,
-    },
-    {
-      iter: 6,
-    },
-    {
-      iter: 7,
-    },
-    {
-      iter: 8,
-    },
-    ,
-    {
-      iter: 9,
-    },
-  ];
+
   return (
     <>
-          <Navbar />
-          <AuxNav margin={"1700px"} />
-          <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-            <Header email={email} />
-            <Publication data={data} />
-          </Container>
-        </>
+      <Navbar />
+      <AuxNav margin={"1700px"} />
+      <Container marginGlobal={marginGlobal} ColorText={ColorText}>
+        <Header email={email} />
+        <Publication data={data} />
+      </Container>
+    </>
   );
 };
 

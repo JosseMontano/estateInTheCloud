@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import {RealEstate} from '../../interface/realEstate'
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -26,19 +27,15 @@ const P = styled.p`
 font-size: 18px;
 color:#fff;
 `
-interface Rick {
-    name: string;
-    species: string;
-    status: string;
-    image: string;
-  }
-const Index = (v:Rick) => {
+
+const Index = (v:RealEstate) => {
   return (
     <Container>
       <Content>
-      <Img className="img" src={v.image} alt="Avatar" />
-        <H4>John Doe</H4>
-        <P>Architect & Engineer</P>
+      <Img className="img" src={v.url} alt="Avatar" />
+        <H4>{v.title}</H4>
+        <P>{v.description}</P>
+        <P>{v.email}</P>
       </Content>
     </Container>
   );

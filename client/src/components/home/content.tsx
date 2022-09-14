@@ -1,10 +1,10 @@
 import Slider from "react-slick";
 import Card from "./card";
-import { Rick } from "../../interface/rick";
+import { RealEstate } from "../../interface/realEstate";
 import Title from './title'
 interface Params {
   title: string;
-  data: Rick[];
+  data: RealEstate[];
 }
 const Index = (v: Params) => {
   //settings that use the slider

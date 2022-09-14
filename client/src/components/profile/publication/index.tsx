@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import ContentImg from "./contentImg";
+import {RealEstate} from '../../../interface/realEstate'
+
 const Container = styled.div``;
 const Title = styled.h2`
   text-align: center;
@@ -20,7 +22,7 @@ const ContainerFather = styled.div`
 `;
 
 interface Params {
-  data: ({ iter: number } | undefined)[];
+  data: RealEstate[]
 }
 
 const Index = (params: Params) => {
@@ -29,7 +31,7 @@ const Index = (params: Params) => {
       <Title>publicaciones</Title>
       <ContainerFather>
         {params.data.map((v, i) => (
-          <ContentImg key={i} />
+          <ContentImg key={i} {...v} />
         ))}
       </ContainerFather>
     </Container>
