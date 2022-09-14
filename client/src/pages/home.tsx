@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { Rick } from "../models/rick";
+import { Rick } from "../interface/rick";
 import { verifyLogged } from "../utilities/verifyLogged";
 import { useNavigate } from "react-router";
 import { getRicky } from "../services/estate";

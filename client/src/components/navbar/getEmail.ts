@@ -15,5 +15,13 @@ export const HandlerGetEmail = async () => {
   return emailUser;
 };
 
+export const HandlerGetId = async () => {
+  var idUser;
+  const res = await getEmail();
+  idUser = res.id
+  return idUser;
+};
+
+
 
 

@@ -1,4 +1,7 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { NameUserContext } from "../../../context/nameUser";
 import { marginInElements } from "../../../styles/globals";
 
 const Container = styled.div`
@@ -28,11 +31,14 @@ interface Params{
   email?:string
 }
 const ContentBtn = (params:Params) => {
+  const { idUser  } = useContext(NameUserContext);
+  const navigate = useNavigate();
   return (
     <Container>
       <SPAN marginInElements={marginInElements}>{params.email}</SPAN>
       <Btn marginInElements={marginInElements}>Enviar mensaje</Btn>
       <Btn marginInElements={marginInElements}>Enviar solicitud</Btn>
+      <Btn onClick={()=>{navigate(`/add-data-real-estate/${idUser}`)}} marginInElements={marginInElements}>Crear publicacion</Btn>
     </Container>
   );
 };

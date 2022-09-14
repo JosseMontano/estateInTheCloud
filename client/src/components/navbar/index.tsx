@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Check from "./check";
 import ContainerLinks from "./containerLinks";
-import { HandlerGetNameUser, HandlerGetEmail } from "./getEmail";
+import { HandlerGetNameUser, HandlerGetEmail, HandlerGetId } from "./getEmail";
 import { NameUserContext } from "../../context/nameUser";
 const Nav = styled.nav<{ ColorBtn: string }>`
   background: ${(props) => props.ColorBtn};
@@ -33,8 +33,9 @@ const Index = () => {
   const CallGetEmail = async () => {
     const nameAux = await HandlerGetNameUser();
     const emailAux = await HandlerGetEmail();
+    const idAux = await HandlerGetId();
     setEmail(emailAux);
-    handlenameUser(nameAux);
+    handlenameUser(nameAux, idAux);
   };
   const handleRedirect = () => {
     navigate(`/profile/${email}`);

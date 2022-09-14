@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Enlace } from "../../models/nav";
+import { Enlace } from "../../interface/nav";
 import { logOut } from "../../services/auth";
 const Container = styled.li`
   display: inline-block;

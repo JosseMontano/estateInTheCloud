@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import Card from "./card";
-import { Rick } from "../../models/rick";
+import { Rick } from "../../interface/rick";
 import Title from './title'
 interface Params {
   title: string;

@@ -2,7 +2,7 @@ import Navbar from "../navbar";
 import Img1 from "../../assets/home/fondo1.jpg";
 import Slider from "../home/content";
 import styled from "styled-components";
-import { Rick } from "../../models/rick";
+import { Rick } from "../../interface/rick";
 
 const Img = styled.img`
   width: 100%;
