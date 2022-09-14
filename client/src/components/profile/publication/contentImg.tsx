@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Casa from "../../../assets/casa.jpg";
-import {RealEstate} from '../../../interface/realEstate'
+import { UseModal } from "../../../hooks/modal/useModal";
+import { Modal } from "../../../hooks/modal/modal";
+import { RealEstate } from "../../../interface/realEstate";
+import { ContentModal } from "./contentModal";
+
 const Containersoon = styled.div`
   justify-self: center;
 `;
@@ -12,17 +16,19 @@ const Img = styled.img`
   @media screen and (max-width: 1450px) {
     height: 200px;
   }
-  @media screen and (max-width:730px) {
+  @media screen and (max-width: 730px) {
     height: 300px;
   }
-  @media screen and (max-width:470px) {
+  @media screen and (max-width: 470px) {
     height: 240px;
   }
 `;
-const ContentImg = (v:RealEstate) => {
+const ContentImg = (v: RealEstate) => {
+  const { isShown, toggle } = UseModal();
   return (
     <Containersoon>
-      <Img src={v.url} alt="" />
+      <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
+      <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
   );
 };

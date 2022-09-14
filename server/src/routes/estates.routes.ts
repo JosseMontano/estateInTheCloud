@@ -13,6 +13,6 @@ router.get("/estate", getAllEstates);
 router.get("/estate/:id", getEstateByUser);
 router.post("/estate", createEstate);
 router.put("/estate/:id", updateEstate);
-router.delete("/estate/:id", deleteEstate);
+router.delete("/estate/:idRealEstatePhoto/:idPhoto/:idRealEstate", deleteEstate);
 
 module.exports = router;

@@ -35,3 +35,14 @@ export const saveRealEstate = async (data:FormData) => {
     console.log(error);
   }
 };
+
+export const deleteRealEstateProfil = async (id:number) => {
+  try {
+    const response = await fetch(`${http}estate/${id}`,{
+      method:"GET"
+    });
+    return await response.json();
+  } catch (error) {
+    
+  }
+}
