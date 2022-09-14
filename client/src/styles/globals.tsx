@@ -45,14 +45,41 @@ export const TextArea = styled.textarea`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 `;
 
+export const ContainerInputFile = styled.div`
+  margin-top: 15px;
+  position: relative;
+  display: inline-block;
+  &::before {
+    background-color: #1e3485;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: "Seleccionar Img"; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+`;
+
+export const InputFile = styled.input`
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+`;
+
 export const Label = styled.label<{ colorText: string }>`
   font-size: 22px;
   margin-top: 10px;
   color: ${(props) => props.colorText};
 `;
 export const ErrorCss = styled.p`
-font-weight: bold;
-color: #dc3545;
+  font-weight: bold;
+  color: #dc3545;
 `;
 export const Title = styled.h2<{ colorText: string }>`
   font-size: 32px;
@@ -60,8 +87,8 @@ export const Title = styled.h2<{ colorText: string }>`
   color: ${(props) => props.colorText};
 `;
 export const ContainerMargin = styled.div`
-margin: 50px;
-`
-export const marginGlobal = "50px"
-export const marginInElements = "15px"
+  margin: 50px;
+`;
+export const marginGlobal = "50px";
+export const marginInElements = "15px";
 //the margin global is 10px

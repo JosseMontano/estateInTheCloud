@@ -6,17 +6,19 @@ import {
   ColorText,
   ErrorCss,
   Button,
-  TextArea
+  TextArea,
+  InputFile,
+  ContainerInputFile,
 } from "../styles/globals";
-import { initialForm, validationsForm } from "../validations/realEstateData";
-import { UseForm } from "../hooks/form/useFormRealEstateData";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { useContext, useState } from "react";
+
 import styled from "styled-components";
-import Loader from "../components/loader";
+
 import Message from "../components/message";
 import { NameUserContext } from "../context/nameUser";
-import { RealEstate } from "../interface/realEstateData";
+
+import { saveRealEstate } from "../services/realEstateData";
 
 const Container = styled.div`
   height: 100vh;
@@ -26,24 +28,32 @@ const Container = styled.div`
 `;
 
 const Index = () => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = UseForm(initialForm, validationsForm);
   const { toast } = useContext(ToastContext);
 
-  const { idUser } = useContext(NameUserContext);
-
-  const navigate = useNavigate();
-
-  const sendData = (received: RealEstate) => {
-    received.idUser = idUser;
-    handleSubmit();
+  const { idUser } = useContext<any>(NameUserContext);
+  const [photo, setPhoto] = useState<any>("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [response, setResponse] = useState(false);
+  const { handleToast } = useContext(ToastContext); //toast
+  const sendData = async () => {
+    try {
+      const data = new FormData();
+      data.append("url", photo);
+      data.append("title", title);
+      data.append("description", description);
+      data.append("id_user", idUser);
+      const res = await saveRealEstate(data);
+      if (res?.status === 200) {
+        handleToast("El proceso fue exitoso");
+      } else {
+        handleToast("Ha ocurrido un error");
+      }
+      setResponse(true);
+      setTimeout(() => setResponse(false), 3000);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -51,32 +61,29 @@ const Index = () => {
       <Label colorText={ColorText}>Title</Label>
       <Input
         type="text"
-        name={"title"}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={form.title}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         required
       />
-      {errors.title && <ErrorCss>{errors.title}</ErrorCss>}
 
       <Label colorText={ColorText}>Description</Label>
 
       <TextArea
         cols={40}
         rows={7}
-        name={"description"}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={form.description}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
         required
       />
-      {errors.description && <ErrorCss>{errors.description}</ErrorCss>}
 
-      <Button ColorBtn={ColorBtn} onClick={() => sendData(form)}>
+      <ContainerInputFile>
+        <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
+      </ContainerInputFile>
+
+      <Button ColorBtn={ColorBtn} onClick={() => sendData()}>
         Save
       </Button>
 
-      {loading && <Loader />}
       {response && <Message msg={toast} />}
     </Container>
   );

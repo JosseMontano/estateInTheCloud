@@ -1,4 +1,7 @@
 import { NextFunction, Request, Response } from "express";
+import { uploadImage } from "../libs/cloudinary";
+import { UploadedFile } from "express-fileupload";
+import fs from "fs-extra";
 
 const pool = require("../db");
 
@@ -18,7 +21,10 @@ const getAllEstates = async (
 const getEstate = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const result = await pool.query("select * from real_estates where id = $1", [id]);
+    const result = await pool.query(
+      "select * from real_estates where id = $1",
+      [id]
+    );
     if (result.rows.length === 0)
       return res.status(404).json({
         message: "Not found",
@@ -37,10 +43,32 @@ const createEstate = async (
 ) => {
   const { title, description, id_user } = req.body;
   try {
+    //save data of the realEstate
     const result = await pool.query(
       "insert into real_estates (title, description, id_user) values ($1, $2, $3) returning *",
       [title, description, id_user]
     );
+    const id_real_estate = result.rows[0].id;
+
+    //save first photo
+    let f = req.files?.url as UploadedFile;
+    if (f) {
+      const resUpload = await uploadImage(f.tempFilePath);
+      const resPhoto = await pool.query(
+        "insert into photos (url, public_id) values ($1, $2) returning *",
+        [resUpload.secure_url, resUpload.public_id]
+      );
+      await fs.remove(f.tempFilePath);
+      const idPhoto = resPhoto.rows[0].id;
+      
+      //save in table relational
+      const resTableRelational = await pool.query(
+        "insert into real_estates_photos (id_photo, id_real_estate) values ($1, $2) returning *",
+        [idPhoto, id_real_estate ]
+      )
+      res.json(resTableRelational.rows[0]);
+    }
+
     res.json(result.rows[0]);
   } catch (error: any) {
     next(error);
@@ -54,7 +82,9 @@ const deleteEstate = async (
 ) => {
   try {
     const { id } = req.params;
-    const result = await pool.query("delete from real_estates where id = $1", [id]);
+    const result = await pool.query("delete from real_estates where id = $1", [
+      id,
+    ]);
     if (result.rowCount === 0)
       return res.status(404).json({
         message: "Not found",

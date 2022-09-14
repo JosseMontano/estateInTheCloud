@@ -18,8 +18,10 @@ export const UseForm = (
 
 
   const handleSend = async (form: RealEstate) => {
-   try {
+  /* try {
       setLoading(true);
+
+    
       const res = await saveRealEstate(form);
       //start toast
       if (res?.status === 200) {
@@ -35,8 +37,8 @@ export const UseForm = (
       // setForm(initialForm); //if want cleam the inputs
     } catch (err) {
       console.log(err);
-    }
-    
+    }  
+*/
   };
 
   const handleChange = (
@@ -48,6 +50,7 @@ export const UseForm = (
       [name]: value,
     });
   };
+
   const handleBlur = (
     e: React.FocusEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
