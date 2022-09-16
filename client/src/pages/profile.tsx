@@ -9,6 +9,8 @@ import { useContext, useEffect, useState } from "react";
 import { verifyLogged } from "../utilities/verifyLogged";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
+import { RealEstate } from "../interface/realEstate";
+import Loader from "../components/loader";
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -17,7 +19,9 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const Profile = () => {
   const { email } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<RealEstate[]>([]);
+  const [empty, setEmpty] = useState(true);
+  const [loading, setLoading] = useState(true);
   const { idUser } = useContext(NameUserContext);
   let navigate = useNavigate();
   const handleVerifyUser = async () => {
@@ -26,13 +30,18 @@ const Profile = () => {
   };
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
-    console.log(resp);
+    if (resp.message === "Not found") {
+      setLoading(false);
+      return;
+    }
     setData(resp);
+    setEmpty(false);
+    setLoading(false);
   };
   useEffect(() => {
     handleVerifyUser();
-    handlegetRealEstate();
-  }, []);
+    if (idUser != 0) handlegetRealEstate();
+  }, [idUser]);
 
   return (
     <>
@@ -40,7 +49,7 @@ const Profile = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} />
-        <Publication data={data} />
+        {loading ? <Loader /> : <Publication data={data} empty={empty} />}
       </Container>
     </>
   );

@@ -1,6 +1,5 @@
-
 import styled from "styled-components";
-import {RealEstate} from '../../interface/realEstate'
+import { RealEstate } from "../../interface/realEstate";
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -20,25 +19,36 @@ const Img = styled.img`
   object-fit: cover;
 `;
 const H4 = styled.h4`
-font-size: 22px;
-color:#fff;
-`
+  font-size: 22px;
+  color: #fff;
+`;
 const P = styled.p`
-font-size: 18px;
-color:#fff;
-`
-
-const Index = (v:RealEstate) => {
+  font-size: 18px;
+  color: #fff;
+`;
+const ContainerBtn = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+const Btn = styled.button`
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+`;
+const Index = (v: RealEstate) => {
   return (
     <Container>
       <Content>
-      <Img className="img" src={v.url} alt="Avatar" />
+        <Img className="img" src={v.url} alt="Avatar" />
         <H4>{v.title}</H4>
-        <P>{v.description}</P>
         <P>{v.email}</P>
+        <ContainerBtn>
+          <Btn>visitar</Btn>
+        </ContainerBtn>
       </Content>
     </Container>
   );
 };
-export default Index
-
+export default Index;

@@ -29,6 +29,7 @@ const Logo = styled.label`
 const Index = () => {
   const { nameUser, handlenameUser } = useContext(NameUserContext);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const CallGetEmail = async () => {
     const nameAux = await HandlerGetNameUser();
@@ -36,6 +37,7 @@ const Index = () => {
     const idAux = await HandlerGetId();
     setEmail(emailAux);
     handlenameUser(nameAux, idAux);
+    setLoading(false);
   };
   const handleRedirect = () => {
     navigate(`/profile/${email}`);
@@ -47,7 +49,9 @@ const Index = () => {
     <>
       <Nav ColorBtn={"#162b33"}>
         <Check />
-        <Logo onClick={() => handleRedirect()}>{nameUser}</Logo>
+        <Logo onClick={() => handleRedirect()}>
+          {loading ? <span>cargando</span> : nameUser}
+        </Logo>
         <ContainerLinks />
       </Nav>
     </>

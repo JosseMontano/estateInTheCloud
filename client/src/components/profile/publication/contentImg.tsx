@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Casa from "../../../assets/casa.jpg";
 import { UseModal } from "../../../hooks/modal/useModal";
 import { Modal } from "../../../hooks/modal/modal";
 import { RealEstate } from "../../../interface/realEstate";
@@ -23,11 +22,13 @@ const Img = styled.img`
     height: 240px;
   }
 `;
+
 const ContentImg = (v: RealEstate) => {
   const { isShown, toggle } = UseModal();
   return (
     <Containersoon>
       <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
+    
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
   );

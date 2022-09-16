@@ -1,34 +1,41 @@
-import { RealEstate } from "../interface/realEstateData";
+import { RealEstate } from "../interface/realEstate";
 import { http } from "./http";
-
 
 export const getRealEstateAll = async () => {
   try {
-    const response = await fetch(`${http}estate`,{
-      method:"GET"
+    const response = await fetch(`${http}estate`, {
+      method: "GET",
     });
     return await response.json();
-  } catch (error) {
-    
-  }
-}
+  } catch (error) {}
+};
 
-export const getRealEstateProfil = async (id:number) => {
+export const getRealEstateProfil = async (id: number) => {
   try {
-    const response = await fetch(`${http}estate/${id}`,{
-      method:"GET"
+    const response = await fetch(`${http}estate/${id}`, {
+      method: "GET",
     });
     return await response.json();
   } catch (error) {
-    
+    console.log(error)
   }
-}
+};
 
-export const saveRealEstate = async (data:FormData) => {
+export const getRealEstateOfOnePublication = async (idRealEstate:number) => {
+  try {
+    const response = await fetch(`${http}estateOfOnePublication/${idRealEstate}`, {
+      method: "GET",
+    });
+    return await response.json();
+  } catch (error) {}
+};
+
+
+export const saveRealEstate = async (data: FormData) => {
   try {
     const response = await fetch(`${http}estate`, {
       method: "POST",
-      body: data
+      body: data,
     });
     return response;
   } catch (error) {
@@ -36,13 +43,30 @@ export const saveRealEstate = async (data:FormData) => {
   }
 };
 
-export const deleteRealEstateProfil = async (id:number) => {
+export const addNewPhotoToRealEstate = async (id_real_estate:number, data:FormData) => {
   try {
-    const response = await fetch(`${http}estate/${id}`,{
-      method:"GET"
+    const res = await fetch(`${http}addPhotoToRealEstate/${id_real_estate}`, {
+      method: "POST",
+      body: data,
     });
-    return await response.json();
+    return res;
   } catch (error) {
-    
+    console.log(error)
   }
 }
+
+export const deleteRealEstateProfil = async (
+  idRealEstatePhoto: number,
+  idPhoto: number,
+  idRealEstate: number
+) => {
+  try {
+    const response = await fetch(
+      `${http}estate/${idRealEstatePhoto}/${idPhoto}/${idRealEstate}`,
+      {
+        method: "DELETE",
+      }
+    );
+    return await response.json();
+  } catch (error) {}
+};

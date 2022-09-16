@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const Con = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 const Container = styled.div`
   display: inline-block;
   position: relative;
@@ -37,12 +43,14 @@ const Cont = styled.div`
 `;
 const Loader = () => {
   return (
-    <Container className="lds-ring">
-      <Cont></Cont>
-      <Cont></Cont>
-      <Cont></Cont>
-      <Cont></Cont>
-    </Container>
+    <Con>
+      <Container className="lds-ring">
+        <Cont></Cont>
+        <Cont></Cont>
+        <Cont></Cont>
+        <Cont></Cont>
+      </Container>
+    </Con>
   );
 };
 
