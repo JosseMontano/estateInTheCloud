@@ -18,6 +18,7 @@ import {
   P,
 } from "../../../styles/modal/perfil";
 import Load from "./modal/load";
+import styled from "styled-components";
 
 export const ContentModal = (v: RealEstate) => {
   const { toast, handleToast } = useContext(ToastContext);
@@ -60,7 +61,7 @@ export const ContentModal = (v: RealEstate) => {
   return (
     <Container>
       {load ? (
-     <Load />
+        <Load />
       ) : (
         <Slider className="slick">
           {data.map((va, i) => (

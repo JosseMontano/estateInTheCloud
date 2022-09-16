@@ -4,8 +4,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   width: 500px;
-  @media screen and (max-width: "563px") {
-    margin: 10px;
+  @media screen and (max-width: 572px) {
+    grid-template-columns: 100%;
+    justify-content: center;
+    padding:10%;
   }
 `;
 
@@ -13,6 +15,7 @@ export const ContainerContent = styled.div`
   display: grid;
   place-content: center;
 `;
+
 export const Button = styled.button<{ ColorBtn: string }>`
   background-color: ${(props) => props.ColorBtn};
   color: #fff;
