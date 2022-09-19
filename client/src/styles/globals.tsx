@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ColorBtn = "#a4bbf5";
 export const ColorBtnSecond = "#ff5861";
+export const ColorBtnThird = "#e559ae";
 export const ColorText = "#fff";
 export const Button = styled.button<{ ColorBtn: string }>`
   background-color: ${(props) => props.ColorBtn};

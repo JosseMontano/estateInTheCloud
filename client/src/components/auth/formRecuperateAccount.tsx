@@ -11,14 +11,13 @@ import {
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "../../hooks/form/useFormRegister";
+import { UseForm } from "../../hooks/form/useFormRecuperateAccount";
 import Loader from "../loader";
 import Message from "../message";
 import { ToastContext } from "../../context/toast";
-import { initialForm, validationsForm } from "../../validations/register";
+import { initialForm, validationsForm } from "../../validations/recuperateAccount";
 
 const Container = styled.form``;
-
 
 const Form = () => {
   const {
@@ -38,17 +37,16 @@ const Form = () => {
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: "Crear cuenta",
+      text: "Guardar",
     },
     {
       onclick: () => {
-        navigate(`/`);
+        navigate(`/register`);
       },
       color: ColorBtn,
-      text: "Volver",
-    },
+      text: "Create una cuenta",
+    }
   ];
-
   let dataForm = [
     {
       label: "Gmail",
@@ -57,24 +55,17 @@ const Form = () => {
       errors: errors.email,
     },
     {
-      label: "Nombre de usuario",
-      name: "username",
-      value: form.username,
-      errors: errors.username,
-    },
-    {
-      label: "Contraseña",
+      label: "Contraseña Nueva",
       name: "password",
       value: form.password,
       errors: errors.password,
-    }, {
-      label: "clave Secreta",
+    },  {
+      label: "Clave secreta",
       name: "secrect_password",
       value: form.secrect_password,
       errors: errors.secrect_password,
     },
   ];
-
   return (
     <Container>
       {dataForm.map((v, i) => (
@@ -102,5 +93,3 @@ const Form = () => {
 };
 
 export default Form;
-
-

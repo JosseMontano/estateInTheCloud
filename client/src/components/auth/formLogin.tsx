@@ -7,6 +7,7 @@ import {
   ColorBtnSecond,
   ColorText,
   ErrorCss,
+  ColorBtnThird
 } from "../../styles/globals";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,27 +17,9 @@ import { FormLogin } from "../../interface/formAuth";
 import Loader from "../loader";
 import Message from "../message";
 import { ToastContext } from "../../context/toast";
+import { initialForm, validationsForm } from "../../validations/login";
 
 const Container = styled.form``;
-
-const initialForm = {
-  email: "",
-  password: "",
-};
-
-const validationsForm = (form: FormLogin) => {
-  let errors = {} as FormLogin;
-  let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-  if (!form.email.trim()) {
-    errors.email = "El campo 'Email' es requerido";
-  } else if (!regexEmail.test(form.email.trim())) {
-    errors.email = "El campo 'Email' es incorrecto";
-  }
-  if (!form.password.trim()) {
-    errors.password = "El campo 'contraseña a tratar' es requerido";
-  }
-  return errors;
-};
 
 const Form = () => {
   const {
@@ -64,6 +47,13 @@ const Form = () => {
       },
       color: ColorBtn,
       text: "Create una cuenta",
+    },
+    {
+      onclick: () => {
+        navigate(`/recuperateAccount`);
+      },
+      color: ColorBtnThird,
+      text: "recuperar cuenta",
     },
   ];
   let dataForm = [

@@ -2,7 +2,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import fileUpload from 'express-fileupload'
+import fileUpload from "express-fileupload";
 var cookieParser = require("cookie-parser");
 
 /* files Routes */
@@ -14,14 +14,16 @@ const { urlCors, server } = require("./config");
 /* Setup Express */
 const app = express();
 /* img */
-app.use(fileUpload({
-  useTempFiles:true,
-  tempFileDir:'./upload'
-}))
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "./upload",
+  })
+);
 /* cors */
 app.use(
   cors({
-    credentials: true,
+   credentials: true,
     origin: urlCors.secret,
   })
 );
@@ -41,7 +43,6 @@ app.use((err: any, req: any, res: any, next: any) => {
     message: err.message,
   });
 });
-
 
 const port = server.port || 4000;
 app.listen(port, () => {

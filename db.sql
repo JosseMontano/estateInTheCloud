@@ -7,6 +7,15 @@ create table users(
     password VARCHAR(255)
 );
 
+create table accounts(
+    id SERIAL PRIMARY KEY,
+    secret_password VARCHAR(255),
+	id_user INT,
+	 CONSTRAINT fk_user
+      FOREIGN KEY(id_user) 
+	    REFERENCES users(id)
+)
+
 create table photos(
     id SERIAL PRIMARY KEY,
     url VARCHAR(255),
