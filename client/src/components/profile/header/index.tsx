@@ -9,6 +9,7 @@ const Container = styled.div`
   justify-content: center;
   border-bottom: 1px solid #a0a0a0;
   padding: 10px;
+  width: 100%;
   @media screen and (max-width:900px) {
     grid-template-columns: 1fr;
     gap:10px

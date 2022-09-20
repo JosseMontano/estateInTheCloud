@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { RealEstate } from "../../interface/realEstate";
+import { Modal } from "../../hooks/modal/modal";
+import { UseModal } from "../../hooks/modal/useModal";
+import { ContentModal } from "./contentModal";
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 300px;
-  height: 350px;
+  height: 380px;
   &:hover {
     transform: scale(1.1);
   }
@@ -38,14 +41,16 @@ const Btn = styled.button`
   border-radius: 10px;
 `;
 const Index = (v: RealEstate) => {
+  const { isShown, toggle } = UseModal();
   return (
     <Container>
+       <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
       <Content>
         <Img className="img" src={v.url} alt="Avatar" />
         <H4>{v.title}</H4>
         <P>{v.email}</P>
         <ContainerBtn>
-          <Btn>visitar</Btn>
+          <Btn onClick={toggle}>visitar</Btn>
         </ContainerBtn>
       </Content>
     </Container>

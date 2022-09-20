@@ -34,9 +34,9 @@ const Index = (params: Params) => {
       <ContainerFather>
         {!params.empty && (
             params.data.map((v, i) => (
-            <>
-              <ContentImg key={i} {...v} />
-            </>
+            <div key={i}>
+              <ContentImg {...v} />
+            </div>
           ))
           )}
       </ContainerFather>

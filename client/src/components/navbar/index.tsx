@@ -25,11 +25,16 @@ const Logo = styled.label`
     padding-left: 50px;
   }
 `;
-
+const Span = styled.span<{textBig:boolean}>`
+@media screen and (max-width:520px) {
+  font-size: ${(props) => (props.textBig ? "15px" : "30px")};
+}
+`
 const Index = () => {
   const { nameUser, handlenameUser } = useContext(NameUserContext);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
+  const [textBig, setTextBig] = useState(false);
   const navigate = useNavigate();
   const CallGetEmail = async () => {
     const nameAux = await HandlerGetNameUser();
@@ -38,6 +43,7 @@ const Index = () => {
     setEmail(emailAux);
     handlenameUser(nameAux, idAux);
     setLoading(false);
+    if(nameAux.length>10) setTextBig(true)
   };
   const handleRedirect = () => {
     navigate(`/profile/${email}`);
@@ -50,7 +56,7 @@ const Index = () => {
       <Nav ColorBtn={"#162b33"}>
         <Check />
         <Logo onClick={() => handleRedirect()}>
-          {loading ? <span>cargando</span> : nameUser}
+          {loading ? <Span textBig ={textBig}>cargando</Span> : <Span textBig = {textBig}>{nameUser}</Span>}
         </Logo>
         <ContainerLinks />
       </Nav>

@@ -8,6 +8,10 @@ export const Container = styled.div`
     grid-template-columns: 100%;
     justify-content: center;
     padding:10%;
+    width: 400px;
+  }
+  @media screen and (max-width: 460px) {
+    width: 300px;
   }
 `;
 

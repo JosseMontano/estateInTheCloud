@@ -6,6 +6,10 @@ import { marginInElements } from "../../../styles/globals";
 
 const Container = styled.div`
   display: flex;
+ @media screen and (max-width:450px) {
+  display: flex;
+  flex-direction: column;
+ }
 `;
 const SPAN = styled.span<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
