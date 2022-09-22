@@ -5,6 +5,10 @@ create table users(
     username VARCHAR(50),
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255)
+    id_photo INT, 
+	add CONSTRAINT fk_photo
+    FOREIGN KEY(id_photo) 
+	 REFERENCES photos(id)
 );
 
 create table accounts(
@@ -13,6 +17,19 @@ create table accounts(
 	id_user INT,
 	 CONSTRAINT fk_user
       FOREIGN KEY(id_user) 
+	    REFERENCES users(id)
+)
+
+create table comments(
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(255),
+    commentator INT,
+    person_commented INT,
+     CONSTRAINT fk_commentator
+      FOREIGN KEY(commentator) 
+	    REFERENCES users(id)
+    CONSTRAINT fk_person_commented
+      FOREIGN KEY(person_commented) 
 	    REFERENCES users(id)
 )
 

@@ -27,7 +27,7 @@ interface Params{
 const Header = (params:Params) => {
   return (
     <Container>
-      <ContentImg />
+      <ContentImg email={params.email} />
       <ContainerContent>
         <ContentBtn email={params.email} />
         <ContentMid />

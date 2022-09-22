@@ -1,18 +1,42 @@
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import Photo from "../../../assets/profile/photoProfile.jpg";
+import { User } from "../../../interface/user";
+import { getUser } from "../../../services/user";
+import {
+  Container,
+  Img,
+  ChangePhoto,
+  InputFile,
+} from "../../../styles/profile/header/contentImg";
+import ImgDataBase from "./imgDataBase";
 
-const Container = styled.div`
-  justify-self: center;
-`;
-const Img = styled.img`
-  border-radius: 100%;
-  height: 180px;
-  object-fit: cover;
-`;
-const ContentImg = () => {
+
+
+interface Params {
+  email?: string;
+}
+
+const ContentImg = (params: Params) => {
+  const [data, setData] = useState<User[]>([]);
+  const [exists, setExists] = useState(false);
+  const handleGetUser = async () => {
+    const res = await getUser(params.email);
+    if (res) {
+      setData(res);
+      setExists(true);
+    }
+  };
+  useEffect(() => {
+    handleGetUser();
+  }, []);
+
   return (
     <Container>
-      <Img src={Photo} alt="" />
+      {exists ? <ImgDataBase data={data} /> : <Img src={Photo} alt="" />}
+      {/* When the user it's close of img  */}
+      <ChangePhoto className="changePhoto">
+        <InputFile type="file" />
+      </ChangePhoto>
     </Container>
   );
 };

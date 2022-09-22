@@ -87,7 +87,6 @@ export const getEmail = async () => {
   return res;
 }; 
 
-
 export const logOut = async () => {
   document.cookie = `token=; max-age=0`;
   try {

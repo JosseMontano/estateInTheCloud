@@ -2,16 +2,17 @@ import { RealEstate } from "../../interface/realEstate";
 import Slider from "react-slick";
 import { getRealEstateOfOnePublication } from "../../services/realEstate";
 import { useEffect, useState } from "react";
-
 import {
   Container,
   ContainerContent,
   H2,
-  P
+  P,
+  Button,
 } from "../../styles/modal/perfil";
 import Load from "./modal/load";
 import styled from "styled-components";
 import ImgCom from "./modal/img";
+import Clipboard from "../clipBoard/index";
 
 const Img = styled.img`
   height: 200px;
@@ -34,7 +35,6 @@ const Img = styled.img`
 
 export const ContentModal = (v: RealEstate) => {
   const [load, setLoad] = useState(true);
-
   const [data, setData] = useState<RealEstate[]>([]);
 
   const handleGetEstate = async () => {
@@ -43,7 +43,6 @@ export const ContentModal = (v: RealEstate) => {
     setLoad(false);
   };
 
- 
   useEffect(() => {
     handleGetEstate();
   }, []);
@@ -56,8 +55,7 @@ export const ContentModal = (v: RealEstate) => {
         <Slider className="slick">
           {data.map((va, i) => (
             <div key={i}>
-              <ImgCom {...va}/>
-          
+              <ImgCom {...va} />
             </div>
           ))}
         </Slider>
@@ -66,6 +64,7 @@ export const ContentModal = (v: RealEstate) => {
       <ContainerContent>
         <H2>{v.title}</H2>
         <P>{v.description}</P>
+        <Clipboard txt={v.description} />
       </ContainerContent>
     </Container>
   );
