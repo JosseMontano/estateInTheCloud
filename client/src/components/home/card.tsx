@@ -3,6 +3,7 @@ import { RealEstate } from "../../interface/realEstate";
 import { Modal } from "../../hooks/modal/modal";
 import { UseModal } from "../../hooks/modal/useModal";
 import { ContentModal } from "./contentModal";
+import {Link} from 'react-router-dom'
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -39,6 +40,7 @@ const Btn = styled.button`
   border: none;
   padding: 5px;
   border-radius: 10px;
+  margin-left: 15px;
 `;
 const Index = (v: RealEstate) => {
   const { isShown, toggle } = UseModal();
@@ -51,6 +53,9 @@ const Index = (v: RealEstate) => {
         <P>{v.email}</P>
         <ContainerBtn>
           <Btn onClick={toggle}>visitar</Btn>
+          <Btn>
+            <Link to={`/visitUser/${v.email}`}>Ver mas</Link>
+          </Btn>
         </ContainerBtn>
       </Content>
     </Container>

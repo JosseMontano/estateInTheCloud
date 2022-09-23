@@ -7,7 +7,7 @@ import Home from "./pages/home";
 import Profile from "./pages/profile";
 import RealEstateData from "./pages/realEstate/createRealEstate";
 import RecuperateAccount from "./pages/recuperateAccount";
-
+import VisitUser from './pages/visitUser'
 const App = () => {
   return (
     <HashRouter>
@@ -17,6 +17,8 @@ const App = () => {
         <Route path="/recuperateAccount" element={<RecuperateAccount />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile/:email" element={<Profile />} />
+        <Route path="/visitUser/:email" element={<VisitUser />} />
+
         {/* REALESTATE */}
         <Route path="/add-data-real-estate/:id" element={<RealEstateData />} />
       </Routes>
