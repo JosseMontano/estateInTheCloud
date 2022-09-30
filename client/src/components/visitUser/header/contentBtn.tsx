@@ -1,12 +1,14 @@
 import styled from "styled-components";
+import { Modal } from "../../../hooks/modal/modal";
+import { UseModal } from "../../../hooks/modal/useModal";
 import { marginInElements } from "../../../styles/globals";
-
+import ContentModal from "./publicCommenator/contentModal";
 const Container = styled.div`
   display: flex;
- @media screen and (max-width:450px) {
-  display: flex;
-  flex-direction: column;
- }
+  @media screen and (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const SPAN = styled.span<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
@@ -28,15 +30,20 @@ const Btn = styled.button<{ marginInElements: string }>`
     cursor: pointer;
   }
 `;
-interface Params{
-  email?:string
+interface Params {
+  email?: string;
 }
-const ContentBtn = (params:Params) => {
+const ContentBtn = (params: Params) => {
+  const { isShown, toggle } = UseModal();
   return (
     <Container>
       <SPAN marginInElements={marginInElements}>{params.email}</SPAN>
       <Btn marginInElements={marginInElements}>Enviar mensaje</Btn>
       <Btn marginInElements={marginInElements}>Enviar solicitud</Btn>
+      <Btn onClick={toggle} marginInElements={marginInElements}>
+        Comentar a la persona
+      </Btn>
+      <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal />} />
     </Container>
   );
 };

@@ -19,6 +19,7 @@ import {
 } from "../../../styles/modal/perfil";
 import Load from "./modal/load";
 import styled from "styled-components";
+import Loader from "../../loader";
 
 export const ContentModal = (v: RealEstate) => {
   const { toast, handleToast } = useContext(ToastContext);
@@ -26,6 +27,7 @@ export const ContentModal = (v: RealEstate) => {
   const [load, setLoad] = useState(true);
   const [photo, setPhoto] = useState<any>("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false)
   const handleDelete = async () => {
     const res = await deleteRealEstateProfil(
       v.idrealestatephoto,
@@ -40,14 +42,16 @@ export const ContentModal = (v: RealEstate) => {
   };
 
   const handleAddNewPhoto = async () => {
+    setLoading(true)
     const dataForm = new FormData();
     dataForm.append("url", photo);
     const res = await addNewPhotoToRealEstate(v.idrealestate, dataForm);
     const r = await res?.json();
-    if (r.action) handleToast("El proceso fue exitoso");
+    if (r.action) handleToast("guardado!, cierre la ventana y vuelvala a abrir");
     else handleToast("Ha ocurrido un error");
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
+    setLoading(false)
   };
   const handleGetEstate = async () => {
     const res = await getRealEstateOfOnePublication(v.idrealestate);
@@ -81,6 +85,7 @@ export const ContentModal = (v: RealEstate) => {
           Eliminar
         </Button>
       </ContainerContent>
+      {loading && <Loader />}
       {response && <Message msg={toast} />}
     </Container>
   );

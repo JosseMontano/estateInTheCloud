@@ -13,6 +13,7 @@ import styled from "styled-components";
 import Message from "../../components/message";
 import { NameUserContext } from "../../context/nameUser";
 import { saveRealEstate } from "../../services/realEstate";
+import Loader from "../../components/loader";
 
 const Container = styled.div`
   height: 100vh;
@@ -29,9 +30,11 @@ const Index = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState(false);
+  const [loading, setLoading] = useState(false)
   const { handleToast } = useContext(ToastContext); //toast
   const sendData = async () => {
     try {
+      setLoading(true);
       const data = new FormData();
       data.append("url", photo);
       data.append("title", title);
@@ -45,6 +48,7 @@ const Index = () => {
       }
       setResponse(true);
       setTimeout(() => setResponse(false), 3000);
+      setLoading(false)
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +77,7 @@ const Index = () => {
       <Button ColorBtn={ColorBtn} onClick={() => sendData()}>
         Save
       </Button>
-
+      {loading && <Loader />}
       {response && <Message msg={toast} />}
     </Container>
   );

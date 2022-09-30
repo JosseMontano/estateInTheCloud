@@ -10,6 +10,7 @@ import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import { RealEstate } from "../interface/realEstate";
 import Comments from "../components/visitUser/comments";
+
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -48,7 +49,7 @@ const VisitUser = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} />
-        <Comments />
+        <Comments email={email} />
       </Container>
     </>
   );

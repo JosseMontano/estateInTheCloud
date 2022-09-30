@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import Photo from "../../../assets/profile/photoProfile.jpg";
-
+import Content from "./content";
+import Img from "./img";
+import { getCommentsByUser } from "../../../services/comment";
+import { useEffect, useState } from "react";
+import { getUser } from "../../../services/user";
+import { Comments } from "../../../interface/comments";
 const ContentSoon = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
@@ -18,47 +22,46 @@ const Container = styled.div`
     margin: 0;
   }
 `;
-const ContainerImg = styled.div`
-  justify-self: center;
-  align-self: center;
-`;
-const Img = styled.img`
-  border-radius: 100%;
-  height: 150px;
-`;
-const ContainerContent = styled.div`
-  align-self: center;
-`;
+
 const Title = styled.h2`
   text-align: center;
   font-size: 32px;
   margin-top: 15px;
 `;
-const NameUser = styled.h3`
-  @media screen and (max-width: 732px) {
-    text-align: center;
-    font-size: 26px;
-  }
-`;
-const Index = () => {
+
+interface params {
+  email: string | undefined;
+}
+
+const Index = (params: params) => {
+  const [data, setData] = useState<Comments[]>([]);
+
+  const handleGetComments = async (id: number) => {
+    const resp = await getCommentsByUser(id);
+    setData(resp);
+  };
+
+  const handleGetCommentedUser = async () => {
+    const resp = await getUser(params.email);
+    const obj = Object.assign({}, resp);
+    const idUser = obj[0].id_usuario;
+    handleGetComments(idUser);
+  };
+
+  useEffect(() => {
+    handleGetCommentedUser();
+  }, []);
+
   return (
     <div>
       <Title>Comentarios</Title>
       <Container>
-        <ContentSoon>
-          <ContainerImg>
-            <Img src={Photo} alt="" />
-          </ContainerImg>
-          <ContainerContent>
-            <NameUser>NameUser</NameUser>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-              eaque dignissimos. Ipsam sit omnis corporis, praesentium dolorum
-              sint doloribus. Laborum ducimus beatae qui accusamus, id
-              necessitatibus numquam incidunt libero alias.
-            </p>
-          </ContainerContent>
-        </ContentSoon>
+        {data.map((v, i) => (
+          <ContentSoon key={i}>
+            <Img commentator={v.commentator}/>
+            <Content {...v} />
+          </ContentSoon>
+        ))}
       </Container>
     </div>
   );
