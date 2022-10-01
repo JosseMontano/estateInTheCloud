@@ -22,7 +22,7 @@ const ContainerContent = styled.div`
 `;
 
 interface Params{
-  email?:string
+  email?:string;
 }
 const Header = (params:Params) => {
   return (

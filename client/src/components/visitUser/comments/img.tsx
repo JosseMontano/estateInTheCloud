@@ -8,16 +8,20 @@ const Container = styled.div`
 `;
 const ImgSty = styled.img`
   border-radius: 100%;
-  height: 150px;
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
 `;
 interface params {
   commentator: number;
 }
 const Img = (params: params) => {
-  const [idUser, setIdUser] = useState(0);
+  const [photo, setPhoto] = useState('');
   const handleGetUser = async () => {
     const res = await getUserById(params.commentator);
-    console.log(res);
+    const objRes = Object.assign({}, res[0])
+    const auxUrl = objRes.url
+    setPhoto(auxUrl);
   };
   useEffect(() => {
     handleGetUser();
@@ -25,7 +29,7 @@ const Img = (params: params) => {
 
   return (
     <Container>
-      <ImgSty src={Photo} alt="" />
+      <ImgSty src={photo} alt="" />
     </Container>
   );
 };

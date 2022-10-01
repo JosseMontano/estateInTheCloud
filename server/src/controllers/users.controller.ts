@@ -128,7 +128,6 @@ export const getUserById = async (
 ) => {
   try {
     const { id } = req.params;
-    console.log(id)
     const result = await pool.query(
       `
       select u.email, u.id as id_usuario, p.url, p.public_id, p.id as id_photo from users u, photos 

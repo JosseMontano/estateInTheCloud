@@ -3,6 +3,8 @@ import { Modal } from "../../../hooks/modal/modal";
 import { UseModal } from "../../../hooks/modal/useModal";
 import { marginInElements } from "../../../styles/globals";
 import ContentModal from "./publicCommenator/contentModal";
+import {NameUserContext} from '../../../context/nameUser'
+import { useContext } from "react";
 const Container = styled.div`
   display: flex;
   @media screen and (max-width: 450px) {
@@ -35,6 +37,7 @@ interface Params {
 }
 const ContentBtn = (params: Params) => {
   const { isShown, toggle } = UseModal();
+  const { idUser } = useContext(NameUserContext);
   return (
     <Container>
       <SPAN marginInElements={marginInElements}>{params.email}</SPAN>
@@ -43,7 +46,10 @@ const ContentBtn = (params: Params) => {
       <Btn onClick={toggle} marginInElements={marginInElements}>
         Comentar a la persona
       </Btn>
-      <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal />} />
+      <Modal 
+      isShown={isShown} 
+      hide={toggle}
+      modalContent={<ContentModal personCommented={params.email} commentator={idUser} />} />
     </Container>
   );
 };

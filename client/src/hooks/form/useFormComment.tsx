@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { postComment } from "../../services/comment";
 import { FormComment } from "../../interface/formComment";
 
@@ -18,12 +18,11 @@ export const UseForm = (
   const navigate = useNavigate();
 
   const handleSend = async (form: FormComment) => {
-    try {
+      try {
       setLoading(true);
       const res = await postComment(form);
       if (res?.status === 200) {
         handleToast("El proceso fue exitoso");
-        navigate(`/home`);
       } else {
         handleToast("Ha ocurrido un error");
       }
@@ -34,7 +33,7 @@ export const UseForm = (
       setForm(initialForm); //if want cleam the inputs
     } catch (err) {
       console.log(err);
-    }
+    }  
   };
 
   const handleChange = (
@@ -46,21 +45,20 @@ export const UseForm = (
       [name]: value,
     });
   };
-  const handleBlur = (
-    e: React.FocusEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    handleChange(e);
-    setErrors(validateForm(form));
-  };
+
+  const [effects, setEffects] = useState(false);
+  useEffect(() => {
+    if (effects) {
+      if (Object.keys(errors).length === 0) {
+        handleSend(form);
+      }
+    }
+    setEffects(true);
+  }, [errors]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0) {
-      setLoading(true);
-      handleSend(form);
-    } else {
-      return;
-    }
   };
   return {
     form,
@@ -68,7 +66,6 @@ export const UseForm = (
     loading,
     response,
     handleChange,
-    handleBlur,
     handleSubmit,
   };
 };

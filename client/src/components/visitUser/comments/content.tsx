@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Comments } from "../../../interface/comments";
+import { getUserById } from "../../../services/user";
 
 const Container = styled.div`
   align-self: center;
@@ -11,9 +13,20 @@ const NameUser = styled.h3`
   }
 `;
 const Content = (v:Comments) => {
+  const [email, setEmail] = useState('');
+  const handleGetUser = async () => {
+    const res = await getUserById(v.commentator);
+    const objRes = Object.assign({}, res[0])
+    const auxUrl = objRes.email
+    setEmail(auxUrl);
+  };
+  useEffect(() => {
+    handleGetUser();
+  }, []);
+
   return (
     <Container>
-      <NameUser>{v.commentator}</NameUser>
+      <NameUser>{email}</NameUser>
       <p>
        {v.description}
       </p>
