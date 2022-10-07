@@ -12,14 +12,15 @@ const NameUser = styled.h3`
     font-size: 26px;
   }
 `;
-const Content = (v:Comments) => {
-  const [email, setEmail] = useState('');
+const Content = (v: Comments) => {
+  const [email, setEmail] = useState("");
   const handleGetUser = async () => {
     const res = await getUserById(v.commentator);
-    const objRes = Object.assign({}, res[0])
-    const auxUrl = objRes.email
+    const objRes = Object.assign({}, res[0]);
+    const auxUrl = objRes.email;
     setEmail(auxUrl);
   };
+
   useEffect(() => {
     handleGetUser();
   }, []);
@@ -27,9 +28,7 @@ const Content = (v:Comments) => {
   return (
     <Container>
       <NameUser>{email}</NameUser>
-      <p>
-       {v.description}
-      </p>
+      <p>{v.description}</p>
     </Container>
   );
 };

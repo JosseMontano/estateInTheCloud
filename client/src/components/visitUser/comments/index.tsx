@@ -5,6 +5,7 @@ import { getCommentsByUser } from "../../../services/comment";
 import { useEffect, useState } from "react";
 import { getUser } from "../../../services/user";
 import { Comments } from "../../../interface/comments";
+
 const ContentSoon = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
@@ -34,6 +35,7 @@ interface params {
 }
 
 const Index = (params: params) => {
+
   const [data, setData] = useState<Comments[]>([]);
 
   const handleGetComments = async (id: number) => {
@@ -41,13 +43,13 @@ const Index = (params: params) => {
     setData(resp);
   };
 
-  const handleGetCommentedUser = async () => {
+   const handleGetCommentedUser = async () => {
     const resp = await getUser(params.email);
     const obj = Object.assign({}, resp);
     const idUser = obj[0].id_usuario;
     handleGetComments(idUser);
   };
-
+ 
   useEffect(() => {
     handleGetCommentedUser();
   }, []);
