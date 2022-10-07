@@ -30,3 +30,18 @@ export const postComment = async (form: FormComment) => {
     console.error(err);
   }
 };
+export const deleteComment = async(id:number) => {
+  try {
+    const response = await fetch(`${http}comment/${id}`, {
+      method: 'DELETE',
+      body: JSON.stringify(false)
+    });
+  
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}

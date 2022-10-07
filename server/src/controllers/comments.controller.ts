@@ -47,3 +47,24 @@ export const createComment = async (
     next(error);
   }
 };
+export const deleteComment = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    //delete data real Estates
+    const {id} = req.params;
+    const resRealEstate = await pool.query(
+      "delete from comments where id=$1",
+      [id]
+    );
+    if (resRealEstate.rowCount === 0)
+      return res.status(404).json({
+        message: "Not found",
+      });
+    return res.json({ action: true });
+  } catch (error: any) {
+    next(error);
+  }
+};
