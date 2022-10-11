@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { getUser } from "../../../services/user";
 import { Comments } from "../../../interface/comments";
 import { NameUserContext } from ".././../../context/nameUser";
+import { CommentsContext } from "../../../context/comments";
 import Message from "../../message";
 const ContentSoon = styled.div`
   display: grid;
@@ -53,24 +54,24 @@ interface params {
 }
 
 const Index = (params: params) => {
-  const [data, setData] = useState<Comments[]>([]);
+  /*   const [data, setData] = useState<Comments[]>([]); */
   const [deleteBool, setDeleteBool] = useState(false);
   const { idUser } = useContext(NameUserContext);
-  const handleGetComments = async (id: number) => {
-    const resp = await getCommentsByUser(id);
-    setData(resp);
-  };
+  const [loading, setLoading] = useState(true);
+  const { comments, getComments } = useContext(CommentsContext);
 
   const handleGetCommentedUser = async () => {
     const resp = await getUser(params.email);
     const obj = Object.assign({}, resp);
     const idUserConst = obj[0].id_usuario;
-    handleGetComments(idUserConst);
+    /*     handleGetComments(idUserConst); */
+    await getComments(idUserConst);
+    setLoading(false);
   };
 
   const handleDeleteComment = async (id: number) => {
-    //delete comments
     const res = await deleteComment(id);
+    handleGetCommentedUser();
     setDeleteBool(true);
     setTimeout(() => {
       setDeleteBool(false);
@@ -84,22 +85,24 @@ const Index = (params: params) => {
   return (
     <div>
       <Title>Comentarios</Title>
-      <Container>
-        {data.map((v, i) => (
-          <ContentSoon key={i}>
-            <Img commentator={v.commentator} />
-            <Content {...v} />
-            {v.commentator === idUser && (
-              <ContainerBtn>
-                <Button onClick={() => handleDeleteComment(v.id)}>
-                  Eliminar Comentario
-                </Button>
-              </ContainerBtn>
-            )}
-          </ContentSoon>
-        ))}
-      </Container>
-      {deleteBool && <Message msg="En los proximos minutos sera eliminado" />}
+      {!loading && (
+        <Container>
+          {comments.map((v, i) => (
+            <ContentSoon key={i}>
+              <Img commentator={v.commentator} />
+              <Content {...v} />
+              {v.commentator === idUser && (
+                <ContainerBtn>
+                  <Button onClick={() => handleDeleteComment(v.id)}>
+                    Eliminar Comentario
+                  </Button>
+                </ContainerBtn>
+              )}
+            </ContentSoon>
+          ))}
+        </Container>
+      )}
+      {deleteBool && <Message msg="Se borro con exito" />}
     </div>
   );
 };

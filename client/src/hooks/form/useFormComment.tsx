@@ -7,7 +7,9 @@ import { useNavigate } from "react-router";
 
 export const UseForm = (
   initialForm: FormComment,
-  validateForm: (form: any) => {}
+  validateForm: (form: any) => {},
+  refreshData:(id:number)=>void,
+  idUser:number
 ) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({} as FormComment | any);
@@ -23,6 +25,7 @@ export const UseForm = (
       const res = await postComment(form);
       if (res?.status === 200) {
         handleToast("El proceso fue exitoso");
+        await refreshData(idUser)
       } else {
         handleToast("Ha ocurrido un error");
       }

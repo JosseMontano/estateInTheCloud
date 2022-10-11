@@ -13,20 +13,25 @@ import { initialForm, validationsForm } from "../../../../validations/comments";
 import Loader from "../../../loader";
 import Message from "../../../message";
 import { getUser } from "../../../../services/user";
+import { CommentsContext } from "../../../../context/comments";
 interface params {
   personCommented: string | undefined;
   commentator: number;
 }
 
 const ContentModal = ({ personCommented, commentator }: params) => {
+  const {getComments} = useContext(CommentsContext)
+  const [idUser, setidUser] = useState(0)
   const { form, errors, loading, response, handleChange, handleSubmit } =
-    UseForm(initialForm, validationsForm);
+    UseForm(initialForm, validationsForm, getComments, idUser);
   const { toast } = useContext(ToastContext);
+
   const [personCommentedId, setPersonCommentedId] = useState(0);
   const handleGetPersonCommented = async () => {
     const res = await getUser(personCommented);
     const objRes = Object.assign({}, res[0]);
     const auxId = objRes.id_usuario;
+    setidUser(auxId);
     setPersonCommentedId(auxId);
   };
 
