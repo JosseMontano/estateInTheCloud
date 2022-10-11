@@ -60,3 +60,18 @@ id serial PRIMARY KEY,
       FOREIGN KEY(id_real_estate) 
 	    REFERENCES real_estates(id)
 )
+
+create table questions(
+    id SERIAL PRIMARY KEY,
+    question VARCHAR(255)
+);
+
+create table answers(
+    id SERIAL PRIMARY KEY,
+    answer VARCHAR(255),
+    id_real_estate INT,
+    CONSTRAINT fk_real_estate
+      FOREIGN KEY(id_real_estate) 
+	    REFERENCES real_estates(id)
+);
+
