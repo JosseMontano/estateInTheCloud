@@ -24,7 +24,7 @@
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.2",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "fs-extra": "^10.1.0",
     "jsonwebtoken": "^8.5.1",
@@ -33,7 +33,8 @@
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.10",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

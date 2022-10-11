@@ -1,5 +1,11 @@
 import { NextFunction, Request, Response } from "express";
+import { z } from "zod";
 const pool = require("../db");
+
+const QuestionSchema = z.object({
+  question: z.string().nonempty(),
+});
+
 export const getAllquestions = async (
   req: Request,
   res: Response,
@@ -15,6 +21,7 @@ export const getAllquestions = async (
     next(error);
   }
 };
+
 export const createQuestion = async (
   req: Request,
   res: Response,
@@ -22,8 +29,8 @@ export const createQuestion = async (
 ) => {
   const { question } = req.body;
   try {
-    //save data of the realEstate
-    const result = await pool.query(
+    QuestionSchema.parse(req.body);
+    await pool.query(
       "insert into questions (question) values ($1) returning *",
       [question]
     );
