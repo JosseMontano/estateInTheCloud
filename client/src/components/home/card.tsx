@@ -3,7 +3,9 @@ import { RealEstate } from "../../interface/realEstate";
 import { Modal } from "../../hooks/modal/modal";
 import { UseModal } from "../../hooks/modal/useModal";
 import { ContentModal } from "./contentModal";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import ModalQuestion from "./modalQuestion";
+import { useState } from "react";
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -44,15 +46,29 @@ const Btn = styled.button`
 `;
 const Index = (v: RealEstate) => {
   const { isShown, toggle } = UseModal();
+  const [showModalQuestion, setShowModalQuestion] = useState(false);
+  const toggleModalQuestion = () => setShowModalQuestion(!showModalQuestion);
   return (
     <Container>
-       <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={<ContentModal {...v} />}
+      />
+
+      <Modal
+        isShown={showModalQuestion}
+        hide={toggleModalQuestion}
+        modalContent={<ModalQuestion />}
+      />
+
       <Content>
         <Img className="img" src={v.url} alt="Avatar" />
         <H4>{v.title}</H4>
         <P>{v.email}</P>
         <ContainerBtn>
-          <Btn onClick={toggle}>visitar</Btn>
+          <Btn onClick={toggle}>Saber mas</Btn>
+          <Btn onClick={toggleModalQuestion}>Preguntas</Btn>
           <Btn>
             <Link to={`/visitUser/${v.email}`}>Ver mas</Link>
           </Btn>
