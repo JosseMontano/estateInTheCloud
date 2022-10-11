@@ -1,10 +1,13 @@
 import React from "react";
-import { Button, ColorBtn, ErrorCss } from "../../../styles/globals";
+import { Title, ColorText } from "../../../styles/globals";
 import { postQuestion } from "../../../services/question";
 import { initialForm, validationsForm } from "../../../validations/question";
 import { UseForm } from "../../../hooks/form/useForm";
-import Message from "../../message";
-import Loader from "../../loader";
+import FormComponent from "./form";
+import styled from "styled-components";
+import LoadAndResponse from "./loadAndResponse";
+
+const Container = styled.div``;
 const Index = () => {
   const { form, errors, loading, response, msg, handleSubmit, handleChange } =
     UseForm(initialForm, validationsForm, postQuestion);
@@ -12,23 +15,18 @@ const Index = () => {
     handleSubmit(e);
   };
   return (
-    <div>
-      <h2>Preguntas frecuentes</h2>
-      <label htmlFor="">Pregunta</label>
-      <input
-        type="text"
-        required
-        name={"question"}
-        onChange={handleChange}
-        value={form.question}
+    <Container>
+      <Title colorText={ColorText}>Preguntas frecuentes</Title>
+
+      <FormComponent
+        err={errors.question}
+        val={form.question}
+        handleChange={handleChange}
+        sendData={sendData}
       />
-      {errors.question && <ErrorCss>{errors.question}</ErrorCss>}
-      <Button ColorBtn={ColorBtn} onClick={(e: any) => sendData(e)}>
-        Haz tu propia pregunta
-      </Button>
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
-    </div>
+
+      <LoadAndResponse loading={loading} response={response} msg={msg} />
+    </Container>
   );
 };
 
