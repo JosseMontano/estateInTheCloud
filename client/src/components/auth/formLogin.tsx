@@ -7,30 +7,23 @@ import {
   ColorBtnSecond,
   ColorText,
   ErrorCss,
-  ColorBtnThird
+  ColorBtnThird,
 } from "../../styles/globals";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "../../hooks/form/useFormLogin";
+import { UseForm } from "../../hooks/form/useForm";
 import { FormLogin } from "../../interface/formAuth";
 import Loader from "../loader";
 import Message from "../message";
 import { ToastContext } from "../../context/toast";
 import { initialForm, validationsForm } from "../../validations/login";
-
+import { signIn } from "../../services/auth";
 const Container = styled.form``;
 
 const Form = () => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = UseForm(initialForm, validationsForm);
+  const { form, errors, loading, response, handleChange, handleSubmit, msg } =
+    UseForm(initialForm, validationsForm, signIn);
   const { toast } = useContext(ToastContext);
 
   const navigate = useNavigate();
@@ -56,6 +49,7 @@ const Form = () => {
       text: "recuperar cuenta",
     },
   ];
+
   let dataForm = [
     {
       label: "Gmail",
@@ -70,6 +64,13 @@ const Form = () => {
       errors: errors.password,
     },
   ];
+
+  useEffect(() => {
+    if (msg === "El proceso fue exitoso") {
+      navigate("/home");
+    }
+  }, [msg]);
+
   return (
     <Container>
       {dataForm.map((v, i) => (
@@ -79,7 +80,6 @@ const Form = () => {
             type="text"
             name={v.name}
             onChange={handleChange}
-            onBlur={handleBlur}
             value={v.value}
             required
           />
@@ -91,7 +91,7 @@ const Form = () => {
         <Button key={i} {...v} />
       ))}
       {loading && <Loader />}
-      {response && <Message msg={toast} />}
+      {response && <Message msg={msg} />}
     </Container>
   );
 };

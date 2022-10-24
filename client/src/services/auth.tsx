@@ -23,8 +23,9 @@ export const signIn = async (form: FormLogin) => {
         60 * 60 * 24
       }; path=/; samesite=stric`;
     }
-
-    return response;
+    if (response.ok) {
+      return true;
+    }
   } catch (error) {
     console.log(error);
   }
