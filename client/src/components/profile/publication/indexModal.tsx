@@ -1,19 +1,17 @@
 import { RealEstate } from "../../../interface/realEstate";
-import Slider from "react-slick";
 import {
   deleteRealEstateProfil,
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication,
 } from "../../../services/realEstate";
 import { useContext, useEffect, useState } from "react";
-import Message from "../../message";
 import { ToastContext } from "../../../context/toast";
-import ImgCom from "./modal/img";
 import { Container } from "../../../styles/modal/perfil";
-import Load from "./modal/load";
-import Loader from "../../loader";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
+import ContentImg from "./modal/contentImg";
+import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
+
 export const ContentModal = (v: RealEstate) => {
   const { toast, handleToast } = useContext(ToastContext);
   const [response, setResponse] = useState(false);
@@ -22,17 +20,22 @@ export const ContentModal = (v: RealEstate) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleDelete = async () => {
+    setLoading(true);
     const res = await deleteRealEstateProfil(
       v.idrealestatephoto,
       v.idphoto,
       v.idrealestate
     );
-    if (res.action) {
+    if (res?.ok) {
       handleToast("El proceso fue exitoso");
-    } else handleToast("Ha ocurrido un error");
+    } else {
+      handleToast("Ha ocurrido un error");
+    }
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
+    setLoading(false);
   };
 
   const handleAddNewPhoto = async () => {
@@ -62,21 +65,14 @@ export const ContentModal = (v: RealEstate) => {
   const handleAnswerQuestion = (id: number) => {
     navigate(`/answeQuestion/${id}`);
   };
+  
   useEffect(() => {
     handleGetEstate();
   }, []);
 
   return (
     <Container>
-      {load ? (
-        <Load />
-      ) : (
-        <Slider className="slick">
-          {data.map((va, i) => (
-            <ImgCom {...(va as object)} key={i} />
-          ))}
-        </Slider>
-      )}
+      <ContentImg data={data} load={load} />
 
       <ContentTextModal
         v={v}
@@ -86,8 +82,7 @@ export const ContentModal = (v: RealEstate) => {
         handleAnswerQuestion={handleAnswerQuestion}
       />
 
-      {loading && <Loader />}
-      {response && <Message msg={toast} />}
+      <LoadAndResponse loading={loading} response={response} msg={toast} />
     </Container>
   );
 };

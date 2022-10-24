@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 /* import { Enlace } from '../../models/nav'; */
 import Links from "./links";
 
@@ -15,7 +15,6 @@ const Ul = styled.ul`
     left: -100%;
     text-align: center;
     transition: all 0.5s;
-
   }
 
   @media (max-width: 858px) {
@@ -38,18 +37,19 @@ const ContainerLinks = () => {
     {
       text: "Departamentos",
       url: "",
-    },  {
+    },
+    {
       text: "Salir",
       url: "",
     },
   ];
   return (
     <Ul>
-    {data.map((v, i) => (
-      <Links {...v} key={i} />
-    ))}
-  </Ul>
-  )
-}
+      {data.map((v, i) => (
+        <Links {...v} key={i} />
+      ))}
+    </Ul>
+  );
+};
 
-export default ContainerLinks
+export default ContainerLinks;

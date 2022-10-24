@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ContentImg from "./contentImg";
 import { RealEstate } from "../../../interface/realEstate";
 
-const Container = styled.div``;
 const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
@@ -20,27 +19,35 @@ const ContainerFather = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
-
+const TextEmpty = styled.div`
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-transform: uppercase;
+`;
 interface Params {
   data: RealEstate[];
-  empty:boolean;
+  empty: boolean;
 }
 
-const Index = (params: Params) => {
+const Index = ({ data, empty }: Params) => {
+  function showTitle() {
+    if (empty) return <TextEmpty>No tienes publicaciones</TextEmpty>;
+    return <Title>publicaciones</Title>;
+  }
+
+  function showData() {
+    if (!empty) {
+      return data.map((v, i) => <ContentImg key={i} {...v} />);
+    }
+  }
 
   return (
-    <Container>
-      <Title>publicaciones</Title>
-      <ContainerFather>
-        {!params.empty && (
-            params.data.map((v, i) => (
-            <div key={i}>
-              <ContentImg {...v} />
-            </div>
-          ))
-          )}
-      </ContainerFather>
-    </Container>
+    <>
+      {showTitle()}
+      <ContainerFather>{showData()}</ContainerFather>
+    </>
   );
 };
 

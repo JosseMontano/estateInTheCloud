@@ -50,9 +50,7 @@ const Profile = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} />
-
         {loading ? <Loader /> : <Publication data={data} empty={empty} />}
-
       </Container>
     </>
   );

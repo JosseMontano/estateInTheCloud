@@ -67,6 +67,6 @@ export const deleteRealEstateProfil = async (
         method: "DELETE",
       }
     );
-    return await response.json();
+    return response;
   } catch (error) {}
 };

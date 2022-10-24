@@ -28,7 +28,6 @@ const ContentImg = (v: RealEstate) => {
   return (
     <Containersoon>
       <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
-    
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
   );
