@@ -1,36 +1,27 @@
 import styled from "styled-components";
 
-import {
-  ColorBtn,
-  Input,
-  Label,
-  ColorBtnSecond,
-  ColorText,
-  ErrorCss,
-} from "../../styles/globals";
-import { useContext } from "react";
+import { ColorBtn, ColorBtnSecond } from "../../styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { UseForm } from "../../hooks/useForm";
 import Loader from "../loader";
 import Message from "../message";
-import { ToastContext } from "../../context/toast";
 import {
   initialForm,
   validationsForm,
 } from "../../validations/recuperateAccount";
 import { recuperateAccount } from "../../services/auth";
+import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
 
 const Container = styled.form``;
 
 const Form = () => {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, recuperateAccount);
-  const { toast } = useContext(ToastContext);
 
   const navigate = useNavigate();
 
-  let data = [
+  let dataBtn = [
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
@@ -67,20 +58,14 @@ const Form = () => {
   return (
     <Container>
       {dataForm.map((v, i) => (
-        <div key={i}>
-          <Label colorText={ColorText}>{v.label}</Label>
-          <Input
-            type="text"
-            name={v.name}
-            onChange={handleChange}
-            value={v.value}
-            required
-          />
-          {v.errors && <ErrorCss>{v.errors}</ErrorCss>}
-        </div>
+        <ContentFormRecuperateAccount
+          key={i}
+          v={v}
+          handleChange={handleChange}
+        />
       ))}
 
-      {data.map((v, i) => (
+      {dataBtn.map((v, i) => (
         <Button key={i} {...v} />
       ))}
       {loading && <Loader />}

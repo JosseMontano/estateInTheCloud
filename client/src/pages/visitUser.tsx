@@ -18,19 +18,21 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const VisitUser = () => {
   const { email } = useParams();
-
   const { idUser } = useContext(NameUserContext);
   let navigate = useNavigate();
+
   const handleVerifyUser = async () => {
     const logged = await verifyLogged();
     if (!logged) navigate("/");
   };
+
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
     if (resp.message === "Not found") {
       return;
     }
   };
+
   useEffect(() => {
     handleVerifyUser();
     if (idUser != 0) handlegetRealEstate();
