@@ -26,7 +26,7 @@ interface params {
 const Index = ({ email }: params) => {
   const [deleteBool, setDeleteBool] = useState(false);
 
-  const { comments, getComments } = useContext(CommentsContext);
+  const { comments, getComments, loading } = useContext(CommentsContext);
 
   const handleGetCommentedUser = async () => {
     const resp = await getUser(email);
@@ -53,11 +53,12 @@ const Index = ({ email }: params) => {
       <Title>Comentarios</Title>
 
       <Container>
-        {comments.map((v, i) => (
-          <Comments key={i} v={v} handleDeleteComment={handleDeleteComment} />
-        ))}
+        {!loading &&
+          comments.map((v, i) => (
+            <Comments key={i} v={v} handleDeleteComment={handleDeleteComment} />
+          ))}
       </Container>
-      
+
       {deleteBool && <Message msg="Se borro con exito" />}
     </div>
   );
