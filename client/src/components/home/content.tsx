@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import Card from "./card";
 import { RealEstate } from "../../interface/realEstate";
-import Title from './title'
+import Title from "./title";
 interface Params {
   title: string;
   data: RealEstate[];

@@ -18,8 +18,8 @@ const Home = () => {
     verifyFun();
     handleGetRealEstate();
   }, []);
-
-  let dataComplete = [
+  
+  let data = [
     {
       title: "Mas recientes",
       data: homeData,
@@ -41,13 +41,7 @@ const Home = () => {
   return (
     <>
       <Container>
-        {dataComplete.length > 0 ? (
-          <>
-            <Content dataComplete={dataComplete} />
-          </>
-        ) : (
-          <Loader />
-        )}
+        {data.length > 0 ? <Content dataComplete={data} /> : <Loader />}
       </Container>
       ;
     </>

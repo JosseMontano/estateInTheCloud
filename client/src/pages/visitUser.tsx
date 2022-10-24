@@ -4,7 +4,7 @@ import Header from "../components/visitUser/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Navbar from "../components/navbar";
 import AuxNav from "../components/navbar/auxNav";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import Comments from "../components/visitUser/comments";

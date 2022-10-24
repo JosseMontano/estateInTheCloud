@@ -9,7 +9,7 @@ const Img = styled.img`
   height: 100vh;
   object-fit: cover;
 `;
-const ContainerSlider = styled.div``;
+
 interface Params {
   dataComplete: { title: string; data: RealEstate[] }[];
 }
@@ -20,9 +20,9 @@ const index = (params: Params) => {
       <Img src={Img1} alt="" />
       {/* Show all the estates */}
       {params.dataComplete.map((v, i) => (
-        <ContainerSlider key={i}>
+        <div key={i}>
           <Slider {...v} />
-        </ContainerSlider>
+        </div>
       ))}
     </>
   );
