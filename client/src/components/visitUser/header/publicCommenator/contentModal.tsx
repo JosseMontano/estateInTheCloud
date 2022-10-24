@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ToastContext } from "../../../../context/toast";
-import { UseForm } from "../../../../hooks/form/useFormComment";
+import { UseForm } from "../../../../hooks/form/useForm";
 import {
   Button,
   ColorText,
   ErrorCss,
-  Input,
   TextArea,
   Title,
 } from "../../../../styles/globals";
@@ -14,17 +13,18 @@ import Loader from "../../../loader";
 import Message from "../../../message";
 import { getUser } from "../../../../services/user";
 import { CommentsContext } from "../../../../context/comments";
+import { postComment } from "../../../../services/comment";
+
 interface params {
   personCommented: string | undefined;
   commentator: number;
 }
 
 const ContentModal = ({ personCommented, commentator }: params) => {
-  const {getComments} = useContext(CommentsContext)
-  const [idUser, setidUser] = useState(0)
-  const { form, errors, loading, response, handleChange, handleSubmit } =
-    UseForm(initialForm, validationsForm, getComments, idUser);
-  const { toast } = useContext(ToastContext);
+  const { getComments } = useContext(CommentsContext);
+  const [idUser, setidUser] = useState(0);
+  const { form, errors, loading, response, handleChange, handleSubmit, msg } =
+    UseForm(initialForm, validationsForm, postComment, idUser, getComments);
 
   const [personCommentedId, setPersonCommentedId] = useState(0);
   const handleGetPersonCommented = async () => {
@@ -58,7 +58,7 @@ const ContentModal = ({ personCommented, commentator }: params) => {
         Guardar
       </Button>
       {loading && <Loader />}
-      {response && <Message msg={toast} />}
+      {response && <Message msg={msg} />}
     </div>
   );
 };

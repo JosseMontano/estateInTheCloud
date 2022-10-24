@@ -1,14 +1,11 @@
 import FormAnswer from "../interface/answer";
-import { http } from "./http";
+import { http, headers } from "./http";
 
 export const addAnswer = async (form: FormAnswer) => {
   try {
     const response = await fetch(`${http}answer`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify({
         answer: form.answer,
         id_real_estate: form.id_real_estate,
