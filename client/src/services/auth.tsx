@@ -60,8 +60,9 @@ export const recuperateAccount = async (form: FormRecuperateAccount) => {
         secret_password: form.secrect_password,
       }),
     });
-
-    return response;
+    if (response.ok) {
+      return true;
+    }
   } catch (error) {
     console.log(error);
   }

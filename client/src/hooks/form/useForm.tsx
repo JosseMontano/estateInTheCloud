@@ -23,7 +23,7 @@ export const UseForm = (
     setLoading(false);
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
-    setForm(initialForm);
+   // setForm(initialForm); if we what cleam 
   };
 
   const handleChange = (

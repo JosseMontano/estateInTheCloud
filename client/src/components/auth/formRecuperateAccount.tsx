@@ -11,24 +11,21 @@ import {
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "../../hooks/form/useFormRecuperateAccount";
+import { UseForm } from "../../hooks/form/useForm";
 import Loader from "../loader";
 import Message from "../message";
 import { ToastContext } from "../../context/toast";
-import { initialForm, validationsForm } from "../../validations/recuperateAccount";
+import {
+  initialForm,
+  validationsForm,
+} from "../../validations/recuperateAccount";
+import { recuperateAccount } from "../../services/auth";
 
 const Container = styled.form``;
 
 const Form = () => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = UseForm(initialForm, validationsForm);
+  const { form, errors, loading, response, handleChange, handleSubmit, msg } =
+    UseForm(initialForm, validationsForm, recuperateAccount);
   const { toast } = useContext(ToastContext);
 
   const navigate = useNavigate();
@@ -45,7 +42,7 @@ const Form = () => {
       },
       color: ColorBtn,
       text: "Create una cuenta",
-    }
+    },
   ];
   let dataForm = [
     {
@@ -59,7 +56,8 @@ const Form = () => {
       name: "password",
       value: form.password,
       errors: errors.password,
-    },  {
+    },
+    {
       label: "Clave secreta",
       name: "secrect_password",
       value: form.secrect_password,
@@ -75,7 +73,6 @@ const Form = () => {
             type="text"
             name={v.name}
             onChange={handleChange}
-            onBlur={handleBlur}
             value={v.value}
             required
           />
@@ -87,7 +84,7 @@ const Form = () => {
         <Button key={i} {...v} />
       ))}
       {loading && <Loader />}
-      {response && <Message msg={toast} />}
+      {response && <Message msg={msg} />}
     </Container>
   );
 };

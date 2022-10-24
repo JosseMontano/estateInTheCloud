@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { recuperateAccount } from "../../services/auth";
 import { FormRecuperateAccount } from "../../interface/formAuth";
 
 import { ToastContext } from "../../context/toast"; //toast
