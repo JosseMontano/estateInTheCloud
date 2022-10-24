@@ -1,4 +1,4 @@
-import { http } from "./http";
+import { http, headers } from "./http";
 import Question from "../interface/question";
 export const getQuestions = async () => {
   try {
@@ -14,10 +14,7 @@ export const postQuestion = async (form: Question) => {
   try {
     const response = await fetch(`${http}question`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify({
         question: form.question,
       }),
@@ -30,6 +27,7 @@ export const postQuestion = async (form: Question) => {
     console.error(err);
   }
 };
+
 export const deleteQuestion = async (id: number) => {
   try {
     const response = await fetch(`${http}question/${id}`, {

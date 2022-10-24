@@ -1,10 +1,10 @@
-import { http } from "./http";
+import { http, headers } from "./http";
 
 export const getUser = async (email?: string) => {
   try {
     const response = await fetch(`${http}getUserPhotoProfile/${email}`, {
       method: "GET",
-      headers: {},
+      headers: headers,
     });
 
     if (response.ok) {
@@ -20,7 +20,7 @@ export const getUserByEmail = async (email?: number) => {
   try {
     const response = await fetch(`${http}getUserPhotoProfile/${email}`, {
       method: "GET",
-      headers: {},
+      headers: headers,
     });
 
     if (response.ok) {
@@ -36,7 +36,7 @@ export const getUserById = async (id?: number) => {
   try {
     const response = await fetch(`${http}getUserComplete/${id}`, {
       method: "GET",
-      headers: {},
+      headers: headers,
     });
 
     if (response.ok) {
@@ -47,4 +47,3 @@ export const getUserById = async (id?: number) => {
     console.error(err);
   }
 };
-

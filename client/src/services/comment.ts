@@ -1,5 +1,5 @@
 import { FormComment } from "../interface/formComment";
-import { http } from "./http";
+import { http, headers } from "./http";
 
 export const getCommentsByUser = async (id: number) => {
   try {
@@ -14,10 +14,7 @@ export const postComment = async (form: FormComment) => {
   try {
     const response = await fetch(`${http}comment`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify({
         commentator: form.commentator,
         description: form.description,
@@ -30,6 +27,7 @@ export const postComment = async (form: FormComment) => {
     console.error(err);
   }
 };
+
 export const deleteComment = async(id:number) => {
   try {
     const response = await fetch(`${http}comment/${id}`, {

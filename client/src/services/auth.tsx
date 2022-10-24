@@ -1,18 +1,22 @@
-import { FormLogin, FormRegister, FormRecuperateAccount } from "../interface/formAuth";
-import { http } from "./http";
+import {
+  FormLogin,
+  FormRegister,
+  FormRecuperateAccount,
+} from "../interface/formAuth";
+import { http, headers } from "./http";
 
 export const signIn = async (form: FormLogin) => {
   try {
     const response = await fetch(`${http}signin`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       credentials: "include", // This here
       body: JSON.stringify({
         email: form.email,
         password: form.password,
       }),
     });
-    
+
     const res = await response.json();
     if (res.auth) {
       document.cookie = `token=${res.token}; max-age=${
@@ -30,12 +34,12 @@ export const signUp = async (form: FormRegister) => {
   try {
     const response = await fetch(`${http}signup`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       body: JSON.stringify({
         username: form.username,
         email: form.email,
         password: form.password,
-        secrect_password:form.secrect_password
+        secrect_password: form.secrect_password,
       }),
     });
     return response;
@@ -48,14 +52,14 @@ export const recuperateAccount = async (form: FormRecuperateAccount) => {
   try {
     const response = await fetch(`${http}recuperateAccount`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       body: JSON.stringify({
         email: form.email,
         password: form.password,
-        secret_password:form.secrect_password
+        secret_password: form.secrect_password,
       }),
     });
-    
+
     return response;
   } catch (error) {
     console.log(error);
@@ -64,9 +68,9 @@ export const recuperateAccount = async (form: FormRecuperateAccount) => {
 
 export const getEmail = async () => {
   try {
-    const token = document.cookie.replace('token=', '')
+    const token = document.cookie.replace("token=", "");
     const response = await fetch(`${http}me`, {
-      headers: { "authorization": token },
+      headers: { authorization: token },
       credentials: "include",
     });
     if (response.ok) {
@@ -78,20 +82,20 @@ export const getEmail = async () => {
   }
 };
 
- export const validateTokenExits = async () => {
-  const token = document.cookie.replace('token=', '')
+export const validateTokenExits = async () => {
+  const token = document.cookie.replace("token=", "");
   const response = await fetch(`${http}verifyToken`, {
-    headers: { "authorization": token },
+    headers: { authorization: token },
   });
   const res = await response.json();
   return res;
-}; 
+};
 
 export const logOut = async () => {
   document.cookie = `token=; max-age=0`;
   try {
     const response = await fetch(`${http}logout`, {
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       credentials: "include",
     });
     if (response.ok) {

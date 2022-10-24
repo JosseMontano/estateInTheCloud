@@ -1,5 +1,5 @@
 import { RealEstate } from "../interface/realEstate";
-import { http } from "./http";
+import { http, headers } from "./http";
 
 export const getRealEstateAll = async () => {
   try {
