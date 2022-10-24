@@ -20,7 +20,6 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/profile/:email" element={<Profile />} />
         <Route path="/visitUser/:email" element={<VisitUser />} />
-
         {/* REALESTATE */}
         <Route path="/add-data-real-estate/:id" element={<RealEstateData />} />
         {/* AnswerQuestion */}

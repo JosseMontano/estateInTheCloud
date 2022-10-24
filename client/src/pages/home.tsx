@@ -8,22 +8,19 @@ import { useNavigate } from "react-router";
 import Loader from "../components/loader";
 import Content from "../components/home";
 import { getRealEstateAll } from "../services/realEstate";
+import { useHome } from "../context/home/homeContext";
 const Container = styled.div`
   width: 100%;
 `;
 
 const Home = () => {
-  const [data, setData] = useState<RealEstate[]>([]);
+  const { homeData, handleGetRealEstate } = useHome();
+
   let navigate = useNavigate();
 
   const handleVerifyUser = async () => {
     const logged = await verifyLogged();
     if (!logged) navigate("/");
-  };
-
-  const handleGetRealEstate = async () => {
-    const resp = await getRealEstateAll();
-    setData(resp);
   };
 
   useEffect(() => {
@@ -34,33 +31,33 @@ const Home = () => {
   let dataComplete = [
     {
       title: "Mas recientes",
-      data: data,
+      data: homeData,
     },
     {
       title: "Todos",
-      data: data,
+      data: homeData,
     },
     {
       title: "Recomendado",
-      data: data,
+      data: homeData,
     },
     {
       title: "Solo para ti",
-      data: data,
+      data: homeData,
     },
   ];
 
   return (
     <>
-       <Container>
-       {dataComplete.length > 0 ? (
-         <>
-           <Content dataComplete={dataComplete} />
-         </>
-       ) : (
-         <Loader />
-       )}
-     </Container>
+      <Container>
+        {dataComplete.length > 0 ? (
+          <>
+            <Content dataComplete={dataComplete} />
+          </>
+        ) : (
+          <Loader />
+        )}
+      </Container>
       ;
     </>
   );
