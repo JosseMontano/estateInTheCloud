@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { RealEstate } from "../../interface/realEstate";
-import { Modal } from "../../hooks/modal/modal";
-import { UseModal } from "../../hooks/modal/useModal";
+import { Modal } from "../global/modal";
+import { UseModal } from "../../hooks/useModal";
 import { ContentModal } from "./contentModal";
 import { Link } from "react-router-dom";
 import ModalQuestion from "./modalQuestion";

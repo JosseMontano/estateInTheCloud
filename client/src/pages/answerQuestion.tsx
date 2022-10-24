@@ -3,7 +3,7 @@ import AnswerIcon from "../icons/answer";
 import { Table } from "../styles/table";
 import { getQuestions } from "../services/question";
 import { useEffect, useState } from "react";
-import { UseModal } from "../hooks/modal/useModal";
+import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 const Container = styled.div`

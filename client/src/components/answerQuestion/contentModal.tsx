@@ -8,7 +8,7 @@ import {
   ErrorCss,
   TextArea,
 } from "../../styles/globals";
-import { UseForm } from "../../hooks/form/useForm";
+import { UseForm } from "../../hooks/useForm";
 import { initialForm, validationsForm } from "../../validations/answer";
 import { addAnswer } from "../../services/answer";
 import Loader from "../loader";

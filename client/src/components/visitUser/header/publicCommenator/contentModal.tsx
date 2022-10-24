@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ToastContext } from "../../../../context/toast";
-import { UseForm } from "../../../../hooks/form/useForm";
+import { UseForm } from "../../../../hooks/useForm";
 import {
   Button,
   ColorText,

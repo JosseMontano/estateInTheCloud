@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Modal } from "../../../hooks/modal/modal";
-import { UseModal } from "../../../hooks/modal/useModal";
+import { Modal } from "../../global/modal";
+import { UseModal } from "../../../hooks/useModal";
 import { marginInElements } from "../../../styles/globals";
 import ContentModal from "./publicCommenator/contentModal";
 import {NameUserContext} from '../../../context/nameUser'

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "../../hooks/modal/modal";
+import { Modal } from "../global/modal";
 import ContentModal from "./contentModal";
 
 interface Params {

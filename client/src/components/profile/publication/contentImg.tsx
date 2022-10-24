@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { UseModal } from "../../../hooks/modal/useModal";
-import { Modal } from "../../../hooks/modal/modal";
+import { UseModal } from "../../../hooks/useModal";
+import { Modal } from "../../global/modal";
 import { RealEstate } from "../../../interface/realEstate";
 import { ContentModal } from "./indexModal";
 
