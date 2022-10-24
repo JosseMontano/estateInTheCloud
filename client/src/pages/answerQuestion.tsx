@@ -3,7 +3,9 @@ import AnswerIcon from "../icons/answer";
 import { Table } from "../styles/table";
 import { getQuestions } from "../services/question";
 import { useEffect, useState } from "react";
-
+import { UseModal } from "../hooks/modal/useModal";
+import ModalCom from "../components/answerQuestion/modal";
+import { useParams } from "react-router-dom";
 const Container = styled.div`
   width: calc(100%-15px);
   height: 100vh;
@@ -11,11 +13,16 @@ const Container = styled.div`
 `;
 
 interface Question {
+  id: number;
   question: string;
 }
 
 const AnswerQuestion = () => {
+  const { id } = useParams();
+  const IdNumber = parseInt(id!);
   const [data, setData] = useState<Question[]>([]);
+  const { isShown, toggle } = UseModal();
+const [idQuestion, setIdQuestion] = useState(0)
   const handleGetData = async () => {
     const resp = await getQuestions();
     setData(resp);
@@ -24,6 +31,11 @@ const AnswerQuestion = () => {
   useEffect(() => {
     handleGetData();
   }, []);
+
+  const getId = (idAns:number) => {
+    setIdQuestion(idAns);
+  };
+
   return (
     <Container>
       <Table>
@@ -39,12 +51,14 @@ const AnswerQuestion = () => {
             <tr key={i}>
               <td>{v.question}</td>
               <td>
-                <AnswerIcon />
+                <AnswerIcon toggle={toggle} id={v.id} getId={getId} />
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
+
+      <ModalCom toggle={toggle} isShown={isShown} id={IdNumber} idQuestion={idQuestion} />
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import { z } from "zod";
 const pool = require("../db");
 
 const QuestionSchema = z.object({
-  question: z.string().nonempty(),
+  answer: z.string().nonempty(),
 });
 
 export const getAllAnswer = async (
@@ -13,7 +13,7 @@ export const getAllAnswer = async (
 ) => {
   try {
     const allEstate = await pool.query(
-      ` select id, answer from answers
+      ` select id, answer, id_real_estate from answers
         `
     );
     res.json(allEstate.rows);
@@ -27,12 +27,18 @@ export const createAnswer = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { question } = req.body;
+  const { answer, id_real_estate, id_question } = req.body;
   try {
     QuestionSchema.parse(req.body);
+   const answers= await pool.query(
+      "insert into answers (answer, id_real_estate) values ($1, $2) returning *",
+      [answer, id_real_estate]
+    );
+    const id_answer = answers.rows[0].id;
+
     await pool.query(
-      "insert into answers (answer) values ($1) returning *",
-      [question]
+      "insert into answers_questions (id_answer, id_question) values ($1, $2) returning *",
+      [id_answer, id_question]
     );
     res.json({ action: true });
   } catch (error: any) {
@@ -47,9 +53,7 @@ export const deleteAnswer = async (
 ) => {
   try {
     const { id } = req.params;
-    const question = await pool.query("delete from answers where id=$1", [
-      id,
-    ]);
+    const question = await pool.query("delete from answers where id=$1", [id]);
     if (question.rowCount === 0)
       return res.status(404).json({
         message: "Not found",

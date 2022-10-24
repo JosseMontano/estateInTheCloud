@@ -1,8 +1,20 @@
 import React from "react";
 
-const AnswerIcon = () => {
+interface params {
+  toggle: () => void;
+  getId: (id: number) => void;
+  id: number;
+}
+
+const AnswerIcon = ({ toggle, getId, id }: params) => {
+  const handleClick = () => {
+    toggle();
+    getId(id);
+  };
+
   return (
     <svg
+      onClick={handleClick}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
       height="32"
