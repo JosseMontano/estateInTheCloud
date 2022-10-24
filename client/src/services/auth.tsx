@@ -43,7 +43,9 @@ export const signUp = async (form: FormRegister) => {
         secrect_password: form.secrect_password,
       }),
     });
-    return response;
+    if(response.ok){
+      return true
+    }
   } catch (error) {
     console.log(error);
   }
