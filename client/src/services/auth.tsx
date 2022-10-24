@@ -43,8 +43,8 @@ export const signUp = async (form: FormRegister) => {
         secrect_password: form.secrect_password,
       }),
     });
-    if(response.ok){
-      return true
+    if (response.ok) {
+      return true;
     }
   } catch (error) {
     console.log(error);
@@ -102,6 +102,7 @@ export const logOut = async () => {
       headers: headers,
       credentials: "include",
     });
+
     if (response.ok) {
       const result = await response.json();
       return result.auth;

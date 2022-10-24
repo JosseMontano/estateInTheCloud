@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
 import Form from "../components/auth/formRecuperateAccount";
-import {verifyLogged} from '../utilities/verifyLogged'
+
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 const Container = styled.div`
@@ -25,13 +25,8 @@ const ContainerSoon = styled.div`
 
 export function Login(): JSX.Element {
   let navigate = useNavigate();
-  const handleVerifyUser = async () => {
-    const logged = await verifyLogged();
-    if(logged) navigate('/home')
-  }
-  useEffect(()=>{
-    handleVerifyUser()
-  },[])
+
+
   return (
     <Container>
       <ContainerSoon>
