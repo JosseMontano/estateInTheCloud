@@ -22,6 +22,27 @@ export const getAllAnswer = async (
   }
 };
 
+export const getAnswerQuestionByRealEstate = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { idRealEstate } = req.params;
+    const allEstate = await pool.query(
+      ` select aq.id, aq.id_answer, aq.id_question , q.question, ans.answer,
+      ans.id_real_estate
+      from answers_questions aq, questions q, answers ans
+      where aq.id_question=q.id and aq.id_answer = ans.id and ans.id_real_estate=$1
+        `,
+      [idRealEstate]
+    );
+    res.json(allEstate.rows);
+  } catch (error: any) {
+    next(error);
+  }
+};
+
 export const createAnswer = async (
   req: Request,
   res: Response,
@@ -30,7 +51,7 @@ export const createAnswer = async (
   const { answer, id_real_estate, id_question } = req.body;
   try {
     QuestionSchema.parse(req.body);
-   const answers= await pool.query(
+    const answers = await pool.query(
       "insert into answers (answer, id_real_estate) values ($1, $2) returning *",
       [answer, id_real_estate]
     );

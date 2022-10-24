@@ -12,15 +12,24 @@ export const addAnswer = async (form: FormAnswer) => {
       body: JSON.stringify({
         answer: form.answer,
         id_real_estate: form.id_real_estate,
-        id_question:form.id_question,
+        id_question: form.id_question,
       }),
     });
-    if(response.ok){
-        return true;
+    if (response.ok) {
+      return true;
     }
   } catch (err) {
     console.error(err);
   }
+};
+
+export const getAnswerByRealEstate = async (id: number) => {
+  try {
+    const response = await fetch(`${http}answer/${id}`, {
+      method: "GET",
+    });
+    return await response.json();
+  } catch (error) {}
 };
 
 export const deleteAnswer = async (id: number) => {

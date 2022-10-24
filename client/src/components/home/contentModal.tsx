@@ -13,7 +13,7 @@ import Load from "./modal/load";
 import styled from "styled-components";
 import ImgCom from "./modal/img";
 import Clipboard from "../clipBoard/index";
-
+import { useNavigate } from "react-router-dom";
 const Img = styled.img`
   height: 200px;
   width: 200px;
@@ -36,7 +36,7 @@ const Img = styled.img`
 export const ContentModal = (v: RealEstate) => {
   const [load, setLoad] = useState(true);
   const [data, setData] = useState<RealEstate[]>([]);
-
+  const navigate = useNavigate();
   const handleGetEstate = async () => {
     const res = await getRealEstateOfOnePublication(v.idrealestate);
     setData(res);
@@ -46,6 +46,10 @@ export const ContentModal = (v: RealEstate) => {
   useEffect(() => {
     handleGetEstate();
   }, []);
+
+  const handleSeeQuestions = (idRealEstate: number) => {
+    navigate(`/answeQuestionInterested/${idRealEstate}`);
+  };
 
   return (
     <Container>
@@ -65,6 +69,12 @@ export const ContentModal = (v: RealEstate) => {
         <H2>{v.title}</H2>
         <P>{v.description}</P>
         <Clipboard txt={v.description} />
+        <Button
+          ColorBtn="#e9e905d5"
+          onClick={() => handleSeeQuestions(v.idrealestate)}
+        >
+          Preguntas frecuentes
+        </Button>
       </ContainerContent>
     </Container>
   );
