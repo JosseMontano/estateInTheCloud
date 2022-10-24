@@ -1,5 +1,4 @@
-
-import styled from 'styled-components';
+import styled from "styled-components";
 import { marginInElements } from "../../../styles/globals";
 
 const Container = styled.div`
@@ -13,11 +12,11 @@ const P = styled.p<{ marginInElements: string }>`
 const ContentMid = () => {
   return (
     <Container>
-    <P marginInElements={marginInElements}>0 publicaciones</P>
-    <P marginInElements={marginInElements}>100 seguidores</P>
-    <P marginInElements={marginInElements}>100 seguidos</P>
-  </Container>
-  )
-}
+      <P marginInElements={marginInElements}>0 publicaciones</P>
+      <P marginInElements={marginInElements}>100 seguidores</P>
+      <P marginInElements={marginInElements}>100 seguidos</P>
+    </Container>
+  );
+};
 
-export default ContentMid
+export default ContentMid;

@@ -1,76 +1,42 @@
 import styled from "styled-components";
-import Content from "./content";
-import Img from "./img";
-import { getCommentsByUser, deleteComment } from "../../../services/comment";
+
+import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import { getUser } from "../../../services/user";
-import { Comments } from "../../../interface/comments";
-import { NameUserContext } from ".././../../context/nameUser";
 import { CommentsContext } from "../../../context/comments";
 import Message from "../../message";
-const ContentSoon = styled.div`
-  display: grid;
-  grid-template-columns: 25% 75%;
-  margin-top: 15px;
-  @media screen and (max-width: 870px) {
-    grid-template-columns: 30% 70%;
-  }
-  @media screen and (max-width: 732px) {
-    grid-template-columns: 1fr;
-  }
-`;
+import Comments from "./comments";
+
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {
     margin: 0;
   }
 `;
-
 const Title = styled.h2`
   text-align: center;
   font-size: 32px;
   margin-top: 15px;
 `;
-const ContainerBtn = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Button = styled.button`
-  background-color: #6c7da7;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.2rem;
-  width: auto;
-  margin-top: 10px;
-  font-size: 16px;
-  &:hover {
-    transform: scale(1.1);
-    background-color: #859ad0;
-  }
-`;
+
 interface params {
   email: string | undefined;
 }
 
-const Index = (params: params) => {
-  /*   const [data, setData] = useState<Comments[]>([]); */
+const Index = ({ email }: params) => {
   const [deleteBool, setDeleteBool] = useState(false);
-  const { idUser } = useContext(NameUserContext);
-  const [loading, setLoading] = useState(true);
+
   const { comments, getComments } = useContext(CommentsContext);
 
   const handleGetCommentedUser = async () => {
-    const resp = await getUser(params.email);
+    const resp = await getUser(email);
     const obj = Object.assign({}, resp);
     const idUserConst = obj[0].id_usuario;
-    /*     handleGetComments(idUserConst); */
     await getComments(idUserConst);
-    setLoading(false);
   };
 
   const handleDeleteComment = async (id: number) => {
-    const res = await deleteComment(id);
+    await deleteComment(id);
     handleGetCommentedUser();
     setDeleteBool(true);
     setTimeout(() => {
@@ -85,23 +51,13 @@ const Index = (params: params) => {
   return (
     <div>
       <Title>Comentarios</Title>
-      {!loading && (
-        <Container>
-          {comments.map((v, i) => (
-            <ContentSoon key={i}>
-              <Img commentator={v.commentator} />
-              <Content {...v} />
-              {v.commentator === idUser && (
-                <ContainerBtn>
-                  <Button onClick={() => handleDeleteComment(v.id)}>
-                    Eliminar Comentario
-                  </Button>
-                </ContainerBtn>
-              )}
-            </ContentSoon>
-          ))}
-        </Container>
-      )}
+
+      <Container>
+        {comments.map((v, i) => (
+          <Comments key={i} v={v} handleDeleteComment={handleDeleteComment} />
+        ))}
+      </Container>
+      
       {deleteBool && <Message msg="Se borro con exito" />}
     </div>
   );

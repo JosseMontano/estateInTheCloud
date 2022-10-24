@@ -10,8 +10,6 @@ import {
 } from "../../../styles/profile/header/contentImg";
 import ImgDataBase from "./imgDataBase";
 
-
-
 interface Params {
   email?: string;
 }
@@ -19,6 +17,7 @@ interface Params {
 const ContentImg = (params: Params) => {
   const [data, setData] = useState<User[]>([]);
   const [exists, setExists] = useState(false);
+
   const handleGetUser = async () => {
     const res = await getUser(params.email);
     if (res) {
@@ -26,6 +25,7 @@ const ContentImg = (params: Params) => {
       setExists(true);
     }
   };
+  
   useEffect(() => {
     handleGetUser();
   }, []);

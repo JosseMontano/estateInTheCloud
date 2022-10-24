@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
-import ContentUser from "./contentUser";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -24,14 +24,13 @@ const ContainerContent = styled.div`
 interface Params{
   email?:string;
 }
-const Header = (params:Params) => {
+const Header = ({email}:Params) => {
   return (
     <Container>
-      <ContentImg email={params.email} />
+      <ContentImg email={email} />
       <ContainerContent>
-        <ContentBtn email={params.email} />
+        <ContentBtn email={email} />
         <ContentMid />
-        <ContentUser />
       </ContainerContent>
     </Container>
   );

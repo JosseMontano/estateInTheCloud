@@ -3,8 +3,9 @@ import { Modal } from "../../global/modal";
 import { UseModal } from "../../../hooks/useModal";
 import { marginInElements } from "../../../styles/globals";
 import ContentModal from "./publicCommenator/contentModal";
-import {NameUserContext} from '../../../context/nameUser'
+import { NameUserContext } from "../../../context/nameUser";
 import { useContext } from "react";
+
 const Container = styled.div`
   display: flex;
   @media screen and (max-width: 450px) {
@@ -35,21 +36,49 @@ const Btn = styled.button<{ marginInElements: string }>`
 interface Params {
   email?: string;
 }
-const ContentBtn = (params: Params) => {
+const ContentBtn = ({email}: Params) => {
   const { isShown, toggle } = UseModal();
   const { idUser } = useContext(NameUserContext);
+
+  let data = [
+    {
+      element: SPAN,
+      text: email,
+    },
+    {
+      element: Btn,
+      text: "Enviar mensaje",
+    },
+    {
+      element: Btn,
+      text: "Enviar solicitud",
+    },
+    {
+      element: Btn,
+      text: "Comentar a la persona",
+    },
+  ];
+
   return (
     <Container>
-      <SPAN marginInElements={marginInElements}>{params.email}</SPAN>
-      <Btn marginInElements={marginInElements}>Enviar mensaje</Btn>
-      <Btn marginInElements={marginInElements}>Enviar solicitud</Btn>
-      <Btn onClick={toggle} marginInElements={marginInElements}>
-        Comentar a la persona
-      </Btn>
-      <Modal 
-      isShown={isShown} 
-      hide={toggle}
-      modalContent={<ContentModal personCommented={params.email} commentator={idUser} />} />
+      {data.map((v, i) =>
+        v.text === "Comentar a la persona" ? (
+          <v.element key={i} onClick={toggle} marginInElements={marginInElements}>
+            {v.text}
+          </v.element>
+        ) : (
+          <v.element key={i} marginInElements={marginInElements}>{v.text}</v.element>
+        )
+      )}
+
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={
+          <ContentModal personCommented={email} commentator={idUser} />
+        }
+      />
+
     </Container>
   );
 };

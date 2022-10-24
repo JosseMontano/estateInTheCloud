@@ -8,7 +8,6 @@ import { useContext, useEffect, useState } from "react";
 import { verifyLogged } from "../utilities/verifyLogged";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
-import { RealEstate } from "../interface/realEstate";
 import Comments from "../components/visitUser/comments";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
@@ -19,9 +18,7 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const VisitUser = () => {
   const { email } = useParams();
-  const [data, setData] = useState<RealEstate[]>([]);
-  const [empty, setEmpty] = useState(true);
-  const [loading, setLoading] = useState(true);
+
   const { idUser } = useContext(NameUserContext);
   let navigate = useNavigate();
   const handleVerifyUser = async () => {
@@ -31,12 +28,8 @@ const VisitUser = () => {
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
     if (resp.message === "Not found") {
-      setLoading(false);
       return;
     }
-    setData(resp);
-    setEmpty(false);
-    setLoading(false);
   };
   useEffect(() => {
     handleVerifyUser();
