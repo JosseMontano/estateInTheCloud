@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { UseModal } from "../../../hooks/modal/useModal";
 import { Modal } from "../../../hooks/modal/modal";
 import { RealEstate } from "../../../interface/realEstate";
-import { ContentModal } from "./contentModal";
+import { ContentModal } from "./indexModal";
 
 const Containersoon = styled.div`
   justify-self: center;

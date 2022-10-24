@@ -14,6 +14,7 @@ const { urlCors, server } = require("./config");
 const userRoutes = require("./routes/users.routes");
 const commentsRoutes = require("./routes/comments.routes");
 const questioRoutes = require("./routes/questions.routes")
+const answerRoutes = require("./routes/answers.routes")
 /* Setup Express */
 const app = express();
 /* img */
@@ -44,6 +45,7 @@ app.use(photosRoutes);
 app.use(userRoutes);
 app.use(commentsRoutes);
 app.use(questioRoutes);
+app.use(answerRoutes);
 /* middleware err */
 app.use((err: any, req: any, res: any, next: any) => {
   return res.status(400).json({

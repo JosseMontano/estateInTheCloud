@@ -5,29 +5,23 @@ import {
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication,
 } from "../../../services/realEstate";
-import { InputFile } from "../../../styles/globals";
 import { useContext, useEffect, useState } from "react";
-import Message from "../../../components/message";
+import Message from "../../message";
 import { ToastContext } from "../../../context/toast";
 import ImgCom from "./modal/img";
-import {
-  Container,
-  ContainerContent,
-  Button,
-  H2,
-  P,
-} from "../../../styles/modal/perfil";
+import { Container } from "../../../styles/modal/perfil";
 import Load from "./modal/load";
-import styled from "styled-components";
 import Loader from "../../loader";
-
+import ContentTextModal from "./contentTextModal";
+import { useNavigate } from "react-router-dom";
 export const ContentModal = (v: RealEstate) => {
   const { toast, handleToast } = useContext(ToastContext);
   const [response, setResponse] = useState(false);
   const [load, setLoad] = useState(true);
   const [photo, setPhoto] = useState<any>("");
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleDelete = async () => {
     const res = await deleteRealEstateProfil(
       v.idrealestatephoto,
@@ -42,21 +36,31 @@ export const ContentModal = (v: RealEstate) => {
   };
 
   const handleAddNewPhoto = async () => {
-    setLoading(true)
+    setLoading(true);
     const dataForm = new FormData();
     dataForm.append("url", photo);
     const res = await addNewPhotoToRealEstate(v.idrealestate, dataForm);
     const r = await res?.json();
-    if (r.action) handleToast("guardado!, cierre la ventana y vuelvala a abrir");
+    if (r.action)
+      handleToast("guardado!, cierre la ventana y vuelvala a abrir");
     else handleToast("Ha ocurrido un error");
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
-    setLoading(false)
+    setLoading(false);
   };
+
   const handleGetEstate = async () => {
     const res = await getRealEstateOfOnePublication(v.idrealestate);
     setData(res);
     setLoad(false);
+  };
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoto(e.target.files![0]);
+  };
+
+  const handleAnswerQuestion = (id: number) => {
+    navigate(`/answeQuestion/${id}`);
   };
   useEffect(() => {
     handleGetEstate();
@@ -74,17 +78,14 @@ export const ContentModal = (v: RealEstate) => {
         </Slider>
       )}
 
-      <ContainerContent>
-        <H2>{v.title}</H2>
-        <P>{v.description}</P>
-        <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
-        <Button onClick={() => handleAddNewPhoto()} ColorBtn={"#229ff2"}>
-          Agregar foto
-        </Button>
-        <Button ColorBtn={"#ff26009e"} onClick={() => handleDelete()}>
-          Eliminar
-        </Button>
-      </ContainerContent>
+      <ContentTextModal
+        v={v}
+        handleAddNewPhoto={handleAddNewPhoto}
+        handleDelete={handleDelete}
+        handleFile={handleFile}
+        handleAnswerQuestion={handleAnswerQuestion}
+      />
+
       {loading && <Loader />}
       {response && <Message msg={toast} />}
     </Container>

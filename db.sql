@@ -75,3 +75,14 @@ create table answers(
 	    REFERENCES real_estates(id)
 );
 
+create table answers_questions(
+    id SERIAL PRIMARY KEY,
+    id_answer INT,
+    id_question INT,
+    CONSTRAINT fk_answer
+      FOREIGN KEY(id_answer) 
+	    REFERENCES answers(id),
+    CONSTRAINT fk_question
+      FOREIGN KEY(id_question) 
+	    REFERENCES questions(id)
+);

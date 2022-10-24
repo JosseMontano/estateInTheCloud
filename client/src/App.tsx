@@ -7,7 +7,8 @@ import Home from "./pages/home";
 import Profile from "./pages/profile";
 import RealEstateData from "./pages/realEstate/createRealEstate";
 import RecuperateAccount from "./pages/recuperateAccount";
-import VisitUser from './pages/visitUser'
+import VisitUser from "./pages/visitUser";
+import AnswerQuestion from "./pages/answerQuestion";
 const App = () => {
   return (
     <HashRouter>
@@ -21,6 +22,8 @@ const App = () => {
 
         {/* REALESTATE */}
         <Route path="/add-data-real-estate/:id" element={<RealEstateData />} />
+        {/* AnswerQuestion */}
+        <Route path="/answeQuestion/:id" element={<AnswerQuestion />} />
       </Routes>
     </HashRouter>
   );
