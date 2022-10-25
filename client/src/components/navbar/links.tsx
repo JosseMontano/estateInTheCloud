@@ -39,6 +39,7 @@ const A = styled.span`
     }
   }
 `;
+
 const Links = (v: Enlace) => {
   const navigate = useNavigate();
   const { isShown, toggle } = UseModal();
