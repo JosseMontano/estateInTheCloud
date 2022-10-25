@@ -23,11 +23,10 @@ const P = styled.p`
 interface Params {
   v: RealEstate;
   toggle: () => void;
-  toggleModalQuestion: () => void;
   visitUser: (email: string) => void;
 }
 
-const ContentCard = ({ v, toggle, toggleModalQuestion, visitUser }: Params) => {
+const ContentCard = ({ v, toggle, visitUser }: Params) => {
   return (
     <Content>
       <Img className="img" src={v.url} alt="Avatar" />
@@ -36,7 +35,6 @@ const ContentCard = ({ v, toggle, toggleModalQuestion, visitUser }: Params) => {
       <ContainterBtn
         email={v.email}
         toggle={toggle}
-        toggleModalQuestion={toggleModalQuestion}
         visitUser={visitUser}
       />
     </Content>

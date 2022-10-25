@@ -17,30 +17,27 @@ const Btn = styled.button`
 interface Params {
   email: string;
   toggle: () => void;
-  toggleModalQuestion: () => void;
   visitUser: (email: string) => void;
 }
 
-const ContainterBtn = (params: Params) => {
+const ContainterBtn = ({ email, toggle, visitUser }: Params) => {
   let data = [
     {
-      name: "Saber mas",
-      click: params.toggle,
+      name: "Mas Info",
+      click: toggle,
     },
     {
-      name: "Preguntas",
-      click: params.toggleModalQuestion,
-    },
-    {
-      name: "Ver mas",
-      click: () => params.visitUser(params.email),
+      name: "Visitar",
+      click: () => visitUser(email),
     },
   ];
 
   return (
     <Container>
       {data.map((v, i) => (
-        <Btn key={i} onClick={v.click}>{v.name}</Btn>
+        <Btn key={i} onClick={v.click}>
+          {v.name}
+        </Btn>
       ))}
     </Container>
   );

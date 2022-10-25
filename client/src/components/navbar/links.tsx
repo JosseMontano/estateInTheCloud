@@ -1,8 +1,11 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { UseModal } from "../../hooks/useModal";
 import { Enlace } from "../../interface/nav";
 import { logOut } from "../../services/auth";
+import { Modal } from "../global/modal";
+import ModalQuestion from "./../home/modalQuestion";
+
 const Container = styled.li`
   display: inline-block;
   line-height: 80px;
@@ -13,6 +16,7 @@ const Container = styled.li`
     line-height: 30px;
   }
 `;
+
 const A = styled.span`
   color: white;
   font-size: 17px;
@@ -21,7 +25,7 @@ const A = styled.span`
   text-transform: uppercase;
   &:hover {
     background: #ffffff;
-    color:#000;
+    color: #000;
     transition: 0.5s;
   }
   @media (max-width: 952px) {
@@ -37,6 +41,8 @@ const A = styled.span`
 `;
 const Links = (v: Enlace) => {
   const navigate = useNavigate();
+  const { isShown, toggle } = UseModal();
+
   const handleLogout = async (text: string) => {
     if (text === "Salir") {
       var flag = await logOut();
@@ -45,12 +51,17 @@ const Links = (v: Enlace) => {
       }
     }
     if (text === "Inicio") {
-        navigate("/home");
+      navigate("/home");
+    }
+    if (text === "Preguntas") {
+      toggle();
     }
   };
   return (
     <Container>
       <A onClick={() => handleLogout(v.text)}>{v.text}</A>
+
+      <Modal isShown={isShown} hide={toggle} modalContent={<ModalQuestion />} />
     </Container>
   );
 };

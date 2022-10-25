@@ -31,11 +31,7 @@ const ContainerLinks = () => {
       url: "",
     },
     {
-      text: "Casas",
-      url: "",
-    },
-    {
-      text: "Departamentos",
+      text: "Preguntas",
       url: "",
     },
     {

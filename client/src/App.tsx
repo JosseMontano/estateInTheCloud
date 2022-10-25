@@ -1,15 +1,14 @@
-import React from "react";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
 import Profile from "./pages/profile";
-import RealEstateData from "./components/profile/createRealEstate";
 import RecuperateAccount from "./pages/recuperateAccount";
 import VisitUser from "./pages/visitUser";
 import AnswerQuestion from "./pages/answerQuestion";
-import AnswerQuestionInterested from "./pages/answerQuestionInterested";
+import AQInterested from "./pages/answerQuestionInterested";
+
 const App = () => {
   return (
     <HashRouter>
@@ -20,12 +19,8 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/profile/:email" element={<Profile />} />
         <Route path="/visitUser/:email" element={<VisitUser />} />
-        {/* AnswerQuestion */}
         <Route path="/answeQuestion/:id" element={<AnswerQuestion />} />
-        <Route
-          path="/answeQuestionInterested/:id"
-          element={<AnswerQuestionInterested />}
-        />
+        <Route path="/answeQuestionInterested/:id" element={<AQInterested />} />
       </Routes>
     </HashRouter>
   );

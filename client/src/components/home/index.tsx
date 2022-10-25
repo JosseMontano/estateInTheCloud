@@ -13,13 +13,12 @@ const Img = styled.img`
 interface Params {
   dataComplete: { title: string; data: RealEstate[] }[];
 }
-const index = (params: Params) => {
+const index = ({ dataComplete }: Params) => {
   return (
     <>
       <Navbar />
       <Img src={Img1} alt="" />
-      {/* Show all the estates */}
-      {params.dataComplete.map((v, i) => (
+      {dataComplete.map((v, i) => (
         <div key={i}>
           <Slider {...v} />
         </div>
