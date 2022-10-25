@@ -10,9 +10,9 @@ const Container = styled.div`
   border-bottom: 1px solid #a0a0a0;
   padding: 10px;
   width: 100%;
-  @media screen and (max-width:900px) {
+  @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap:10px
+    gap: 10px;
   }
 `;
 
@@ -21,15 +21,16 @@ const ContainerContent = styled.div`
   place-content: center;
 `;
 
-interface Params{
-  email?:string
+interface Params {
+  email?: string;
+  toggle: () => void;
 }
-const Header = (params:Params) => {
+const Header = ({ email, toggle }: Params) => {
   return (
     <Container>
-      <ContentImg email={params.email} />
+      <ContentImg email={email} />
       <ContainerContent>
-        <ContentBtn email={params.email} />
+        <ContentBtn email={email} toggle={toggle} />
         <ContentMid />
         <ContentUser />
       </ContainerContent>

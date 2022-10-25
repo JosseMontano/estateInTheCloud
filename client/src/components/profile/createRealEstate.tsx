@@ -10,19 +10,21 @@ import {
 } from "../../styles/globals";
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import Message from "../../components/message";
+import Message from "../message";
 import { NameUserContext } from "../../context/nameUser";
 import { saveRealEstate } from "../../services/realEstate";
-import Loader from "../../components/loader";
+import Loader from "../loader";
 
 const Container = styled.div`
-  height: 100vh;
-  width: 100%;
   display: grid;
   place-content: center;
 `;
 
-const Index = () => {
+interface Params {
+  getRealEstate: () => void;
+}
+
+const Index = ({ getRealEstate }: Params) => {
   const { toast } = useContext(ToastContext);
 
   const { idUser } = useContext<any>(NameUserContext);
@@ -30,7 +32,7 @@ const Index = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [response, setResponse] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const { handleToast } = useContext(ToastContext); //toast
   const sendData = async () => {
     try {
@@ -43,12 +45,13 @@ const Index = () => {
       const res = await saveRealEstate(data);
       if (res?.status === 200) {
         handleToast("El proceso fue exitoso");
+        getRealEstate();
       } else {
         handleToast("Ha ocurrido un error");
       }
       setResponse(true);
       setTimeout(() => setResponse(false), 3000);
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }

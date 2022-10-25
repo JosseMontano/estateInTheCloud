@@ -7,7 +7,8 @@ import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
 import IQuestion from "../interface/answerQuestion";
-
+import Navbar from "../components/navbar";
+import AuxNav from "../components/navbar/auxNav";
 const Container = styled.div`
   width: calc(100%-15px);
   height: 100vh;
@@ -36,6 +37,8 @@ const AnswerQuestion = () => {
 
   return (
     <Container>
+      <Navbar />
+      <AuxNav margin={"1700px"} />
       <Card>
         {data.map((v, i) => (
           <CardComponent key={i} v={v} handleClick={handleClick} />

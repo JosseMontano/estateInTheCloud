@@ -1,15 +1,12 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { NameUserContext } from "../../../context/nameUser";
 import { marginInElements } from "../../../styles/globals";
 
 const Container = styled.div`
   display: flex;
- @media screen and (max-width:450px) {
-  display: flex;
-  flex-direction: column;
- }
+  @media screen and (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const SPAN = styled.span<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
@@ -31,18 +28,19 @@ const Btn = styled.button<{ marginInElements: string }>`
     cursor: pointer;
   }
 `;
-interface Params{
-  email?:string
+interface Params {
+  email?: string;
+  toggle: () => void;
 }
-const ContentBtn = (params:Params) => {
-  const { idUser  } = useContext(NameUserContext);
-  const navigate = useNavigate();
+const ContentBtn = ({ email, toggle }: Params) => {
   return (
     <Container>
-      <SPAN marginInElements={marginInElements}>{params.email}</SPAN>
+      <SPAN marginInElements={marginInElements}>{email}</SPAN>
       <Btn marginInElements={marginInElements}>Enviar mensaje</Btn>
       <Btn marginInElements={marginInElements}>Enviar solicitud</Btn>
-      <Btn onClick={()=>{navigate(`/add-data-real-estate/${idUser}`)}} marginInElements={marginInElements}>Crear publicacion</Btn>
+      <Btn onClick={toggle} marginInElements={marginInElements}>
+        Crear publicacion
+      </Btn>
     </Container>
   );
 };

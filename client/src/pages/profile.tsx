@@ -10,7 +10,10 @@ import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import { RealEstate } from "../interface/realEstate";
 import Loader from "../components/loader";
-import {useVerifyUserLogin} from '../hooks/useVerifyUserLogin'
+import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
+import { UseModal } from "../hooks/useModal";
+import { Modal } from "../components/global/modal";
+import ContentModal from "../components/profile/createRealEstate";
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -23,7 +26,8 @@ const Profile = () => {
   const [empty, setEmpty] = useState(true);
   const [loading, setLoading] = useState(true);
   const { idUser } = useContext(NameUserContext);
-  const {verifyFun} = useVerifyUserLogin();
+  const { verifyFun } = useVerifyUserLogin();
+  const { isShown, toggle } = UseModal();
 
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
@@ -35,6 +39,7 @@ const Profile = () => {
     setEmpty(false);
     setLoading(false);
   };
+
   useEffect(() => {
     verifyFun();
     if (idUser != 0) handlegetRealEstate();
@@ -45,9 +50,14 @@ const Profile = () => {
       <Navbar />
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header email={email} />
+        <Header email={email} toggle={toggle} />
         {loading ? <Loader /> : <Publication data={data} empty={empty} />}
       </Container>
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={<ContentModal getRealEstate={handlegetRealEstate} />}
+      />
     </>
   );
 };
