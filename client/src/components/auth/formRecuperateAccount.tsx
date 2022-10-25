@@ -4,8 +4,8 @@ import { ColorBtn, ColorBtnSecond } from "../../styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { UseForm } from "../../hooks/useForm";
-import Loader from "../loader";
-import Message from "../message";
+import Loader from "../global/loading";
+import Message from "../global/message";
 import {
   initialForm,
   validationsForm,

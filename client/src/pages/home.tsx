@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import Loader from "../components/loader";
+import Loader from "../components/global/loading";
 import Content from "../components/home";
 import { useHome } from "../context/home/homeContext";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";

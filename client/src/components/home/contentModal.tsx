@@ -12,7 +12,7 @@ import {
 import Load from "./modal/load";
 import styled from "styled-components";
 import ImgCom from "./modal/img";
-import Clipboard from "../clipBoard/index";
+import Clipboard from "../global/clipBoard";
 import { useNavigate } from "react-router-dom";
 const Img = styled.img`
   height: 200px;

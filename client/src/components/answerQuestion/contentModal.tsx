@@ -11,8 +11,8 @@ import {
 import { UseForm } from "../../hooks/useForm";
 import { initialForm, validationsForm } from "../../validations/answer";
 import { addAnswer } from "../../services/answer";
-import Loader from "../loader";
-import Message from "../message";
+import Loader from "../global/loading";
+import Message from "../global/message";
 const Container = styled.div``;
 
 interface Params {

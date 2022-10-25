@@ -1,6 +1,6 @@
 import React from "react";
-import Loader from "../loader";
-import Message from "../message";
+import Loader from "../global/loading";
+import Message from "../global/message";
 
 interface Params {
   loading: boolean;

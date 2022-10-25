@@ -9,8 +9,8 @@ import {
   Title,
 } from "../../../../styles/globals";
 import { initialForm, validationsForm } from "../../../../validations/comments";
-import Loader from "../../../loader";
-import Message from "../../../message";
+import Loader from "../../../global/loading";
+import Message from "../../../global/message";
 import { getUser } from "../../../../services/user";
 import { CommentsContext } from "../../../../context/comments";
 import { postComment } from "../../../../services/comment";

@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import { RealEstate } from "../interface/realEstate";
-import Loader from "../components/loader";
+import Loader from "../components/global/loading";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";

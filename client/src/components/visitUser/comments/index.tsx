@@ -4,7 +4,7 @@ import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import { getUser } from "../../../services/user";
 import { CommentsContext } from "../../../context/comments";
-import Message from "../../message";
+import Message from "../../global/message";
 import Comments from "./comments";
 
 const Container = styled.div`
