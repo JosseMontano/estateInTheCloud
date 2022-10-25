@@ -1,21 +1,14 @@
-import styled from "styled-components";
-import ColContent from "../components/auth/colContent";
-import ColPhoto from "../components/auth/colPhoto";
 import Form from "../components/auth/formRegister";
-import { Container, ContainerSoon } from "../styles/auth";
+import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecuperate";
 
 export function Register(): JSX.Element {
   return (
-    <Container>
-      <ContainerSoon>
-        <ColContent
-          title="Bienvenido"
-          text="Ingresa tus credenciales para comenzar"
-          form={<Form />}
-        />
-        <ColPhoto />
-      </ContainerSoon>
-    </Container>
+    <LoginRegisterRecuperate
+      text={"Hola!"}
+      title="Ingresa la contraseña nueva"
+      form={<Form />}
+      position="right"
+    />
   );
 }
 

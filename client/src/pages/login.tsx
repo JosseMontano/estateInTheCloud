@@ -1,20 +1,13 @@
-import ColContent from "../components/auth/colContent";
-import ColPhoto from "../components/auth/colPhoto";
 import Form from "../components/auth/formLogin";
-import { Container, ContainerSoon } from "../styles/auth";
+import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecuperate";
 
 export function Login(): JSX.Element {
   return (
-    <Container>
-      <ContainerSoon>
-        <ColPhoto />
-        <ColContent
-          title="Hola de nuevo"
-          text="Inicia sesion o entra si eres paciente"
-          form={<Form />}
-        />
-      </ContainerSoon>
-    </Container>
+    <LoginRegisterRecuperate
+      text={"Inicia sesion o entra si eres paciente"}
+      title="Hola de nuevo"
+      form={<Form />}
+    />
   );
 }
 
