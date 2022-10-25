@@ -10,6 +10,15 @@ export const getRealEstateAll = async () => {
   } catch (error) {}
 };
 
+export const getRealEstateMostRecent = async() => {
+  try {
+    const response = await fetch(`${http}estateMostRecent`, {
+      method: "GET",
+    });
+    return await response.json();
+  } catch (error) {}
+}
+
 export const getRealEstateProfil = async (id: number) => {
   try {
     const response = await fetch(`${http}estate/${id}`, {
@@ -29,7 +38,6 @@ export const getRealEstateOfOnePublication = async (idRealEstate:number) => {
     return await response.json();
   } catch (error) {}
 };
-
 
 export const saveRealEstate = async (data: FormData) => {
   try {

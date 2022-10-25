@@ -11,18 +11,24 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const { homeData, handleGetRealEstate } = useHome();
+  const {
+    homeData,
+    handleGetRealEstate,
+    homeDataMostRecent,
+    handleGetRealEstateMostRecent,
+  } = useHome();
   const { verifyFun } = useVerifyUserLogin();
 
   useEffect(() => {
     verifyFun();
+    handleGetRealEstateMostRecent();
     handleGetRealEstate();
   }, []);
-  
+
   let data = [
     {
       title: "Mas recientes",
-      data: homeData,
+      data: homeDataMostRecent,
     },
     {
       title: "Todos",

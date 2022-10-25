@@ -22,7 +22,7 @@ const AnswerQuestion = () => {
   const IdNumber = parseInt(id!);
   const [data, setData] = useState<Question[]>([]);
   const { isShown, toggle } = UseModal();
-const [idQuestion, setIdQuestion] = useState(0)
+  const [idQuestion, setIdQuestion] = useState(0);
   const handleGetData = async () => {
     const resp = await getQuestions();
     setData(resp);
@@ -32,7 +32,7 @@ const [idQuestion, setIdQuestion] = useState(0)
     handleGetData();
   }, []);
 
-  const getId = (idAns:number) => {
+  const getId = (idAns: number) => {
     setIdQuestion(idAns);
   };
 
@@ -58,7 +58,12 @@ const [idQuestion, setIdQuestion] = useState(0)
         </tbody>
       </Table>
 
-      <ModalCom toggle={toggle} isShown={isShown} id={IdNumber} idQuestion={idQuestion} />
+      <ModalCom
+        toggle={toggle}
+        isShown={isShown}
+        id={IdNumber}
+        idQuestion={idQuestion}
+      />
     </Container>
   );
 };
