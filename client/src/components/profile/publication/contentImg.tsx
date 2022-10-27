@@ -3,7 +3,6 @@ import { UseModal } from "../../../hooks/useModal";
 import { Modal } from "../../global/modal";
 import { RealEstate } from "../../../interface/realEstate";
 import { ContentModal } from "./indexModal";
-
 const Containersoon = styled.div`
   justify-self: center;
 `;
@@ -23,11 +22,21 @@ const Img = styled.img`
   }
 `;
 
-const ContentImg = (v: RealEstate) => {
+interface Params {
+  v: RealEstate;
+}
+
+const ContentImg = ({ v }: Params) => {
   const { isShown, toggle } = UseModal();
+
   return (
     <Containersoon>
-      <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal {...v} />} />
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={<ContentModal {...v} />}
+      />
+
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
   );

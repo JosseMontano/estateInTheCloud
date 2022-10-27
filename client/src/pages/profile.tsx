@@ -23,21 +23,20 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 const Profile = () => {
   const { email } = useParams();
   const [data, setData] = useState<RealEstate[]>([]);
-  const [empty, setEmpty] = useState(true);
-  const [loading, setLoading] = useState(true);
   const { idUser } = useContext(NameUserContext);
   const { verifyFun } = useVerifyUserLogin();
   const { isShown, toggle } = UseModal();
+  const [loading, setLoading] = useState(true);
 
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
     if (resp.message === "Not found") {
-      setLoading(false);
       return;
     }
     setData(resp);
-    setEmpty(false);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const Profile = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} toggle={toggle} />
-        {loading ? <Loader /> : <Publication data={data} empty={empty} />}
+        <Publication data={data} loading={loading}/>
       </Container>
       <Modal
         isShown={isShown}

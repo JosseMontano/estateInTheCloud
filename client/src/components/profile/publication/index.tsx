@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ContentImg from "./contentImg";
 import { RealEstate } from "../../../interface/realEstate";
+import { useState, useEffect } from "react";
+import Skeleton from "./skeleton";
 
 const Title = styled.h2`
   text-align: center;
@@ -28,19 +30,21 @@ const TextEmpty = styled.div`
 `;
 interface Params {
   data: RealEstate[];
-  empty: boolean;
+  loading: boolean;
 }
 
-const Index = ({ data, empty }: Params) => {
+const Index = ({ data, loading }: Params) => {
   function showTitle() {
-    if (empty) return <TextEmpty>No tienes publicaciones</TextEmpty>;
+    if (loading) {
+      return <TextEmpty>Cargando publicaciones</TextEmpty>;
+    }
+
     return <Title>publicaciones</Title>;
   }
 
   function showData() {
-    if (!empty) {
-      return data.map((v, i) => <ContentImg key={i} {...v} />);
-    }
+    if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
+    return data.map((v, i) => <ContentImg key={i} v={v} />);
   }
 
   return (
