@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import ContentImg from "./contentImg";
 import { RealEstate } from "../../../interface/realEstate";
-import { useState, useEffect } from "react";
 import Skeleton from "./skeleton";
 
 const Title = styled.h2`
@@ -38,7 +37,6 @@ const Index = ({ data, loading }: Params) => {
     if (loading) {
       return <TextEmpty>Cargando publicaciones</TextEmpty>;
     }
-
     return <Title>publicaciones</Title>;
   }
 

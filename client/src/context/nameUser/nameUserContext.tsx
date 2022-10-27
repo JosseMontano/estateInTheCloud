@@ -22,10 +22,8 @@ const NameUserProvider = ({ children }: MyContextProp) => {
   const [idUser, setidUser] = useState<number>(contextDefaultValue.idUser);
 
   const handlenameUser = (sendload: string, id: number) => {
-    const aux = sendload;
-    const auxId = id;
-    setnameUser(aux);
-    setidUser(auxId);
+    setnameUser(sendload);
+    setidUser(id);
   };
   return (
     <NameUserContext.Provider

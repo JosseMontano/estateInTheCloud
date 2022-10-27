@@ -9,7 +9,6 @@ import { useContext, useEffect, useState } from "react";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import { RealEstate } from "../interface/realEstate";
-import Loader from "../components/global/loading";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
@@ -50,7 +49,7 @@ const Profile = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} toggle={toggle} />
-        <Publication data={data} loading={loading}/>
+        <Publication data={data} loading={loading} />
       </Container>
       <Modal
         isShown={isShown}
