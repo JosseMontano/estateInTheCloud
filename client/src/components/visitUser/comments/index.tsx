@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import { getUser } from "../../../services/user";
@@ -25,14 +24,14 @@ interface params {
 
 const Index = ({ email }: params) => {
   const [deleteBool, setDeleteBool] = useState(false);
-
-  const { comments, getComments, loading } = useContext(CommentsContext);
+  const { comments, getComments } = useContext(CommentsContext);
+  const [loading, setLoading] = useState(true);
 
   const handleGetCommentedUser = async () => {
     const resp = await getUser(email);
     const obj = Object.assign({}, resp);
-    const idUserConst = obj[0].id_usuario;
-    await getComments(idUserConst);
+    await getComments(obj[0].id_usuario);
+    setLoading(false);
   };
 
   const handleDeleteComment = async (id: number) => {
@@ -51,14 +50,15 @@ const Index = ({ email }: params) => {
   return (
     <div>
       <Title>Comentarios</Title>
-
       <Container>
-        {!loading &&
+        {loading ? (
+          <p>cargando</p>
+        ) : (
           comments.map((v, i) => (
             <Comments key={i} v={v} handleDeleteComment={handleDeleteComment} />
-          ))}
+          ))
+        )}
       </Container>
-
       {deleteBool && <Message msg="Se borro con exito" />}
     </div>
   );

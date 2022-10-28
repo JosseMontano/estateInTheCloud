@@ -25,6 +25,7 @@ interface Params {
 
 const Comments = ({ v, handleDeleteComment }: Params) => {
   const { idUser } = useContext(NameUserContext);
+
   return (
     <Container>
       <Img commentator={v.commentator} />

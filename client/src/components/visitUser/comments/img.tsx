@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Photo from "../../../assets/profile/photoProfile.jpg";
 import { getUserById } from "../../../services/user";
 const Container = styled.div`
   justify-self: center;
@@ -16,11 +15,11 @@ interface params {
   commentator: number;
 }
 const Img = (params: params) => {
-  const [photo, setPhoto] = useState('');
+  const [photo, setPhoto] = useState("");
   const handleGetUser = async () => {
     const res = await getUserById(params.commentator);
-    const objRes = Object.assign({}, res[0])
-    const auxUrl = objRes.url
+    const objRes = Object.assign({}, res[0]);
+    const auxUrl = objRes.url;
     setPhoto(auxUrl);
   };
   useEffect(() => {

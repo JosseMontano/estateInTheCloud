@@ -20,16 +20,8 @@ const VisitUser = () => {
   const { idUser } = useContext(NameUserContext);
   const { verifyFun } = useVerifyUserLogin();
 
-  const handlegetRealEstate = async () => {
-    const resp = await getRealEstateProfil(idUser);
-    if (resp.message === "Not found") {
-      return;
-    }
-  };
-
   useEffect(() => {
     verifyFun();
-    if (idUser != 0) handlegetRealEstate();
   }, [idUser]);
 
   return (
