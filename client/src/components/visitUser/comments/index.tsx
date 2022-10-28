@@ -5,7 +5,7 @@ import { getUser } from "../../../services/user";
 import { CommentsContext } from "../../../context/comments";
 import Message from "../../global/message";
 import Comments from "./comments";
-
+import Skeleton from "./skeleton";
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {
@@ -51,13 +51,15 @@ const Index = ({ email }: params) => {
     <div>
       <Title>Comentarios</Title>
       <Container>
-        {loading ? (
-          <p>cargando</p>
-        ) : (
-          comments.map((v, i) => (
-            <Comments key={i} v={v} handleDeleteComment={handleDeleteComment} />
-          ))
-        )}
+        {loading
+          ? [1, 2, 3, 4, 5].map((_, i) => <Skeleton key={i} />)
+          : comments.map((v, i) => (
+              <Comments
+                key={i}
+                v={v}
+                handleDeleteComment={handleDeleteComment}
+              />
+            ))}
       </Container>
       {deleteBool && <Message msg="Se borro con exito" />}
     </div>
