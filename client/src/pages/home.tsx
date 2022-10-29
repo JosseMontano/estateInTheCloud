@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
@@ -6,6 +5,7 @@ import Loader from "../components/global/loading";
 import Content from "../components/home";
 import { useHome } from "../context/home/homeContext";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+import Skeleton from "../components/home/skeleton";
 
 const Container = styled.div`
   width: 100%;
@@ -16,18 +16,8 @@ interface Params {
 }
 
 const Home = ({ navbar }: Params) => {
-  const {
-    homeData,
-    handleGetRealEstate,
-    homeDataMostRecent,
-    handleGetRealEstateMostRecent,
-  } = useHome();
-
+  const { homeData, homeDataMostRecent, loading } = useHome();
   const {} = useVerifyUserLogin();
-  useEffect(() => {
-    handleGetRealEstateMostRecent();
-    handleGetRealEstate();
-  }, []);
 
   let data = [
     {
@@ -50,14 +40,8 @@ const Home = ({ navbar }: Params) => {
 
   return (
     <Container>
-      {data.length > 0 ? (
-        <>
-          {navbar}
-          <Content dataComplete={data} />
-        </>
-      ) : (
-        <Loader />
-      )}
+      {navbar}
+      {!loading ? <Content dataComplete={data} /> : <Skeleton />}
     </Container>
   );
 };
