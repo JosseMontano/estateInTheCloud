@@ -25,7 +25,7 @@ interface Params {
 const VisitUser = ({ showNavbar }: Params) => {
   const { email } = useParams();
   const { idUser } = useContext(NameUserContext);
-  const { verifyFun } = useVerifyUserLogin();
+  const {} = useVerifyUserLogin();
   const [data, setData] = useState<RealEstate[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +42,6 @@ const VisitUser = ({ showNavbar }: Params) => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    verifyFun();
     if (idUser != 0) handlegetRealEstate();
   }, [idUser]);
 

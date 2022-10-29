@@ -22,10 +22,9 @@ const Home = ({ navbar }: Params) => {
     homeDataMostRecent,
     handleGetRealEstateMostRecent,
   } = useHome();
-  const { verifyFun } = useVerifyUserLogin();
 
+  const {} = useVerifyUserLogin();
   useEffect(() => {
-    verifyFun();
     handleGetRealEstateMostRecent();
     handleGetRealEstate();
   }, []);

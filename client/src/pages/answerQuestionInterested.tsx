@@ -8,6 +8,7 @@ import DataEmpty from "../components/global/dataEmpty";
 import IAQ from "../interface/answerQuestionInterested";
 import CardSoon from "../components/answerQuestionInterested";
 import useLoadData from "../hooks/useLoadDataParams";
+import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 const Container = styled.div`
   height: 100vh;
   display: grid;
@@ -28,6 +29,7 @@ const AnswerQuestionInterested = ({ showNavbar }: Params) => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
   const { data } = useLoadData(getAnswerByRealEstate, idNumer);
+  const {} = useVerifyUserLogin();
 
   function validateData() {
     if (data.length != 0) return <CardSoon data={data} />;

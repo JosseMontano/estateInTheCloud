@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validateTokenExits } from "../services/auth";
 
@@ -9,6 +10,9 @@ export const useVerifyUserLogin = () => {
       navigate("/");
     }
   };
+  useEffect(() => {
+    verifyFun();
+  }, []);
   return { verifyFun };
 };
 

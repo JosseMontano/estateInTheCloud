@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
 import useLoadData from "../hooks/useLoadData";
 import { getQuestions } from "../services/question";
+import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 const Container = styled.div`
   width: calc(100%-15px);
   height: 100vh;
@@ -20,6 +21,7 @@ const AnswerQuestion = ({ showNavbar }: Params) => {
   const { data, loading } = useLoadData(getQuestions);
   const { id } = useParams();
   const IdNumber = parseInt(id!);
+  const {} = useVerifyUserLogin();
 
   const { isShown, toggle } = UseModal();
   const [idQuestion, setIdQuestion] = useState(0);
