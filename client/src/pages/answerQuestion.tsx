@@ -5,17 +5,18 @@ import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import Navbar from "../components/navbar";
-import AuxNav from "../components/navbar/auxNav";
 import useLoadData from "../hooks/useLoadData";
 import { getQuestions } from "../services/question";
 const Container = styled.div`
   width: calc(100%-15px);
   height: 100vh;
-  padding: 15px;
 `;
 
-const AnswerQuestion = () => {
+interface Params {
+  showNavbar: JSX.Element;
+}
+
+const AnswerQuestion = ({ showNavbar }: Params) => {
   const { data, loading } = useLoadData(getQuestions);
   const { id } = useParams();
   const IdNumber = parseInt(id!);
@@ -30,8 +31,7 @@ const AnswerQuestion = () => {
 
   return (
     <Container>
-      <Navbar />
-      <AuxNav margin={"1700px"} />
+      {showNavbar}
       <Card>
         {loading ? (
           <p>Cargando</p>

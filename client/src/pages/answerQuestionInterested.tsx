@@ -20,7 +20,11 @@ const Card = styled.div`
   flex-wrap: wrap;
 `;
 
-const AnswerQuestionInterested = () => {
+interface Params {
+  showNavbar: JSX.Element;
+}
+
+const AnswerQuestionInterested = ({ showNavbar }: Params) => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
   const { data } = useLoadData(getAnswerByRealEstate, idNumer);
@@ -32,8 +36,7 @@ const AnswerQuestionInterested = () => {
 
   return (
     <Container>
-      <Navbar />
-      <AuxNav margin={"1700px"} />
+      {showNavbar}
       <Card>{validateData()}</Card>
     </Container>
   );

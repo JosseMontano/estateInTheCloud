@@ -6,11 +6,16 @@ import Loader from "../components/global/loading";
 import Content from "../components/home";
 import { useHome } from "../context/home/homeContext";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+
 const Container = styled.div`
   width: 100%;
 `;
 
-const Home = () => {
+interface Params {
+  navbar: JSX.Element;
+}
+
+const Home = ({ navbar }: Params) => {
   const {
     homeData,
     handleGetRealEstate,
@@ -45,12 +50,16 @@ const Home = () => {
   ];
 
   return (
-    <>
-      <Container>
-        {data.length > 0 ? <Content dataComplete={data} /> : <Loader />}
-      </Container>
-      ;
-    </>
+    <Container>
+      {data.length > 0 ? (
+        <>
+          {navbar}
+          <Content dataComplete={data} />
+        </>
+      ) : (
+        <Loader />
+      )}
+    </Container>
   );
 };
 

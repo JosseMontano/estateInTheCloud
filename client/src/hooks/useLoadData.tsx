@@ -16,7 +16,7 @@ const useLoadData = (services: () => Promise<any>) => {
   }, []);
 
   return {
-    data, loading
+    data, loading, handleGetData
   };
 };
 

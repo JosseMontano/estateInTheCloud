@@ -6,6 +6,7 @@ import ContainerLinks from "./containerLinks";
 import { NameUserContext } from "../../context/nameUser";
 import NameUser from "./nameUser";
 import { getEmail } from "../../services/auth";
+import AuxNav from "./auxNav";
 
 const Nav = styled.nav<{ ColorBtn: string }>`
   background: ${(props) => props.ColorBtn};
@@ -51,6 +52,7 @@ const Index = () => {
 
   return (
     <>
+      <AuxNav margin={"1700px"} />
       <Nav ColorBtn={"#162b33"}>
         <Check />
         <Logo onClick={() => handleRedirect()}>

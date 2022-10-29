@@ -18,7 +18,11 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   color: ${(props) => props.ColorText};
 `;
 
-const VisitUser = () => {
+interface Params {
+  showNavbar: JSX.Element;
+}
+
+const VisitUser = ({ showNavbar }: Params) => {
   const { email } = useParams();
   const { idUser } = useContext(NameUserContext);
   const { verifyFun } = useVerifyUserLogin();
@@ -44,8 +48,7 @@ const VisitUser = () => {
 
   return (
     <>
-      <Navbar />
-      <AuxNav margin={"1700px"} />
+      {showNavbar}
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} />
         {data && <Publication data={data} loading={loading} />}

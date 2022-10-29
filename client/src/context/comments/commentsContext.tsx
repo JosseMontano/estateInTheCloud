@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { getCommentsByUser } from "../../services/comment";
 import { Comments } from "../../interface/comments";
+
 interface LoadContextState {
   comments: Comments[];
   getComments: (id: number) => void;
@@ -20,12 +21,13 @@ export const CommentsContext =
 const CommentsProvider = ({ children }: MyContextProp) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const getComments = async (id: number) => {
-    setLoading(true);
     const resp = await getCommentsByUser(id);
     setComments(resp);
     setLoading(false);
   };
+
   return (
     <CommentsContext.Provider
       value={{
