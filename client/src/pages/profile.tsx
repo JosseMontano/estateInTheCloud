@@ -13,6 +13,7 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
+import useLoad from "../hooks/useLoadDataParams";
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -21,12 +22,12 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const Profile = () => {
   const { email } = useParams();
-  const [data, setData] = useState<RealEstate[]>([]);
+
   const { idUser } = useContext(NameUserContext);
   const { verifyFun } = useVerifyUserLogin();
   const { isShown, toggle } = UseModal();
+  const [data, setData] = useState<RealEstate[]>([]);
   const [loading, setLoading] = useState(true);
-
   const handlegetRealEstate = async () => {
     const resp = await getRealEstateProfil(idUser);
     if (resp.message === "Not found") {
@@ -49,7 +50,7 @@ const Profile = () => {
       <AuxNav margin={"1700px"} />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header email={email} toggle={toggle} />
-        <Publication data={data} loading={loading} />
+        {idUser != 0 && <Publication data={data} loading={loading} />}
       </Container>
       <Modal
         isShown={isShown}

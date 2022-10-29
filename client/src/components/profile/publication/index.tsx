@@ -42,7 +42,7 @@ const Index = ({ data, loading }: Params) => {
 
   function showData() {
     if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
-    return data.map((v, i) => <ContentImg key={i} v={v} />);
+      return data.map((v, i) => <ContentImg key={i} v={v} />);
   }
 
   return (

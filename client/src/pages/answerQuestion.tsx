@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Card from "../styles/card";
-import { getQuestions } from "../services/question";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import IQuestion from "../interface/answerQuestion";
 import Navbar from "../components/navbar";
 import AuxNav from "../components/navbar/auxNav";
+import useLoadData from "../hooks/useLoadData";
+import { getQuestions } from "../services/question";
 const Container = styled.div`
   width: calc(100%-15px);
   height: 100vh;
@@ -16,19 +16,12 @@ const Container = styled.div`
 `;
 
 const AnswerQuestion = () => {
+  const { data, loading } = useLoadData(getQuestions);
   const { id } = useParams();
   const IdNumber = parseInt(id!);
-  const [data, setData] = useState<IQuestion[]>([]);
+
   const { isShown, toggle } = UseModal();
   const [idQuestion, setIdQuestion] = useState(0);
-  const handleGetData = async () => {
-    const resp = await getQuestions();
-    setData(resp);
-  };
-
-  useEffect(() => {
-    handleGetData();
-  }, []);
 
   const handleClick = (id: number) => {
     toggle();
@@ -40,9 +33,13 @@ const AnswerQuestion = () => {
       <Navbar />
       <AuxNav margin={"1700px"} />
       <Card>
-        {data.map((v, i) => (
-          <CardComponent key={i} v={v} handleClick={handleClick} />
-        ))}
+        {loading ? (
+          <p>Cargando</p>
+        ) : (
+          data.map((v, i) => (
+            <CardComponent key={i} v={v} handleClick={handleClick} />
+          ))
+        )}
       </Card>
 
       <ModalCom

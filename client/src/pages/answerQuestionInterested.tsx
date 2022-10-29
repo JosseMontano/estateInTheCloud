@@ -7,7 +7,7 @@ import AuxNav from "../components/navbar/auxNav";
 import DataEmpty from "../components/global/dataEmpty";
 import IAQ from "../interface/answerQuestionInterested";
 import CardSoon from "../components/answerQuestionInterested";
-
+import useLoadData from "../hooks/useLoadDataParams";
 const Container = styled.div`
   height: 100vh;
   display: grid;
@@ -23,15 +23,7 @@ const Card = styled.div`
 const AnswerQuestionInterested = () => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
-  const [data, setData] = useState<IAQ[]>([]);
-  const getData = async () => {
-    const res = await getAnswerByRealEstate(idNumer);
-    setData(res);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const { data } = useLoadData(getAnswerByRealEstate, idNumer);
 
   function validateData() {
     if (data.length != 0) return <CardSoon data={data} />;
