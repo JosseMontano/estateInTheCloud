@@ -30,6 +30,17 @@ export const getRealEstateProfil = async (id: number) => {
   }
 };
 
+export const getRealEstateByEmail = async (email: string | undefined) => {
+  try {
+    const response = await fetch(`${http}estate/visit/${email}`, {
+      method: "GET",
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 export const getRealEstateOfOnePublication = async (idRealEstate:number) => {
   try {
     const response = await fetch(`${http}estateOfOnePublication/${idRealEstate}`, {
