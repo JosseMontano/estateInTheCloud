@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 interface LoadContextState {
   nameUser: string;
   idUser: number;
-  handlenameUser: (sendLoad: string, id: number) => void;
+  email: string;
+  handlenameUser: (sendL: string, id: number, email: string) => void;
 }
 interface MyContextProp {
   children: JSX.Element;
@@ -11,6 +12,7 @@ interface MyContextProp {
 const contextDefaultValue: LoadContextState = {
   nameUser: "",
   idUser: 0,
+  email: "",
   handlenameUser: () => {},
 };
 export const NameUserContext =
@@ -20,16 +22,18 @@ const NameUserProvider = ({ children }: MyContextProp) => {
     contextDefaultValue.nameUser
   );
   const [idUser, setidUser] = useState<number>(contextDefaultValue.idUser);
-
-  const handlenameUser = (sendload: string, id: number) => {
+  const [email, setEmail] = useState<string>(contextDefaultValue.email);
+  const handlenameUser = (sendload: string, id: number, email: string) => {
     setnameUser(sendload);
     setidUser(id);
+    setEmail(email);
   };
   return (
     <NameUserContext.Provider
       value={{
         nameUser,
         idUser,
+        email,
         handlenameUser,
       }}
     >

@@ -37,7 +37,7 @@ const Index = () => {
 
   const CallGetEmail = async () => {
     const { email, id, username } = await getEmail();
-    handlenameUser(username, id);
+    handlenameUser(username, id, email);
     setEmailState(email);
     if (username.length > 10) setTextBig(true);
   };

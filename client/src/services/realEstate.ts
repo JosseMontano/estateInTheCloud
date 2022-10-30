@@ -10,23 +10,25 @@ export const getRealEstateAll = async () => {
   } catch (error) {}
 };
 
-export const getRealEstateMostRecent = async() => {
+export const getRealEstateMostRecent = async () => {
   try {
     const response = await fetch(`${http}estateMostRecent`, {
       method: "GET",
     });
     return await response.json();
   } catch (error) {}
-}
+};
 
 export const getRealEstateProfil = async (id: number) => {
   try {
     const response = await fetch(`${http}estate/${id}`, {
       method: "GET",
     });
-    return await response.json();
+    const json = await response.json();
+    const status = response.status;
+    return { json, status };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -37,15 +39,18 @@ export const getRealEstateByEmail = async (email: string | undefined) => {
     });
     return await response.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
-export const getRealEstateOfOnePublication = async (idRealEstate:number) => {
+export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   try {
-    const response = await fetch(`${http}estateOfOnePublication/${idRealEstate}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${http}estateOfOnePublication/${idRealEstate}`,
+      {
+        method: "GET",
+      }
+    );
     return await response.json();
   } catch (error) {}
 };
@@ -62,7 +67,10 @@ export const saveRealEstate = async (data: FormData) => {
   }
 };
 
-export const addNewPhotoToRealEstate = async (id_real_estate:number, data:FormData) => {
+export const addNewPhotoToRealEstate = async (
+  id_real_estate: number,
+  data: FormData
+) => {
   try {
     const res = await fetch(`${http}addPhotoToRealEstate/${id_real_estate}`, {
       method: "POST",
@@ -70,9 +78,9 @@ export const addNewPhotoToRealEstate = async (id_real_estate:number, data:FormDa
     });
     return res;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const deleteRealEstateProfil = async (
   idRealEstatePhoto: number,

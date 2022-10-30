@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 
-const useLoadData = (
+const useLoadDataParams = (
   servicesParams: (id: number) => Promise<any>,
   idNumber: number
 ) => {
   const [data, setData] = useState([]);
+  const [empty, setEmpty] = useState(true);
   const [loading, setLoading] = useState(true);
 
   const handleGetData = async () => {
-    const resp = await servicesParams(idNumber);
-    setData(resp);
+    const res = await servicesParams(idNumber);
+    if (res?.status === 404) {
+      setEmpty(false);
+      setData([]);
+    } else {
+      setData(res.json);
+    }
     setTimeout(() => {
       setLoading(false);
-    }, 10);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -22,8 +28,9 @@ const useLoadData = (
   return {
     data,
     loading,
-    handleGetData
+    empty,
+    handleGetData,
   };
 };
 
-export default useLoadData;
+export default useLoadDataParams;

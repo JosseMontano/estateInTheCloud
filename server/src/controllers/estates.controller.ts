@@ -66,7 +66,7 @@ export const getEstateByUser = async (
 
     if (result.rows.length === 0)
       return res.status(404).json({
-        message: "Not found",
+        message: "The User has no Publications",
       });
     res.json(result.rows);
     //res.json(result.rows);

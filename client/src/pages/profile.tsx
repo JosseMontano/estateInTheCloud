@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import styled from "styled-components";
 import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
@@ -11,6 +10,7 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
+import useLoadDataParams from "../hooks/useLoadDataParams";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
@@ -23,40 +23,32 @@ interface Params {
 }
 
 const Profile = ({ showNavbar }: Params) => {
-  const { email } = useParams();
-
-  const { idUser } = useContext(NameUserContext);
-  const { verifyFun } = useVerifyUserLogin();
+  const {} = useVerifyUserLogin();
+  const { idUser, email } = useContext(NameUserContext);
+  const { data, loading, handleGetData, empty } = useLoadDataParams(
+    getRealEstateProfil,
+    idUser
+  );
   const { isShown, toggle } = UseModal();
-  const [data, setData] = useState<RealEstate[]>([]);
-  const [loading, setLoading] = useState(true);
-  const handlegetRealEstate = async () => {
-    const resp = await getRealEstateProfil(idUser);
-    if (resp.message === "Not found") {
-      return;
-    }
-    setData(resp);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  };
-
   useEffect(() => {
-    verifyFun();
-    if (idUser != 0) handlegetRealEstate();
+    if (idUser != 0) {
+      handleGetData();
+    }
   }, [idUser]);
 
   return (
     <>
       {showNavbar}
+
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header email={email} toggle={toggle} />
+        {email && <Header email={email} toggle={toggle} />}
         {idUser != 0 && <Publication data={data} loading={loading} />}
       </Container>
+
       <Modal
         isShown={isShown}
         hide={toggle}
-        modalContent={<ContentModal getRealEstate={handlegetRealEstate} />}
+        modalContent={<ContentModal getRealEstate={handleGetData} />}
       />
     </>
   );
