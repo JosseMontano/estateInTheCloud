@@ -20,7 +20,8 @@ const Container = styled.div`
 const Index = (v: RealEstate) => {
   const { isShown, toggle } = UseModal();
   const navigate = useNavigate();
-  const visitUser = (email: string) => navigate(`/visitUser/${v.email}`);
+  const visitUser = (idUser: number, email: string) =>
+    navigate(`/visitUser/${v.iduser}/${v.email}`);
   return (
     <Container>
       <Modal
@@ -29,11 +30,7 @@ const Index = (v: RealEstate) => {
         modalContent={<ContentModal {...v} />}
       />
 
-      <ContentCard
-        toggle={toggle}
-        v={v}
-        visitUser={visitUser}
-      />
+      <ContentCard toggle={toggle} v={v} visitUser={visitUser} />
     </Container>
   );
 };

@@ -17,6 +17,7 @@ const useLoadData = (services: () => Promise<any>) => {
   };
 
   useEffect(() => {
+    window.scroll(0, 0);
     handleGetData();
   }, []);
 

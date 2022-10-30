@@ -32,12 +32,14 @@ export const getRealEstateProfil = async (id: number) => {
   }
 };
 
-export const getRealEstateByEmail = async (email: string | undefined) => {
+export const getRealEstateByEmail = async (id: number) => {
   try {
-    const response = await fetch(`${http}estate/visit/${email}`, {
+    const response = await fetch(`${http}estate/visit/${id}`, {
       method: "GET",
     });
-    return await response.json();
+    const json = await response.json();
+    const status = response.status;
+    return { json, status };
   } catch (error) {
     console.log(error);
   }

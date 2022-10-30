@@ -15,12 +15,13 @@ const Btn = styled.button`
 `;
 
 interface Params {
+  idUser: number;
   email: string;
   toggle: () => void;
-  visitUser: (email: string) => void;
+  visitUser: (idUser: number, email: string) => void;
 }
 
-const ContainterBtn = ({ email, toggle, visitUser }: Params) => {
+const ContainterBtn = ({ idUser, toggle, visitUser, email }: Params) => {
   let data = [
     {
       name: "Mas Info",
@@ -28,7 +29,7 @@ const ContainterBtn = ({ email, toggle, visitUser }: Params) => {
     },
     {
       name: "Visitar",
-      click: () => visitUser(email),
+      click: () => visitUser(idUser, email),
     },
   ];
 

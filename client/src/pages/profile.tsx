@@ -2,10 +2,9 @@ import styled from "styled-components";
 import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Publication from "../components/profile/publication";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { getRealEstateProfil } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
-import { RealEstate } from "../interface/realEstate";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
@@ -25,7 +24,7 @@ interface Params {
 const Profile = ({ showNavbar }: Params) => {
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
-  const { data, loading, handleGetData, empty } = useLoadDataParams(
+  const { data, loading, handleGetData } = useLoadDataParams(
     getRealEstateProfil,
     idUser
   );

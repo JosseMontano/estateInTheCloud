@@ -25,7 +25,7 @@ const RouteComponent = () => {
       />
 
       <Route
-        path="/visitUser/:email"
+        path="/visitUser/:id/:email"
         element={<VisitUser showNavbar={<Navbar />} />}
       />
       <Route

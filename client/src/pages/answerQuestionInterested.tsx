@@ -32,7 +32,7 @@ const AnswerQuestionInterested = ({ showNavbar }: Params) => {
   const {} = useVerifyUserLogin();
 
   function validateData() {
-    if (data.length != 0) return <CardSoon data={data} />;
+    if (data) return <CardSoon data={data} />;
     return <DataEmpty msg="No hay respuestas" />;
   }
 

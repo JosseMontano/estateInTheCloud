@@ -23,7 +23,7 @@ const P = styled.p`
 interface Params {
   v: RealEstate;
   toggle: () => void;
-  visitUser: (email: string) => void;
+  visitUser: (idUser: number, email: string) => void;
 }
 
 const ContentCard = ({ v, toggle, visitUser }: Params) => {
@@ -33,6 +33,7 @@ const ContentCard = ({ v, toggle, visitUser }: Params) => {
       <H4>{v.title}</H4>
       <P>{v.email}</P>
       <ContainterBtn
+        idUser={v.iduser}
         email={v.email}
         toggle={toggle}
         visitUser={visitUser}
