@@ -14,6 +14,7 @@ import Message from "../../../global/message";
 import { getUser } from "../../../../services/user";
 import { CommentsContext } from "../../../../context/comments";
 import { postComment } from "../../../../services/comment";
+import Starts from "./starts";
 
 interface params {
   personCommented: string | undefined;
@@ -54,6 +55,9 @@ const ContentModal = ({ personCommented, commentator }: params) => {
         cols={50}
       />
       {errors.description && <ErrorCss>{errors.description}</ErrorCss>}
+
+      <Starts />
+
       <Button ColorBtn={"#02ffcc1f"} onClick={(e) => SenData(e)}>
         Guardar
       </Button>

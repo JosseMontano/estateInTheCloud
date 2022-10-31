@@ -5,6 +5,7 @@ import { marginInElements } from "../../../styles/globals";
 import ContentModal from "./publicCommenator/contentModal";
 import { NameUserContext } from "../../../context/nameUser";
 import { useContext } from "react";
+import handleSendWhatsapp from "../../../utilities/sendWhatsapp";
 
 const Container = styled.div`
   display: flex;
@@ -41,13 +42,6 @@ const ContentBtn = ({ email, cellphonenumber }: Params) => {
   const { isShown, toggle } = UseModal();
   const { idUser } = useContext(NameUserContext);
 
-  const handleSendWhatsapp = () => {
-    window.open(
-      "https://api.whatsapp.com/send?phone=" + cellphonenumber + "",
-      "_blank"
-    );
-  };
-
   let data = [
     {
       element: SPAN,
@@ -57,7 +51,7 @@ const ContentBtn = ({ email, cellphonenumber }: Params) => {
     {
       element: Btn,
       text: "Enviar mensaje",
-      onclick: handleSendWhatsapp,
+      onclick: () => handleSendWhatsapp(cellphonenumber),
     },
     {
       element: Btn,
