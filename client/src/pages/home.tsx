@@ -15,7 +15,7 @@ interface Params {
 }
 
 const Home = ({ navbar }: Params) => {
-  const { homeData, homeDataMostRecent, loading } = useHome();
+  const { homeData, homeDataMostRecent, homeDataRecommendedByUser ,loading } = useHome();
   const {} = useVerifyUserLogin();
 
   let data = [
@@ -28,8 +28,8 @@ const Home = ({ navbar }: Params) => {
       data: homeData,
     },
     {
-      title: "Recomendado",
-      data: homeData,
+      title: "Propietarios Recomendados",
+      data: homeDataRecommendedByUser,
     },
     {
       title: "Solo para ti",

@@ -28,8 +28,8 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
     const pass = await passwordEncrypt(password);
 
     const result = await pool.query(
-      "insert into users (username, email,cellphonenumber,password, id_photo) values ($1, $2, $3,$4,$5) returning *",
-      [username, email, cellphone_number, pass, idPhoto]
+      "insert into users (username, email,cellphonenumber,password, id_photo, qualification) values ($1, $2, $3,$4,$5, $6) returning *",
+      [username, email, cellphone_number, pass, idPhoto, 0]
     );
     const saveTableAccounts = await pool.query(
       "insert into accounts (secret_password, id_user) values ($1, $2) returning *",

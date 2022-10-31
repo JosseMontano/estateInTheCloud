@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Comments } from "../../../interface/comments";
 import { getUserById } from "../../../services/user";
+import ShowStarts from "./showStarts";
 
 const Container = styled.div`
   align-self: center;
@@ -30,6 +31,7 @@ const Content = (v: Comments) => {
       <NameUser>{email}</NameUser>
       <p>{v.description}</p>
       <span>{v.amount_start}</span>
+      <ShowStarts />
     </Container>
   );
 };

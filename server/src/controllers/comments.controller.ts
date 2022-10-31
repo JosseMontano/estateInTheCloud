@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { number } from "zod";
 
 const pool = require("../db");
 
@@ -43,6 +44,28 @@ export const createComment = async (
       "insert into comments (description, commentator, person_commented, amount_start) values ($1, $2, $3, $4) returning *",
       [description, commentator, person_commented, amount_start]
     );
+
+    const amountStarBD = await pool.query(
+      `
+        select * from users where id= $1
+        `,
+      [person_commented]
+    );
+
+    let amountStartBDUnique = amountStarBD.rows[0].qualification;
+
+    amountStartBDUnique =
+      parseFloat(amountStartBDUnique) + parseFloat(amount_start);
+
+    const updateAmountStartUser = await pool.query(
+      "update users set qualification=$1 where id=$2 returning *",
+      [amountStartBDUnique, person_commented]
+    );
+    if (updateAmountStartUser.rows.length === 0)
+      return res.status(404).json({
+        message: "Not found",
+      });
+
     res.status(200).json(result.rows[0]);
   } catch (error: any) {
     next(error);

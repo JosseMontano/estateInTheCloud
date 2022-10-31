@@ -19,6 +19,15 @@ export const getRealEstateMostRecent = async () => {
   } catch (error) {}
 };
 
+export const getRealEstateRecommendedByUser = async () => {
+  try {
+    const response = await fetch(`${http}estateRecommendedByUser`, {
+      method: "GET",
+    });
+    return await response.json();
+  } catch (error) {}
+};
+
 export const getRealEstateProfil = async (id: number) => {
   try {
     const response = await fetch(`${http}estate/${id}`, {

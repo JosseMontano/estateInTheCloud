@@ -5,7 +5,8 @@ create table users(
     username VARCHAR(50),
     cellphonenumber VARCHAR(255),
     email VARCHAR(255) UNIQUE,
-    password VARCHAR(255)
+    password VARCHAR(255),
+    qualification BIGINT,
     id_photo INT, 
 	add CONSTRAINT fk_photo
     FOREIGN KEY(id_photo) 

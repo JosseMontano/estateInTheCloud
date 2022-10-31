@@ -47,6 +47,31 @@ export const getRealEstatesMostRecent = async (
   }
 };
 
+export const getRealEstatesByUSerRecommended = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const allEstate = await pool.query(
+      `
+      SELECT * 
+      FROM(SELECT DISTINCT on (u.email) re.id as idRealEstate, rp.id as idRealEstatePhoto,
+          p.id as idPhoto,  p.url, 
+           p.public_id, re.title, re.description, u.email, u.id as idUser, u.qualification
+           from real_estates_photos rp , photos p, real_estates re, users u  
+           where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id 
+           ORDER BY u.email DESC) users ORDER BY users.qualification desc;
+      `
+    );
+    res.json(allEstate.rows);
+  } catch (error: any) {
+    next(error);
+  }
+};
+
+
+
 export const getEstateByUser = async (
   req: Request,
   res: Response,
