@@ -23,7 +23,11 @@ const Container = styled.div<{ puntuation: number; hover: number }>`
   }
 `;
 
-const Starts = () => {
+interface Params {
+  getStart: (v: number) => void;
+}
+
+const Starts = ({ getStart }: Params) => {
   const [puntuation, setPuntuation] = useState(0);
   const [hover, setHover] = useState(0);
 
@@ -33,6 +37,7 @@ const Starts = () => {
 
   const handleClick = (num: number) => {
     setPuntuation(num);
+    getStart(num);
   };
   return (
     <Container puntuation={puntuation} hover={hover}>

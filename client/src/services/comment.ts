@@ -19,6 +19,7 @@ export const postComment = async (form: FormComment) => {
         commentator: form.commentator,
         description: form.description,
         person_commented: form.person_commented,
+        amount_start: form.amount_start,
       }),
     });
     console.log(response);

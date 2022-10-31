@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ToastContext } from "../../../../context/toast";
+import { useContext, useEffect, useState } from "react";
 import { UseForm } from "../../../../hooks/useForm";
 import {
   Button,
@@ -24,6 +23,7 @@ interface params {
 const ContentModal = ({ personCommented, commentator }: params) => {
   const { getComments } = useContext(CommentsContext);
   const [idUser, setidUser] = useState(0);
+  const [amountStart, setAmountStart] = useState(1);
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, postComment, idUser, getComments);
 
@@ -43,8 +43,14 @@ const ContentModal = ({ personCommented, commentator }: params) => {
   const SenData = (e: any) => {
     form.commentator = commentator;
     form.person_commented = personCommentedId;
+    form.amount_start = amountStart;
     handleSubmit(e);
   };
+
+  const getStart = (val: number) => {
+    setAmountStart(val);
+  };
+
   return (
     <div>
       <Title colorText={ColorText}>Agregar un comentario</Title>
@@ -56,7 +62,7 @@ const ContentModal = ({ personCommented, commentator }: params) => {
       />
       {errors.description && <ErrorCss>{errors.description}</ErrorCss>}
 
-      <Starts />
+      <Starts getStart={getStart} />
 
       <Button ColorBtn={"#02ffcc1f"} onClick={(e) => SenData(e)}>
         Guardar

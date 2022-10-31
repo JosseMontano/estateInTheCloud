@@ -29,6 +29,7 @@ const Content = (v: Comments) => {
     <Container>
       <NameUser>{email}</NameUser>
       <p>{v.description}</p>
+      <span>{v.amount_start}</span>
     </Container>
   );
 };

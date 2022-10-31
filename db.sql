@@ -24,6 +24,7 @@ create table accounts(
 create table comments(
     id SERIAL PRIMARY KEY,
     description VARCHAR(255),
+    amount_start INT,
     commentator INT,
     person_commented INT,
      CONSTRAINT fk_commentator
