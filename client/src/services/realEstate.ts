@@ -53,7 +53,9 @@ export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
         method: "GET",
       }
     );
-    return await response.json();
+    const json = await response.json();
+    const status = response.status;
+    return { json, status };
   } catch (error) {}
 };
 

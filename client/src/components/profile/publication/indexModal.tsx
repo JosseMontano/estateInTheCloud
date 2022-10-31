@@ -4,20 +4,25 @@ import {
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication,
 } from "../../../services/realEstate";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ToastContext } from "../../../context/toast";
 import { Container } from "../../../styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
+import useLoadData from "../../../hooks/useLoadDataParams";
 
-export const ContentModal = (v: RealEstate) => {
+interface Params {
+  v: RealEstate;
+  showbtn: boolean;
+}
+
+export const ContentModal = ({ v, showbtn }: Params) => {
   const { toast, handleToast } = useContext(ToastContext);
+
   const [response, setResponse] = useState(false);
-  const [load, setLoad] = useState(true);
   const [photo, setPhoto] = useState<any>("");
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -52,12 +57,6 @@ export const ContentModal = (v: RealEstate) => {
     setLoading(false);
   };
 
-  const handleGetEstate = async () => {
-    const res = await getRealEstateOfOnePublication(v.idrealestate);
-    setData(res);
-    setLoad(false);
-  };
-
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoto(e.target.files![0]);
   };
@@ -65,10 +64,11 @@ export const ContentModal = (v: RealEstate) => {
   const handleAnswerQuestion = (id: number) => {
     navigate(`/answeQuestion/${id}`);
   };
-  
-  useEffect(() => {
-    handleGetEstate();
-  }, []);
+
+  const { data, loading: load } = useLoadData(
+    getRealEstateOfOnePublication,
+    v.idrealestate
+  );
 
   return (
     <Container>
@@ -76,6 +76,7 @@ export const ContentModal = (v: RealEstate) => {
 
       <ContentTextModal
         v={v}
+        showbtn={showbtn}
         handleAddNewPhoto={handleAddNewPhoto}
         handleDelete={handleDelete}
         handleFile={handleFile}

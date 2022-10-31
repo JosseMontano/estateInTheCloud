@@ -24,9 +24,10 @@ const Img = styled.img`
 
 interface Params {
   v: RealEstate;
+  showbtn: boolean;
 }
 
-const ContentImg = ({ v }: Params) => {
+const ContentImg = ({ v, showbtn }: Params) => {
   const { isShown, toggle } = UseModal();
 
   return (
@@ -34,7 +35,7 @@ const ContentImg = ({ v }: Params) => {
       <Modal
         isShown={isShown}
         hide={toggle}
-        modalContent={<ContentModal {...v} />}
+        modalContent={<ContentModal v={v} showbtn={showbtn} />}
       />
 
       <Img onClick={toggle} src={v.url} alt="" />

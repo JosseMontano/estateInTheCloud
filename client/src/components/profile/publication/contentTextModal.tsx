@@ -4,6 +4,7 @@ import { InputFile } from "../../../styles/globals";
 
 interface params {
   v: RealEstate;
+  showbtn?: boolean;
   handleAddNewPhoto: () => void;
   handleDelete: () => void;
   handleFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -15,24 +16,31 @@ const ContentTextModal = (p: params) => {
     <ContainerContent>
       <H2>{p.v.title}</H2>
       <P>{p.v.description}</P>
-      <InputFile type="file" onChange={(e) => p.handleFile(e)} />
 
-      <Button onClick={() => p.handleAddNewPhoto()} ColorBtn={"#229ff2"}>
-        Agregar foto
-      </Button>
+      {p.showbtn && (
+        <>
+          <InputFile type="file" onChange={(e) => p.handleFile(e)} />
+          <Button onClick={() => p.handleAddNewPhoto()} ColorBtn={"#229ff2"}>
+            Agregar foto
+          </Button>
 
-      <Button
-        onClick={() => p.handleAnswerQuestion(p.v.idrealestate)}
-        ColorBtn={"#425e70"}
-      >
-        Responder preguntas
-      </Button>
+          <Button
+            onClick={() => p.handleAnswerQuestion(p.v.idrealestate)}
+            ColorBtn={"#425e70"}
+          >
+            Responder preguntas
+          </Button>
 
-      <Button ColorBtn={"#ff26009e"} onClick={() => p.handleDelete()}>
-        Eliminar
-      </Button>
+          <Button ColorBtn={"#ff26009e"} onClick={() => p.handleDelete()}>
+            Eliminar
+          </Button>
+        </>
+      )}
     </ContainerContent>
   );
 };
 
+ContentTextModal.defaultProps = {
+  showbtn: true,
+};
 export default ContentTextModal;

@@ -31,9 +31,10 @@ const TextEmpty = styled.div`
 interface Params {
   data: RealEstate[];
   loading: boolean;
+  showbtn: boolean;
 }
 
-const Index = ({ data, loading }: Params) => {
+const Index = ({ data, loading, showbtn }: Params) => {
   function showTitle() {
     if (loading) {
       return <TextEmpty>Cargando publicaciones</TextEmpty>;
@@ -43,7 +44,7 @@ const Index = ({ data, loading }: Params) => {
 
   function showData() {
     if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
-    return data.map((v, i) => <ContentImg key={i} v={v} />);
+    return data.map((v, i) => <ContentImg key={i} v={v} showbtn={showbtn} />);
   }
 
   return (

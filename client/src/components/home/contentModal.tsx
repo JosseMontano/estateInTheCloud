@@ -1,62 +1,46 @@
 import { RealEstate } from "../../interface/realEstate";
 import Slider from "react-slick";
-import { getRealEstateOfOnePublication } from "../../services/realEstate";
-import { useEffect, useState } from "react";
-import {
-  Container,
-  ContainerContent,
-  H2,
-  P,
-  Button,
-} from "../../styles/modal/perfil";
+import { getRealEstateOfOnePublication as getRealEstate } from "../../services/realEstate";
+import * as S from "../../styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import Clipboard from "../global/clipBoard";
 import { useNavigate } from "react-router-dom";
+import useLoadData from "../../hooks/useLoadDataParams";
 
 export const ContentModal = (v: RealEstate) => {
-  const [load, setLoad] = useState(true);
-  const [data, setData] = useState<RealEstate[]>([]);
   const navigate = useNavigate();
-  const handleGetEstate = async () => {
-    const res = await getRealEstateOfOnePublication(v.idrealestate);
-    setData(res);
-    setLoad(false);
-  };
-
-  useEffect(() => {
-    handleGetEstate();
-  }, []);
-
+  const {data, loading} = useLoadData(getRealEstate, v.idrealestate);
+  
   const handleSeeQuestions = (idRealEstate: number) => {
     navigate(`/answeQuestionInterested/${idRealEstate}`);
   };
 
   return (
-    <Container>
-      {load ? (
+    <S.Container>
+      {loading ? (
         <Load />
       ) : (
         <Slider className="slick">
           {data.map((va, i) => (
             <div key={i}>
-              <ImgCom {...va} />
+              <ImgCom {...(va as object)} />
             </div>
           ))}
         </Slider>
       )}
 
-      <ContainerContent>
-        <H2>{v.title}</H2>
-        <P>{v.description}</P>
+      <S.ContainerContent>
+        <S.H2>{v.title}</S.H2>
+        <S.P>{v.description}</S.P>
         <Clipboard txt={v.description} />
-        <Button
+        <S.Button
           ColorBtn="#e9e905d5"
           onClick={() => handleSeeQuestions(v.idrealestate)}
         >
           Preguntas frecuentes
-        </Button>
-      </ContainerContent>
-    </Container>
+        </S.Button>
+      </S.ContainerContent>
+    </S.Container>
   );
 };
