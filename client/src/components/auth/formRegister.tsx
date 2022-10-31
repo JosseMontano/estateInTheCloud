@@ -44,6 +44,11 @@ const Form = () => {
       name: "username",
       value: form.username,
       errors: errors.username,
+    },{
+      label: "Celular",
+      name: "numberPhone",
+      value: form.numberPhone,
+      errors: errors.numberPhone,
     },
     {
       label: "Contraseña",

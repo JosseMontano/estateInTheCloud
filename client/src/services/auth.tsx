@@ -39,6 +39,7 @@ export const signUp = async (form: FormRegister) => {
       body: JSON.stringify({
         username: form.username,
         email: form.email,
+        cellphone_number:form.numberPhone,
         password: form.password,
         secrect_password: form.secrect_password,
       }),

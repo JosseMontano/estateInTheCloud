@@ -7,6 +7,8 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "../components/profile/publication";
 import { getRealEstateByEmail } from "../services/realEstate";
 import useLoadData from "../hooks/useLoadDataParams";
+import { RealEstate } from "../interface/realEstate";
+
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
@@ -26,13 +28,19 @@ const VisitUser = ({ showNavbar }: Params) => {
     getRealEstateByEmail,
     idParamNumber
   );
+  //get cellphone of user
+  let dataObj = {} as RealEstate;
+  dataObj = Object.assign({}, data[0]);
+  const { cellphonenumber } = dataObj;
 
   return (
     <>
       {showNavbar}
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header email={email} />
-        {idParamNumber != 0 && <Publication showbtn={false} data={data} loading={loading} />}
+        <Header email={email} cellphonenumber={cellphonenumber} />
+        {idParamNumber != 0 && (
+          <Publication showbtn={false} data={data} loading={loading} />
+        )}
         <Comments email={email} />
       </Container>
     </>

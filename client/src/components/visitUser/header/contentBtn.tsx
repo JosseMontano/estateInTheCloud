@@ -35,41 +35,53 @@ const Btn = styled.button<{ marginInElements: string }>`
 `;
 interface Params {
   email?: string;
+  cellphonenumber: string;
 }
-const ContentBtn = ({email}: Params) => {
+const ContentBtn = ({ email, cellphonenumber }: Params) => {
   const { isShown, toggle } = UseModal();
   const { idUser } = useContext(NameUserContext);
+
+  const handleSendWhatsapp = () => {
+    window.open(
+      "https://api.whatsapp.com/send?phone=" + cellphonenumber + "",
+      "_blank"
+    );
+  };
 
   let data = [
     {
       element: SPAN,
       text: email,
+      onclick: () => {},
     },
     {
       element: Btn,
       text: "Enviar mensaje",
+      onclick: handleSendWhatsapp,
     },
     {
       element: Btn,
       text: "Enviar solicitud",
+      onclick: () => {},
     },
     {
       element: Btn,
       text: "Comentar a la persona",
+      onclick: toggle,
     },
   ];
 
   return (
     <Container>
-      {data.map((v, i) =>
-        v.text === "Comentar a la persona" ? (
-          <v.element key={i} onClick={toggle} marginInElements={marginInElements}>
-            {v.text}
-          </v.element>
-        ) : (
-          <v.element key={i} marginInElements={marginInElements}>{v.text}</v.element>
-        )
-      )}
+      {data.map((v, i) => (
+        <v.element
+          key={i}
+          marginInElements={marginInElements}
+          onClick={v.onclick}
+        >
+          {v.text}
+        </v.element>
+      ))}
 
       <Modal
         isShown={isShown}
@@ -78,7 +90,6 @@ const ContentBtn = ({email}: Params) => {
           <ContentModal personCommented={email} commentator={idUser} />
         }
       />
-
     </Container>
   );
 };

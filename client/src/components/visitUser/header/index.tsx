@@ -23,13 +23,14 @@ const ContainerContent = styled.div`
 
 interface Params{
   email?:string;
+  cellphonenumber:string;
 }
-const Header = ({email}:Params) => {
+const Header = ({email, cellphonenumber}:Params) => {
   return (
     <Container>
       <ContentImg email={email} />
       <ContainerContent>
-        <ContentBtn email={email} />
+        <ContentBtn email={email} cellphonenumber={cellphonenumber} />
         <ContentMid />
       </ContainerContent>
     </Container>
