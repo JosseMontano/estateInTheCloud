@@ -16,27 +16,25 @@ const Container = styled.div`
   }
 `;
 
-interface Params {}
+interface Params {
+  sizeStart: number;
+}
 
-const ShowStarts = ({}: Params) => {
+const ShowStarts = ({ sizeStart }: Params) => {
+  let data = [];
+  for (let i = 0; i < sizeStart; i++) {
+    data.push(i);
+  }
 
   return (
     <Container>
-      <div className="star-widget">
-        <label>
-          <StartIcon />
-        </label>
-      </div>
-      <div className="star-widget">
-        <label>
-          <StartIcon />
-        </label>
-      </div>
-      <div className="star-widget">
-        <label>
-          <StartIcon />
-        </label>
-      </div>
+      {data.map((_, i) => (
+        <div className="star-widget">
+          <label>
+            <StartIcon />
+          </label>
+        </div>
+      ))}
     </Container>
   );
 };

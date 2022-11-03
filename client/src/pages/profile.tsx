@@ -41,7 +41,7 @@ const Profile = ({ showNavbar }: Params) => {
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         {email && <Header email={email} toggle={toggle} />}
-        {idUser != 0 && <Publication data={data} loading={loading} />}
+        {idUser != 0 && <Publication data={data} loading={loading} showbtn={true} />}
       </Container>
 
       <Modal

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "../../styles/globals";
 import Message from "./message";
 interface Params{
