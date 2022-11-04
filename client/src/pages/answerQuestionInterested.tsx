@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
 import { getAnswerByRealEstate } from "../services/answer";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "../components/navbar";
-import AuxNav from "../components/navbar/auxNav";
 import DataEmpty from "../components/global/dataEmpty";
-import IAQ from "../interface/answerQuestionInterested";
 import CardSoon from "../components/answerQuestionInterested";
 import useLoadData from "../hooks/useLoadDataParams";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
@@ -32,7 +28,7 @@ const AnswerQuestionInterested = ({ showNavbar }: Params) => {
   const {} = useVerifyUserLogin();
 
   function validateData() {
-    if (data) return <CardSoon data={data} />;
+    if (data.length > 0) return <CardSoon data={data} />;
     return <DataEmpty msg="No hay respuestas" />;
   }
 

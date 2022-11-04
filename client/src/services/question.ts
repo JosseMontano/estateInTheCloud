@@ -1,11 +1,14 @@
 import { http, headers } from "./http";
 import Question from "../interface/question";
-export const getQuestions = async () => {
+export const getQuestions = async (idRealEstate: number) => {
   try {
-    const response = await fetch(`${http}question`, {
+    const response = await fetch(`${http}question/${idRealEstate}`, {
       method: "GET",
     });
-    return await response.json();
+
+    const json = await response.json();
+    const status = response.status;
+    return { json, status };
   } catch (error) {
     console.log(error);
   }
@@ -19,10 +22,10 @@ export const postQuestion = async (form: Question) => {
         question: form.question,
       }),
     });
-    if(response.ok){
-        return true;
+    if (response.ok) {
+      return true;
     }
-    return false
+    return false;
   } catch (err) {
     console.error(err);
   }

@@ -15,6 +15,7 @@ const useLoadDataParams = (
       setData([]);
     } else {
       setData(res.json);
+      setEmpty(true);
     }
     setTimeout(() => {
       setLoading(false);

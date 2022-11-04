@@ -25,7 +25,9 @@ export const getAnswerByRealEstate = async (id: number) => {
     const response = await fetch(`${http}answer/${id}`, {
       method: "GET",
     });
-    return await response.json();
+    const json = await response.json();
+    const status = response.status;
+    return { json, status };
   } catch (error) {}
 };
 

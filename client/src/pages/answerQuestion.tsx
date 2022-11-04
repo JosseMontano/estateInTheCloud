@@ -5,7 +5,7 @@ import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import useLoadData from "../hooks/useLoadData";
+import useLoadData from "../hooks/useLoadDataParams";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 const Container = styled.div`
@@ -18,9 +18,9 @@ interface Params {
 }
 
 const AnswerQuestion = ({ showNavbar }: Params) => {
-  const { data, loading } = useLoadData(getQuestions);
   const { id } = useParams();
   const IdNumber = parseInt(id!);
+  const { data, loading } = useLoadData(getQuestions, IdNumber);
   const {} = useVerifyUserLogin();
 
   const { isShown, toggle } = UseModal();
