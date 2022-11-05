@@ -43,7 +43,7 @@ const Index = () => {
   };
 
   const handleRedirect = () => {
-    navigate(`/profile/${emailState}`);
+    navigate("/home");
   };
 
   useEffect(() => {
@@ -56,9 +56,9 @@ const Index = () => {
       <Nav ColorBtn={"#162b33"}>
         <Check />
         <Logo onClick={() => handleRedirect()}>
-          <NameUser msg={nameUser} textBig={textBig} />
+          <NameUser msg={"Inicio"} textBig={textBig} />
         </Logo>
-        <ContainerLinks />
+        <ContainerLinks nameUser={nameUser} emailState={emailState} />
       </Nav>
     </>
   );

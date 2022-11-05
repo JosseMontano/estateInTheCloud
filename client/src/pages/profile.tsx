@@ -34,7 +34,6 @@ const Profile = ({ showNavbar }: Params) => {
       handleGetData();
     }
   }, [idUser]);
-
   return (
     <>
       {showNavbar}

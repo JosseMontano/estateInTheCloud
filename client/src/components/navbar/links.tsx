@@ -40,24 +40,29 @@ const A = styled.span`
   }
 `;
 
-const Links = (v: Enlace) => {
+interface Params {
+  v: Enlace;
+  emailState: string;
+}
+
+const Links = ({ v, emailState }: Params) => {
   const navigate = useNavigate();
   const { isShown, toggle } = UseModal();
 
   const handleLogout = async (text: string) => {
     if (text === "Salir") {
-      var flag = await logOut();
-      if (!flag) {
+      var resp = await logOut();
+      if (!resp) {
         navigate("/");
       }
     }
-    if (text === "Inicio") {
-      navigate("/home");
-    }
     if (text === "Preguntas") {
       toggle();
+    } else {
+      navigate(`/profile/${emailState}`);
     }
   };
+
   return (
     <Container>
       <A onClick={() => handleLogout(v.text)}>{v.text}</A>

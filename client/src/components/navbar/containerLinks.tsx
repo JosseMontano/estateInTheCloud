@@ -1,7 +1,10 @@
-import React from "react";
 import styled from "styled-components";
-/* import { Enlace } from '../../models/nav'; */
 import Links from "./links";
+
+interface Params {
+  nameUser: string;
+  emailState: string;
+}
 
 const Ul = styled.ul`
   float: right;
@@ -24,10 +27,10 @@ const Ul = styled.ul`
   }
 `;
 
-const ContainerLinks = () => {
+const ContainerLinks = ({ nameUser, emailState }: Params) => {
   let data = [
     {
-      text: "Inicio",
+      text: nameUser,
       url: "",
     },
     {
@@ -42,7 +45,7 @@ const ContainerLinks = () => {
   return (
     <Ul>
       {data.map((v, i) => (
-        <Links {...v} key={i} />
+        <Links v={v} key={i} emailState={emailState} />
       ))}
     </Ul>
   );
