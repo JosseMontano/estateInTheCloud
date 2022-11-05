@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import {
   ColorText,
@@ -13,14 +12,17 @@ import { initialForm, validationsForm } from "../../validations/answer";
 import { addAnswer } from "../../services/answer";
 import Loader from "../global/loading";
 import Message from "../global/message";
+import Question from "../../interface/question";
+
 const Container = styled.div``;
 
 interface Params {
   id: number;
   idQuestion: number;
+  data: Question[];
 }
 
-const ContentModal = ({ id, idQuestion }: Params) => {
+const ContentModal = ({ id, idQuestion, data }: Params) => {
   const { errors, form, handleChange, handleSubmit, loading, msg, response } =
     UseForm(initialForm, validationsForm, addAnswer);
 

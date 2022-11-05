@@ -20,9 +20,9 @@ interface Params {
 const AnswerQuestion = ({ showNavbar }: Params) => {
   const { id } = useParams();
   const IdNumber = parseInt(id!);
+
   const { data, loading } = useLoadData(getQuestions, IdNumber);
   const {} = useVerifyUserLogin();
-
   const { isShown, toggle } = UseModal();
   const [idQuestion, setIdQuestion] = useState(0);
 
@@ -49,6 +49,7 @@ const AnswerQuestion = ({ showNavbar }: Params) => {
         isShown={isShown}
         id={IdNumber}
         idQuestion={idQuestion}
+        data={data}
       />
     </Container>
   );

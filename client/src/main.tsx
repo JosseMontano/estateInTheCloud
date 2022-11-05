@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <LoadProvider>
         <CommentsProvider>
           <HomeContextProvider>
-            <App />
+              <App />
           </HomeContextProvider>
         </CommentsProvider>
       </LoadProvider>
