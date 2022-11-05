@@ -111,3 +111,17 @@ export const deleteRealEstateProfil = async (
   } catch (error) {}
 };
 
+export const updateStateRealEstate = async (id: Number, available: Number) => {
+  try {
+    const response = await fetch(`${http}availableEstate/${id}`, {
+      method: "PUT",
+      headers: headers,
+      body: JSON.stringify({
+        available,
+      }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

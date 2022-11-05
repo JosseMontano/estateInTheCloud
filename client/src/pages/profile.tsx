@@ -35,8 +35,6 @@ const Profile = ({ showNavbar }: Params) => {
     }
   }, [idUser]);
 
-console.log(data)
-
   return (
     <>
       {showNavbar}

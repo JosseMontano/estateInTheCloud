@@ -28,6 +28,6 @@ router.delete(
   "/estate/:idRealEstatePhoto/:idPhoto/:idRealEstate",
   deleteEstate
 );
-router.put("availableEstate/:id", updateStateAvailable);
+router.put("/availableEstate/:id", updateStateAvailable);
 
 module.exports = router;

@@ -16,7 +16,7 @@ export const getAllEstates = async (
       select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
       p.public_id, re.title, re.description, u.email, u.id as idUser
       from real_estates_photos rp , photos p, real_estates re, users u 
-      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id
+      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=1
       ORDER BY re.id
       `
     );
@@ -37,7 +37,7 @@ export const getRealEstatesMostRecent = async (
       select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
       p.public_id, re.title, re.description, u.email, u.id as idUser
       from real_estates_photos rp , photos p, real_estates re, users u 
-      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id
+      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=1
       ORDER BY re.id desc
       `
     );
@@ -60,7 +60,7 @@ export const getRealEstatesByUSerRecommended = async (
           p.id as idPhoto,  p.url, 
            p.public_id, re.title, re.description, u.email, u.id as idUser, u.qualification
            from real_estates_photos rp , photos p, real_estates re, users u  
-           where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id 
+           where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=1
            ORDER BY u.email DESC) users ORDER BY users.qualification desc;
       `
     );
@@ -300,7 +300,7 @@ export const updateStateAvailable = async (
     const { id } = req.params;
     const { available } = req.body;
     const result = await pool.query(
-      "update real_estates set available=$1, where id=$2 returning *",
+      "update real_estates set available=$1 where id=$2 returning *",
       [available, id]
     );
     if (result.rows.length === 0)

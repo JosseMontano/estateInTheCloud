@@ -9,6 +9,7 @@ interface params {
   handleDelete: () => void;
   handleFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleAnswerQuestion: (id: number) => void;
+  handleUpdateState: (id: number, available: number) => void;
 }
 
 const ContentTextModal = (p: params) => {
@@ -36,11 +37,17 @@ const ContentTextModal = (p: params) => {
           </Button>
 
           {p.v.state === "Disponible" ? (
-            <Button ColorBtn={"#00ff9d9e"} onClick={() => {}}>
+            <Button
+              ColorBtn={"#00ff9d9e"}
+              onClick={() => p.handleUpdateState(p.v.idrealestate, 0)}
+            >
               Marcar como No disponible
             </Button>
           ) : (
-            <Button ColorBtn={"#51ff009e"} onClick={() => {}}>
+            <Button
+              ColorBtn={"#51ff009e"}
+              onClick={() => p.handleUpdateState(p.v.idrealestate, 1)}
+            >
               Marcar como disponible
             </Button>
           )}

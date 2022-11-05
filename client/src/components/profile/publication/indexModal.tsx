@@ -3,6 +3,7 @@ import {
   deleteRealEstateProfil,
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication,
+  updateStateRealEstate,
 } from "../../../services/realEstate";
 import { useContext, useState } from "react";
 import { ToastContext } from "../../../context/toast";
@@ -12,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
 import useLoadData from "../../../hooks/useLoadDataParams";
-
+import Message from "../../../components/global/message";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
@@ -24,7 +25,13 @@ export const ContentModal = ({ v, showbtn }: Params) => {
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");
   const [loading, setLoading] = useState(false);
+  const [showMsg, setshowMsg] = useState(false);
   const navigate = useNavigate();
+
+  const { data, loading: load } = useLoadData(
+    getRealEstateOfOnePublication,
+    v.idrealestate
+  );
 
   const handleDelete = async () => {
     setLoading(true);
@@ -65,10 +72,13 @@ export const ContentModal = ({ v, showbtn }: Params) => {
     navigate(`/answeQuestion/${id}`);
   };
 
-  const { data, loading: load } = useLoadData(
-    getRealEstateOfOnePublication,
-    v.idrealestate
-  );
+  const handleUpdateState = async (id: number, available: number) => {
+    await updateStateRealEstate(id, available);
+    setshowMsg(true);
+    setTimeout(() => {
+      setshowMsg(false);
+    }, 3000);
+  };
 
   return (
     <Container>
@@ -81,9 +91,12 @@ export const ContentModal = ({ v, showbtn }: Params) => {
         handleDelete={handleDelete}
         handleFile={handleFile}
         handleAnswerQuestion={handleAnswerQuestion}
+        handleUpdateState={handleUpdateState}
       />
 
       <LoadAndResponse loading={loading} response={response} msg={toast} />
+
+      {showMsg && <Message msg="El proceso fue exitoso" />}
     </Container>
   );
 };
