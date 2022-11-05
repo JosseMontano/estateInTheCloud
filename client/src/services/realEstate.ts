@@ -110,3 +110,4 @@ export const deleteRealEstateProfil = async (
     return response;
   } catch (error) {}
 };
+

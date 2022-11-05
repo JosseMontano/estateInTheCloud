@@ -46,6 +46,7 @@ create table real_estates(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     description VARCHAR(255),
+    available INT,
 	id_user INT,
 	 CONSTRAINT fk_user
       FOREIGN KEY(id_user) 

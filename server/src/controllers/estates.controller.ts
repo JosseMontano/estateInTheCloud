@@ -70,8 +70,6 @@ export const getRealEstatesByUSerRecommended = async (
   }
 };
 
-
-
 export const getEstateByUser = async (
   req: Request,
   res: Response,
@@ -82,7 +80,8 @@ export const getEstateByUser = async (
     const result = await pool.query(
       `
     select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
-    p.public_id, re.title, re.description, u.email
+    p.public_id, re.title, re.description, u.email, CASE WHEN re.available = 1 THEN 'Disponible'
+    WHEN re.available = 0 THEN 'No esta disponible' END AS state
     from real_estates_photos rp , photos p, real_estates re, users u 
     where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.id_user=${id}
     ORDER BY re.id
@@ -107,7 +106,6 @@ export const getEstateByEmail = async (
 ) => {
   try {
     const { idUser } = req.params;
-
 
     const result = await pool.query(
       `
@@ -287,6 +285,28 @@ export const updateEstate = async (
         message: "Not found",
       });
     /*  console.log(result) */
+    return res.json(result.rows[0]);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateStateAvailable = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const { available } = req.body;
+    const result = await pool.query(
+      "update real_estates set available=$1, where id=$2 returning *",
+      [available, id]
+    );
+    if (result.rows.length === 0)
+      return res.status(404).json({
+        message: "Not found",
+      });
     return res.json(result.rows[0]);
   } catch (error) {
     next(error);

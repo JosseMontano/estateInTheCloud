@@ -34,6 +34,16 @@ const ContentTextModal = (p: params) => {
           <Button ColorBtn={"#ff26009e"} onClick={() => p.handleDelete()}>
             Eliminar
           </Button>
+
+          {p.v.state === "Disponible" ? (
+            <Button ColorBtn={"#00ff9d9e"} onClick={() => {}}>
+              Marcar como No disponible
+            </Button>
+          ) : (
+            <Button ColorBtn={"#51ff009e"} onClick={() => {}}>
+              Marcar como disponible
+            </Button>
+          )}
         </>
       )}
     </ContainerContent>

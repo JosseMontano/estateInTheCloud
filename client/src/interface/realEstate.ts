@@ -9,4 +9,5 @@ export interface RealEstate {
   publicId: string;
   email: string;
   cellphonenumber: string;
+  state:string;
 }

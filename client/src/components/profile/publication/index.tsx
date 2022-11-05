@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ContentImg from "./contentImg";
 import { RealEstate } from "../../../interface/realEstate";
 import Skeleton from "./skeleton";
-import { useEffect } from "react";
 
 const Title = styled.h2`
   text-align: center;
