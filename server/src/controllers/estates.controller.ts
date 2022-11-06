@@ -166,8 +166,8 @@ export const createEstate = async (
   try {
     //save data of the realEstate
     const result = await pool.query(
-      "insert into real_estates (title, description, id_user, id_type_real_estate) values ($1, $2, $3, $4) returning *",
-      [title, description, id_user, id_typeNumber]
+      "insert into real_estates (title, description, id_user, id_type_real_estate, available) values ($1, $2, $3, $4, $5) returning *",
+      [title, description, id_user, id_typeNumber, 1]
     );
     const id_real_estate = result.rows[0].id;
 
