@@ -5,6 +5,7 @@ interface V {
   name: string;
   value: any;
   errors: any;
+  placeHolder: string;
 }
 
 interface Params {
@@ -23,6 +24,7 @@ const ContentFormRegister = ({ v, handleChange }: Params) => {
         name={v.name}
         onChange={handleChange}
         value={v.value}
+        placeholder={v.placeHolder}
         required
       />
       {v.errors && <ErrorCss>{v.errors}</ErrorCss>}

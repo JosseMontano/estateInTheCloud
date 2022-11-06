@@ -42,15 +42,24 @@ create table photos(
     public_id VARCHAR(255)
 );
 
+create table type_real_estates(
+    id SERIAL PRIMARY KEY,
+    name_type VARCHAR(255)
+)
+
 create table real_estates(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     description VARCHAR(255),
     available INT,
 	id_user INT,
+    id_type_real_estate INT,
 	 CONSTRAINT fk_user
       FOREIGN KEY(id_user) 
 	    REFERENCES users(id)
+     CONSTRAINT fk_type_real_estate
+      FOREIGN KEY(id_type_real_estate) 
+	    REFERENCES type_real_estates(id)
 )
 
 create table real_estates_photos(

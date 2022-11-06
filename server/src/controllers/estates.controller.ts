@@ -161,12 +161,13 @@ export const createEstate = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { title, description, id_user } = req.body;
+  const { title, description, id_user, id_type } = req.body;
+  const id_typeNumber = parseInt(id_type);
   try {
     //save data of the realEstate
     const result = await pool.query(
-      "insert into real_estates (title, description, id_user) values ($1, $2, $3) returning *",
-      [title, description, id_user]
+      "insert into real_estates (title, description, id_user, id_type_real_estate) values ($1, $2, $3, $4) returning *",
+      [title, description, id_user, id_typeNumber]
     );
     const id_real_estate = result.rows[0].id;
 
@@ -309,6 +310,22 @@ export const updateStateAvailable = async (
       });
     return res.json(result.rows[0]);
   } catch (error) {
+    next(error);
+  }
+};
+
+export const getTypeRealEstat = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const allComments = await pool.query(
+      `select * from type_real_estates
+      `
+    );
+    res.json(allComments.rows);
+  } catch (error: any) {
     next(error);
   }
 };

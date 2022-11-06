@@ -68,6 +68,22 @@ export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   } catch (error) {}
 };
 
+export const getTypeRealEstate = async () => {
+  try {
+    const response = await fetch(
+      `${http}type_real_estate/`,
+      {
+        method: "GET",
+      }
+    );
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const saveRealEstate = async (data: FormData) => {
   try {
     const response = await fetch(`${http}estate`, {

@@ -25,6 +25,7 @@ const Index = ({ getRealEstate }: Params) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    id_type: "1",
   });
 
   const handleChange = (e: any) => {
@@ -41,6 +42,7 @@ const Index = ({ getRealEstate }: Params) => {
       data.append("url", photo);
       data.append("title", formData.title);
       data.append("description", formData.description);
+      data.append("id_type", formData.id_type);
       data.append("id_user", idUser);
       const res = await saveRealEstate(data);
       if (res?.status === 200) {

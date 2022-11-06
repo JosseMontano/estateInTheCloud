@@ -38,29 +38,34 @@ const Form = () => {
       name: "email",
       value: form.email,
       errors: errors.email,
+      placeHolder: "user@gmail.com"
     },
     {
       label: "Nombre de usuario",
       name: "username",
       value: form.username,
       errors: errors.username,
+      placeHolder: "user54"
     },{
       label: "Celular",
       name: "numberPhone",
       value: form.numberPhone,
       errors: errors.numberPhone,
+      placeHolder: "59165722183"
     },
     {
       label: "Contraseña",
       name: "password",
       value: form.password,
       errors: errors.password,
+      placeHolder: "Contraseña"
     },
     {
       label: "clave Secreta",
       name: "secrect_password",
       value: form.secrect_password,
       errors: errors.secrect_password,
+      placeHolder: "clave Secreta"
     },
   ];
 

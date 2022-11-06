@@ -8,7 +8,9 @@ import {
   TextArea,
   InputFile,
 } from "../../../styles/globals";
-
+import { getTypeRealEstate } from "../../../services/realEstate";
+import useLoadData from "../../../hooks/useLoadData";
+import Select from "./select";
 interface Params {
   handleChange: (e: any) => void;
   sendData: (photo: any) => void;
@@ -16,6 +18,8 @@ interface Params {
 
 const Form = ({ handleChange, sendData }: Params) => {
   const [photo, setPhoto] = useState<any>("");
+
+  const { data } = useLoadData(getTypeRealEstate);
 
   const handleSend = () => {
     sendData(photo);
@@ -30,7 +34,7 @@ const Form = ({ handleChange, sendData }: Params) => {
         onChange={(e) => handleChange(e)}
         required
       />
-      
+
       <Label colorText={ColorText}>Description</Label>
       <TextArea
         cols={40}
@@ -39,6 +43,13 @@ const Form = ({ handleChange, sendData }: Params) => {
         onChange={(e) => handleChange(e)}
         required
       />
+
+      <Label colorText={ColorText}>Type</Label>
+      <select name={"id_type"} onChange={(e) => handleChange(e)}>
+        {data.map((v, i) => (
+          <Select v={v} />
+        ))}
+      </select>
 
       <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
 
