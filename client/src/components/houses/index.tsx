@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Card from "../../components/home/contentCard";
+import Card from "./card";
 import { RealEstate } from "../../interface/realEstate";
 export const ContainerSoon = styled.div`
   width: 300px;
@@ -8,17 +7,18 @@ export const ContainerSoon = styled.div`
 `;
 
 interface Params {
-  v: RealEstate;
+  dataFilter: RealEstate[];
   toggle: () => void;
+  isShown: boolean;
 }
 
-const Index = ({ toggle, v }: Params) => {
-  const navigate = useNavigate();
-  const visitUser = () => navigate(`/visitUser/${v.iduser}/${v.email}`);
+const Index = ({ dataFilter, toggle, isShown }: Params) => {
   return (
-    <ContainerSoon>
-      <Card v={v} toggle={toggle} visitUser={visitUser} />
-    </ContainerSoon>
+    <>
+      {dataFilter.map((v, i) => (
+        <Card key={i} toggle={toggle} v={v} isShown={isShown} />
+      ))}
+    </>
   );
 };
 

@@ -4,7 +4,10 @@ import useLoadData from "../hooks/useLoadData";
 import { UseModal } from "../hooks/useModal";
 import { getRealEstateByHouse } from "../services/realEstate";
 import Card from "../components/houses";
-
+import NoFound from "../components/houses/notFound";
+import { RealEstate } from "../interface/realEstate";
+import useSearch from "../hooks/useSearch";
+import { ContentModal } from "../components/home/contentModal";
 export const Container = styled.div`
   height: 100vh;
   width: 100%;
@@ -26,22 +29,30 @@ interface Params {
 const Houses = ({ navbar }: Params) => {
   const { data } = useLoadData(getRealEstateByHouse);
   const { isShown, toggle } = UseModal();
+  const { filter, getValueSearch } = useSearch();
 
-  const getValueSearch = (val: string) => {
-    console.log(val);
+  const search = (v: RealEstate) => {
+    if (filter === "") return v;
+    if (v.title.toLocaleLowerCase().includes(filter.toLowerCase())) {
+      return v;
+    }
   };
+
+  let dataFilter = data.filter((v) => {
+    return search(v);
+  });
 
   return (
     <Container>
       {navbar}
-      <div>
+      <>
         <Search getValueSearch={getValueSearch} />
         <ContainerCard>
-          {data.map((v, i) => (
-            <Card key={i} toggle={toggle} v={v} />
-          ))}
+          <Card dataFilter={dataFilter} toggle={toggle} isShown={isShown} />
+          <NoFound dataFilter={dataFilter} />
         </ContainerCard>
-      </div>
+     
+      </>
     </Container>
   );
 };
