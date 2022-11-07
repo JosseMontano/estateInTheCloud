@@ -14,11 +14,13 @@ import {
   getRealEstatesByUSerRecommended,
   updateStateAvailable,
   getTypeRealEstat,
+  getRealEstatesByHouse,
 } from "../controllers/estates.controller";
 
 router.get("/estate", getAllEstates);
 router.get("/type_real_estate", getTypeRealEstat);
 router.get("/estateMostRecent", getRealEstatesMostRecent);
+router.get("/estateByHouse", getRealEstatesByHouse);
 router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
 router.get("/estate/:id", getEstateByUser);
 router.get("/estate/visit/:idUser", getEstateByEmail);

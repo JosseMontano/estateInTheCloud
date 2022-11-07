@@ -58,7 +58,11 @@ const Links = ({ v, emailState }: Params) => {
     }
     if (text === "Preguntas") {
       toggle();
-    } else {
+    } 
+    if(text === "Casas"){
+      navigate(`/house`);
+    }
+    else {
       navigate(`/profile/${emailState}`);
     }
   };

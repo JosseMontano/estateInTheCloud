@@ -54,6 +54,19 @@ export const getRealEstateByEmail = async (id: number) => {
   }
 };
 
+export const getRealEstateByHouse = async () => {
+  try {
+    const response = await fetch(`${http}estateByHouse`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   try {
     const response = await fetch(
@@ -70,12 +83,9 @@ export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
 
 export const getTypeRealEstate = async () => {
   try {
-    const response = await fetch(
-      `${http}type_real_estate/`,
-      {
-        method: "GET",
-      }
-    );
+    const response = await fetch(`${http}type_real_estate/`, {
+      method: "GET",
+    });
     const json = await response.json();
     const status = response.status;
     return json;
