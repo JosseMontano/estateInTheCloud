@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { UseModal } from "../../hooks/useModal";
 import Links from "./links";
+import { logOut } from "../../services/auth";
 
 interface Params {
   nameUser: string;
@@ -28,28 +31,42 @@ const Ul = styled.ul`
 `;
 
 const ContainerLinks = ({ nameUser, emailState }: Params) => {
-  let data = [
+  const navigate = useNavigate();
+  const { isShown, toggle } = UseModal();
+
+  let dataJSX = [
     {
       text: nameUser,
-      url: "",
+      click: () => {
+        navigate(`/profile/${emailState}`);
+      },
     },
     {
       text: "Preguntas",
-      url: "",
+      click: () => {
+        toggle();
+      },
     },
     {
       text: "Casas",
-      url: "",
+      click: () => {
+        navigate(`/house`);
+      },
     },
     {
       text: "Salir",
-      url: "",
+      click: async () => {
+        var resp = await logOut();
+        if (!resp) {
+          navigate("/");
+        }
+      },
     },
   ];
   return (
     <Ul>
-      {data.map((v, i) => (
-        <Links v={v} key={i} emailState={emailState} />
+      {dataJSX.map((v, i) => (
+        <Links v={v} key={i} isShown={isShown} toggle={toggle} />
       ))}
     </Ul>
   );

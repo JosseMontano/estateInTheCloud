@@ -1,4 +1,4 @@
-export interface Enlace{
-    url:string,
-    text:string
+export interface Enlace {
+  text: string;
+  click: () => void;
 }

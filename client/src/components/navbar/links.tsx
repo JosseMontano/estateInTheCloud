@@ -1,8 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { UseModal } from "../../hooks/useModal";
 import { Enlace } from "../../interface/nav";
-import { logOut } from "../../services/auth";
 import { Modal } from "../global/modal";
 import ModalQuestion from "./../home/modalQuestion";
 
@@ -42,34 +39,14 @@ const A = styled.span`
 
 interface Params {
   v: Enlace;
-  emailState: string;
+  isShown: boolean;
+  toggle: () => void;
 }
 
-const Links = ({ v, emailState }: Params) => {
-  const navigate = useNavigate();
-  const { isShown, toggle } = UseModal();
-
-  const handleLogout = async (text: string) => {
-    if (text === "Salir") {
-      var resp = await logOut();
-      if (!resp) {
-        navigate("/");
-      }
-    }
-    if (text === "Preguntas") {
-      toggle();
-    } 
-    if(text === "Casas"){
-      navigate(`/house`);
-    }
-    else {
-      navigate(`/profile/${emailState}`);
-    }
-  };
-
+const Links = ({ v, isShown, toggle }: Params) => {
   return (
     <Container>
-      <A onClick={() => handleLogout(v.text)}>{v.text}</A>
+      <A onClick={v.click}>{v.text}</A>
 
       <Modal isShown={isShown} hide={toggle} modalContent={<ModalQuestion />} />
     </Container>
