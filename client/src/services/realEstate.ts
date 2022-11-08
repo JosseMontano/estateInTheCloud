@@ -80,6 +80,45 @@ export const getRealEstateByDepartament = async () => {
   }
 };
 
+export const getRealEstateByStudioDepartament = async () => {
+  try {
+    const response = await fetch(`${http}estateByStudioApartament`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRealEstateByGarzoniers = async () => {
+  try {
+    const response = await fetch(`${http}estateByGarzonier`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRealEstateOthers = async () => {
+  try {
+    const response = await fetch(`${http}estateOthers`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   try {
     const response = await fetch(

@@ -10,6 +10,9 @@ import AnswerQuestion from "./pages/answerQuestion";
 import Departaments from "./pages/departaments";
 import AQInterested from "./pages/answerQuestionInterested";
 import Navbar from "./components/navbar";
+import StudioApartament from "./pages/studioApartament";
+import Garzoniers from "./pages/garzoniers";
+import OthersRealEstate from "./pages/othersRealEstate";
 const RouteComponent = () => {
   return (
     <Routes>
@@ -23,6 +26,15 @@ const RouteComponent = () => {
       <Route
         path="/departaments"
         element={<Departaments navbar={<Navbar />} />}
+      />
+      <Route
+        path="/studioApartaments"
+        element={<StudioApartament navbar={<Navbar />} />}
+      />
+      <Route path="/garzoniers" element={<Garzoniers navbar={<Navbar />} />} />
+      <Route
+        path="/otherRealEstate"
+        element={<OthersRealEstate navbar={<Navbar />} />}
       />
 
       <Route

@@ -41,12 +41,7 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
         navigate(`/profile/${emailState}`);
       },
     },
-    {
-      text: "Preguntas",
-      click: () => {
-        toggle();
-      },
-    },
+
     {
       text: "Casas",
       click: () => {
@@ -54,9 +49,32 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
       },
     },
     {
+      text: "Monoambientes",
+      click: () => {
+        navigate(`/studioApartaments`);
+      },
+    },
+    {
       text: "Departamentos",
       click: () => {
         navigate(`/departaments`);
+      },
+    },
+    {
+      text: "Garzoniers",
+      click: () => {
+        navigate(`/garzoniers`);
+      },
+    },{
+      text: "Otros",
+      click: () => {
+        navigate(`/otherRealEstate`);
+      },
+    },
+    {
+      text: "Preguntas",
+      click: () => {
+        toggle();
       },
     },
     {

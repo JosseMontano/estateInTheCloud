@@ -25,13 +25,9 @@ router.get("/estate", getAllEstates);
 router.get("/type_real_estate", getTypeRealEstat);
 router.get("/estateMostRecent", getRealEstatesMostRecent);
 router.get("/estateByHouse", getRealEstatesByHouse);
-
 router.get("/estateByDepartament", getRealEstatesBydepartament);
-
 router.get("/estateByStudioApartament", getRealEstatesByStudioApartament);
-
 router.get("/estateByGarzonier", getRealEstatesByGarzonier);
-
 router.get("/estateOthers", getRealEstatesOthers);
 
 
