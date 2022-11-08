@@ -2,14 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
-import Houses from './pages/houses'
+import Houses from "./pages/houses";
 import Profile from "./pages/profile";
 import RecuperateAccount from "./pages/recuperateAccount";
 import VisitUser from "./pages/visitUser";
 import AnswerQuestion from "./pages/answerQuestion";
+import Departaments from "./pages/departaments";
 import AQInterested from "./pages/answerQuestionInterested";
 import Navbar from "./components/navbar";
-
 const RouteComponent = () => {
   return (
     <Routes>
@@ -20,6 +20,10 @@ const RouteComponent = () => {
       {/* ========== PAGES THAT GET THE NAVBAR ========== */}
       <Route path="/home" element={<Home navbar={<Navbar />} />} />
       <Route path="/house" element={<Houses navbar={<Navbar />} />} />
+      <Route
+        path="/departaments"
+        element={<Departaments navbar={<Navbar />} />}
+      />
 
       <Route
         path="/profile/:email"

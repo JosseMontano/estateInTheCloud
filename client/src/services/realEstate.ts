@@ -67,6 +67,19 @@ export const getRealEstateByHouse = async () => {
   }
 };
 
+export const getRealEstateByDepartament = async () => {
+  try {
+    const response = await fetch(`${http}estateByDepartament`, {
+      method: "GET",
+    });
+    const json = await response.json();
+    const status = response.status;
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   try {
     const response = await fetch(

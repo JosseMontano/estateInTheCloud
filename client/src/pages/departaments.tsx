@@ -2,11 +2,12 @@ import styled from "styled-components";
 import Search from "../components/global/search";
 import useLoadData from "../hooks/useLoadData";
 import { UseModal } from "../hooks/useModal";
-import { getRealEstateByHouse } from "../services/realEstate";
+import { getRealEstateByDepartament } from "../services/realEstate";
 import Card from "../components/houses";
 import NoFound from "../components/houses/notFound";
 import { RealEstate } from "../interface/realEstate";
 import useSearch from "../hooks/useSearch";
+
 export const Container = styled.div`
   height: 100vh;
   width: 100%;
@@ -25,8 +26,8 @@ interface Params {
   navbar: JSX.Element;
 }
 
-const Houses = ({ navbar }: Params) => {
-  const { data } = useLoadData(getRealEstateByHouse);
+const Departaments = ({ navbar }: Params) => {
+  const { data } = useLoadData(getRealEstateByDepartament);
   const { isShown, toggle } = UseModal();
   const { filter, getValueSearch } = useSearch();
 
@@ -50,10 +51,9 @@ const Houses = ({ navbar }: Params) => {
           <Card dataFilter={dataFilter} toggle={toggle} isShown={isShown} />
           <NoFound dataFilter={dataFilter} />
         </ContainerCard>
-     
       </>
     </Container>
   );
 };
 
-export default Houses;
+export default Departaments;

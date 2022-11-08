@@ -54,6 +54,12 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
       },
     },
     {
+      text: "Departamentos",
+      click: () => {
+        navigate(`/departaments`);
+      },
+    },
+    {
       text: "Salir",
       click: async () => {
         var resp = await logOut();
@@ -63,6 +69,7 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
       },
     },
   ];
+
   return (
     <Ul>
       {dataJSX.map((v, i) => (
