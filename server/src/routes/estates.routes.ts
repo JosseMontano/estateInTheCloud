@@ -30,8 +30,6 @@ router.get("/estateByStudioApartament", getRealEstatesByStudioApartament);
 router.get("/estateByGarzonier", getRealEstatesByGarzonier);
 router.get("/estateOthers", getRealEstatesOthers);
 
-
-
 router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
 router.get("/estate/:id", getEstateByUser);
 router.get("/estate/visit/:idUser", getEstateByEmail);
