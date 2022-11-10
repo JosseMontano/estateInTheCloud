@@ -1,6 +1,7 @@
 import { RealEstate } from "../interface/realEstate";
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
+import deleteServ from "../utilities/deleteServices";
 
 export const getRealEstateAll = async () => {
   const url = `${http}estate`;
@@ -106,15 +107,9 @@ export const deleteRealEstateProfil = async (
   idPhoto: number,
   idRealEstate: number
 ) => {
-  try {
-    const response = await fetch(
-      `${http}estate/${idRealEstatePhoto}/${idPhoto}/${idRealEstate}`,
-      {
-        method: "DELETE",
-      }
-    );
-    return response;
-  } catch (error) {}
+  const url = `${http}estate/${idRealEstatePhoto}/${idPhoto}/${idRealEstate}`;
+  const response = await deleteServ(url);
+  return response;
 };
 
 export const updateStateRealEstate = async (id: Number, available: Number) => {

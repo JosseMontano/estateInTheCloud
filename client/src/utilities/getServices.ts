@@ -1,6 +1,6 @@
 export const index = async (
   url: string
-): Promise<{ json: any; status: number }> => {
+): Promise<{ json: null; status: number }> => {
   try {
     const response = await fetch(url, {
       method: "GET",
@@ -13,5 +13,3 @@ export const index = async (
     return { json: null, status: 0 };
   }
 };
-
-//Promise<{ json: any; status: number; }

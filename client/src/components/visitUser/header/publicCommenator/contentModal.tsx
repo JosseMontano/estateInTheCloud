@@ -1,12 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UseForm } from "@/hooks/useForm";
-import {
-  Button,
-  ColorText,
-  ErrorCss,
-  TextArea,
-  Title,
-} from "@/styles/globals";
+import { Button, ColorText, ErrorCss, TextArea, Title } from "@/styles/globals";
 import { initialForm, validationsForm } from "@/validations/comments";
 import Loader from "../../../global/loading";
 import Message from "../../../global/message";
@@ -29,11 +23,13 @@ const ContentModal = ({ personCommented, commentator }: params) => {
 
   const [personCommentedId, setPersonCommentedId] = useState(0);
   const handleGetPersonCommented = async () => {
-    const res = await getUser(personCommented);
-    const objRes = Object.assign({}, res[0]);
-    const auxId = objRes.id_usuario;
-    setidUser(auxId);
-    setPersonCommentedId(auxId);
+    const { json } = await getUser(personCommented);
+    if (json) {
+      const { id_usuario } = Object.assign({}, json[0]);
+      const auxId = id_usuario;
+      setidUser(auxId);
+      setPersonCommentedId(auxId);
+    }
   };
 
   useEffect(() => {

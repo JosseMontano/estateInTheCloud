@@ -1,7 +1,7 @@
 import FormAnswer from "../interface/answer";
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
-
+import deleteServ from "../utilities/deleteServices";
 export const addAnswer = async (form: FormAnswer) => {
   const { answer, id_question, id_real_estate } = form;
   try {
@@ -29,17 +29,7 @@ export const getAnswerByRealEstate = async (id: number) => {
 };
 
 export const deleteAnswer = async (id: number) => {
-  try {
-    const response = await fetch(`${http}answer/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify(false),
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  const url = `${http}answer/${id}`;
+  const result = await deleteServ(url);
+  return result;
 };

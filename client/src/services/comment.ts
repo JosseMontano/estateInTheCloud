@@ -1,5 +1,6 @@
 import { FormComment } from "../interface/formComment";
 import { http, headers } from "./http";
+import deleteServ from "../utilities/deleteServices";
 
 export const getCommentsByUser = async (id: number) => {
   try {
@@ -32,17 +33,7 @@ export const postComment = async (form: FormComment) => {
 };
 
 export const deleteComment = async (id: number) => {
-  try {
-    const response = await fetch(`${http}comment/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify(false),
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  const url = `${http}comment/${id}`;
+  const response = await deleteServ(url);
+  return response;
 };
