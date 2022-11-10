@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { UseModal } from "../../../hooks/useModal";
+import { UseModal } from "@/hooks/useModal";
 import { Modal } from "../../global/modal";
-import { RealEstate } from "../../../interface/realEstate";
+import { RealEstate } from "@/interface/realEstate";
 import { ContentModal } from "./indexModal";
 const Containersoon = styled.div`
   justify-self: center;

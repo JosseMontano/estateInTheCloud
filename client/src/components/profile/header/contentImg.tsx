@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import Photo from "../../../assets/profile/photoProfile.jpg";
-import { User } from "../../../interface/user";
-import { getUser } from "../../../services/user";
+import Photo from "@/assets/profile/photoProfile.jpg";
+import { User } from "@/interface/user";
+import { getUser } from "@/services/user";
 import {
   Container,
   Img,
   ChangePhoto,
   InputFile,
-} from "../../../styles/profile/header/contentImg";
+} from "@/styles/profile/header/contentImg";
 import ImgDataBase from "./imgDataBase";
-
-
 
 interface Params {
   email?: string;

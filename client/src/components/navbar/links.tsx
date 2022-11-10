@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Enlace } from "../../interface/nav";
+import { Enlace } from "@/interface/nav";
 import { Modal } from "../global/modal";
 import ModalQuestion from "./../home/modalQuestion";
 

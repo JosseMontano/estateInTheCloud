@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import { UseForm } from "../../../../hooks/useForm";
+import { UseForm } from "@/hooks/useForm";
 import {
   Button,
   ColorText,
   ErrorCss,
   TextArea,
   Title,
-} from "../../../../styles/globals";
-import { initialForm, validationsForm } from "../../../../validations/comments";
+} from "@/styles/globals";
+import { initialForm, validationsForm } from "@/validations/comments";
 import Loader from "../../../global/loading";
 import Message from "../../../global/message";
-import { getUser } from "../../../../services/user";
-import { CommentsContext } from "../../../../context/comments";
-import { postComment } from "../../../../services/comment";
+import { getUser } from "@/services/user";
+import { CommentsContext } from "@/context/comments";
+import { postComment } from "@/services/comment";
 import Starts from "./starts";
 
 interface params {

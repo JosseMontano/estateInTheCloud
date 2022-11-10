@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { Modal } from "../../global/modal";
-import { UseModal } from "../../../hooks/useModal";
-import { marginInElements } from "../../../styles/globals";
+import { UseModal } from "@/hooks/useModal";
+import { marginInElements } from "@/styles/globals";
 import ContentModal from "./publicCommenator/contentModal";
-import { NameUserContext } from "../../../context/nameUser";
+import { NameUserContext } from "@/context/nameUser";
 import { useContext } from "react";
-import handleSendWhatsapp from "../../../utilities/sendWhatsapp";
+import handleSendWhatsapp from "@/utilities/sendWhatsapp";
 
 const Container = styled.div`
   display: flex;

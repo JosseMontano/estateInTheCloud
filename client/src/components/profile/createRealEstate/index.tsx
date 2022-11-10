@@ -1,9 +1,9 @@
-import { ToastContext } from "../../../context/toast";
+import { ToastContext } from "@/context/toast";
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { NameUserContext } from "../../../context/nameUser";
-import { saveRealEstate } from "../../../services/realEstate";
-import Loading from "../../../components/dynamic/loadingAndResponse";
+import { NameUserContext } from "@/context/nameUser";
+import { saveRealEstate } from "@/services/realEstate";
+import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
 
 const Container = styled.div`

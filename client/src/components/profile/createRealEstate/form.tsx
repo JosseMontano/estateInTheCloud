@@ -7,9 +7,9 @@ import {
   Button,
   TextArea,
   InputFile,
-} from "../../../styles/globals";
-import { getTypeRealEstate } from "../../../services/realEstate";
-import useLoadData from "../../../hooks/useLoadData";
+} from "@/styles/globals";
+import { getTypeRealEstate } from "@/services/realEstate";
+import useLoadData from "@/hooks/useLoadData";
 import Select from "./select";
 interface Params {
   handleChange: (e: any) => void;

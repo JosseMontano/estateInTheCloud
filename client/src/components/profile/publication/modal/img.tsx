@@ -1,6 +1,5 @@
-import React from 'react'
 import styled from 'styled-components';
-import { RealEstate } from '../../../../interface/realEstate';
+
 const Img = styled.img`
   height: 200px;
   width: 200px;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { ColorBtn, ColorBtnSecond } from "../../styles/globals";
+import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "../../hooks/useForm";
+import { UseForm } from "@/hooks/useForm";
 import Loader from "../global/loading";
 import Message from "../global/message";
-import { initialForm, validationsForm } from "../../validations/register";
-import { signUp } from "../../services/auth";
+import { initialForm, validationsForm } from "@/validations/register";
+import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
 
 const Container = styled.form``;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { RealEstate } from "../../interface/realEstate";
+import { RealEstate } from "@/interface/realEstate";
 import { Modal } from "../global/modal";
-import { UseModal } from "../../hooks/useModal";
+import { UseModal } from "@/hooks/useModal";
 import { ContentModal } from "./contentModal";
 import { useState } from "react";
 import ContentCard from "./contentCard";

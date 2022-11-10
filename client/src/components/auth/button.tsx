@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from "react";
-import { Button } from "../../styles/globals";
+import { Button } from "@/styles/globals";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;

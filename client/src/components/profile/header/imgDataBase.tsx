@@ -1,5 +1,5 @@
-import { User } from "../../../interface/user";
-import { Img } from "../../../styles/profile/header/contentImg";
+import { User } from "@/interface/user";
+import { Img } from "@/styles/profile/header/contentImg";
 
 interface Params{
     data:User[]

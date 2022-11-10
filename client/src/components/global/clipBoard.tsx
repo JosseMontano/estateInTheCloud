@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../../styles/globals";
+import { Button } from "@/styles/globals";
 import Message from "./message";
 interface Params{
     txt:string

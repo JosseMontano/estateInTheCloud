@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import Search from "../../components/global/search";
-import useLoadData from "../../hooks/useLoadData";
-import { UseModal } from "../../hooks/useModal";
-import Card from "../../components/houses";
-import NoFound from "../../components/houses/notFound";
-import { RealEstate } from "../../interface/realEstate";
-import useSearch from "../../hooks/useSearch";
+import Search from "@/components/global/search";
+import useLoadData from "@/hooks/useLoadData";
+import { UseModal } from "@/hooks/useModal";
+import Card from "@/components/houses";
+import NoFound from "@/components/houses/notFound";
+import { RealEstate } from "@/interface/realEstate";
+import useSearch from "@/hooks/useSearch";
 
 export const Container = styled.div`
   min-height: 100vh;

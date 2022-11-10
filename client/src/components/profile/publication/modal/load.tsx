@@ -1,5 +1,5 @@
 
-import { ContainerLoader, Loader } from "../../../../styles/modal/perfil";
+import { ContainerLoader, Loader } from "@/styles/modal/perfil";
 
 const Load = () => {
   return (

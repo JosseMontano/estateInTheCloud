@@ -1,4 +1,4 @@
-import { ColorText, ErrorCss, Input, Label } from "../../styles/globals";
+import { ColorText, ErrorCss, Input, Label } from "@/styles/globals";
 
 interface V {
   label: string;

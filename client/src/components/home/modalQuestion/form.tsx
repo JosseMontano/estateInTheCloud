@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ColorBtn, ErrorCss, Input } from "../../../styles/globals";
+import { Button, ColorBtn, ErrorCss, Input } from "@/styles/globals";
 
 interface params {
   handleChange: (

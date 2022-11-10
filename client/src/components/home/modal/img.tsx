@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import { Button } from "../../../styles/modal/perfil";
+import { Button } from "@/styles/modal/perfil";
 const Img = styled.img`
   height: 200px;
   width: 200px;

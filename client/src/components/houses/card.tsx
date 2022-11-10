@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import CardCom from "../../components/home/contentCard";
-import { RealEstate } from "../../interface/realEstate";
+import CardCom from "@/components/home/contentCard";
+import { RealEstate } from "@/interface/realEstate";
 import { Modal } from "../global/modal";
 import { ContentModal } from "../home/contentModal";
 

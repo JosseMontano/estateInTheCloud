@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { UseModal } from "../../hooks/useModal";
+import { UseModal } from "@/hooks/useModal";
 import Links from "./links";
-import { logOut } from "../../services/auth";
+import { logOut } from "@/services/auth";
 
 interface Params {
   nameUser: string;

@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { marginInElements } from "../../../styles/globals";
+import { marginInElements } from "@/styles/globals";
 
 const Container = styled.div`
   display: flex;

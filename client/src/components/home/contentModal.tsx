@@ -1,12 +1,12 @@
-import { RealEstate } from "../../interface/realEstate";
+import { RealEstate } from "@/interface/realEstate";
 import Slider from "react-slick";
-import { getRealEstateOfOnePublication as getRealEstate } from "../../services/realEstate";
-import * as S from "../../styles/modal/perfil";
+import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
+import * as S from "@/styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import Clipboard from "../global/clipBoard";
 import { useNavigate } from "react-router-dom";
-import useLoadData from "../../hooks/useLoadDataParams";
+import useLoadData from "@/hooks/useLoadDataParams";
 
 export const ContentModal = (v: RealEstate) => {
   const navigate = useNavigate();

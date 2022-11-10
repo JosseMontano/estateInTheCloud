@@ -1,19 +1,19 @@
-import { RealEstate } from "../../../interface/realEstate";
+import { RealEstate } from "@/interface/realEstate";
 import {
   deleteRealEstateProfil,
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication,
   updateStateRealEstate,
-} from "../../../services/realEstate";
+} from "@/services/realEstate";
 import { useContext, useState } from "react";
-import { ToastContext } from "../../../context/toast";
-import { Container } from "../../../styles/modal/perfil";
+import { ToastContext } from "@/context/toast";
+import { Container } from "@/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
-import useLoadData from "../../../hooks/useLoadDataParams";
-import Message from "../../../components/global/message";
+import useLoadData from "@/hooks/useLoadDataParams";
+import Message from "@/components/global/message";
 interface Params {
   v: RealEstate;
   showbtn: boolean;

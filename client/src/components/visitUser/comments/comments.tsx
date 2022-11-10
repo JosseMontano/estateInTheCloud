@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Content from "./content";
 import Img from "./img";
-import { Comments as IComments } from "../../../interface/comments";
-import { NameUserContext } from "../../../context/nameUser";
+import { Comments as IComments } from "@/interface/comments";
+import { NameUserContext } from "@/context/nameUser";
 import DeleteComment from "./deleteComment";
 
 const Container = styled.div`

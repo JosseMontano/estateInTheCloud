@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IAQ from "../../interface/answerQuestionInterested";
+import IAQ from "@/interface/answerQuestionInterested";
 
 const ContainerSoon = styled.div`
   background-color: #8f9243c0;

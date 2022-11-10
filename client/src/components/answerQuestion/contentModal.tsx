@@ -6,13 +6,13 @@ import {
   ColorBtn,
   ErrorCss,
   TextArea,
-} from "../../styles/globals";
-import { UseForm } from "../../hooks/useForm";
-import { initialForm, validationsForm } from "../../validations/answer";
-import { addAnswer } from "../../services/answer";
+} from "@/styles/globals";
+import { UseForm } from "@/hooks/useForm";
+import { initialForm, validationsForm } from "@/validations/answer";
+import { addAnswer } from "@/services/answer";
 import Loader from "../global/loading";
 import Message from "../global/message";
-import Question from "../../interface/question";
+import Question from "@/interface/question";
 
 const Container = styled.div``;
 

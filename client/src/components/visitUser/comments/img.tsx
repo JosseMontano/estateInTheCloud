@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getUserById } from "../../../services/user";
+import { getUserById } from "@/services/user";
 const Container = styled.div`
   justify-self: center;
   align-self: center;

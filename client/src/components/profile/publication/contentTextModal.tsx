@@ -1,6 +1,6 @@
-import { RealEstate } from "../../../interface/realEstate";
-import { ContainerContent, Button, H2, P } from "../../../styles/modal/perfil";
-import { InputFile } from "../../../styles/globals";
+import { RealEstate } from "@/interface/realEstate";
+import { ContainerContent, Button, H2, P } from "@/styles/modal/perfil";
+import { InputFile } from "@/styles/globals";
 
 interface params {
   v: RealEstate;
