@@ -18,9 +18,9 @@ const ContentImg = (params: Params) => {
   const [data, setData] = useState<User[]>([]);
   const [exists, setExists] = useState(false);
   const handleGetUser = async () => {
-    const res = await getUser(params.email);
-    if (res) {
-      setData(res);
+    const { json, status } = await getUser(params.email);
+    if (json) {
+      setData(json);
       setExists(true);
     }
   };

@@ -16,8 +16,8 @@ const NameUser = styled.h3`
 const Content = (v: Comments) => {
   const [email, setEmail] = useState("");
   const handleGetUser = async () => {
-    const res = await getUserById(v.commentator);
-    const objRes = Object.assign({}, res[0]);
+    const { json } = await getUserById(v.commentator);
+    const objRes = Object.assign({}, json[0]);
     const auxUrl = objRes.email;
     setEmail(auxUrl);
   };

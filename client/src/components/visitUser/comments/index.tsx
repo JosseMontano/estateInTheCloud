@@ -28,8 +28,8 @@ const Index = ({ email }: params) => {
   const [loading, setLoading] = useState(true);
 
   const handleGetCommentedUser = async () => {
-    const resp = await getUser(email);
-    const obj = Object.assign({}, resp);
+    const { json } = await getUser(email);
+    const obj = Object.assign({}, json);
     await getComments(obj[0].id_usuario);
     setLoading(false);
   };

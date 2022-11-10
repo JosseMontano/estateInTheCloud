@@ -1,15 +1,17 @@
 import FormAnswer from "../interface/answer";
 import { http, headers } from "./http";
+import { index } from "../utilities/getServices";
 
 export const addAnswer = async (form: FormAnswer) => {
+  const { answer, id_question, id_real_estate } = form;
   try {
     const response = await fetch(`${http}answer`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
-        answer: form.answer,
-        id_real_estate: form.id_real_estate,
-        id_question: form.id_question,
+        answer,
+        id_real_estate,
+        id_question,
       }),
     });
     if (response.ok) {
@@ -21,14 +23,9 @@ export const addAnswer = async (form: FormAnswer) => {
 };
 
 export const getAnswerByRealEstate = async (id: number) => {
-  try {
-    const response = await fetch(`${http}answer/${id}`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {}
+  const url = `${http}answer/${id}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const deleteAnswer = async (id: number) => {

@@ -4,13 +4,17 @@ const useLoadData = (services: () => Promise<any>) => {
   const [data, setData] = useState([]);
   const [empty, setEmpty] = useState(true);
   const [loading, setLoading] = useState(true);
+
   const handleGetData = async () => {
     const res = await services();
     if (res?.status === 404) {
       setEmpty(false);
+      setData([]);
       return;
+    }else {
+      setData(res.json);
+      setEmpty(true);
     }
-    setData(res);
     setTimeout(() => {
       setLoading(false);
     }, 1000);

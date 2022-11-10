@@ -1,149 +1,77 @@
 import { RealEstate } from "../interface/realEstate";
 import { http, headers } from "./http";
+import { index } from "../utilities/getServices";
 
 export const getRealEstateAll = async () => {
-  try {
-    const response = await fetch(`${http}estate`, {
-      method: "GET",
-    });
-    return await response.json();
-  } catch (error) {}
+  const url = `${http}estate`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateMostRecent = async () => {
-  try {
-    const response = await fetch(`${http}estateMostRecent`, {
-      method: "GET",
-    });
-    return await response.json();
-  } catch (error) {}
+  const url = `${http}estateMostRecent`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateRecommendedByUser = async () => {
-  try {
-    const response = await fetch(`${http}estateRecommendedByUser`, {
-      method: "GET",
-    });
-    return await response.json();
-  } catch (error) {}
+  const url = `${http}estateRecommendedByUser`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateProfil = async (id: number) => {
-  try {
-    const response = await fetch(`${http}estate/${id}`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estate/${id}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateByEmail = async (id: number) => {
-  try {
-    const response = await fetch(`${http}estate/visit/${id}`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estate/visit/${id}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateByHouse = async () => {
-  try {
-    const response = await fetch(`${http}estateByHouse`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estateByHouse`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateByDepartament = async () => {
-  try {
-    const response = await fetch(`${http}estateByDepartament`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estateByDepartament`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateByStudioDepartament = async () => {
-  try {
-    const response = await fetch(`${http}estateByStudioApartament`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estateByStudioApartament`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateByGarzoniers = async () => {
-  try {
-    const response = await fetch(`${http}estateByGarzonier`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estateByGarzonier`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateOthers = async () => {
-  try {
-    const response = await fetch(`${http}estateOthers`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+  const url = `${http}estateOthers`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
-  try {
-    const response = await fetch(
-      `${http}estateOfOnePublication/${idRealEstate}`,
-      {
-        method: "GET",
-      }
-    );
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {}
+  const url = `${http}estateOfOnePublication/${idRealEstate}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getTypeRealEstate = async () => {
-  try {
-    const response = await fetch(`${http}type_real_estate/`, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return json;
-  } catch (e) {
-    console.log(e);
-  }
+  const url = `${http}type_real_estate`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const saveRealEstate = async (data: FormData) => {

@@ -1,18 +1,13 @@
 import { http, headers } from "./http";
 import Question from "../interface/question";
-export const getQuestions = async (idRealEstate: number) => {
-  try {
-    const response = await fetch(`${http}question/${idRealEstate}`, {
-      method: "GET",
-    });
+import { index } from "../utilities/getServices";
 
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {
-    console.log(error);
-  }
+export const getQuestions = async (idRealEstate: number) => {
+  const url = `${http}question/${idRealEstate}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
+
 export const postQuestion = async (form: Question) => {
   try {
     const response = await fetch(`${http}question`, {

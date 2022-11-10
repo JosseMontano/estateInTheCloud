@@ -17,8 +17,8 @@ interface params {
 const Img = (params: params) => {
   const [photo, setPhoto] = useState("");
   const handleGetUser = async () => {
-    const res = await getUserById(params.commentator);
-    const objRes = Object.assign({}, res[0]);
+    const {json} = await getUserById(params.commentator);
+    const objRes = Object.assign({}, json[0]);
     const auxUrl = objRes.url;
     setPhoto(auxUrl);
   };

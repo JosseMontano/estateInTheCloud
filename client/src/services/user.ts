@@ -1,49 +1,20 @@
 import { http, headers } from "./http";
+import { index } from "../utilities/getServices";
 
 export const getUser = async (email?: string) => {
-  try {
-    const response = await fetch(`${http}getUserPhotoProfile/${email}`, {
-      method: "GET",
-      headers: headers,
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  const url = `${http}getUserPhotoProfile/${email}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getUserByEmail = async (email?: number) => {
-  try {
-    const response = await fetch(`${http}getUserPhotoProfile/${email}`, {
-      method: "GET",
-      headers: headers,
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  const url = `${http}getUserPhotoProfile/${email}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
 
 export const getUserById = async (id?: number) => {
-  try {
-    const response = await fetch(`${http}getUserComplete/${id}`, {
-      method: "GET",
-      headers: headers,
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      return result;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  const url = `${http}getUserComplete/${id}`;
+  const { json, status } = await index(url);
+  return { json, status };
 };
