@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import Content from "./content";
 import Img from "./img";
 import { Comments as IComments } from "@/interface/comments";
-import { NameUserContext } from "@/context/nameUser";
 import DeleteComment from "./deleteComment";
 
 const Container = styled.div`
@@ -21,17 +19,17 @@ const Container = styled.div`
 interface Params {
   v: IComments;
   handleDeleteComment: (id: number) => {};
+  idUser:number
 }
 
-const Comments = ({ v, handleDeleteComment }: Params) => {
-  const { idUser } = useContext(NameUserContext);
+const Comments = ({ v, handleDeleteComment, idUser }: Params) => {
 
   return (
     <Container>
-      <Img commentator={v.commentator} />
+      <Img url={v.url} />
       <Content {...v} />
       {v.commentator === idUser && (
-        <DeleteComment handleDeleteComment={handleDeleteComment} id={v.id} />
+        <DeleteComment handleDeleteComment={handleDeleteComment} id={v.id_comment} />
       )}
     </Container>
   );

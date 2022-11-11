@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
-import { getUser } from "../../../services/user";
-import { CommentsContext } from "../../../context/comments";
 import Message from "../../global/message";
 import Comments from "./comments";
 import Skeleton from "./skeleton";
+import { getCommentsByUser } from "@/services/comment";
+import { NameUserContext } from "@/context/nameUser";
+
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {
@@ -19,18 +20,19 @@ const Title = styled.h2`
 `;
 
 interface params {
-  email: string | undefined;
+  idParam: number;
 }
 
-const Index = ({ email }: params) => {
+const Index = ({ idParam }: params) => {
   const [deleteBool, setDeleteBool] = useState(false);
-  const { comments, getComments } = useContext(CommentsContext);
+  const { idUser } = useContext(NameUserContext);
+
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
   const handleGetCommentedUser = async () => {
-    const { json } = await getUser(email);
-    const obj = Object.assign({}, json);
-    await getComments(obj[0].id_usuario);
+    const resp = await getCommentsByUser(idParam);
+    setData(resp);
     setLoading(false);
   };
 
@@ -48,21 +50,22 @@ const Index = ({ email }: params) => {
   }, []);
 
   return (
-    <div>
+    <>
       <Title>Comentarios</Title>
       <Container>
         {loading
           ? [1, 2, 3, 4, 5].map((_, i) => <Skeleton key={i} />)
-          : comments.map((v, i) => (
+          : data.map((v, i) => (
               <Comments
                 key={i}
                 v={v}
                 handleDeleteComment={handleDeleteComment}
+                idUser={idUser}
               />
             ))}
       </Container>
       {deleteBool && <Message msg="Se borro con exito" />}
-    </div>
+    </>
   );
 };
 

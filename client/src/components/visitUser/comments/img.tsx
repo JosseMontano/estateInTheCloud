@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+
 import styled from "styled-components";
-import { getUserById } from "@/services/user";
 const Container = styled.div`
   justify-self: center;
   align-self: center;
@@ -12,23 +11,13 @@ const ImgSty = styled.img`
   object-fit: cover;
 `;
 interface params {
-  commentator: number;
+  url: string;
 }
-const Img = (params: params) => {
-  const [photo, setPhoto] = useState("");
-  const handleGetUser = async () => {
-    const {json} = await getUserById(params.commentator);
-    const objRes = Object.assign({}, json[0]);
-    const auxUrl = objRes.url;
-    setPhoto(auxUrl);
-  };
-  useEffect(() => {
-    handleGetUser();
-  }, []);
+const Img = ({url}: params) => {
 
   return (
     <Container>
-      <ImgSty src={photo} alt="" />
+      <ImgSty src={url} alt="" />
     </Container>
   );
 };

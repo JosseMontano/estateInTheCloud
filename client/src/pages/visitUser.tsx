@@ -24,10 +24,7 @@ const VisitUser = ({ showNavbar }: Params) => {
   const idParamNumber = Number(idParam);
   const {} = useVerifyUserLogin();
 
-  const { data, loading, handleGetData } = useLoadData(
-    getRealEstateByEmail,
-    idParamNumber
-  );
+  const { data, loading } = useLoadData(getRealEstateByEmail, idParamNumber);
   //get cellphone of user
   let dataObj = {} as RealEstate;
   dataObj = Object.assign({}, data[0]);
@@ -37,11 +34,15 @@ const VisitUser = ({ showNavbar }: Params) => {
     <>
       {showNavbar}
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header email={email} idParam={idParamNumber} cellphonenumber={cellphonenumber} />
+        <Header
+          email={email}
+          idParam={idParamNumber}
+          cellphonenumber={cellphonenumber}
+        />
         {idParamNumber != 0 && (
           <Publication showbtn={false} data={data} loading={loading} />
         )}
-        <Comments email={email} />
+        <Comments idParam={idParamNumber} />
       </Container>
     </>
   );

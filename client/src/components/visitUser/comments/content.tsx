@@ -14,21 +14,9 @@ const NameUser = styled.h3`
   }
 `;
 const Content = (v: Comments) => {
-  const [email, setEmail] = useState("");
-  const handleGetUser = async () => {
-    const { json } = await getUserById(v.commentator);
-    const objRes = Object.assign({}, json[0]);
-    const auxUrl = objRes.email;
-    setEmail(auxUrl);
-  };
-
-  useEffect(() => {
-    handleGetUser();
-  }, []);
-
   return (
     <Container>
-      <NameUser>{email}</NameUser>
+      <NameUser>{v.email}</NameUser>
       <p>{v.description}</p>
       <ShowStarts sizeStart={v.amount_start} />
     </Container>
