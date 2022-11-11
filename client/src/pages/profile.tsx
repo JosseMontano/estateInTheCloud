@@ -40,7 +40,7 @@ const Profile = ({ showNavbar }: Params) => {
       {showNavbar}
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        {email && <Header email={email} toggle={toggle} />}
+        {email && <Header email={email} idUser={idUser} toggle={toggle} />}
         {idUser != 0 && <Publication data={data} loading={loading} showbtn={true} />}
       </Container>
 

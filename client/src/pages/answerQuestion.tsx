@@ -10,7 +10,7 @@ import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 const Container = styled.div`
   width: calc(100%-15px);
-  height: 100vh;
+  min-height: 100%;
 `;
 
 interface Params {

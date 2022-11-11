@@ -5,8 +5,9 @@ import DataEmpty from "../components/global/dataEmpty";
 import CardSoon from "../components/answerQuestionInterested";
 import useLoadData from "../hooks/useLoadDataParams";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   place-content: center;
 `;

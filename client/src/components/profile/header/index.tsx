@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
+import { User } from "@/interface/user";
+import { getUserById } from "@/services/user";
+import UseLoadData from "@/hooks/useLoadDataParams";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -23,12 +27,21 @@ const ContainerContent = styled.div`
 
 interface Params {
   email?: string;
+  idUser: number;
   toggle: () => void;
 }
-const Header = ({ email, toggle }: Params) => {
+const Header = ({ email, idUser, toggle }: Params) => {
+  const { data } = UseLoadData(getUserById, idUser);
+  const [exists, setExists] = useState(false);
+  useEffect(() => {
+    if (data) {
+      setExists(true);
+    }
+  }, []);
+
   return (
     <Container>
-      <ContentImg email={email} />
+      <ContentImg data={data} exists={exists} />
       <ContainerContent>
         <ContentBtn email={email} toggle={toggle} />
         <ContentMid />
