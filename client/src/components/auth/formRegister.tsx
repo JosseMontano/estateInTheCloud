@@ -8,6 +8,7 @@ import Message from "../global/message";
 import { initialForm, validationsForm } from "@/validations/register";
 import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
+import LoadingAndResponse from "../dynamic/loadingAndResponse";
 
 const Container = styled.form``;
 
@@ -38,34 +39,35 @@ const Form = () => {
       name: "email",
       value: form.email,
       errors: errors.email,
-      placeHolder: "user@gmail.com"
+      placeHolder: "user@gmail.com",
     },
     {
       label: "Nombre de usuario",
       name: "username",
       value: form.username,
       errors: errors.username,
-      placeHolder: "user54"
-    },{
+      placeHolder: "user54",
+    },
+    {
       label: "Celular",
       name: "numberPhone",
       value: form.numberPhone,
       errors: errors.numberPhone,
-      placeHolder: "59165722183"
+      placeHolder: "59165722183",
     },
     {
       label: "Contraseña",
       name: "password",
       value: form.password,
       errors: errors.password,
-      placeHolder: "Contraseña"
+      placeHolder: "Contraseña",
     },
     {
       label: "clave Secreta",
       name: "secrect_password",
       value: form.secrect_password,
       errors: errors.secrect_password,
-      placeHolder: "clave Secreta"
+      placeHolder: "clave Secreta",
     },
   ];
 
@@ -79,8 +81,7 @@ const Form = () => {
         <Button key={i} {...v} />
       ))}
 
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
+      <LoadingAndResponse loading={loading} msg={msg} response={response} />
     </Container>
   );
 };

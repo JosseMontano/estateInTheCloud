@@ -4,11 +4,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { UseForm } from "../../hooks/useForm";
-import Loader from "../global/loading";
-import Message from "../global/message";
 import { initialForm, validationsForm } from "../../validations/login";
 import { signIn } from "../../services/auth";
 import ContentFormLogin from "./contentFormLogin";
+import LoadingAndResponse from "../dynamic/loadingAndResponse";
 const Container = styled.form``;
 
 const Form = () => {
@@ -65,13 +64,10 @@ const Form = () => {
       {dataForm.map((v, i) => (
         <ContentFormLogin key={i} v={v} handleChange={handleChange} />
       ))}
-
       {dataBtn.map((v, i) => (
         <Button key={i} {...v} />
       ))}
-
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
+      <LoadingAndResponse loading={loading} msg={msg} response={response} />
     </Container>
   );
 };

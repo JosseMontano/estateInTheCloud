@@ -1,17 +1,12 @@
 import styled from "styled-components";
-
 import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { UseForm } from "@/hooks/useForm";
-import Loader from "../global/loading";
-import Message from "../global/message";
-import {
-  initialForm,
-  validationsForm,
-} from "../../validations/recuperateAccount";
+import { initialForm, validationsForm } from "@/validations/recuperateAccount";
 import { recuperateAccount } from "../../services/auth";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
+import LoadingAndResponse from "../dynamic/loadingAndResponse";
 
 const Container = styled.form``;
 
@@ -68,8 +63,7 @@ const Form = () => {
       {dataBtn.map((v, i) => (
         <Button key={i} {...v} />
       ))}
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
+      <LoadingAndResponse loading={loading} msg={msg} response={response} />
     </Container>
   );
 };
