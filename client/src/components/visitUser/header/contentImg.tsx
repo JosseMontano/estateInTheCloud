@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import Photo from "@/assets/profile/photoProfile.jpg";
 import { User } from "@/interface/user";
-import { getUser } from "@/services/user";
 import {
   Container,
   Img,
@@ -11,25 +9,11 @@ import {
 import ImgDataBase from "./imgDataBase";
 
 interface Params {
-  email?: string;
+  data: User[];
+  exists: boolean;
 }
 
-const ContentImg = (params: Params) => {
-  const [data, setData] = useState<User[]>([]);
-  const [exists, setExists] = useState(false);
-
-  const handleGetUser = async () => {
-    const { json, status } = await getUser(params.email);
-    if (json) {
-      setData(json);
-      setExists(true);
-    }
-  };
-
-  useEffect(() => {
-    handleGetUser();
-  }, []);
-
+const ContentImg = ({ data, exists }: Params) => {
   return (
     <Container>
       {exists ? <ImgDataBase data={data} /> : <Img src={Photo} alt="" />}

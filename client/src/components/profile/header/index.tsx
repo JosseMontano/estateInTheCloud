@@ -4,9 +4,9 @@ import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
-import { User } from "@/interface/user";
 import { getUserById } from "@/services/user";
 import UseLoadData from "@/hooks/useLoadDataParams";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;

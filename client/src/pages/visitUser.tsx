@@ -37,7 +37,7 @@ const VisitUser = ({ showNavbar }: Params) => {
     <>
       {showNavbar}
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header email={email} cellphonenumber={cellphonenumber} />
+        <Header email={email} idParam={idParamNumber} cellphonenumber={cellphonenumber} />
         {idParamNumber != 0 && (
           <Publication showbtn={false} data={data} loading={loading} />
         )}
