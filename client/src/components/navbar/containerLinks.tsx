@@ -41,34 +41,10 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
         navigate(`/profile/${emailState}`);
       },
     },
-
     {
-      text: "Casas",
+      text: "Filtrar",
       click: () => {
-        navigate(`/house`);
-      },
-    },
-    {
-      text: "Monoambientes",
-      click: () => {
-        navigate(`/studioApartaments`);
-      },
-    },
-    {
-      text: "Departamentos",
-      click: () => {
-        navigate(`/departaments`);
-      },
-    },
-    {
-      text: "Garzoniers",
-      click: () => {
-        navigate(`/garzoniers`);
-      },
-    },{
-      text: "Otros",
-      click: () => {
-        navigate(`/otherRealEstate`);
+        navigate(`/realEstateFilter`);
       },
     },
     {

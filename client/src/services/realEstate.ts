@@ -33,35 +33,6 @@ export const getRealEstateByEmail = async (id: number) => {
   return { json, status };
 };
 
-export const getRealEstateByHouse = async () => {
-  const url = `${http}estateByHouse`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
-
-export const getRealEstateByDepartament = async () => {
-  const url = `${http}estateByDepartament`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
-
-export const getRealEstateByStudioDepartament = async () => {
-  const url = `${http}estateByStudioApartament`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
-
-export const getRealEstateByGarzoniers = async () => {
-  const url = `${http}estateByGarzonier`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
-
-export const getRealEstateOthers = async () => {
-  const url = `${http}estateOthers`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
 
 export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
   const url = `${http}estateOfOnePublication/${idRealEstate}`;
@@ -71,6 +42,12 @@ export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
 
 export const getTypeRealEstate = async () => {
   const url = `${http}type_real_estate`;
+  const { json, status } = await index(url);
+  return { json, status };
+};
+
+export const getRealEstateByType = async (type: string) => {
+  const url = `${http}estateByType/${type}`;
   const { json, status } = await index(url);
   return { json, status };
 };

@@ -2,17 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
-import Houses from "./pages/houses";
+import RealEstateFilter from "./pages/typeRealEstate";
 import Profile from "./pages/profile";
 import RecuperateAccount from "./pages/recuperateAccount";
 import VisitUser from "./pages/visitUser";
 import AnswerQuestion from "./pages/answerQuestion";
-import Departaments from "./pages/departaments";
 import AQInterested from "./pages/answerQuestionInterested";
 import Navbar from "./components/navbar";
-import StudioApartament from "./pages/studioApartament";
-import Garzoniers from "./pages/garzoniers";
-import OthersRealEstate from "./pages/othersRealEstate";
 const RouteComponent = () => {
   return (
     <Routes>
@@ -22,21 +18,8 @@ const RouteComponent = () => {
 
       {/* ========== PAGES THAT GET THE NAVBAR ========== */}
       <Route path="/home" element={<Home navbar={<Navbar />} />} />
-      <Route path="/house" element={<Houses navbar={<Navbar />} />} />
-      <Route
-        path="/departaments"
-        element={<Departaments navbar={<Navbar />} />}
-      />
-      <Route
-        path="/studioApartaments"
-        element={<StudioApartament navbar={<Navbar />} />}
-      />
-      <Route path="/garzoniers" element={<Garzoniers navbar={<Navbar />} />} />
-      <Route
-        path="/otherRealEstate"
-        element={<OthersRealEstate navbar={<Navbar />} />}
-      />
-
+      <Route path="/realEstateFilter" element={<RealEstateFilter navbar={<Navbar />} />} />
+     
       <Route
         path="/profile/:email"
         element={<Profile showNavbar={<Navbar />} />}
