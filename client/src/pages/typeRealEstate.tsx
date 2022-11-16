@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getRealEstateByType } from "@/services/realEstate";
 import ContainerBtn from "@/components/typeRealEstate/containerBtn";
 import ContainerCard from "@/components/typeRealEstate/containerCard";
+import { useNavbar } from "@/context/navbarContext";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -16,11 +17,10 @@ export const Container = styled.div`
   background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
 `;
 
-interface Params {
-  navbar: JSX.Element;
-}
+interface Params {}
 
-const TypeRealEstate = ({ navbar }: Params) => {
+const TypeRealEstate = ({}: Params) => {
+  const { showNavbar } = useNavbar();
   const [data, setData] = useState<RealEstate[]>([]);
   const { isShown, toggle } = UseModal();
   const { filter, getValueSearch } = useSearch();
@@ -49,7 +49,7 @@ const TypeRealEstate = ({ navbar }: Params) => {
 
   return (
     <Container>
-      {navbar}
+      {showNavbar()}
       <Search getValueSearch={getValueSearch} />
       <ContainerBtn changeData={changeData} />
       <ContainerCard

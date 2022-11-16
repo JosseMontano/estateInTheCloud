@@ -4,12 +4,15 @@ import App from "./App";
 import ToastProvider from "./context/toast/toast";
 import LoadProvider from "./context/nameUser";
 import { HomeContextProvider } from "./context/home/homeContext";
+import { NavbarContextProvider } from "./context/navbarContext";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ToastProvider>
       <LoadProvider>
         <HomeContextProvider>
-          <App />
+          <NavbarContextProvider>
+            <App />
+          </NavbarContextProvider>
         </HomeContextProvider>
       </LoadProvider>
     </ToastProvider>

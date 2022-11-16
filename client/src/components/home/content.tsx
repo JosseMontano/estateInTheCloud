@@ -2,11 +2,13 @@ import Slider from "react-slick";
 import Card from "./card";
 import { RealEstate } from "@/interface/realEstate";
 import Title from "./title";
+
 interface Params {
   title: string;
   data: RealEstate[];
+  visitUser: (idUser: number, email: string) => void;
 }
-const Index = (v: Params) => {
+const Index = ({ data, title, visitUser }: Params) => {
   //settings that use the slider
   const settings = {
     dots: true,
@@ -42,12 +44,13 @@ const Index = (v: Params) => {
       },
     ],
   };
+
   return (
     <>
-      <Title title={v.title} />
+      <Title title={title} />
       <Slider {...settings} className="slick">
-        {v.data.map((va, i) => (
-          <Card key={i} {...va} />
+        {data.map((va, i) => (
+          <Card key={i} v={va} visitUser={visitUser} />
         ))}
       </Slider>
     </>

@@ -11,17 +11,17 @@ import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/answer";
 import { addAnswer } from "@/services/answer";
+import { useNavbar } from "@/context/navbarContext";
 
 const Container = styled.div`
   width: calc(100%-15px);
   min-height: 100vh;
 `;
 
-interface Params {
-  showNavbar: JSX.Element;
-}
+interface Params {}
 
-const AnswerQuestion = ({ showNavbar }: Params) => {
+const AnswerQuestion = ({}: Params) => {
+  const { showNavbar } = useNavbar();
   const { id } = useParams();
   const IdNumber = parseInt(id!);
 
@@ -44,7 +44,7 @@ const AnswerQuestion = ({ showNavbar }: Params) => {
 
   return (
     <Container>
-      {showNavbar}
+      {showNavbar()}
       <Card>
         {loading ? (
           <p>Cargando</p>

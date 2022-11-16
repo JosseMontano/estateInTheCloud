@@ -3,7 +3,6 @@ import { RealEstate } from "@/interface/realEstate";
 import { Modal } from "../global/modal";
 import { UseModal } from "@/hooks/useModal";
 import { ContentModal } from "./contentModal";
-import { useState } from "react";
 import ContentCard from "./contentCard";
 import { useNavigate } from "react-router-dom";
 
@@ -17,10 +16,14 @@ const Container = styled.div`
   }
 `;
 
-const Index = (v: RealEstate) => {
+interface ParamsType{
+  v:RealEstate;
+  visitUser: (idUser: number, email: string) => void;
+}
+
+const Index = ({v, visitUser}:ParamsType) => {
   const { isShown, toggle } = UseModal();
-  const navigate = useNavigate();
-  const visitUser = () => navigate(`/visitUser/${v.iduser}/${v.email}`);
+
   return (
     <Container>
       <Modal
@@ -28,7 +31,6 @@ const Index = (v: RealEstate) => {
         hide={toggle}
         modalContent={<ContentModal {...v} />}
       />
-
       <ContentCard toggle={toggle} v={v} visitUser={visitUser} />
     </Container>
   );

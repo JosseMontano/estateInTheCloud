@@ -10,6 +10,7 @@ import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
 import useLoadDataParams from "../hooks/useLoadDataParams";
+import { useNavbar } from "@/context/navbarContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
@@ -17,11 +18,10 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   color: ${(props) => props.ColorText};
 `;
 
-interface Params {
-  showNavbar: JSX.Element;
-}
+interface Params {}
 
-const Profile = ({ showNavbar }: Params) => {
+const Profile = ({}: Params) => {
+  const { showNavbar } = useNavbar();
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
   const { data, loading, handleGetData } = useLoadDataParams(
@@ -37,11 +37,13 @@ const Profile = ({ showNavbar }: Params) => {
 
   return (
     <>
-      {showNavbar}
+      {showNavbar()}
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         {email && <Header email={email} idUser={idUser} toggle={toggle} />}
-        {idUser != 0 && <Publication data={data} loading={loading} showbtn={true} />}
+        {idUser != 0 && (
+          <Publication data={data} loading={loading} showbtn={true} />
+        )}
       </Container>
 
       <Modal

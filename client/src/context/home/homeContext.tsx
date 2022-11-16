@@ -13,14 +13,14 @@ interface Children {
 interface homeContext {
   homeData: RealEstate[];
   homeDataMostRecent: RealEstate[];
-  homeDataRecommendedByUser: RealEstate[];
+  DataRecommendedByUser: RealEstate[];
   loading: boolean;
 }
 
 const contextDefaultValue: homeContext = {
   homeData: [],
   homeDataMostRecent: [],
-  homeDataRecommendedByUser: [],
+  DataRecommendedByUser: [],
   loading: true,
 };
 
@@ -39,31 +39,30 @@ export const useHome = () => {
 export const HomeContextProvider = ({ children }: Children) => {
   const [homeData, setData] = useState<RealEstate[]>([]);
   const [homeDataMostRecent, setDataMostRecent] = useState<RealEstate[]>([]);
-  const [homeDataRecommendedByUser, setDataRecommendedByUser] = useState<
-    RealEstate[]
-  >([]);
+  const [DataRecommendedByUser, setRecommendedByUser] = useState<RealEstate[]>(
+    []
+  );
   const [loading, setLoading] = useState(true);
 
   const handleGetRealEstateMostRecent = async () => {
     const { json, status } = await getRealEstateMostRecent();
-    if(json){
+    if (json) {
       setDataMostRecent(json);
     }
   };
 
   const handleGetRealEstate = async () => {
     const { json, status } = await getRealEstateAll();
-    if(json){
-      setDataMostRecent(json);
+    if (json) {
+      setData(json);
     }
   };
 
   const handleGetRealEstateRecommendedByUser = async () => {
-    const {json, status} = await getRealEstateRecommendedByUser();
-    if(json){
-      setDataMostRecent(json);
+    const { json, status } = await getRealEstateRecommendedByUser();
+    if (json) {
+      setRecommendedByUser(json);
     }
-
     setLoading(false);
   };
 
@@ -78,7 +77,7 @@ export const HomeContextProvider = ({ children }: Children) => {
       value={{
         homeData,
         homeDataMostRecent,
-        homeDataRecommendedByUser,
+        DataRecommendedByUser,
         loading,
       }}
     >
