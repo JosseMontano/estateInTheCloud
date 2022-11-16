@@ -40,7 +40,7 @@ export const ContentModal = ({ v, showbtn }: Params) => {
       v.idphoto,
       v.idrealestate
     );
-    if (res?.ok) {
+    if (res.action) {
       handleToast("El proceso fue exitoso");
     } else {
       handleToast("Ha ocurrido un error");

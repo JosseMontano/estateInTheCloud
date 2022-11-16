@@ -7,47 +7,38 @@ import {
   ErrorCss,
   TextArea,
 } from "@/styles/globals";
-import { UseForm } from "@/hooks/useForm";
-import { initialForm, validationsForm } from "@/validations/answer";
-import { addAnswer } from "@/services/answer";
 import Loader from "../global/loading";
 import Message from "../global/message";
-import Question from "@/interface/question";
 
 const Container = styled.div``;
 
 interface Params {
-  id: number;
-  idQuestion: number;
-  data: Question[];
+  form: any;
+  handleChange: (e: any) => void;
+  errors: any;
+  sendData: (e: any) => void;
+  loading: boolean;
+  msg: string;
+  response: boolean;
 }
 
-const ContentModal = ({ id, idQuestion, data }: Params) => {
-  const { errors, form, handleChange, handleSubmit, loading, msg, response } =
-    UseForm(initialForm, validationsForm, addAnswer);
-
-  const sendData = (e: any) => {
-    form.id_real_estate = id;
-    form.id_question = idQuestion;
-    handleSubmit(e);
-  };
-
+const ContentModal = (params: Params) => {
   return (
     <Container>
       <Title colorText={ColorText}>Responder Pregunta</Title>
       <TextArea
         name={"answer"}
-        value={form.answer}
-        onChange={(e) => handleChange(e)}
+        value={params.form.answer}
+        onChange={(e) => params.handleChange(e)}
         cols={50}
         rows={5}
       />
-      {errors.answer && <ErrorCss>{errors.answer}</ErrorCss>}
-      <Button onClick={(e) => sendData(e)} ColorBtn={ColorBtn}>
+      {params.errors.answer && <ErrorCss>{params.errors.answer}</ErrorCss>}
+      <Button onClick={(e) => params.sendData(e)} ColorBtn={ColorBtn}>
         Guardar
       </Button>
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
+      {params.loading && <Loader />}
+      {params.response && <Message msg={params.msg} />}
     </Container>
   );
 };

@@ -8,9 +8,13 @@ import CardComponent from "../components/answerQuestion";
 import useLoadData from "../hooks/useLoadDataParams";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+import { UseForm } from "@/hooks/useForm";
+import { initialForm, validationsForm } from "@/validations/answer";
+import { addAnswer } from "@/services/answer";
+
 const Container = styled.div`
   width: calc(100%-15px);
-  min-height: 100%;
+  min-height: 100vh;
 `;
 
 interface Params {
@@ -29,6 +33,13 @@ const AnswerQuestion = ({ showNavbar }: Params) => {
   const handleClick = (id: number) => {
     toggle();
     setIdQuestion(id);
+  };
+
+  const valForm = UseForm(initialForm, validationsForm, addAnswer);
+  const sendData = (e: any) => {
+    valForm.form.id_real_estate = IdNumber;
+    valForm.form.id_question = idQuestion;
+    valForm.handleSubmit(e);
   };
 
   return (
@@ -50,6 +61,13 @@ const AnswerQuestion = ({ showNavbar }: Params) => {
         id={IdNumber}
         idQuestion={idQuestion}
         data={data}
+        form={valForm.form}
+        handleChange={valForm.handleChange}
+        errors={valForm.errors}
+        loadingForm={valForm.loading}
+        msg={valForm.msg}
+        response={valForm.response}
+        sendData={sendData}
       />
     </Container>
   );

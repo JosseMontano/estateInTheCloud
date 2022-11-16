@@ -1,22 +1,20 @@
-import Photo from "@/assets/profile/photoProfile.jpg";
 import { User } from "@/interface/user";
 import {
   Container,
-  Img,
   ChangePhoto,
   InputFile,
 } from "@/styles/profile/header/contentImg";
 import ImgDataBase from "./imgDataBase";
 
 interface Params {
-  exists : boolean;
-  data:User[];
+  exists: boolean;
+  data: User[];
 }
 
-const ContentImg = ({data, exists}: Params) => {
+const ContentImg = ({ data, exists }: Params) => {
   return (
     <Container>
-      {exists ? <ImgDataBase data={data} /> : <Img src={Photo} alt="" />}
+      {exists && <ImgDataBase data={data} />}
       {/* When the user it's close of img  */}
       <ChangePhoto className="changePhoto">
         <InputFile type="file" />

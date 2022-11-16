@@ -1,4 +1,3 @@
-import { RealEstate } from "../interface/realEstate";
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
