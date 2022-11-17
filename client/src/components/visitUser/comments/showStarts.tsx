@@ -28,7 +28,7 @@ const ShowStarts = ({ sizeStart }: Params) => {
   return (
     <Container>
       {data.map((_, i) => (
-        <div className="star-widget">
+        <div className="star-widget" key={i}>
           <label>
             <StartIcon />
           </label>

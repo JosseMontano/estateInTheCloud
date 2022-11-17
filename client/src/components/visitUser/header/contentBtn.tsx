@@ -1,11 +1,6 @@
-import styled from "styled-components";
-import { Modal } from "../../global/modal";
-import { UseModal } from "@/hooks/useModal";
 import { marginInElements } from "@/styles/globals";
-import ContentModal from "./publicCommenator/contentModal";
-import { NameUserContext } from "@/context/nameUser";
-import { useContext } from "react";
 import handleSendWhatsapp from "@/utilities/sendWhatsapp";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -37,11 +32,9 @@ const Btn = styled.button<{ marginInElements: string }>`
 interface Params {
   email?: string;
   cellphonenumber: string;
+  toggle: () => void;
 }
-const ContentBtn = ({ email, cellphonenumber }: Params) => {
-  const { isShown, toggle } = UseModal();
-  const { idUser } = useContext(NameUserContext);
-
+const ContentBtn = ({ email, cellphonenumber, toggle }: Params) => {
   let data = [
     {
       element: SPAN,
@@ -76,14 +69,6 @@ const ContentBtn = ({ email, cellphonenumber }: Params) => {
           {v.text}
         </v.element>
       ))}
-
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        modalContent={
-          <ContentModal personCommented={email} commentator={idUser} />
-        }
-      />
     </Container>
   );
 };

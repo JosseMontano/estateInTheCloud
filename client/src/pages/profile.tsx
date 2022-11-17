@@ -26,6 +26,7 @@ const Profile = ({}: Params) => {
   const { idUser, email } = useContext(NameUserContext);
   const { data, loading, handleGetData } = useLoadDataParams(services, idUser);
   const { isShown, toggle } = UseModal();
+  
   useEffect(() => {
     if (idUser != 0) {
       handleGetData();

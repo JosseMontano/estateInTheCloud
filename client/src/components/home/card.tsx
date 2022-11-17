@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import { RealEstate } from "@/interface/realEstate";
-import { Modal } from "../global/modal";
 import { UseModal } from "@/hooks/useModal";
-import { ContentModal } from "./contentModal";
+import { RealEstate } from "@/interface/realEstate";
+import styled from "styled-components";
+import { Modal } from "../global/modal";
 import ContentCard from "./contentCard";
-import { useNavigate } from "react-router-dom";
+import { ContentModal } from "./contentModal";
 
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

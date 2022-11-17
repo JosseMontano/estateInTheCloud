@@ -22,11 +22,15 @@ interface Params {}
 
 const AnswerQuestion = ({}: Params) => {
   const { showNavbar } = useNavbar();
+  
+  //parse id to Number
   const { id } = useParams();
   const IdNumber = parseInt(id!);
-
+  //get data
   const { data, loading } = useLoadData(getQuestions, IdNumber);
+  //verify user
   const {} = useVerifyUserLogin();
+
   const { isShown, toggle } = UseModal();
   const [idQuestion, setIdQuestion] = useState(0);
 
@@ -36,6 +40,7 @@ const AnswerQuestion = ({}: Params) => {
   };
 
   const valForm = UseForm(initialForm, validationsForm, addAnswer);
+  
   const sendData = (e: any) => {
     valForm.form.id_real_estate = IdNumber;
     valForm.form.id_question = idQuestion;

@@ -1,70 +1,52 @@
-import { useContext, useEffect, useState } from "react";
-import { UseForm } from "@/hooks/useForm";
 import { Button, ColorText, ErrorCss, TextArea, Title } from "@/styles/globals";
-import { initialForm, validationsForm } from "@/validations/comments";
+import { useEffect } from "react";
 import Loader from "../../../global/loading";
 import Message from "../../../global/message";
-import { getUser } from "@/services/user";
-import { CommentsContext } from "@/context/comments";
-import { postComment } from "@/services/comment";
 import Starts from "./starts";
 
+interface UseFormType {
+  form: any;
+  errors: any;
+  loading: boolean;
+  response: boolean;
+  msg: string;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 interface params {
-  personCommented: string | undefined;
-  commentator: number;
+  useForm: UseFormType;
+  getStart: (val: number) => void;
+  SenData: (e: any) => void;
+  handleGetPersonCommented: () => void;
 }
 
-const ContentModal = ({ personCommented, commentator }: params) => {
-  const { getComments } = useContext(CommentsContext);
-  const [idUser, setidUser] = useState(0);
-  const [amountStart, setAmountStart] = useState(1);
-  const { form, errors, loading, response, handleChange, handleSubmit, msg } =
-    UseForm(initialForm, validationsForm, postComment, idUser, getComments);
-
-  const [personCommentedId, setPersonCommentedId] = useState(0);
-  const handleGetPersonCommented = async () => {
-    const { json } = await getUser(personCommented);
-    if (json) {
-      const { id_usuario } = Object.assign({}, json[0]);
-      const auxId = id_usuario;
-      setidUser(auxId);
-      setPersonCommentedId(auxId);
-    }
-  };
-
+const ContentModal = (params: params) => {
   useEffect(() => {
-    handleGetPersonCommented();
+    params.handleGetPersonCommented();
   }, []);
-
-  const SenData = (e: any) => {
-    form.commentator = commentator;
-    form.person_commented = personCommentedId;
-    form.amount_start = amountStart;
-    handleSubmit(e);
-  };
-
-  const getStart = (val: number) => {
-    setAmountStart(val);
-  };
 
   return (
     <div>
       <Title colorText={ColorText}>Agregar un comentario</Title>
       <TextArea
         name={"description"}
-        onChange={handleChange}
-        value={form.description}
+        onChange={params.useForm.handleChange}
+        value={params.useForm.form.description}
         cols={50}
       />
-      {errors.description && <ErrorCss>{errors.description}</ErrorCss>}
+      {params.useForm.errors.description && (
+        <ErrorCss>{params.useForm.errors.description}</ErrorCss>
+      )}
 
-      <Starts getStart={getStart} />
+      <Starts getStart={params.getStart} />
 
-      <Button ColorBtn={"#02ffcc1f"} onClick={(e) => SenData(e)}>
+      <Button ColorBtn={"#02ffcc1f"} onClick={(e) => params.SenData(e)}>
         Guardar
       </Button>
-      {loading && <Loader />}
-      {response && <Message msg={msg} />}
+      {params.useForm.loading && <Loader />}
+      {params.useForm.response && <Message msg={params.useForm.msg} />}
     </div>
   );
 };

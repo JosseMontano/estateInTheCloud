@@ -39,52 +39,24 @@ const Starts = ({ getStart }: Params) => {
     setPuntuation(num);
     getStart(num);
   };
+
+  function showStar(v: number, i: number) {
+    return (
+      <label
+        key={i}
+        onMouseEnter={() => handleHover(v)}
+        onMouseLeave={() => handleHover(0)}
+        onClick={() => handleClick(v)}
+      >
+        <StartIcon />
+      </label>
+    );
+  }
+
   return (
     <Container puntuation={puntuation} hover={hover}>
       <div className="star-widget">
-        <label
-          onMouseEnter={() => handleHover(1)}
-          onMouseLeave={() => handleHover(0)}
-          onClick={() => handleClick(1)}
-        >
-          <StartIcon />
-        </label>
-
-        <label
-          onMouseEnter={() => handleHover(2)}
-          onMouseLeave={() => handleHover(0)}
-          className="fas fa-star"
-          onClick={() => handleClick(2)}
-        >
-          <StartIcon />
-        </label>
-
-        <label
-          onMouseEnter={() => handleHover(3)}
-          onMouseLeave={() => handleHover(0)}
-          className="fas fa-star"
-          onClick={() => handleClick(3)}
-        >
-          <StartIcon />
-        </label>
-
-        <label
-          onMouseEnter={() => handleHover(4)}
-          onMouseLeave={() => handleHover(0)}
-          className="fas fa-star"
-          onClick={() => handleClick(4)}
-        >
-          <StartIcon />
-        </label>
-
-        <label
-          onMouseEnter={() => handleHover(5)}
-          onMouseLeave={() => handleHover(0)}
-          className="fas fa-star"
-          onClick={() => handleClick(5)}
-        >
-          <StartIcon />
-        </label>
+        {[1, 2, 3, 4, 5].map((v, i) => showStar(v, i))}
       </div>
     </Container>
   );
