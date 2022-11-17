@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import Message from "../../global/message";
-import Comments from "./comments";
-import Skeleton from "./skeleton";
 import { getCommentsByUser } from "@/services/comment";
 import { NameUserContext } from "@/context/nameUser";
+import LoadSkeleton from "./loadSkeleton";
+import LoadComments from "./loadComments";
 
 const Container = styled.div`
   margin: 0 10%;
@@ -36,7 +36,7 @@ const Index = ({ idParam }: params) => {
     setLoading(false);
   };
 
-  const handleDeleteComment = async (id: number) => {
+  const handleDelete = async (id: number) => {
     await deleteComment(id);
     handleGetCommentedUser();
     setDeleteBool(true);
@@ -49,21 +49,16 @@ const Index = ({ idParam }: params) => {
     handleGetCommentedUser();
   }, []);
 
+  const showComments = () => {
+    return (
+      <LoadComments data={data} handleDelete={handleDelete} idUser={idUser} />
+    );
+  };
+
   return (
     <>
       <Title>Comentarios</Title>
-      <Container>
-        {loading
-          ? [1, 2, 3, 4, 5].map((_, i) => <Skeleton key={i} />)
-          : data.map((v, i) => (
-              <Comments
-                key={i}
-                v={v}
-                handleDeleteComment={handleDeleteComment}
-                idUser={idUser}
-              />
-            ))}
-      </Container>
+      <Container>{loading ? <LoadSkeleton /> : showComments()}</Container>
       {deleteBool && <Message msg="Se borro con exito" />}
     </>
   );

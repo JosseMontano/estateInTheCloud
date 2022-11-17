@@ -30,6 +30,10 @@ const VisitUser = ({}: Params) => {
   dataObj = Object.assign({}, data[0]);
   const { cellphonenumber } = dataObj;
 
+  const showPublication = () => {
+    return <Publication showbtn={false} data={data} loading={loading} />;
+  };
+
   return (
     <>
       {showNavbar()}
@@ -39,9 +43,7 @@ const VisitUser = ({}: Params) => {
           idParam={idParamNumber}
           cellphonenumber={cellphonenumber}
         />
-        {idParamNumber != 0 && (
-          <Publication showbtn={false} data={data} loading={loading} />
-        )}
+        {idParamNumber != 0 && showPublication()}
         <Comments idParam={idParamNumber} />
       </Container>
     </>

@@ -3,7 +3,7 @@ import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Publication from "../components/profile/publication";
 import { useContext, useEffect } from "react";
-import { getRealEstateProfil } from "../services/realEstate";
+import { getRealEstateProfil as services } from "../services/realEstate";
 import { NameUserContext } from "../context/nameUser";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
@@ -13,7 +13,7 @@ import useLoadDataParams from "../hooks/useLoadDataParams";
 import { useNavbar } from "@/context/navbarContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
-  height: 100%;
+  min-height: 100vh;
   margin: ${(props) => props.marginGlobal};
   color: ${(props) => props.ColorText};
 `;
@@ -24,10 +24,7 @@ const Profile = ({}: Params) => {
   const { showNavbar } = useNavbar();
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
-  const { data, loading, handleGetData } = useLoadDataParams(
-    getRealEstateProfil,
-    idUser
-  );
+  const { data, loading, handleGetData } = useLoadDataParams(services, idUser);
   const { isShown, toggle } = UseModal();
   useEffect(() => {
     if (idUser != 0) {
@@ -35,15 +32,17 @@ const Profile = ({}: Params) => {
     }
   }, [idUser]);
 
+  const showPublication = () => {
+    return <Publication data={data} loading={loading} showbtn={true} />;
+  };
+
   return (
     <>
       {showNavbar()}
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         {email && <Header email={email} idUser={idUser} toggle={toggle} />}
-        {idUser != 0 && (
-          <Publication data={data} loading={loading} showbtn={true} />
-        )}
+        {idUser != 0 && showPublication()}
       </Container>
 
       <Modal

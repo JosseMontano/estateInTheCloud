@@ -42,19 +42,16 @@ const AnswerQuestion = ({}: Params) => {
     valForm.handleSubmit(e);
   };
 
+  const showCardComponent = () => {
+    return data.map((v, i) => (
+      <CardComponent key={i} v={v} handleClick={handleClick} />
+    ));
+  };
+
   return (
     <Container>
       {showNavbar()}
-      <Card>
-        {loading ? (
-          <p>Cargando</p>
-        ) : (
-          data.map((v, i) => (
-            <CardComponent key={i} v={v} handleClick={handleClick} />
-          ))
-        )}
-      </Card>
-
+      <Card>{loading ? <p>Cargando</p> : showCardComponent()}</Card>
       <ModalCom
         toggle={toggle}
         isShown={isShown}

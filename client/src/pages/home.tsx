@@ -42,14 +42,14 @@ const Home = ({}: Params) => {
     },
   ];
 
+  const showDataComplete = () => {
+    return <Content dataComplete={data} visitUser={visitUser} />;
+  };
+
   return (
     <Container>
       {showNavbar()}
-      {!dataContext.loading ? (
-        <Content dataComplete={data} visitUser={visitUser} />
-      ) : (
-        <Skeleton />
-      )}
+      {!dataContext.loading ? showDataComplete() : <Skeleton />}
     </Container>
   );
 };

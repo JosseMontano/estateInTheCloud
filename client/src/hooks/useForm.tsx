@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export const UseForm = (
   initialForm: any,
@@ -23,7 +23,7 @@ export const UseForm = (
     setLoading(false);
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
-    setForm(initialForm); //if we what cleam 
+    setForm(initialForm); //if we what cleam
   };
 
   const handleChange = (

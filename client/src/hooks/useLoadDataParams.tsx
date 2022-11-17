@@ -32,6 +32,7 @@ const useLoadDataParams = (
     loading,
     empty,
     handleGetData,
+    setData,
   };
 };
 
