@@ -23,16 +23,50 @@ interface ParamsType {
   changeData: (type: string) => void;
 }
 
+interface BtnJSXType {
+  onclick: () => void;
+  text: string;
+}
+
 const Index = ({ changeData }: ParamsType) => {
+  let btnJSX: BtnJSXType[] = [
+    {
+      onclick: () => changeData("Casa"),
+      text: "Casas",
+    },
+    {
+      onclick: () => changeData("Departamento"),
+      text: "Departamentos",
+    },
+    {
+      onclick: () => changeData("Monoambiente"),
+      text: "Monoambientes",
+    },
+    {
+      onclick: () => changeData("Garzonier"),
+      text: "Garzoniers",
+    },
+    {
+      onclick: () => changeData("Dormitorio"),
+      text: "Dormitorios",
+    },
+    {
+      onclick: () => changeData("Almacen"),
+      text: "Almacenes",
+    },
+    {
+      onclick: () => changeData("Tienda"),
+      text: "Tiendas",
+    },
+  ];
+
   return (
     <ContainerBtn>
-      <Btn onClick={() => changeData("Casa")}>Casas</Btn>
-      <Btn onClick={() => changeData("Departamento")}>Departamento</Btn>
-      <Btn onClick={() => changeData("Monoambiente")}>Monoambiente</Btn>
-      <Btn onClick={() => changeData("Garzonier")}>Garzonier</Btn>
-      <Btn onClick={() => changeData("Dormitorio")}>Dormitorio</Btn>
-      <Btn onClick={() => changeData("Almacen")}>Almacen</Btn>
-      <Btn onClick={() => changeData("Tienda")}>Tienda</Btn>
+      {btnJSX.map((v, i) => (
+        <Btn key={i} onClick={v.onclick}>
+          {v.text}
+        </Btn>
+      ))}
     </ContainerBtn>
   );
 };
