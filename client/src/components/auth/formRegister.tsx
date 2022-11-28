@@ -3,20 +3,30 @@ import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { UseForm } from "@/hooks/useForm";
-import Loader from "../global/loading";
-import Message from "../global/message";
 import { initialForm, validationsForm } from "@/validations/register";
 import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-
+import { useState } from "react";
+import ShowPassword from "@/icons/eye";
+import NoShowPassword from "@/icons/noShowPassword";
 const Container = styled.form``;
+
+interface V {
+  label: string;
+  name: string;
+  value: any;
+  errors: any;
+  placeHolder: string;
+  type: string;
+}
 
 const Form = () => {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signUp);
 
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   let dataBtn = [
     {
@@ -40,6 +50,7 @@ const Form = () => {
       value: form.email,
       errors: errors.email,
       placeHolder: "user@gmail.com",
+      type: "text",
     },
     {
       label: "Nombre de usuario",
@@ -47,6 +58,7 @@ const Form = () => {
       value: form.username,
       errors: errors.username,
       placeHolder: "user54",
+      type: "text",
     },
     {
       label: "Celular",
@@ -54,6 +66,7 @@ const Form = () => {
       value: form.numberPhone,
       errors: errors.numberPhone,
       placeHolder: "59165722183",
+      type: "text",
     },
     {
       label: "Contraseña",
@@ -61,6 +74,7 @@ const Form = () => {
       value: form.password,
       errors: errors.password,
       placeHolder: "Contraseña",
+      type: showPassword ? "text" : "password",
     },
     {
       label: "clave Secreta",
@@ -68,14 +82,36 @@ const Form = () => {
       value: form.secrect_password,
       errors: errors.secrect_password,
       placeHolder: "clave Secreta",
+      type: "text",
     },
   ];
 
+  const handleShowPass = () => {
+    setShowPassword(!showPassword);
+  };
+
+  function showIconEye() {
+    if (showPassword) {
+      return <NoShowPassword />;
+    }
+    return <ShowPassword />;
+  }
+
+  function showDataFor(i: number, v: V) {
+    return (
+      <ContentFormRegister
+        key={i}
+        v={v}
+        handleChange={handleChange}
+        EyeJSX={showIconEye}
+        handleShowPass={handleShowPass}
+      />
+    );
+  }
+
   return (
     <Container>
-      {dataForm.map((v, i) => (
-        <ContentFormRegister key={i} v={v} handleChange={handleChange} />
-      ))}
+      {dataForm.map((v, i) => showDataFor(i, v))}
 
       {dataBtn.map((v, i) => (
         <Button key={i} {...v} />

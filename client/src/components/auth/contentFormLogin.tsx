@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { ColorText, ErrorCss, Input, Label } from "@/styles/globals";
+
+import styled from "styled-components";
+
+const ContainerEye = styled.div`
+  & svg {
+    position: relative;
+    bottom: 50px;
+    left: 370px;
+    margin-bottom: -32px;
+  }
+  position: absolute;
+`;
 
 interface V {
   label: string;
   name: string;
   value: any;
   errors: any;
+  type: string;
 }
 
 interface Params {
@@ -13,20 +26,44 @@ interface Params {
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  handleShowPass: () => void;
+  EyeJSX: () => JSX.Element;
 }
 
-const ContentFormLogin = ({ v, handleChange }: Params) => {
+const ContentFormLogin = (props: Params) => {
+  function showInputPassword() {
+    return (
+      <>
+        <Input
+          type={props.v.type}
+          name={props.v.name}
+          onChange={props.handleChange}
+          value={props.v.value}
+          required
+        />
+        <ContainerEye onClick={props.handleShowPass}>
+          <props.EyeJSX />
+        </ContainerEye>
+      </>
+    );
+  }
+
   return (
     <>
-      <Label colorText={ColorText}>{v.label}</Label>
-      <Input
-        type="text"
-        name={v.name}
-        onChange={handleChange}
-        value={v.value}
-        required
-      />
-      {v.errors && <ErrorCss>{v.errors}</ErrorCss>}
+      <Label colorText={ColorText}>{props.v.label}</Label>
+      {props.v.name === "password" ? (
+        showInputPassword()
+      ) : (
+        <Input
+          type={props.v.type}
+          name={props.v.name}
+          onChange={props.handleChange}
+          value={props.v.value}
+          required
+        />
+      )}
+
+      {props.v.errors && <ErrorCss>{props.v.errors}</ErrorCss>}
     </>
   );
 };

@@ -18,6 +18,7 @@ interface DataformType {
   name: string;
   value: any;
   errors: any;
+  type: string;
 }
 
 interface ParamsType {
@@ -27,6 +28,8 @@ interface ParamsType {
   loading: boolean;
   response: boolean;
   handleChange: (e: any) => void;
+  handleShowPass: () => void;
+  EyeJSX: () => JSX.Element;
 }
 
 const Form = (props: ParamsType) => {
@@ -41,7 +44,13 @@ const Form = (props: ParamsType) => {
   return (
     <Container>
       {props.dataForm.map((v, i) => (
-        <ContentFormLogin key={i} v={v} handleChange={props.handleChange} />
+        <ContentFormLogin
+          key={i}
+          v={v}
+          handleChange={props.handleChange}
+          handleShowPass={props.handleShowPass}
+          EyeJSX={props.EyeJSX}
+        />
       ))}
       {props.dataBtn.map((v, i) => (
         <Button key={i} {...v} />

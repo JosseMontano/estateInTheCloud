@@ -32,6 +32,8 @@ export const Input = styled.input`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 `;
 
+
+
 export const TextArea = styled.textarea`
   margin-top: 10px;
   font-family: "Roboto", sans-serif;
