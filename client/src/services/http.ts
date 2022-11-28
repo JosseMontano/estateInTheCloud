@@ -1,8 +1,6 @@
-const dev = "http://localhost:3000/";
-export const http = dev; 
+import Config from "../config";
 
-/*const production = "https://real-estate-bolivia.herokuapp.com/";
-export const http = production;*/
+export const http = Config.backendUrlDev;
 
 export const headers = {
   Accept: "application/json",

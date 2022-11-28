@@ -12,6 +12,7 @@ import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/answer";
 import { addAnswer } from "@/services/answer";
 import { useNavbar } from "@/context/navbarContext";
+import IQuestion from "@/interface/answerQuestion";
 
 const Container = styled.div`
   width: calc(100%-15px);
