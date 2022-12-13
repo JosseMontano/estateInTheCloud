@@ -11,8 +11,8 @@ interface EnvType{
  */
 
 const env:EnvType = {
-  backendUrlDev: "https://realestate-server-production.up.railway.app/",
-  backendUrlProd: "http://localhost:3000/",
+  backendUrlDev: "http://localhost:3000/",
+  backendUrlProd: "https://realestate-server-production.up.railway.app/",
 };
 
 

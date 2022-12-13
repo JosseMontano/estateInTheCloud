@@ -21,6 +21,21 @@ const Img = styled.img`
   }
 `;
 
+const A = styled.a`
+  border-radius: 12px solid #fff;
+  background-color: #e57124;
+  list-style: none;
+  color: #fff;
+  padding: 15px;
+  margin-top: 2px;
+  text-decoration: none;
+  display: block;
+  width: 70px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const ImgCom = (v: RealEstate) => {
   const navigate = useNavigate();
   const handelDownloadImg = (url: string) => {
@@ -54,10 +69,12 @@ const ImgCom = (v: RealEstate) => {
       <Button onClick={() => handelDownloadImg(v.url)} ColorBtn={"#229ff2"}>
         Descargar
       </Button>
-{/*       <Button onClick={() => handleRedirect(v.idrealestate)} ColorBtn={"#f27222"}>
+      {/*       <Button onClick={() => handleRedirect(v.idrealestate)} ColorBtn={"#f27222"}>
         Ver en 360
       </Button> */}
-      <a href={`http://localhost:5174/${v.idrealestate}`} target={"_blank"}>Ver 360</a>
+      <A href={`http://localhost:5174/${v.idrealestate}`} target={"_blank"}>
+        Ver 360
+      </A>
     </>
   );
 };
