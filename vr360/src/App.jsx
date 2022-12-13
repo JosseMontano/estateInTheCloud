@@ -11,7 +11,7 @@ function App() {
   }, []);
 
   const getId = (url) => {
-    const res = url.replace("http://localhost:5174/", "");
+    const res = url.replace("https://realestate360-db9fa.web.app/#/", "");
     handlGgetDestinates(+res);
   };
 

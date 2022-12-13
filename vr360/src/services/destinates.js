@@ -4,12 +4,15 @@ export const getDestinates = async (id) => {
   try {
     const response = await fetch(`${http}estateOfOnePublication/${id}`, {
       method: "GET",
-      headers: {},
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
       const result = await response.json();
-      return result
+      return result;
     }
   } catch (err) {
     console.error(err);

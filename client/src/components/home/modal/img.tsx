@@ -72,7 +72,7 @@ const ImgCom = (v: RealEstate) => {
       {/*       <Button onClick={() => handleRedirect(v.idrealestate)} ColorBtn={"#f27222"}>
         Ver en 360
       </Button> */}
-      <A href={`http://localhost:5174/${v.idrealestate}`} target={"_blank"}>
+      <A href={`https://realestate360-db9fa.web.app/#/${v.idrealestate}`} target={"_blank"}>
         Ver 360
       </A>
     </>
