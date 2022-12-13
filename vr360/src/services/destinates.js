@@ -2,7 +2,7 @@ import http from "./http";
 
 export const getDestinates = async (id) => {
   try {
-    const response = await fetch(`${http}estateOfOnePublication/${id}`, {
+    const response = await fetch(`${http}photo/${id}`, {
       method: "GET",
       headers: {
         accept: "application/json",

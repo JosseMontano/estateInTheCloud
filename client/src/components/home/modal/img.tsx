@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Button } from "@/styles/modal/perfil";
 import { useNavigate } from "react-router-dom";
 import { RealEstate } from "@/interface/realEstate";
+import env from "@/config";
 const Img = styled.img`
   height: 200px;
   width: 200px;
@@ -72,8 +73,8 @@ const ImgCom = (v: RealEstate) => {
       {/*       <Button onClick={() => handleRedirect(v.idrealestate)} ColorBtn={"#f27222"}>
         Ver en 360
       </Button> */}
-      <A href={`https://realestate360-db9fa.web.app/#/${v.idrealestate}`} target={"_blank"}>
-        Ver 360
+      <A href={`${env.img360Url}#/${v.idphoto}`} target={"_blank"}>
+        Ver en 360
       </A>
     </>
   );
