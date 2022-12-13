@@ -8,10 +8,12 @@ import RecuperateAccount from "./pages/recuperateAccount";
 import VisitUser from "./pages/visitUser";
 import AnswerQuestion from "./pages/answerQuestion";
 import AQInterested from "./pages/answerQuestionInterested";
+import Img360 from "./pages/img360";
 const RouteComponent = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/img360/:idRealEstate" element={<Img360 />} />
       <Route path="/register" element={<Register />} />
       <Route path="/recuperateAccount" element={<RecuperateAccount />} />
       {/* ========== PAGES THAT GET THE NAVBAR ========== */}

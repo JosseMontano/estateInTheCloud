@@ -22,7 +22,6 @@ interface ParamsType{
 
 const Index = ({v, visitUser}:ParamsType) => {
   const { isShown, toggle } = UseModal();
-
   return (
     <Container>
       <Modal
