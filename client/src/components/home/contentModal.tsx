@@ -8,6 +8,7 @@ import Clipboard from "../global/clipBoard";
 import { useNavigate } from "react-router-dom";
 import useLoadData from "@/hooks/useLoadDataParams";
 
+
 export const ContentModal = (v: RealEstate) => {
   const navigate = useNavigate();
   const {data, loading} = useLoadData(getRealEstate, v.idrealestate);
@@ -24,7 +25,7 @@ export const ContentModal = (v: RealEstate) => {
         <Slider className="slick">
           {data.map((va, i) => (
             <div key={i}>
-              <ImgCom {...(va as object)} />
+              <ImgCom {...(va as RealEstate)} />
             </div>
           ))}
         </Slider>
