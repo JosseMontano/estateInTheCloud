@@ -1,4 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import {
+  startTransition,
+  Suspense,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Check from "./check";
@@ -42,8 +48,10 @@ const Index = () => {
     if (username.length > 10) setTextBig(true);
   };
 
-  const handleRedirect = () => {
-    navigate("/home");
+  const handleRedirect = (url: string) => {
+    startTransition(() => {
+      navigate(url);
+    });
   };
 
   useEffect(() => {
@@ -52,14 +60,20 @@ const Index = () => {
 
   return (
     <>
-      <AuxNav margin={"1700px"} />
-      <Nav ColorBtn={"#162b33"}>
-        <Check />
-        <Logo onClick={() => handleRedirect()}>
-          <NameUser msg={"Inicio"} textBig={textBig} />
-        </Logo>
-        <ContainerLinks nameUser={nameUser} emailState={emailState} />
-      </Nav>
+      <Suspense fallback={<p>Loading</p>}>
+        <AuxNav margin={"1700px"} />
+        <Nav ColorBtn={"#162b33"}>
+          <Check />
+          <Logo onClick={() => handleRedirect("/home")}>
+            <NameUser msg={"Inicio"} textBig={textBig} />
+          </Logo>
+          <ContainerLinks
+            handleRedirect={handleRedirect}
+            nameUser={nameUser}
+            emailState={emailState}
+          />
+        </Nav>
+      </Suspense>
     </>
   );
 };

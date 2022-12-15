@@ -4,11 +4,6 @@ import { UseModal } from "@/hooks/useModal";
 import Links from "./links";
 import { logOut } from "@/services/auth";
 
-interface Params {
-  nameUser: string;
-  emailState: string;
-}
-
 const Ul = styled.ul`
   float: right;
   margin-right: 20px;
@@ -30,7 +25,13 @@ const Ul = styled.ul`
   }
 `;
 
-const ContainerLinks = ({ nameUser, emailState }: Params) => {
+interface Params {
+  nameUser: string;
+  emailState: string;
+  handleRedirect: (msg: string) => void;
+}
+
+const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
   const navigate = useNavigate();
   const { isShown, toggle } = UseModal();
 
@@ -38,13 +39,13 @@ const ContainerLinks = ({ nameUser, emailState }: Params) => {
     {
       text: nameUser,
       click: () => {
-        navigate(`/profile/${emailState}`);
+        handleRedirect(`/profile/${emailState}`);
       },
     },
     {
       text: "Filtrar",
       click: () => {
-        navigate(`/realEstateFilter`);
+        handleRedirect(`/realEstateFilter`);
       },
     },
     {

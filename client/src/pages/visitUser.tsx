@@ -8,18 +8,16 @@ import Publication from "../components/profile/publication";
 import { getRealEstateByEmail } from "../services/realEstate";
 import useLoadData from "../hooks/useLoadDataParams";
 import { RealEstate } from "../interface/realEstate";
-import { useNavbar } from "@/context/navbarContext";
-
+import { Suspense } from "react";
+import Navbar from "@/components/navbar";
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};
   color: ${(props) => props.ColorText};
 `;
 
-interface Params {}
 
-const VisitUser = ({}: Params) => {
-  const { showNavbar } = useNavbar();
+const VisitUser = () => {
   const { id: idParam, email } = useParams();
   const idParamNumber = Number(idParam);
   const {} = useVerifyUserLogin();
@@ -35,8 +33,8 @@ const VisitUser = ({}: Params) => {
   };
 
   return (
-    <>
-      {showNavbar()}
+    <Suspense fallback={null}>
+      <Navbar />
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header
           email={email}
@@ -46,7 +44,7 @@ const VisitUser = ({}: Params) => {
         {idParamNumber != 0 && showPublication()}
         <Comments idParam={idParamNumber} />
       </Container>
-    </>
+    </Suspense>
   );
 };
 

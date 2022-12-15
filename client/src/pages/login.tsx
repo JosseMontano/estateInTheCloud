@@ -7,7 +7,7 @@ import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/login";
 import { signIn } from "@/services/auth";
 import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/styles/globals";
-import { useState } from "react";
+import { startTransition, Suspense, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 
@@ -25,7 +25,9 @@ export function Login(): JSX.Element {
     },
     {
       onclick: () => {
-        navigate(`/register`);
+        startTransition(() => {
+          navigate(`/register`);
+        });
       },
       color: ColorBtn,
       text: "Create una cuenta",
@@ -68,29 +70,31 @@ export function Login(): JSX.Element {
   }
 
   return (
-    <LoginRegisterRecuperate
-      content={
-        <>
-          <ColContent
-            title={"Inicia sesion o create una cuenta"}
-            text={"Hola de nuevo"}
-            form={
-              <Form
-                handleShowPass={handleShowPass}
-                dataBtn={dataBtn}
-                dataForm={dataForm}
-                handleChange={handleChange}
-                loading={loading}
-                msg={msg}
-                response={response}
-                EyeJSX={showIconEye}
-              />
-            }
-          />
-          <ColPhoto />
-        </>
-      }
-    />
+    <Suspense fallback={<p>Loading</p>}>
+      <LoginRegisterRecuperate
+        content={
+          <>
+            <ColContent
+              title={"Inicia sesion o create una cuenta"}
+              text={"Hola de nuevo"}
+              form={
+                <Form
+                  handleShowPass={handleShowPass}
+                  dataBtn={dataBtn}
+                  dataForm={dataForm}
+                  handleChange={handleChange}
+                  loading={loading}
+                  msg={msg}
+                  response={response}
+                  EyeJSX={showIconEye}
+                />
+              }
+            />
+            <ColPhoto />
+          </>
+        }
+      />
+    </Suspense>
   );
 }
 

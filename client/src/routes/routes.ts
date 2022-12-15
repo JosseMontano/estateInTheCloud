@@ -1,34 +1,31 @@
+import { lazy, LazyExoticComponent } from "react";
 import {
-  AnswerQuestion,
-  Img360,
-  Login,
-  Profile,
   RecuperateAccount,
-  Register,
-  VisitUser,
-  Home,
-  TypeRealEstate,
+  AnswerQuestion,
   AnswerQuestionInterested,
 } from "../pages";
 
-interface Params {}
+type JSXComponent = () => JSX.Element;
+
 interface RouteType {
   path: string;
-  Component: () => JSX.Element;
+  Component: LazyExoticComponent<JSXComponent> | JSXComponent;
   name: string;
   children?: RouteType[];
 }
+
+const Login = lazy(() => import("../pages/login"));
+const Register = lazy(() => import("../pages/register"));
+const VisitUser = lazy(() => import("../pages/visitUser"));
+const Home = lazy(() => import("../pages/home"));
+const Profile = lazy(() => import("../pages/profile"));
+const TypeRealEstate = lazy(() => import("../pages/typeRealEstate"));
 
 export const routes: RouteType[] = [
   {
     path: "/",
     Component: Login,
     name: "Login",
-  },
-  {
-    path: "/img360/:idRealEstate",
-    Component: Img360,
-    name: "Img360",
   },
   {
     path: "/register",

@@ -3,11 +3,11 @@ import Search from "@/components/global/search";
 import { UseModal } from "@/hooks/useModal";
 import { RealEstate } from "@/interface/realEstate";
 import useSearch from "@/hooks/useSearch";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getRealEstateByType } from "@/services/realEstate";
 import ContainerBtn from "@/components/typeRealEstate/containerBtn";
 import ContainerCard from "@/components/typeRealEstate/containerCard";
-import { useNavbar } from "@/context/navbarContext";
+import Navbar from "@/components/navbar";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -17,10 +17,7 @@ export const Container = styled.div`
   background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
 `;
 
-interface Params {}
-
-const TypeRealEstate = ({}: Params) => {
-  const { showNavbar } = useNavbar();
+const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
   const { isShown, toggle } = UseModal();
   const { filter, getValueSearch } = useSearch();
@@ -48,16 +45,18 @@ const TypeRealEstate = ({}: Params) => {
   }, []);
 
   return (
-    <Container>
-      {showNavbar()}
-      <Search getValueSearch={getValueSearch} />
-      <ContainerBtn changeData={changeData} />
-      <ContainerCard
-        dataFilter={dataFilter}
-        isShown={isShown}
-        toggle={toggle}
-      />
-    </Container>
+    <Suspense fallback={<p>Loading</p>}>
+      <Container>
+        <Navbar />
+        <Search getValueSearch={getValueSearch} />
+        <ContainerBtn changeData={changeData} />
+        <ContainerCard
+          dataFilter={dataFilter}
+          isShown={isShown}
+          toggle={toggle}
+        />
+      </Container>
+    </Suspense>
   );
 };
 

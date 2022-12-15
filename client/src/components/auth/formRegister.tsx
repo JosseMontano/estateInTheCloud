@@ -7,7 +7,7 @@ import { initialForm, validationsForm } from "@/validations/register";
 import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 const Container = styled.form``;
@@ -36,7 +36,9 @@ const Form = () => {
     },
     {
       onclick: () => {
-        navigate(`/`);
+        startTransition(() => {
+          navigate(`/`);
+        });
       },
       color: ColorBtn,
       text: "Volver",

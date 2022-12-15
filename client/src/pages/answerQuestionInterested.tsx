@@ -5,8 +5,8 @@ import DataEmpty from "../components/global/dataEmpty";
 import CardSoon from "../components/answerQuestionInterested";
 import useLoadData from "../hooks/useLoadDataParams";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
-import { useNavbar } from "@/context/navbarContext";
-
+import { Suspense } from "react";
+import Navbar from "@/components/navbar";
 const Container = styled.div`
   min-height: 100vh;
   display: grid;
@@ -19,10 +19,9 @@ const Card = styled.div`
   flex-wrap: wrap;
 `;
 
-interface Params {}
 
-const AnswerQuestionInterested = ({}: Params) => {
-  const { showNavbar } = useNavbar();
+
+const AnswerQuestionInterested = () => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
   const { data } = useLoadData(getAnswerByRealEstate, idNumer);
@@ -34,10 +33,12 @@ const AnswerQuestionInterested = ({}: Params) => {
   }
 
   return (
-    <Container>
-      {showNavbar()}
-      <Card>{validateData()}</Card>
-    </Container>
+    <Suspense fallback={null}>
+      <Container>
+        <Navbar />
+        <Card>{validateData()}</Card>
+      </Container>
+    </Suspense>
   );
 };
 

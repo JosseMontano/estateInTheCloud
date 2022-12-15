@@ -6,21 +6,22 @@ import { useHome } from "../context/home/homeContext";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import Skeleton from "../components/home/skeleton";
 import { useNavigate } from "react-router-dom";
-import { useNavbar } from "@/context/navbarContext";
-
+import { startTransition, Suspense } from "react";
+import Navbar from "@/components/navbar";
 const Container = styled.div`
   width: 100%;
 `;
 
-interface Params {}
 
-const Home = ({}: Params) => {
-  const { showNavbar } = useNavbar();
+
+const Home = () => {
   const dataContext = useHome();
   const {} = useVerifyUserLogin();
   const navigate = useNavigate();
   const visitUser = (idUser: number, email: string) => {
-    navigate(`/visitUser/${idUser}/${email}`);
+    startTransition(()=>{
+      navigate(`/visitUser/${idUser}/${email}`);
+    })
   };
 
   let data = [
@@ -47,10 +48,12 @@ const Home = ({}: Params) => {
   };
 
   return (
-    <Container>
-      {showNavbar()}
-      {!dataContext.loading ? showDataComplete() : <Skeleton />}
-    </Container>
+    <Suspense fallback={<p>Loading</p>}>
+      <Container>
+        <Navbar />
+        {!dataContext.loading ? showDataComplete() : <Skeleton />}
+      </Container>
+    </Suspense>
   );
 };
 

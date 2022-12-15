@@ -1,4 +1,5 @@
 export interface Enlace {
   text: string;
-  click: () => void;
+  click: (() => void);
 }
+
