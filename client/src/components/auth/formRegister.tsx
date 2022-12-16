@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/register";
 import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
@@ -10,6 +9,7 @@ import LoadingAndResponse from "../dynamic/loadingAndResponse";
 import { startTransition, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
+import { UseForm } from "jz-validation-form";
 const Container = styled.form``;
 
 interface V {

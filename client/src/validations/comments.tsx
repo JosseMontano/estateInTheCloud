@@ -4,6 +4,7 @@ export const initialForm = {
   description: "",
   commentator: 0,
   person_commented: 0,
+  amount_start:0,
 };
 
 export const validationsForm = (form: FormComment) => {

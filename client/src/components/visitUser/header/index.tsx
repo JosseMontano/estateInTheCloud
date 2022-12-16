@@ -1,5 +1,4 @@
 import { NameUserContext } from "@/context/nameUser";
-import { UseForm } from "@/hooks/useForm";
 import useLoadDataParams from "@/hooks/useLoadDataParams";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
@@ -14,7 +13,7 @@ import { initialForm, validationsForm } from "@/validations/comments";
 import { postComment } from "@/services/comment";
 import { CommentsContext } from "@/context/comments";
 import { getUser } from "@/services/user";
-
+import { UseForm } from "jz-validation-form";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;

@@ -8,12 +8,11 @@ import CardComponent from "../components/answerQuestion";
 import useLoadData from "../hooks/useLoadDataParams";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
-import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/answer";
 import { addAnswer } from "@/services/answer";
 import IQuestion from "@/interface/answerQuestion";
 import Navbar from "@/components/navbar";
-
+import {UseForm} from 'jz-validation-form'
 const Container = styled.div`
   width: calc(100%-15px);
   min-height: 100vh;

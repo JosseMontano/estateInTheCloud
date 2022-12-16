@@ -3,6 +3,7 @@ import Answer from "../interface/answer";
 export const initialForm = {
   answer: "",
   id_real_estate: 0,
+  id_question: 0,
 };
 
 export const validationsForm = (form: Answer) => {

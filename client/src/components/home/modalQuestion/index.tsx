@@ -2,11 +2,10 @@ import React from "react";
 import { Title, ColorText } from "@/styles/globals";
 import { postQuestion } from "@/services/question";
 import { initialForm, validationsForm } from "@/validations/question";
-import { UseForm } from "@/hooks/useForm";
 import FormComponent from "./form";
 import styled from "styled-components";
 import LoadAndResponse from "./loadAndResponse";
-
+import { UseForm } from "jz-validation-form";
 const Container = styled.div``;
 const Index = () => {
   const { form, errors, loading, response, msg, handleSubmit, handleChange } =

@@ -2,17 +2,21 @@ import styled from "styled-components";
 import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { UseForm } from "@/hooks/useForm";
 import { initialForm, validationsForm } from "@/validations/recuperateAccount";
-import { recuperateAccount } from "../../services/auth";
+import { recuperateAccount } from "@/services/auth";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-
+import { FormRecuperateAccount } from "@/interface/formAuth";
+import { UseForm } from "jz-validation-form";
 const Container = styled.form``;
 
 const Form = () => {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
-    UseForm(initialForm, validationsForm, recuperateAccount);
+    UseForm<FormRecuperateAccount>(
+      initialForm,
+      validationsForm,
+      recuperateAccount
+    );
 
   const navigate = useNavigate();
 
