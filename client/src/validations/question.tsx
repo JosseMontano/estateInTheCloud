@@ -1,13 +1,14 @@
 import Question from "../interface/question";
-
+import { validateEmpty } from "jz-validation-form";
 export const initialForm = {
   question: "",
 };
 
 export const validationsForm = (form: Question) => {
   let errors = {} as Question;
-  if (!form.question.trim()) {
-    errors.question = "El campo 'Pregunta' es requerido";
-  }
+
+  const question = validateEmpty(form.question);
+  if (question) errors.question = question;
+
   return errors;
 };

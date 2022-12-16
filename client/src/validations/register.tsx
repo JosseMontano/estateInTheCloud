@@ -1,36 +1,34 @@
 import { FormRegister } from "../interface/formAuth";
-
+import {
+  validateEmail,
+  validateNumber,
+  validateEmpty,
+} from "jz-validation-form";
 export const initialForm = {
-    email: "",
-    username: "",
-    numberPhone:"",
-    password: "",
-    secrect_password:""
-  };
-  
- export const validationsForm = (form: FormRegister) => {
-    let errors = {} as FormRegister;
-    let regexNumber = /^[0-9]+$/;
-    let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-    if (!form.email.trim()) {
-      errors.email = "Este campo es requerido";
-    } else if (!regexEmail.test(form.email.trim())) {
-      errors.email = "Este campo es incorrecto";
-    }
-    if (!form.username.trim()) {
-      errors.username = "Este campo es requerido";
-    }
-    if (!form.password.trim()) {
-      errors.password = "Este campo es requerido";
-    }
-    if (!form.secrect_password.trim()) {
-        errors.secrect_password = "Este campo es requerido";
-      }
-    if (!form.numberPhone.trim()) {
-        errors.numberPhone = "Este campo es requerido";
-      }
-    if (!regexNumber.test(form.numberPhone.trim())) {
-        errors.numberPhone = "sólo acepta numeros";
-      }
-    return errors;
-  };
+  email: "",
+  username: "",
+  numberPhone: "",
+  password: "",
+  secrect_password: "",
+};
+
+export const validationsForm = (form: FormRegister) => {
+  let errors = {} as FormRegister;
+
+  const numberPhone = validateNumber(form.numberPhone);
+  if (numberPhone) errors.numberPhone = numberPhone;
+
+  const email = validateEmail(form.email);
+  if (email) errors.email = email;
+
+  const username = validateEmpty(form.username);
+  if (username) errors.username = username;
+
+  const password = validateEmpty(form.password);
+  if (password) errors.password = password;
+
+  const secret_password = validateEmpty(form.secrect_password);
+  if (secret_password) errors.secrect_password = secret_password;
+
+  return errors;
+};
