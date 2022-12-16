@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { ColorText, ErrorCss, Input, Label } from "@/styles/globals";
-
+import React from "react";
+import { ColorText } from "@/styles/globals";
+import { Label, MsgError, Input } from "jz-validation-form";
 import styled from "styled-components";
 
 const ContainerEye = styled.div`
@@ -63,7 +63,7 @@ const ContentFormLogin = (props: Params) => {
         />
       )}
 
-      {props.v.errors && <ErrorCss>{props.v.errors}</ErrorCss>}
+      {props.v.errors && <MsgError>{props.v.errors}</MsgError>}
     </>
   );
 };

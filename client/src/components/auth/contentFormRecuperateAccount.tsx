@@ -1,5 +1,6 @@
 import React from "react";
-import { ColorText, ErrorCss, Input, Label } from "@/styles/globals";
+import { Input, Label, MsgError } from "jz-validation-form";
+import { ColorText } from "@/styles/globals";
 interface V {
   label: string;
   name: string;
@@ -25,7 +26,7 @@ const ContentFormRecuperateAccount = ({ v, handleChange }: Params) => {
         value={v.value}
         required
       />
-      {v.errors && <ErrorCss>{v.errors}</ErrorCss>}
+      {v.errors && <MsgError>{v.errors}</MsgError>}
     </>
   );
 };

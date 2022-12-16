@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, ColorBtn, ErrorCss, Input } from "@/styles/globals";
-
+import { ColorBtn } from "@/styles/globals";
+import { Input, Button, MsgError } from "jz-validation-form";
 interface params {
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,7 +19,7 @@ const Form = (p: params) => {
         value={p.val}
         placeholder={"pregunta"}
       />
-      {p.err && <ErrorCss>{p.err}</ErrorCss>}
+      {p.err && <MsgError>{p.err}</MsgError>}
       <Button ColorBtn={ColorBtn} onClick={(e: any) => p.sendData(e)}>
         Haz tu propia pregunta
       </Button>

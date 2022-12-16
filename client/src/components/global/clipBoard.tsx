@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "@/styles/globals";
 import Message from "./message";
+import { Button } from "jz-validation-form";
 interface Params{
     txt:string
 }

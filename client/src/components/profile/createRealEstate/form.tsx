@@ -1,13 +1,6 @@
 import { useState } from "react";
-import {
-  ColorBtn,
-  Input,
-  Label,
-  ColorText,
-  Button,
-  TextArea,
-  InputFile,
-} from "@/styles/globals";
+import { ColorBtn, ColorText, InputFile } from "@/styles/globals";
+import { Input, Label, Button, TextArea } from "jz-validation-form";
 import { getTypeRealEstate } from "@/services/realEstate";
 import useLoadData from "@/hooks/useLoadData";
 import Select from "./select";

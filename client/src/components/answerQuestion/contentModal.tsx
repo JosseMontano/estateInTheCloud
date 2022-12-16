@@ -1,15 +1,8 @@
 import styled from "styled-components";
-import {
-  ColorText,
-  Title,
-  Button,
-  ColorBtn,
-  ErrorCss,
-  TextArea,
-} from "@/styles/globals";
+import { ColorText, Title, ColorBtn } from "@/styles/globals";
 import Loader from "../global/loading";
 import Message from "../global/message";
-
+import { Button, MsgError, TextArea } from "jz-validation-form";
 const Container = styled.div``;
 
 interface Params {
@@ -33,7 +26,7 @@ const ContentModal = (params: Params) => {
         cols={50}
         rows={5}
       />
-      {params.errors.answer && <ErrorCss>{params.errors.answer}</ErrorCss>}
+      {params.errors.answer && <MsgError>{params.errors.answer}</MsgError>}
       <Button onClick={(e) => params.sendData(e)} ColorBtn={ColorBtn}>
         Guardar
       </Button>

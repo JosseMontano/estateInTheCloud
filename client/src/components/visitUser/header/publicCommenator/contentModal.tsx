@@ -1,9 +1,9 @@
-import { Button, ColorText, ErrorCss, TextArea, Title } from "@/styles/globals";
+import { ColorText, Title } from "@/styles/globals";
 import { useEffect } from "react";
 import Loader from "../../../global/loading";
 import Message from "../../../global/message";
 import Starts from "./starts";
-
+import { Button, MsgError, TextArea } from "jz-validation-form";
 interface UseFormType {
   form: any;
   errors: any;
@@ -37,7 +37,7 @@ const ContentModal = (params: params) => {
         cols={50}
       />
       {params.useForm.errors.description && (
-        <ErrorCss>{params.useForm.errors.description}</ErrorCss>
+        <MsgError>{params.useForm.errors.description}</MsgError>
       )}
 
       <Starts getStart={params.getStart} />
