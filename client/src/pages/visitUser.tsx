@@ -6,7 +6,7 @@ import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "../components/profile/publication";
 import { getRealEstateByEmail } from "../services/realEstate";
-import useLoadData from "../hooks/useLoadDataParams";
+import useLoadData from "../hooks/useLoadData";
 import { RealEstate } from "../interface/realEstate";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";

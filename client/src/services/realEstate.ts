@@ -20,20 +20,20 @@ export const getRealEstateRecommendedByUser = async () => {
   return { json, status };
 };
 
-export const getRealEstateProfil = async (id: number) => {
+export const getRealEstateProfil = async (id?: number) => {
   const url = `${http}estate/${id}`;
   const { json, status } = await index(url);
   return { json, status };
 };
 
-export const getRealEstateByEmail = async (id: number) => {
+export const getRealEstateByEmail = async (id: number | undefined) => {
   const url = `${http}estate/visit/${id}`;
   const { json, status } = await index(url);
   return { json, status };
 };
 
 
-export const getRealEstateOfOnePublication = async (idRealEstate: number) => {
+export const getRealEstateOfOnePublication = async (idRealEstate?: number) => {
   const url = `${http}estateOfOnePublication/${idRealEstate}`;
   const { json, status } = await index(url);
   return { json, status };

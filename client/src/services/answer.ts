@@ -22,7 +22,7 @@ export const addAnswer = async (form: FormAnswer) => {
   }
 };
 
-export const getAnswerByRealEstate = async (id: number) => {
+export const getAnswerByRealEstate = async (id: number | undefined) => {
   const url = `${http}answer/${id}`;
   const { json, status } = await index(url);
   return { json, status };

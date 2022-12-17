@@ -3,7 +3,7 @@ import Question from "../interface/question";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
 
-export const getQuestions = async (idRealEstate: number) => {
+export const getQuestions = async (idRealEstate: number | undefined) => {
   const url = `${http}question/${idRealEstate}`;
   const { json, status } = await index(url);
   return { json, status };

@@ -1,18 +1,18 @@
-import styled from "styled-components";
 import Card from "../styles/card";
 import { Suspense, useState } from "react";
 import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import useLoadData from "../hooks/useLoadDataParams";
+import useLoadData from "../hooks/useLoadData";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { initialForm, validationsForm } from "@/validations/answer";
 import { addAnswer } from "@/services/answer";
-import IQuestion from "@/interface/answerQuestion";
 import Navbar from "@/components/navbar";
-import {UseForm} from 'jz-validation-form'
+import { UseForm } from "jz-validation-form";
+import styled from "styled-components";
+
 const Container = styled.div`
   width: calc(100%-15px);
   min-height: 100vh;

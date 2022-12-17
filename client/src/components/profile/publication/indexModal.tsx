@@ -12,7 +12,7 @@ import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
-import useLoadData from "@/hooks/useLoadDataParams";
+import useLoadData from "@/hooks/useLoadData";
 import Message from "@/components/global/message";
 interface Params {
   v: RealEstate;

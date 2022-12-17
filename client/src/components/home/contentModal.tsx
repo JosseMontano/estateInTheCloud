@@ -6,7 +6,7 @@ import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import Clipboard from "../global/clipBoard";
 import { useNavigate } from "react-router-dom";
-import useLoadData from "@/hooks/useLoadDataParams";
+import useLoadData from "@/hooks/useLoadData";
 
 
 export const ContentModal = (v: RealEstate) => {

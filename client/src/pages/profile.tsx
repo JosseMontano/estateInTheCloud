@@ -9,7 +9,7 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
-import useLoadDataParams from "../hooks/useLoadDataParams";
+import useLoadDataParams from "../hooks/useLoadData";
 import Navbar from "@/components/navbar";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`

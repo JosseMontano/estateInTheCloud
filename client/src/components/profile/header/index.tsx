@@ -5,7 +5,7 @@ import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
 import { getUserById } from "@/services/user";
-import UseLoadData from "@/hooks/useLoadDataParams";
+import UseLoadData from "@/hooks/useLoadData";
 
 const Container = styled.div`
   display: grid;

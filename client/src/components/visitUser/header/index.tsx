@@ -1,5 +1,5 @@
 import { NameUserContext } from "@/context/nameUser";
-import useLoadDataParams from "@/hooks/useLoadDataParams";
+import useLoadDataParams from "@/hooks/useLoadData";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
 import { useContext, useEffect, useState } from "react";

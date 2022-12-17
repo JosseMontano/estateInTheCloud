@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 
-const useLoadData = (services: () => Promise<any>) => {
+const useLoadData = (services: (id?: number) => Promise<any>, id?: number) => {
   const [data, setData] = useState([]);
   const [empty, setEmpty] = useState(true);
   const [loading, setLoading] = useState(true);
 
   const handleGetData = async () => {
-    const res = await services();
+    let res;
+    if (id) {
+      res = await services(id);
+    } else {
+      res = await services();
+    }
+
     if (res?.status === 404) {
       setEmpty(false);
       setData([]);
       return;
-    }else {
+    } else {
       setData(res.json);
       setEmpty(true);
     }

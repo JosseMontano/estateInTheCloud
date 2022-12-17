@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DataEmpty from "../components/global/dataEmpty";
 import CardSoon from "../components/answerQuestionInterested";
-import useLoadData from "../hooks/useLoadDataParams";
+import useLoadData from "../hooks/useLoadData";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
