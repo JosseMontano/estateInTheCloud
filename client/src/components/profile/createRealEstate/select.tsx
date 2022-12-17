@@ -1,7 +1,4 @@
-interface ParamsTypeRealEstate {
-  id: number;
-  name_type: string;
-}
+import ParamsTypeRealEstate from "@/interface/typeRealEstate";
 
 interface v {
   v: ParamsTypeRealEstate;

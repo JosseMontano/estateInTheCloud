@@ -1,5 +1,5 @@
 import { NameUserContext } from "@/context/nameUser";
-import useLoadDataParams from "@/hooks/useLoadData";
+import useLoadDataParams from "@/hooks/useFetch";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
 import { useContext, useEffect, useState } from "react";
@@ -14,6 +14,7 @@ import { postComment } from "@/services/comment";
 import { CommentsContext } from "@/context/comments";
 import { getUser } from "@/services/user";
 import { UseForm } from "jz-validation-form";
+import { User } from "@/interface/user";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -39,7 +40,7 @@ interface Params {
 }
 const Header = ({ email, idParam, cellphonenumber }: Params) => {
   const { idUser } = useContext(NameUserContext);
-  const { data } = useLoadDataParams(getUserById, idParam);
+  const { data } = useLoadDataParams<User>(getUserById, idParam);
   const { isShown, toggle } = UseModal();
   const [exists, setExists] = useState(false);
   const { getComments } = useContext(CommentsContext);

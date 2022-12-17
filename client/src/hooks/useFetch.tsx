@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 
-const useLoadData = (services: (id?: number) => Promise<any>, id?: number) => {
-  const [data, setData] = useState([]);
-  const [empty, setEmpty] = useState(true);
+type serviceType = (id?: number) => Promise<any>;
+
+function useFetch <T>(services: serviceType, id?: number) {
+  const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
 
   const handleGetData = async () => {
+    setLoading(true);
     let res;
+    //run the services
     if (id) {
       res = await services(id);
     } else {
       res = await services();
     }
 
-    if (res?.status === 404) {
-      setEmpty(false);
+    //save the data in the state
+    if (res.status === 404) {
       setData([]);
-      return;
     } else {
       setData(res.json);
-      setEmpty(true);
     }
     setTimeout(() => {
       setLoading(false);
@@ -27,16 +28,14 @@ const useLoadData = (services: (id?: number) => Promise<any>, id?: number) => {
   };
 
   useEffect(() => {
-    window.scroll(0, 0);
     handleGetData();
   }, []);
 
   return {
     data,
-    empty,
     loading,
     handleGetData,
   };
 };
 
-export default useLoadData;
+export default useFetch;

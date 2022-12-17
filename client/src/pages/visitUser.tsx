@@ -6,7 +6,7 @@ import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "../components/profile/publication";
 import { getRealEstateByEmail } from "../services/realEstate";
-import useLoadData from "../hooks/useLoadData";
+import useLoadData from "../hooks/useFetch";
 import { RealEstate } from "../interface/realEstate";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
@@ -22,7 +22,7 @@ const VisitUser = () => {
   const idParamNumber = Number(idParam);
   const {} = useVerifyUserLogin();
 
-  const { data, loading } = useLoadData(getRealEstateByEmail, idParamNumber);
+  const { data, loading } = useLoadData<RealEstate>(getRealEstateByEmail, idParamNumber);
   //get cellphone of user
   let dataObj = {} as RealEstate;
   dataObj = Object.assign({}, data[0]);

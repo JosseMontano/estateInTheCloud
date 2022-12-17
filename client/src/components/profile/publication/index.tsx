@@ -38,6 +38,7 @@ const Index = ({ data, loading, showbtn }: Params) => {
     if (loading) {
       return <TextEmpty>Cargando publicaciones</TextEmpty>;
     }
+    if (data.length === 0) return <TextEmpty>No tiene Publicaciones</TextEmpty>;
     return <Title>publicaciones</Title>;
   }
 

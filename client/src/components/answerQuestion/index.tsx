@@ -1,10 +1,10 @@
-import IQuestion from "@/interface/answerQuestion";
+import IQuestion from "@/interface/question";
 import { CardSoon, Box } from "@/styles/card";
 import ContentCard from "./contentCard";
 
 interface Params {
   v: IQuestion;
-  handleClick: (id: number) => void;
+  handleClick: (id?: number) => void;
 }
 
 const Index = ({ v, handleClick }: Params) => {

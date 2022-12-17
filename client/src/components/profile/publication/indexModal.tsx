@@ -2,7 +2,7 @@ import { RealEstate } from "@/interface/realEstate";
 import {
   deleteRealEstateProfil,
   addNewPhotoToRealEstate,
-  getRealEstateOfOnePublication,
+  getRealEstateOfOnePublication as services,
   updateStateRealEstate,
 } from "@/services/realEstate";
 import { useContext, useState } from "react";
@@ -12,8 +12,9 @@ import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
-import useLoadData from "@/hooks/useLoadData";
+import useLoadData from "@/hooks/useFetch";
 import Message from "@/components/global/message";
+import REOnePublicationType from "@/interface/realEstateOfOnePublication";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
@@ -28,8 +29,8 @@ export const ContentModal = ({ v, showbtn }: Params) => {
   const [showMsg, setshowMsg] = useState(false);
   const navigate = useNavigate();
 
-  const { data, loading: load } = useLoadData(
-    getRealEstateOfOnePublication,
+  const { data, loading: load } = useLoadData<REOnePublicationType>(
+    services,
     v.idrealestate
   );
 

@@ -9,8 +9,9 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
-import useLoadDataParams from "../hooks/useLoadData";
+import useFetch from "../hooks/useFetch";
 import Navbar from "@/components/navbar";
+import { RealEstate } from "@/interface/realEstate";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   min-height: 100vh;
@@ -23,7 +24,7 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 const Profile = () => {
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
-  const { data, loading, handleGetData } = useLoadDataParams(services, idUser);
+  const { data, loading, handleGetData } = useFetch<RealEstate>(services, idUser);
   const { isShown, toggle } = UseModal();
 
   useEffect(() => {

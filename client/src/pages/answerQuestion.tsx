@@ -4,7 +4,7 @@ import { UseModal } from "../hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import useLoadData from "../hooks/useLoadData";
+import useLoadData from "../hooks/useFetch";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { initialForm, validationsForm } from "@/validations/answer";
@@ -12,6 +12,7 @@ import { addAnswer } from "@/services/answer";
 import Navbar from "@/components/navbar";
 import { UseForm } from "jz-validation-form";
 import styled from "styled-components";
+import Question from "@/interface/question";
 
 const Container = styled.div`
   width: calc(100%-15px);
@@ -23,16 +24,16 @@ const AnswerQuestion = () => {
   const { id } = useParams();
   const IdNumber = parseInt(id!);
   //get data
-  const { data, loading } = useLoadData(getQuestions, IdNumber);
+  const { data, loading } = useLoadData<Question>(getQuestions, IdNumber);
   //verify user
   const {} = useVerifyUserLogin();
 
   const { isShown, toggle } = UseModal();
   const [idQuestion, setIdQuestion] = useState(0);
 
-  const handleClick = (id: number) => {
+  const handleClick = (id?: number) => {
     toggle();
-    setIdQuestion(id);
+    if (id) setIdQuestion(id);
   };
 
   const valForm = UseForm(initialForm, validationsForm, addAnswer);

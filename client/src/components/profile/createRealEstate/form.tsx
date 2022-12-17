@@ -2,8 +2,9 @@ import { useState } from "react";
 import { ColorBtn, ColorText, InputFile } from "@/styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
 import { getTypeRealEstate } from "@/services/realEstate";
-import useLoadData from "@/hooks/useLoadData";
+import useLoadData from "@/hooks/useFetch";
 import Select from "./select";
+import ParamsTypeRealEstate from "@/interface/typeRealEstate";
 interface Params {
   handleChange: (e: any) => void;
   sendData: (photo: any) => void;
@@ -12,7 +13,7 @@ interface Params {
 const Form = ({ handleChange, sendData }: Params) => {
   const [photo, setPhoto] = useState<any>("");
 
-  const { data } = useLoadData(getTypeRealEstate);
+  const { data } = useLoadData<ParamsTypeRealEstate>(getTypeRealEstate);
 
   const handleSend = () => {
     sendData(photo);

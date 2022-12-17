@@ -1,10 +1,10 @@
 import Slider from "react-slick";
 import Load from "../modal/load";
 import DataImg from "./dataImg";
-
+import REOnePublicationType from "@/interface/realEstateOfOnePublication";
 interface Params {
   load: boolean;
-  data: never[];
+  data: REOnePublicationType[];
 }
 
 const ContentImg = ({ load, data }: Params) => {

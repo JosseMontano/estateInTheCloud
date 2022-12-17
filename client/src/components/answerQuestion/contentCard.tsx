@@ -1,9 +1,9 @@
-import IQuestion from "@/interface/answerQuestion";
+import IQuestion from "@/interface/question";
 import { Content, Btn, Description, Icon, Title } from "@/styles/card";
 
 interface Params {
   v: IQuestion;
-  handleClick: (id: number) => void;
+  handleClick: (id?: number) => void;
 }
 
 const ContentCard = ({ v, handleClick }: Params) => {

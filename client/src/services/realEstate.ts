@@ -26,7 +26,7 @@ export const getRealEstateProfil = async (id?: number) => {
   return { json, status };
 };
 
-export const getRealEstateByEmail = async (id: number | undefined) => {
+export const getRealEstateByEmail = async (id?: number) => {
   const url = `${http}estate/visit/${id}`;
   const { json, status } = await index(url);
   return { json, status };

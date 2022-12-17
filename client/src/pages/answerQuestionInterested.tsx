@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DataEmpty from "../components/global/dataEmpty";
 import CardSoon from "../components/answerQuestionInterested";
-import useLoadData from "../hooks/useLoadData";
+import useLoadData from "../hooks/useFetch";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
+import IAQ from "@/interface/answerQuestionInterested";
+
 const Container = styled.div`
   min-height: 100vh;
   display: grid;
@@ -24,7 +26,7 @@ const Card = styled.div`
 const AnswerQuestionInterested = () => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
-  const { data } = useLoadData(getAnswerByRealEstate, idNumer);
+  const { data } = useLoadData<IAQ>(getAnswerByRealEstate, idNumer);
   const {} = useVerifyUserLogin();
 
   function validateData() {
