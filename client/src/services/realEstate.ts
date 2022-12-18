@@ -32,7 +32,6 @@ export const getRealEstateByEmail = async (id?: number) => {
   return { json, status };
 };
 
-
 export const getRealEstateOfOnePublication = async (idRealEstate?: number) => {
   const url = `${http}estateOfOnePublication/${idRealEstate}`;
   const { json, status } = await index(url);
@@ -47,6 +46,12 @@ export const getTypeRealEstate = async () => {
 
 export const getRealEstateByType = async (type: string) => {
   const url = `${http}estateByType/${type}`;
+  const { json, status } = await index(url);
+  return { json, status };
+};
+
+export const getDestinates = async (id: number) => {
+  const url = `${http}photo/${id}`;
   const { json, status } = await index(url);
   return { json, status };
 };

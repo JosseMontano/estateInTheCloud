@@ -34,9 +34,9 @@ const ContainerBtnModal = ({ v }: Params) => {
   const handleSeeQuestions = (idRealEstate: number) => {
     navigate(`/answeQuestionInterested/${idRealEstate}`);
   };
-
   const handle360 = () => {
-    window.open(`${env.img360Url}#/${v.idphoto}`, "_blank");
+    /*  window.open(`${env.img360Url}#/${v.idphoto}`, "_blank"); */
+    navigate(`/img360/${v.idphoto}`);
   };
 
   return (

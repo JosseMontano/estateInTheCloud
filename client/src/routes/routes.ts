@@ -3,6 +3,7 @@ import {
   RecuperateAccount,
   AnswerQuestion,
   AnswerQuestionInterested,
+  Img360,
 } from "../pages";
 
 type JSXComponent = () => JSX.Element;
@@ -66,6 +67,11 @@ export const routes: RouteType[] = [
     path: "/answeQuestionInterested/:id",
     Component: AnswerQuestionInterested,
     name: "AnswerQuestionInterested",
+  },
+  {
+    path: "/img360/:id",
+    Component: Img360,
+    name: "Img360",
   },
 ];
 
