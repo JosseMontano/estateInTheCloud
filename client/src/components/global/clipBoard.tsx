@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Message from "./message";
-import { Button } from "jz-validation-form";
-interface Params{
-    txt:string
+import { Btn } from "@/styles/btn";
+interface Params {
+  txt: string;
 }
-const Clipboard = (params:Params) => {
+const Clipboard = (params: Params) => {
   const [copied, setCopied] = useState(false);
   const copyText = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -15,14 +15,14 @@ const Clipboard = (params:Params) => {
   };
   return (
     <>
-      <Button
-        ColorBtn={"#15d20e"}
+      <Btn
+        marginInElements="10px"
         onClick={() => {
           copyText(params.txt);
         }}
       >
         Copiar Texto
-      </Button>
+      </Btn>
       {copied && <Message msg={"Copiado con exito"} />}
     </>
   );
