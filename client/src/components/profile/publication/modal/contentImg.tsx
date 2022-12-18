@@ -1,4 +1,3 @@
-import Slider from "react-slick";
 import Load from "../modal/load";
 import DataImg from "./dataImg";
 import REOnePublicationType from "@/interface/realEstateOfOnePublication";
@@ -9,7 +8,7 @@ interface Params {
 
 const ContentImg = ({ load, data }: Params) => {
   return (
-    <>{load ? <Load /> : <Slider className="slick">{DataImg(data)}</Slider>}</>
+    <>{load ? <Load /> : <div className="slick">{DataImg(data)}</div>}</>
   );
 };
 

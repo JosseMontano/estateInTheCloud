@@ -14,7 +14,19 @@ const Container = styled.div<{ open: boolean }>`
   display: ${(props) => (props.open ? "flex" : "none")};
   justify-content: center;
   align-items: center;
+
+  animation-name: transitionBackground;
+  animation-duration: 1s;
+  @keyframes transitionBackground {
+    0% {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    100% {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
 `;
+
 const ContainerSoon = styled.div`
   background: #0f2027; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -33,24 +45,36 @@ const ContainerSoon = styled.div`
   color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.08);
   border-radius: 16px;
-
   padding: 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: move 1s;
+  transform: translateY(50px);
+  margin-bottom: 100px;
+  @keyframes move {
+    0% {
+      transform: translateY(0px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(50px);
+      opacity: 1;
+    }
+  }
 `;
+
 const Close = styled.p`
   position: absolute;
   top: 1rem;
   right: 1rem;
 `;
 
-export const Modal = ({ isShown, hide, modalContent }: Params) => {
-  const handleModalContainerClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => e.stopPropagation();
+type Event = React.MouseEvent<HTMLDivElement, MouseEvent>;
 
+export const Modal = ({ isShown, hide, modalContent }: Params) => {
+  const handleModalContainerClick = (e: Event) => e.stopPropagation();
   const modal = (
     <Container open={isShown} onClick={hide}>
       <ContainerSoon onClick={(e) => handleModalContainerClick(e)}>
