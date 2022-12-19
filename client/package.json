@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "add": "^2.0.6",
+    "global": "^4.4.0",
     "jz-validation-form": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "rm": "^0.1.8",
+    "serve": "^14.1.2",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
