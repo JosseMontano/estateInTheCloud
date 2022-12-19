@@ -2,6 +2,18 @@ import { useParams } from "react-router-dom";
 import { getDestinates } from "@/services/realEstate";
 import { useEffect, useState } from "react";
 import { RealEstate } from "@/interface/realEstate";
+import styled from "styled-components";
+
+
+const Container = styled.div`
+  background-color: #282c34;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  justify-content: center;
+`;
 
 const Img360 = () => {
   let { id } = useParams();
@@ -21,9 +33,14 @@ const Img360 = () => {
   }, []);
 
   return (
-    <div>
-      <img src={data?.url} alt="" />
-    </div>
+    <>
+      {/* <img src={data?.url} alt="" />  */}
+      {data && (
+        <Container>
+     
+        </Container>
+      )}
+    </>
   );
 };
 
