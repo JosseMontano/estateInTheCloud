@@ -14,6 +14,7 @@ import env from "@/config";
 export const ContentModal = (v: RealEstate) => {
   const [description, setDescription] = useState(v.description);
   const [title, setTitle] = useState(v.title);
+  const [loadTxt, setLoadTxt] = useState(false);
   const navigate = useNavigate();
   const { data, loading } = useLoadData(getRealEstate, v.idrealestate);
   const slide = useRef<HTMLDivElement>(null);
@@ -48,6 +49,7 @@ export const ContentModal = (v: RealEstate) => {
   };
 
   const handleTranslate = async () => {
+    setLoadTxt(true);
     const { json } = await translate(v.description);
     const { json: jsonTtitle } = await translate(v.title);
     if (json) {
@@ -55,6 +57,7 @@ export const ContentModal = (v: RealEstate) => {
       setDescription(des);
       const tit = jsonTtitle.responseData.translatedText;
       setTitle(tit);
+      setLoadTxt(false);
     }
   };
 
@@ -92,11 +95,15 @@ export const ContentModal = (v: RealEstate) => {
   return (
     <Container>
       {loading ? <Load /> : showCarousel()}
-      <ContainerContent>
-        <H2>{title}</H2>
-        <P>{description}</P>
-        <ContainerBtnModal v={v} btnJSX={btnJSX} />
-      </ContainerContent>
+      {loadTxt ? (
+        <Load />
+      ) : (
+        <ContainerContent>
+          <H2>{title}</H2>
+          <P>{description}</P>
+          <ContainerBtnModal v={v} btnJSX={btnJSX} />
+        </ContainerContent>
+      )}
     </Container>
   );
 };
