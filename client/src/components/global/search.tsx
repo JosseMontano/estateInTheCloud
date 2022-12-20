@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useLanguage } from "@/context/languageContext";
 const Container = styled.div`
   width: 100%;
   position: relative;
@@ -36,12 +37,13 @@ interface Params {
 }
 
 const Search = ({ getValueSearch }: Params) => {
+  const {text} = useLanguage();
   return (
     <Container className="search">
       <SearchTerm
         onChange={(e) => getValueSearch(e.target.value)}
         type="text"
-        placeholder="What are you looking for?"
+        placeholder={text.filterSearch}
       />
       <SearchButton type="submit">🔎</SearchButton>
     </Container>

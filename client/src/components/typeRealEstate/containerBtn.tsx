@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/languageContext";
 import styled from "styled-components";
 
 const ContainerBtn = styled.div`
@@ -29,34 +30,35 @@ interface BtnJSXType {
 }
 
 const Index = ({ changeData }: ParamsType) => {
+  const { text } = useLanguage();
   let btnJSX: BtnJSXType[] = [
     {
       onclick: () => changeData("Casa"),
-      text: "Casas",
+      text: text.filterHouse,
     },
     {
       onclick: () => changeData("Departamento"),
-      text: "Departamentos",
+      text: text.filterDepartament,
     },
     {
       onclick: () => changeData("Monoambiente"),
-      text: "Monoambientes",
+      text: text.filterStudio,
     },
     {
       onclick: () => changeData("Garzonier"),
-      text: "Garzoniers",
+      text: text.filterGarzonier,
     },
     {
       onclick: () => changeData("Dormitorio"),
-      text: "Dormitorios",
+      text: text.filterBedroom,
     },
     {
       onclick: () => changeData("Almacen"),
-      text: "Almacenes",
+      text: text.filterStore,
     },
     {
       onclick: () => changeData("Tienda"),
-      text: "Tiendas",
+      text: text.filterShop,
     },
   ];
 

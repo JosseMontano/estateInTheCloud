@@ -1,12 +1,9 @@
 import { RealEstate } from "@/interface/realEstate";
-import {
-  ContainerContent,
-  Button,
-  H2,
-  P,
-  ContainerBtn,
-} from "@/styles/modal/perfil";
+import { ContainerContent, H2, P, ContainerBtn } from "@/styles/modal/perfil";
 import { InputFile } from "@/styles/globals";
+import { useState } from "react";
+import { useLanguage } from "@/context/languageContext";
+import { Btn } from "@/styles/btn";
 
 interface params {
   v: RealEstate;
@@ -19,6 +16,24 @@ interface params {
 }
 
 const ContentTextModal = (p: params) => {
+  const { text } = useLanguage();
+  const [stateAvailable, setStateAvailable] = useState(
+    p.v.state === "Disponible" ? true : false
+  );
+  let btnJSX = [
+    {
+      click: () => p.handleAddNewPhoto(),
+      txt: text.profileBtnAddPhoto,
+    },
+    {
+      click: () => p.handleDelete(),
+      txt: text.profileBtnDeletePhoto,
+    },
+    {
+      click: () => p.handleAnswerQuestion(p.v.idrealestate),
+      txt: text.profileBtnQuestion,
+    },
+  ];
   return (
     <ContainerContent>
       <H2>{p.v.title}</H2>
@@ -28,33 +43,32 @@ const ContentTextModal = (p: params) => {
         <>
           <InputFile type="file" onChange={(e) => p.handleFile(e)} />
           <ContainerBtn>
-            <Button onClick={() => p.handleAddNewPhoto()} ColorBtn={"#229ff2"}>
-              Agregar foto
-            </Button>
-            <Button ColorBtn={"#ff26009e"} onClick={() => p.handleDelete()}>
-              Eliminar Foto
-            </Button>
-            <Button
-              onClick={() => p.handleAnswerQuestion(p.v.idrealestate)}
-              ColorBtn={"#425e70"}
-            >
-              Preguntas
-            </Button>
+            {btnJSX.map((v, i) => (
+              <Btn key={i} marginInElements="0px" onClick={v.click}>
+                {v.txt}
+              </Btn>
+            ))}
 
-            {p.v.state === "Disponible" ? (
-              <Button
-                ColorBtn={"#00ff9d9e"}
-                onClick={() => p.handleUpdateState(p.v.idrealestate, 0)}
+            {stateAvailable ? (
+              <Btn
+                marginInElements="0px"
+                onClick={() => {
+                  p.handleUpdateState(p.v.idrealestate, 0);
+                  setStateAvailable(false);
+                }}
               >
-                Disponible
-              </Button>
+                {text.profileBtnAvailable}
+              </Btn>
             ) : (
-              <Button
-                ColorBtn={"#51ff009e"}
-                onClick={() => p.handleUpdateState(p.v.idrealestate, 1)}
+              <Btn
+                marginInElements="0px"
+                onClick={() => {
+                  p.handleUpdateState(p.v.idrealestate, 1);
+                  setStateAvailable(true);
+                }}
               >
-                No disponible
-              </Button>
+                {text.profileBtnNoAvailable}
+              </Btn>
             )}
           </ContainerBtn>
         </>

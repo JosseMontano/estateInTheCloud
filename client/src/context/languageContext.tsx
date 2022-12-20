@@ -43,6 +43,25 @@ interface TextType {
   questionTitle: string;
   questionPlaceholder: string;
   questionBtnSave: string;
+  filterSearch: string;
+  filterHouse: string;
+  filterDepartament: string;
+  filterStudio: string;
+  filterGarzonier: string;
+  filterBedroom: string;
+  filterStore: string;
+  filterShop: string;
+  profileSendMessage: string;
+  profileSendRequest: string;
+  profileCreatePublicate: string;
+  profilePublication: string;
+  profileFollower: string;
+  profileFollow: string;
+  profileBtnAddPhoto: string;
+  profileBtnDeletePhoto: string;
+  profileBtnQuestion: string;
+  profileBtnAvailable: string;
+  profileBtnNoAvailable: string;
 }
 
 interface TranslationType {
@@ -85,7 +104,7 @@ const translations: TranslationType = {
     homeForYou: "Solo para ti",
     homeMoreInfor: "Mas informacion",
     homeVist: "Visitar",
-    homeBtnCopyText: "Copair texto",
+    homeBtnCopyText: "Copiar texto",
     homeBtnQuestionFrequent: "Preguntas frecuentes",
     homeBtnDownload: "Descargar Foto",
     homeBtnSee360: "Ver en 360",
@@ -93,6 +112,25 @@ const translations: TranslationType = {
     questionTitle: "Haz tu propia pregunta",
     questionPlaceholder: "Escribe tu pregunta",
     questionBtnSave: "Publicar",
+    filterSearch: "¿Que estas buscando?",
+    filterHouse: "Casas",
+    filterDepartament: "Departamentos",
+    filterStudio: "Monoambientes",
+    filterGarzonier: "Garzoniers",
+    filterBedroom: "Dormitorios",
+    filterStore: "Almacenes",
+    filterShop: "Tiendas",
+    profileSendMessage: "Enviar mensaje",
+    profileSendRequest: "Enviar solicitud",
+    profileCreatePublicate: "Crear publicacion",
+    profilePublication: "publicaciones",
+    profileFollower: "seguidores",
+    profileFollow: "seguidos",
+    profileBtnAddPhoto: "Agregar foto",
+    profileBtnDeletePhoto: "Eliminar foto",
+    profileBtnQuestion: "Pregunta",
+    profileBtnAvailable: "Disponible",
+    profileBtnNoAvailable: "No Disponible",
   },
   en: {
     loginTitle: "sign in o sign up",
@@ -136,6 +174,25 @@ const translations: TranslationType = {
     questionTitle: "ask your own question",
     questionPlaceholder: "write your question",
     questionBtnSave: "Publish",
+    filterSearch: "What are you looking for?",
+    filterHouse: "House's",
+    filterDepartament: "Departament's",
+    filterStudio: "Studio's",
+    filterGarzonier: "Garzonier's",
+    filterBedroom: "Bedroom's",
+    filterStore: "Store's",
+    filterShop: "Shop's",
+    profileSendMessage: "Send message",
+    profileSendRequest: "send Request",
+    profileCreatePublicate: "Create publication",
+    profilePublication: "publications",
+    profileFollower: "followers",
+    profileFollow: "following",
+    profileBtnAddPhoto: "Add Photo",
+    profileBtnDeletePhoto: "Delete Photo",
+    profileBtnQuestion: "Question",
+    profileBtnAvailable: "Available",
+    profileBtnNoAvailable:"No Available"
   },
 };
 
