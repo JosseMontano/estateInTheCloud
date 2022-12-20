@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useLanguage } from "@/context/languageContext";
 
 const Container = styled.div`
   display: flex;
@@ -21,13 +22,14 @@ interface Params {
 }
 
 const ContainterBtn = ({ idUser, toggle, visitUser, email }: Params) => {
+  const { text } = useLanguage();
   let data = [
     {
-      name: "Mas Info",
+      name: text.homeMoreInfor,
       click: toggle,
     },
     {
-      name: "Visitar",
+      name: text.homeVist,
       click: () => visitUser(idUser, email),
     },
   ];

@@ -10,7 +10,9 @@ import { startTransition, Suspense, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
+import { useLanguage } from "@/context/languageContext";
 export function Login(): JSX.Element {
+  const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signIn);
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +22,7 @@ export function Login(): JSX.Element {
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: "Ingresar",
+      text: text.loginBtnGetInto,
     },
     {
       onclick: () => {
@@ -29,27 +31,27 @@ export function Login(): JSX.Element {
         });
       },
       color: ColorBtn,
-      text: "Create una cuenta",
+      text: text.loginBtnCreateAccount,
     },
     {
       onclick: () => {
         navigate(`/recuperateAccount`);
       },
       color: ColorBtnThird,
-      text: "recuperar cuenta",
+      text: text.loginBtnRecuperateAccount,
     },
   ];
 
   let dataForm = [
     {
-      label: "Gmail",
+      label: text.loginLabelGmail,
       name: "email",
       value: form.email,
       errors: errors.email,
       type: "text",
     },
     {
-      label: "Contraseña",
+      label: text.loginLabelPassword,
       name: "password",
       value: form.password,
       errors: errors.password,
@@ -74,8 +76,8 @@ export function Login(): JSX.Element {
         content={
           <>
             <ColContent
-              title={"Inicia sesion o create una cuenta"}
-              text={"Hola de nuevo"}
+              title={text.loginTitle}
+              text={text.loginSubtitle}
               form={
                 <Form
                   handleShowPass={handleShowPass}

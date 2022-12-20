@@ -6,37 +6,37 @@ import Skeleton from "../components/home/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
 import Navbar from "@/components/navbar";
+import { useLanguage } from "@/context/languageContext";
 const Container = styled.div`
   width: 100%;
 `;
 
-
-
 const Home = () => {
+  const { text } = useLanguage();
   const dataContext = useHome();
   const {} = useVerifyUserLogin();
   const navigate = useNavigate();
   const visitUser = (idUser: number, email: string) => {
-    startTransition(()=>{
+    startTransition(() => {
       navigate(`/visitUser/${idUser}/${email}`);
-    })
+    });
   };
 
   let data = [
     {
-      title: "Mas recientes",
+      title: text.homeMoreRecent,
       data: dataContext.homeDataMostRecent,
     },
     {
-      title: "Todos",
+      title: text.homeAll,
       data: dataContext.homeData,
     },
     {
-      title: "Propietarios Recomendados",
+      title: text.homeRecommendedOwner,
       data: dataContext.DataRecommendedByUser,
     },
     {
-      title: "Solo para ti",
+      title: text.homeForYou,
       data: dataContext.homeData,
     },
   ];

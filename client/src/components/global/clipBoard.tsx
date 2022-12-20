@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Message from "./message";
 import { Btn } from "@/styles/btn";
+import { useLanguage } from "@/context/languageContext";
+
 interface Params {
   txt: string;
 }
 const Clipboard = (params: Params) => {
+  const { text } = useLanguage();
   const [copied, setCopied] = useState(false);
   const copyText = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -21,7 +24,7 @@ const Clipboard = (params: Params) => {
           copyText(params.txt);
         }}
       >
-        Copiar Texto
+        {text.homeBtnCopyText}
       </Btn>
       {copied && <Message msg={"Copiado con exito"} />}
     </>

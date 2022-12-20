@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-
+import Language from "../language/index";
 const Container = styled.form``;
 
 interface BtnType {
@@ -55,6 +55,9 @@ const Form = (props: ParamsType) => {
       {props.dataBtn.map((v, i) => (
         <Button key={i} {...v} />
       ))}
+
+      <Language />
+
       <LoadingAndResponse
         loading={props.loading}
         msg={props.msg}

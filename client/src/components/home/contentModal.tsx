@@ -4,14 +4,16 @@ import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import useLoadData from "@/hooks/useFetch";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "../dynamic/carousel";
 import translate from "@/services/translate";
 import { useNavigate } from "react-router-dom";
 import env from "@/config";
+import { useLanguage } from "@/context/languageContext";
 
 export const ContentModal = (v: RealEstate) => {
+  const { text } = useLanguage();
   const [description, setDescription] = useState(v.description);
   const [title, setTitle] = useState(v.title);
   const [loadTxt, setLoadTxt] = useState(false);
@@ -64,19 +66,19 @@ export const ContentModal = (v: RealEstate) => {
   let btnJSX = [
     {
       click: () => handleSeeQuestions(v.idrealestate),
-      txt: "Preguntas frecuentes",
+      txt: text.homeBtnQuestionFrequent,
     },
     {
       click: () => handelDownloadImg(v.url),
-      txt: "Descargar",
+      txt: text.homeBtnDownload,
     },
     {
       click: handle360,
-      txt: "Ver en 360",
+      txt: text.homeBtnSee360,
     },
     {
       click: handleTranslate,
-      txt: "Traducir",
+      txt: text.homeBtnTranslate,
     },
   ];
 

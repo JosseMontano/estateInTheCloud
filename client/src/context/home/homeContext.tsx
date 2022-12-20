@@ -5,10 +5,8 @@ import {
   getRealEstateMostRecent,
   getRealEstateRecommendedByUser,
 } from "../../services/realEstate";
+import Children from "@/interface/children";
 
-interface Children {
-  children: JSX.Element;
-}
 
 interface homeContext {
   homeData: RealEstate[];

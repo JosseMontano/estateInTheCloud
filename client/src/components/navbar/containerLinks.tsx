@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { UseModal } from "@/hooks/useModal";
 import Links from "./links";
 import { logOut } from "@/services/auth";
+import { useLanguage } from "@/context/languageContext";
+import Languages from "../language/index";
+
 
 const Ul = styled.ul`
   float: right;
@@ -32,6 +35,7 @@ interface Params {
 }
 
 const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
+  const {text} = useLanguage()
   const navigate = useNavigate();
   const { isShown, toggle } = UseModal();
 
@@ -43,19 +47,19 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       },
     },
     {
-      text: "Filtrar",
+      text: text.navbarFilter,
       click: () => {
         handleRedirect(`/realEstateFilter`);
       },
     },
     {
-      text: "Preguntas",
+      text: text.navbarQuestion,
       click: () => {
         toggle();
       },
     },
     {
-      text: "Salir",
+      text: text.navbarGoOut,
       click: async () => {
         var resp = await logOut();
         if (!resp) {
@@ -70,6 +74,7 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       {dataJSX.map((v, i) => (
         <Links v={v} key={i} isShown={isShown} toggle={toggle} />
       ))}
+              <Languages />
     </Ul>
   );
 };

@@ -10,6 +10,8 @@ import { startTransition, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
+import { useLanguage } from "@/context/languageContext";
+
 const Container = styled.form``;
 
 interface V {
@@ -22,6 +24,7 @@ interface V {
 }
 
 const Form = () => {
+  const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signUp);
 
@@ -32,7 +35,7 @@ const Form = () => {
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: "Crear cuenta",
+      text: text.registerBtnCreateAccount,
     },
     {
       onclick: () => {
@@ -41,13 +44,13 @@ const Form = () => {
         });
       },
       color: ColorBtn,
-      text: "Volver",
+      text: text.registerBtnReturn,
     },
   ];
 
   let dataForm = [
     {
-      label: "Gmail",
+      label: text.registerLabelGmail,
       name: "email",
       value: form.email,
       errors: errors.email,
@@ -55,7 +58,7 @@ const Form = () => {
       type: "text",
     },
     {
-      label: "Nombre de usuario",
+      label: text.registerLabelNameUser,
       name: "username",
       value: form.username,
       errors: errors.username,
@@ -63,7 +66,7 @@ const Form = () => {
       type: "text",
     },
     {
-      label: "Celular",
+      label: text.registerLabelCellphone,
       name: "numberPhone",
       value: form.numberPhone,
       errors: errors.numberPhone,
@@ -71,7 +74,7 @@ const Form = () => {
       type: "text",
     },
     {
-      label: "Contraseña",
+      label: text.registerLabelPassword,
       name: "password",
       value: form.password,
       errors: errors.password,
@@ -79,11 +82,11 @@ const Form = () => {
       type: showPassword ? "text" : "password",
     },
     {
-      label: "clave Secreta",
+      label: text.registerLabelSecretKey,
       name: "secrect_password",
       value: form.secrect_password,
       errors: errors.secrect_password,
-      placeHolder: "clave Secreta",
+      placeHolder: text.registerLabelSecretKey,
       type: "text",
     },
   ];

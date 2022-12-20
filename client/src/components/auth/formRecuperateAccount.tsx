@@ -8,9 +8,13 @@ import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
 import { FormRecuperateAccount } from "@/interface/formAuth";
 import { UseForm } from "jz-validation-form";
+import { useLanguage } from "@/context/languageContext";
+import { startTransition } from "react";
+
 const Container = styled.form``;
 
 const Form = () => {
+  const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRecuperateAccount>(
       initialForm,
@@ -24,31 +28,33 @@ const Form = () => {
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: "Guardar",
+      text: text.recuperateAccountSave,
     },
     {
       onclick: () => {
-        navigate(`/register`);
+        startTransition(() => {
+          navigate(`/`);
+        });
       },
       color: ColorBtn,
-      text: "Create una cuenta",
+      text: text.recuperateAccountReturn,
     },
   ];
   let dataForm = [
     {
-      label: "Gmail",
+      label: text.recuperateAccountGmail,
       name: "email",
       value: form.email,
       errors: errors.email,
     },
     {
-      label: "Contraseña Nueva",
+      label: text.recuperateAccountPasswordNew,
       name: "password",
       value: form.password,
       errors: errors.password,
     },
     {
-      label: "Clave secreta",
+      label: text.recuperateAccountSecretKey,
       name: "secrect_password",
       value: form.secrect_password,
       errors: errors.secrect_password,
