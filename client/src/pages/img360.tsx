@@ -19,7 +19,7 @@ const Img360 = () => {
   let { id } = useParams();
   const [data, setData] = useState<RealEstate | null>();
   const getRealEstate = async (id: number) => {
-    const { json } = await getDestinates(id);
+    const { json } = await getDestinates<RealEstate[]>(id);
     if (json) {
       setData(json[0]);
       console.log(json[0]);

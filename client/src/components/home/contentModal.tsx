@@ -4,13 +4,78 @@ import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import useLoadData from "@/hooks/useFetch";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "../dynamic/carousel";
+import translate from "@/services/translate";
+import { useNavigate } from "react-router-dom";
+import env from "@/config";
 
 export const ContentModal = (v: RealEstate) => {
+  const [description, setDescription] = useState(v.description);
+  const [title, setTitle] = useState(v.title);
+  const navigate = useNavigate();
   const { data, loading } = useLoadData(getRealEstate, v.idrealestate);
   const slide = useRef<HTMLDivElement>(null);
+
+  const handelDownloadImg = (url: string) => {
+    //url is thr route of the app
+    fetch(url, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => {
+        response.arrayBuffer().then(function (buffer) {
+          const url = window.URL.createObjectURL(new Blob([buffer]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "image.png"); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleSeeQuestions = (idRealEstate: number) => {
+    navigate(`/answeQuestionInterested/${idRealEstate}`);
+  };
+  const handle360 = () => {
+    window.open(`${env.img360Url}#/${v.idphoto}`, "_blank");
+    /* navigate(`/img360/${v.idphoto}`); */
+  };
+
+  const handleTranslate = async () => {
+    const { json } = await translate(v.description);
+    const { json: jsonTtitle } = await translate(v.title);
+    if (json) {
+      const des = json.responseData.translatedText;
+      setDescription(des);
+      const tit = jsonTtitle.responseData.translatedText;
+      setTitle(tit);
+    }
+  };
+
+  let btnJSX = [
+    {
+      click: () => handleSeeQuestions(v.idrealestate),
+      txt: "Preguntas frecuentes",
+    },
+    {
+      click: () => handelDownloadImg(v.url),
+      txt: "Descargar",
+    },
+    {
+      click: handle360,
+      txt: "Ver en 360",
+    },
+    {
+      click: handleTranslate,
+      txt: "Traducir",
+    },
+  ];
 
   function children() {
     return data.map((v, i) => (
@@ -28,9 +93,9 @@ export const ContentModal = (v: RealEstate) => {
     <Container>
       {loading ? <Load /> : showCarousel()}
       <ContainerContent>
-        <H2>{v.title}</H2>
-        <P>{v.description}</P>
-        <ContainerBtnModal v={v} />
+        <H2>{title}</H2>
+        <P>{description}</P>
+        <ContainerBtnModal v={v} btnJSX={btnJSX} />
       </ContainerContent>
     </Container>
   );

@@ -75,7 +75,7 @@ const Header = ({ email, idParam, cellphonenumber }: Params) => {
   };
 
   const handleGetPersonCommented = async () => {
-    const { json } = await getUser(email);
+    const { json } = await getUser<any>(email);
     if (json) {
       const { id_usuario } = Object.assign({}, json[0]);
       const auxId = id_usuario;

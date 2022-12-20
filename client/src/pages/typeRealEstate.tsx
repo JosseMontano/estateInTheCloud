@@ -23,7 +23,7 @@ const TypeRealEstate = () => {
   const { filter, getValueSearch } = useSearch();
 
   const changeData = async (type: string) => {
-    const { json } = await getRealEstateByType(type);
+    const { json } = await getRealEstateByType<RealEstate[]>(type);
     if (json) {
       setData(json);
     }

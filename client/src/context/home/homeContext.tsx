@@ -45,21 +45,23 @@ export const HomeContextProvider = ({ children }: Children) => {
   const [loading, setLoading] = useState(true);
 
   const handleGetRealEstateMostRecent = async () => {
-    const { json, status } = await getRealEstateMostRecent();
+    const { json, status } = await getRealEstateMostRecent<RealEstate[]>();
     if (json) {
       setDataMostRecent(json);
     }
   };
 
   const handleGetRealEstate = async () => {
-    const { json, status } = await getRealEstateAll();
+    const { json, status } = await getRealEstateAll<RealEstate[]>();
     if (json) {
       setData(json);
     }
   };
 
   const handleGetRealEstateRecommendedByUser = async () => {
-    const { json, status } = await getRealEstateRecommendedByUser();
+    const { json, status } = await getRealEstateRecommendedByUser<
+      RealEstate[]
+    >();
     if (json) {
       setRecommendedByUser(json);
     }

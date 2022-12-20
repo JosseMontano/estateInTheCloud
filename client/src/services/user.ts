@@ -1,9 +1,9 @@
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
 
-export const getUser = async (email?: string) => {
+export const getUser = async <T>(email?: string):Promise<{json:T, status:number}> => {
   const url = `${http}getUserPhotoProfile/${email}`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 

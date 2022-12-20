@@ -1,15 +1,10 @@
-export const index = async (
+export async function index<T>(
   url: string
-): Promise<{ json: null; status: number }> => {
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-    });
-    const json = await response.json();
-    const status = response.status;
-    return { json, status };
-  } catch (error) {
-    console.log(error);
-    return { json: null, status: 0 };
-  }
-};
+): Promise<{ json: T; status: number }> {
+  const response = await fetch(url, {
+    method: "GET",
+  });
+  const json = await response.json();
+  const status = response.status;
+  return { json, status };
+}

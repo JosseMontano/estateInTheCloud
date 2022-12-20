@@ -2,21 +2,30 @@ import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
 
-export const getRealEstateAll = async () => {
+export const getRealEstateAll = async <T>(): Promise<{
+  json: T;
+  status: number;
+}> => {
   const url = `${http}estate`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 
-export const getRealEstateMostRecent = async () => {
+export const getRealEstateMostRecent = async <T>(): Promise<{
+  json: T;
+  status: number;
+}> => {
   const url = `${http}estateMostRecent`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 
-export const getRealEstateRecommendedByUser = async () => {
+export const getRealEstateRecommendedByUser = async <T>(): Promise<{
+  json: T;
+  status: number;
+}> => {
   const url = `${http}estateRecommendedByUser`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 
@@ -44,15 +53,19 @@ export const getTypeRealEstate = async () => {
   return { json, status };
 };
 
-export const getRealEstateByType = async (type: string) => {
+export const getRealEstateByType = async <T>(
+  type: string
+): Promise<{ json: T; status: number }> => {
   const url = `${http}estateByType/${type}`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 
-export const getDestinates = async (id: number) => {
+export const getDestinates = async <T>(
+  id: number
+): Promise<{ json: T; status: number }> => {
   const url = `${http}photo/${id}`;
-  const { json, status } = await index(url);
+  const { json, status } = await index<T>(url);
   return { json, status };
 };
 
