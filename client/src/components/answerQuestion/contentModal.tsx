@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorText, Title, ColorBtn } from "@/styles/globals";
+import { ColorText, Title, ColorBtn } from "styles/globals";
 import Loader from "../global/loading";
 import Message from "../global/message";
 import { Button, MsgError, TextArea } from "jz-validation-form";

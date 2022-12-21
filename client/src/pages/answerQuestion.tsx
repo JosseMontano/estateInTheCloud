@@ -7,12 +7,12 @@ import CardComponent from "../components/answerQuestion";
 import useLoadData from "../hooks/useFetch";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
-import { initialForm, validationsForm } from "@/validations/answer";
-import { addAnswer } from "@/services/answer";
-import Navbar from "@/components/navbar";
+import { initialForm, validationsForm } from "validations/answer";
+import { addAnswer } from "services/answer";
+import Navbar from "components/navbar";
 import { UseForm } from "jz-validation-form";
 import styled from "styled-components";
-import Question from "@/interface/question";
+import Question from "interface/question";
 
 const Container = styled.div`
   width: calc(100%-15px);

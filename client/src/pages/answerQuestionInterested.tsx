@@ -6,8 +6,8 @@ import CardSoon from "../components/answerQuestionInterested";
 import useLoadData from "../hooks/useFetch";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { Suspense } from "react";
-import Navbar from "@/components/navbar";
-import IAQ from "@/interface/answerQuestionInterested";
+import Navbar from "components/navbar";
+import IAQ from "interface/answerQuestionInterested";
 
 const Container = styled.div`
   min-height: 100vh;

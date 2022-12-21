@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NotFound from "@/assets/global/notFound.png";
+import NotFound from "assets/global/notFound.png";
 
 const Container = styled.div`
   display: grid;

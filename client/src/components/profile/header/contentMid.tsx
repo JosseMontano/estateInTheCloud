@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { marginInElements } from "@/styles/globals";
-import { useLanguage } from "@/context/languageContext";
+import { marginInElements } from "styles/globals";
+import { useLanguage } from "context/languageContext";
 const Container = styled.div`
   display: flex;
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { marginInElements } from "@/styles/globals";
-import { Btn } from "@/styles/btn";
-import { useLanguage } from "@/context/languageContext";
+import { marginInElements } from "styles/globals";
+import { Btn } from "styles/btn";
+import { useLanguage } from "context/languageContext";
 const Container = styled.div`
   display: flex;
   @media screen and (max-width: 450px) {

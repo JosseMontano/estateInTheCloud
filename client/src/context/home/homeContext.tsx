@@ -5,7 +5,7 @@ import {
   getRealEstateMostRecent,
   getRealEstateRecommendedByUser,
 } from "../../services/realEstate";
-import Children from "@/interface/children";
+import Children from "interface/children";
 
 
 interface homeContext {

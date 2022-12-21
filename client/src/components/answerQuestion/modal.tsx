@@ -1,6 +1,6 @@
 import { Modal } from "../global/modal";
 import ContentModal from "./contentModal";
-import Question from "@/interface/question";
+import Question from "interface/question";
 
 interface Params {
   isShown: boolean;

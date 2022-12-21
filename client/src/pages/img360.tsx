@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { getDestinates } from "@/services/realEstate";
+import { getDestinates } from "services/realEstate";
 import { useEffect, useState } from "react";
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "interface/realEstate";
 import styled from "styled-components";
 
 

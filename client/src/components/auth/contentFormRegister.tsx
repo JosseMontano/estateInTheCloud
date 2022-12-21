@@ -1,4 +1,4 @@
-import { ColorText } from "@/styles/globals";
+import { ColorText } from "styles/globals";
 import { MsgError, Input, Label } from "jz-validation-form";
 import styled from "styled-components";
 

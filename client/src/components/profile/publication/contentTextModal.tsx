@@ -1,9 +1,9 @@
-import { RealEstate } from "@/interface/realEstate";
-import { ContainerContent, H2, P, ContainerBtn } from "@/styles/modal/perfil";
-import { InputFile } from "@/styles/globals";
+import { RealEstate } from "interface/realEstate";
+import { ContainerContent, H2, P, ContainerBtn } from "styles/modal/perfil";
+import { InputFile } from "styles/globals";
 import { useState } from "react";
-import { useLanguage } from "@/context/languageContext";
-import { Btn } from "@/styles/btn";
+import { useLanguage } from "context/languageContext";
+import { Btn } from "styles/btn";
 
 interface params {
   v: RealEstate;

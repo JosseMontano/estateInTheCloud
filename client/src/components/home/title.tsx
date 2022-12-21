@@ -1,4 +1,4 @@
-import { Title, ColorText, ContainerMargin } from "@/styles/globals";
+import { Title, ColorText, ContainerMargin } from "styles/globals";
 
 interface Params {
   title: string;

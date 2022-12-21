@@ -5,8 +5,8 @@ import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import Skeleton from "../components/home/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
-import Navbar from "@/components/navbar";
-import { useLanguage } from "@/context/languageContext";
+import Navbar from "components/navbar";
+import { useLanguage } from "context/languageContext";
 const Container = styled.div`
   width: 100%;
 `;

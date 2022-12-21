@@ -9,11 +9,11 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Check from "./check";
 import ContainerLinks from "./containerLinks";
-import { NameUserContext } from "@/context/nameUser";
+import { NameUserContext } from "context/nameUser";
 import NameUser from "./nameUser";
-import { getEmail } from "@/services/auth";
+import { getEmail } from "services/auth";
 import AuxNav from "./auxNav";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 const Nav = styled.nav<{ ColorBtn: string }>`
   background: ${(props) => props.ColorBtn};
   height: 80px;

@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import Search from "@/components/global/search";
-import { UseModal } from "@/hooks/useModal";
-import { RealEstate } from "@/interface/realEstate";
-import useSearch from "@/hooks/useSearch";
+import Search from "components/global/search";
+import { UseModal } from "hooks/useModal";
+import { RealEstate } from "interface/realEstate";
+import useSearch from "hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
-import { getRealEstateByType } from "@/services/realEstate";
-import ContainerBtn from "@/components/typeRealEstate/containerBtn";
-import ContainerCard from "@/components/typeRealEstate/containerCard";
-import Navbar from "@/components/navbar";
+import { getRealEstateByType } from "services/realEstate";
+import ContainerBtn from "components/typeRealEstate/containerBtn";
+import ContainerCard from "components/typeRealEstate/containerCard";
+import Navbar from "components/navbar";
 
 export const Container = styled.div`
   min-height: 100vh;

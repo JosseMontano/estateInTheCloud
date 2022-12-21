@@ -1,5 +1,5 @@
-import IQuestion from "@/interface/question";
-import { Content, Btn, Description, Icon, Title } from "@/styles/card";
+import IQuestion from "interface/question";
+import { Content, Btn, Description, Icon, Title } from "styles/card";
 
 interface Params {
   v: IQuestion;

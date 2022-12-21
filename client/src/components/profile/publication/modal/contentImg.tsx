@@ -1,6 +1,6 @@
 import Load from "../modal/load";
-import REOnePublicationType from "@/interface/realEstateOfOnePublication";
-import Carousel from "@/components/dynamic/carousel";
+import REOnePublicationType from "interface/realEstateOfOnePublication";
+import Carousel from "components/dynamic/carousel";
 import { useRef } from "react";
 import ImgCom from "../modal/img";
 interface Params {

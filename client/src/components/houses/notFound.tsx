@@ -1,5 +1,5 @@
-import NotFoundComp from "@/components/global/dataEmpty";
-import { RealEstate } from "@/interface/realEstate";
+import NotFoundComp from "components/global/dataEmpty";
+import { RealEstate } from "interface/realEstate";
 
 interface Params {
   dataFilter: RealEstate[];

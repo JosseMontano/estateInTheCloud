@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Card from "@/components/houses";
-import NoFound from "@/components/houses/notFound";
-import { RealEstate } from "@/interface/realEstate";
+import Card from "components/houses";
+import NoFound from "components/houses/notFound";
+import { RealEstate } from "interface/realEstate";
 
 export const ContainerCardCss = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Children from "@/interface/children";
+import Children from "interface/children";
 
 interface TextType {
   loginTitle: string;

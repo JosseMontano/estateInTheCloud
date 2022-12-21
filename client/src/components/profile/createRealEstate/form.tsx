@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ColorBtn, ColorText, InputFile } from "@/styles/globals";
+import { ColorBtn, ColorText, InputFile } from "styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
-import { getTypeRealEstate } from "@/services/realEstate";
-import useLoadData from "@/hooks/useFetch";
+import { getTypeRealEstate } from "services/realEstate";
+import useLoadData from "hooks/useFetch";
 import Select from "./select";
-import ParamsTypeRealEstate from "@/interface/typeRealEstate";
+import ParamsTypeRealEstate from "interface/typeRealEstate";
 interface Params {
   handleChange: (e: any) => void;
   sendData: (photo: any) => void;

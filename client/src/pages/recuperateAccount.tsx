@@ -3,7 +3,7 @@ import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecupera
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
 import { Suspense } from "react";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 export function Login(): JSX.Element {
   const { text } = useLanguage();
   return (

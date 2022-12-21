@@ -1,9 +1,9 @@
-import { User } from "@/interface/user";
+import { User } from "interface/user";
 import {
   Container,
   ChangePhoto,
   InputFile,
-} from "@/styles/profile/header/contentImg";
+} from "styles/profile/header/contentImg";
 import ImgDataBase from "./imgDataBase";
 
 interface Params {

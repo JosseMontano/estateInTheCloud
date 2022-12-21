@@ -1,16 +1,16 @@
-import { RealEstate } from "@/interface/realEstate";
-import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
-import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
+import { RealEstate } from "interface/realEstate";
+import { getRealEstateOfOnePublication as getRealEstate } from "services/realEstate";
+import { H2, P, Container, ContainerContent } from "styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
-import useLoadData from "@/hooks/useFetch";
+import useLoadData from "hooks/useFetch";
 import { useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "../dynamic/carousel";
-import translate from "@/services/translate";
+import translate from "services/translate";
 import { useNavigate } from "react-router-dom";
-import env from "@/config";
-import { useLanguage } from "@/context/languageContext";
+import env from "config";
+import { useLanguage } from "context/languageContext";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();

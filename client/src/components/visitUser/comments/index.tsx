@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import Message from "../../global/message";
-import { getCommentsByUser } from "@/services/comment";
-import { NameUserContext } from "@/context/nameUser";
+import { getCommentsByUser } from "services/comment";
+import { NameUserContext } from "context/nameUser";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {

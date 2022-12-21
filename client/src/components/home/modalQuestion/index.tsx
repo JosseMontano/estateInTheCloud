@@ -1,12 +1,12 @@
 import React from "react";
-import { Title, ColorText } from "@/styles/globals";
-import { postQuestion } from "@/services/question";
-import { initialForm, validationsForm } from "@/validations/question";
+import { Title, ColorText } from "styles/globals";
+import { postQuestion } from "services/question";
+import { initialForm, validationsForm } from "validations/question";
 import FormComponent from "./form";
 import styled from "styled-components";
 import LoadAndResponse from "./loadAndResponse";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 
 
 const Container = styled.div``;

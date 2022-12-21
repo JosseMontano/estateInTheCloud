@@ -3,14 +3,14 @@ import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecupera
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
 import { useNavigate } from "react-router-dom";
-import { initialForm, validationsForm } from "@/validations/login";
-import { signIn } from "@/services/auth";
-import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/styles/globals";
+import { initialForm, validationsForm } from "validations/login";
+import { signIn } from "services/auth";
+import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "styles/globals";
 import { startTransition, Suspense, useState } from "react";
-import ShowPassword from "@/icons/eye";
-import NoShowPassword from "@/icons/noShowPassword";
+import ShowPassword from "icons/eye";
+import NoShowPassword from "icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 export function Login(): JSX.Element {
   const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =

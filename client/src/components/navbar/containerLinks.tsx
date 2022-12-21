@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { UseModal } from "@/hooks/useModal";
+import { UseModal } from "hooks/useModal";
 import Links from "./links";
-import { logOut } from "@/services/auth";
-import { useLanguage } from "@/context/languageContext";
+import { logOut } from "services/auth";
+import { useLanguage } from "context/languageContext";
 import Languages from "../language/index";
 import { Modal } from "../global/modal";
 import ModalQuestion from "./../home/modalQuestion";

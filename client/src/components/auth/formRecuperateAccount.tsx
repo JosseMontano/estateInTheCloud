@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
+import { ColorBtn, ColorBtnSecond } from "styles/globals";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
-import { initialForm, validationsForm } from "@/validations/recuperateAccount";
-import { recuperateAccount } from "@/services/auth";
+import { initialForm, validationsForm } from "validations/recuperateAccount";
+import { recuperateAccount } from "services/auth";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import { FormRecuperateAccount } from "@/interface/formAuth";
+import { FormRecuperateAccount } from "interface/formAuth";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 import { startTransition } from "react";
 
 const Container = styled.form``;

@@ -1,4 +1,4 @@
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "context/languageContext";
 import styled from "styled-components";
 
 const ContainerBtn = styled.div`

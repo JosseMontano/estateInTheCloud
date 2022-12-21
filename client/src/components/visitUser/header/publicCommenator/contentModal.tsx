@@ -1,4 +1,4 @@
-import { ColorText, Title } from "@/styles/globals";
+import { ColorText, Title } from "styles/globals";
 import { useEffect } from "react";
 import Loader from "../../../global/loading";
 import Message from "../../../global/message";
