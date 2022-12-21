@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useLanguage } from "@/context/languageContext";
 
 const Container = styled.div`
   display: flex;
@@ -25,10 +26,11 @@ interface Params {
 }
 
 const DeleteComment = ({ handleDeleteComment, id }: Params) => {
+  const {text} = useLanguage();
   return (
     <Container>
       <Button onClick={() => handleDeleteComment(id)}>
-        Eliminar Comentario
+        {text.comentsDelete}
       </Button>
     </Container>
   );

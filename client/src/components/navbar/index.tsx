@@ -73,7 +73,6 @@ const Index = () => {
             nameUser={nameUser}
             emailState={emailState}
           />
-  
         </Nav>
       </Suspense>
     </>

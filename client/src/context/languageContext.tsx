@@ -29,6 +29,7 @@ interface TextType {
   navbarFilter: string;
   navbarQuestion: string;
   navbarGoOut: string;
+  navbarConfigure: string;
   homeMoreRecent: string;
   homeAll: string;
   homeRecommendedOwner: string;
@@ -62,6 +63,11 @@ interface TextType {
   profileBtnQuestion: string;
   profileBtnAvailable: string;
   profileBtnNoAvailable: string;
+  comentsTitle: string;
+  comentsDelete: string;
+  visitUserLoadTitle: string;
+  visitUserTitle: string;
+  visitUserNoEmpty: string;
 }
 
 interface TranslationType {
@@ -98,6 +104,7 @@ const translations: TranslationType = {
     navbarFilter: "Filtrar",
     navbarQuestion: "Preguntas",
     navbarGoOut: "Salir",
+    navbarConfigure: "Configuracion",
     homeMoreRecent: "Mas reciente",
     homeAll: "Todos",
     homeRecommendedOwner: "Propietarios Recomendados",
@@ -131,6 +138,11 @@ const translations: TranslationType = {
     profileBtnQuestion: "Pregunta",
     profileBtnAvailable: "Disponible",
     profileBtnNoAvailable: "No Disponible",
+    comentsTitle: "Comentarios",
+    comentsDelete: "Eliminar comentario",
+    visitUserLoadTitle: "Cargando publicaciones",
+    visitUserTitle: "Publicaciones",
+    visitUserNoEmpty: "No tiene Publicaciones",
   },
   en: {
     loginTitle: "sign in o sign up",
@@ -159,6 +171,7 @@ const translations: TranslationType = {
     navbarTitle: "Home",
     navbarFilter: "Filter",
     navbarQuestion: "Questions",
+    navbarConfigure: "Configuration",
     navbarGoOut: "Go out",
     homeMoreRecent: "More recent",
     homeAll: "All",
@@ -192,7 +205,12 @@ const translations: TranslationType = {
     profileBtnDeletePhoto: "Delete Photo",
     profileBtnQuestion: "Question",
     profileBtnAvailable: "Available",
-    profileBtnNoAvailable:"No Available"
+    profileBtnNoAvailable: "No Available",
+    comentsTitle: "Comments",
+    comentsDelete: "Delete comment",
+    visitUserLoadTitle: "Loading publications",
+    visitUserTitle: "Publications",
+    visitUserNoEmpty: "You haven't Publications",
   },
 };
 

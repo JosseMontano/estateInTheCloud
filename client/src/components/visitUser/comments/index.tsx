@@ -6,7 +6,7 @@ import { getCommentsByUser } from "@/services/comment";
 import { NameUserContext } from "@/context/nameUser";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
-
+import { useLanguage } from "@/context/languageContext";
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {
@@ -24,6 +24,7 @@ interface params {
 }
 
 const Index = ({ idParam }: params) => {
+  const {text} = useLanguage();
   const [deleteBool, setDeleteBool] = useState(false);
   const { idUser } = useContext(NameUserContext);
 
@@ -57,7 +58,7 @@ const Index = ({ idParam }: params) => {
 
   return (
     <>
-      <Title>Comentarios</Title>
+      <Title>{text.comentsTitle}</Title>
       <Container>{loading ? <LoadSkeleton /> : showComments()}</Container>
       {deleteBool && <Message msg="Se borro con exito" />}
     </>

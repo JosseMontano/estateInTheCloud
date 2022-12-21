@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ContentImg from "./contentImg";
 import { RealEstate } from "@/interface/realEstate";
 import Skeleton from "./skeleton";
+import { useLanguage } from "@/context/languageContext";
 
 const Title = styled.h2`
   text-align: center;
@@ -34,12 +35,13 @@ interface Params {
 }
 
 const Index = ({ data, loading, showbtn }: Params) => {
+  const { text } = useLanguage();
   function showTitle() {
     if (loading) {
-      return <TextEmpty>Cargando publicaciones</TextEmpty>;
+      return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
     }
-    if (data.length === 0) return <TextEmpty>No tiene Publicaciones</TextEmpty>;
-    return <Title>publicaciones</Title>;
+    if (data.length === 0) return <TextEmpty>{text.visitUserNoEmpty}</TextEmpty>;
+    return <Title>{text.visitUserTitle}</Title>;
   }
 
   function showData() {

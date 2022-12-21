@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Enlace } from "@/interface/nav";
-import { Modal } from "../global/modal";
-import ModalQuestion from "./../home/modalQuestion";
+
 
 const Container = styled.li`
   display: inline-block;
@@ -39,16 +38,12 @@ const A = styled.span`
 
 interface Params {
   v: Enlace;
-  isShown: boolean;
-  toggle: () => void;
 }
 
-const Links = ({ v, isShown, toggle }: Params) => {
+const Links = ({ v }: Params) => {
   return (
     <Container>
       <A onClick={v.click}>{v.text}</A>
-
-      <Modal isShown={isShown} hide={toggle} modalContent={<ModalQuestion />} />
     </Container>
   );
 };

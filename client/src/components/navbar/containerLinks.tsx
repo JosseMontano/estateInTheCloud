@@ -5,7 +5,8 @@ import Links from "./links";
 import { logOut } from "@/services/auth";
 import { useLanguage } from "@/context/languageContext";
 import Languages from "../language/index";
-
+import { Modal } from "../global/modal";
+import ModalQuestion from "./../home/modalQuestion";
 
 const Ul = styled.ul`
   float: right;
@@ -35,9 +36,10 @@ interface Params {
 }
 
 const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
-  const {text} = useLanguage()
+  const { text } = useLanguage();
   const navigate = useNavigate();
   const { isShown, toggle } = UseModal();
+  const { isShown: isShownConfig, toggle: toggleConfig } = UseModal();
 
   let dataJSX = [
     {
@@ -45,7 +47,7 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       click: () => {
         handleRedirect(`/profile/${emailState}`);
       },
-    },
+    },  
     {
       text: text.navbarFilter,
       click: () => {
@@ -56,6 +58,12 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       text: text.navbarQuestion,
       click: () => {
         toggle();
+      },
+    },
+    {
+      text: text.navbarConfigure,
+      click: () => {
+        toggleConfig();
       },
     },
     {
@@ -72,9 +80,15 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
   return (
     <Ul>
       {dataJSX.map((v, i) => (
-        <Links v={v} key={i} isShown={isShown} toggle={toggle} />
+        <Links v={v} key={i} />
       ))}
-              <Languages />
+      <Modal isShown={isShown} hide={toggle} modalContent={<ModalQuestion />} />
+      <Modal
+        isShown={isShownConfig}
+        hide={toggleConfig}
+        modalContent={<p>Hola</p>}
+      />
+      <Languages />
     </Ul>
   );
 };
