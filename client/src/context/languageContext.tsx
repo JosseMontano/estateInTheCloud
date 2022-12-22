@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import Children from "@/interface/children";
 
 interface TextType {
+  dataEmpty: string;
   loginTitle: string;
   loginSubtitle: string;
   loginLabelGmail: string;
@@ -68,6 +69,9 @@ interface TextType {
   visitUserLoadTitle: string;
   visitUserTitle: string;
   visitUserNoEmpty: string;
+  createPublicationTitle: string;
+  createPublicationDescription: string;
+  createPublicationType: string;
 }
 
 interface TranslationType {
@@ -77,6 +81,7 @@ interface TranslationType {
 
 const translations: TranslationType = {
   es: {
+    dataEmpty: "No hay datos",
     loginTitle: "Inicia sesion o create una cuenta",
     loginSubtitle: "Hola de nuevo",
     loginLabelGmail: "Email",
@@ -143,8 +148,12 @@ const translations: TranslationType = {
     visitUserLoadTitle: "Cargando publicaciones",
     visitUserTitle: "Publicaciones",
     visitUserNoEmpty: "No tiene Publicaciones",
+    createPublicationTitle: "Titulo",
+    createPublicationDescription: "Descripcion",
+    createPublicationType: "Tipo",
   },
   en: {
+    dataEmpty: "There is not data",
     loginTitle: "sign in o sign up",
     loginSubtitle: "Hello again",
     loginLabelGmail: "Gmail",
@@ -211,6 +220,9 @@ const translations: TranslationType = {
     visitUserLoadTitle: "Loading publications",
     visitUserTitle: "Publications",
     visitUserNoEmpty: "You haven't Publications",
+    createPublicationTitle: "Title",
+    createPublicationDescription: "Description",
+    createPublicationType: "Type",
   },
 };
 

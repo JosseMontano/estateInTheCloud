@@ -9,7 +9,7 @@ const index = ({ dataComplete, visitUser }: Params) => {
     <>
       {dataComplete.map((v, i) => (
         <div key={i}>
-          <Slider {...v} visitUser={visitUser}  />
+          <Slider {...v} visitUser={visitUser} />
         </div>
       ))}
     </>

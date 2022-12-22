@@ -50,7 +50,7 @@ create table type_real_estates(
 create table real_estates(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
-    description VARCHAR(255),
+    description VARCHAR(1000),
     available INT,
 	id_user INT,
     id_type_real_estate INT,

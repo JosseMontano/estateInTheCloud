@@ -1,17 +1,14 @@
 import NotFoundComp from "@/components/global/dataEmpty";
 import { RealEstate } from "@/interface/realEstate";
-
+import { useLanguage } from "@/context/languageContext";
 interface Params {
   dataFilter: RealEstate[];
 }
 
 const NotFound = ({ dataFilter }: Params) => {
+  const { text } = useLanguage();
   return (
-    <>
-      {dataFilter.length === 0 && (
-        <NotFoundComp msg="No se encontraron reusltados" />
-      )}
-    </>
+    <>{dataFilter.length === 0 && <NotFoundComp msg={text.dataEmpty} />}</>
   );
 };
 

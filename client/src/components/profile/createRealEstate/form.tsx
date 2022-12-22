@@ -5,6 +5,7 @@ import { getTypeRealEstate } from "@/services/realEstate";
 import useLoadData from "@/hooks/useFetch";
 import Select from "./select";
 import ParamsTypeRealEstate from "@/interface/typeRealEstate";
+import { useLanguage } from "@/context/languageContext";
 interface Params {
   handleChange: (e: any) => void;
   sendData: (photo: any) => void;
@@ -12,7 +13,7 @@ interface Params {
 
 const Form = ({ handleChange, sendData }: Params) => {
   const [photo, setPhoto] = useState<any>("");
-
+  const { text } = useLanguage();
   const { data } = useLoadData<ParamsTypeRealEstate>(getTypeRealEstate);
 
   const handleSend = () => {
@@ -21,7 +22,7 @@ const Form = ({ handleChange, sendData }: Params) => {
 
   return (
     <>
-      <Label colorText={ColorText}>Title</Label>
+      <Label colorText={ColorText}>{text.createPublicationTitle}</Label>
       <Input
         type="text"
         name={"title"}
@@ -29,7 +30,7 @@ const Form = ({ handleChange, sendData }: Params) => {
         required
       />
 
-      <Label colorText={ColorText}>Description</Label>
+      <Label colorText={ColorText}>{text.createPublicationDescription}</Label>
       <TextArea
         cols={40}
         rows={7}
@@ -38,10 +39,17 @@ const Form = ({ handleChange, sendData }: Params) => {
         required
       />
 
-      <Label colorText={ColorText}>Type</Label>
-      <select name={"id_type"} onChange={(e) => handleChange(e)}>
+      <Label colorText={ColorText}>{text.createPublicationType}</Label>
+      <select
+        defaultValue={"DEFAULT"}
+        name={"id_type"}
+        onChange={(e) => handleChange(e)}
+      >
+        <option value={"DEFAULT"} disabled>
+          Choose option
+        </option>
         {data.map((v, i) => (
-          <Select v={v} />
+          <Select key={i} v={v} />
         ))}
       </select>
 

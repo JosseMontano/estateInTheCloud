@@ -4,7 +4,8 @@ import Title from "./title";
 import styled from "styled-components";
 import Carousel from "../dynamic/carousel";
 import { useRef } from "react";
-
+import DataEmpty from "../global/dataEmpty";
+import { useLanguage } from "@/context/languageContext";
 const ContainerCard = styled.div`
   display: flex;
   flex-direction: column !important;
@@ -20,7 +21,7 @@ interface Params {
 }
 const Index = ({ data, title, visitUser }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
-
+  const { text } = useLanguage();
   function content(v: RealEstate, i: number) {
     return (
       <ContainerCard key={i}>
@@ -38,7 +39,11 @@ const Index = ({ data, title, visitUser }: Params) => {
   return (
     <>
       <Title title={title} />
-      <Carousel slide={slide} children={children()} />
+      {data.length > 0 ? (
+        <Carousel slide={slide} children={children()} />
+      ) : (
+        <DataEmpty msg={text.dataEmpty} />
+      )}
     </>
   );
 };

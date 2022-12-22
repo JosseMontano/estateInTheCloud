@@ -3,11 +3,10 @@ import { RealEstate } from "../../interface/realEstate";
 import {
   getRealEstateAll,
   getRealEstateMostRecent,
-  getRealEstateRecommendedByUser,
+  getRealEstateRecommendedByUser as getRERecommendedByUser,
 } from "../../services/realEstate";
 import Children from "@/interface/children";
-
-
+import useFetch from "@/hooks/useFetch";
 interface homeContext {
   homeData: RealEstate[];
   homeDataMostRecent: RealEstate[];
@@ -45,31 +44,41 @@ export const HomeContextProvider = ({ children }: Children) => {
   const handleGetRealEstateMostRecent = async () => {
     const { json, status } = await getRealEstateMostRecent<RealEstate[]>();
     if (json) {
-      setDataMostRecent(json);
+      if (status != 404) {
+        setDataMostRecent(json);
+        return;
+      }
+      setDataMostRecent([]);
     }
   };
 
   const handleGetRealEstate = async () => {
     const { json, status } = await getRealEstateAll<RealEstate[]>();
     if (json) {
-      setData(json);
+      if (status != 404) {
+        setData(json);
+        return;
+      }
+      setData([]);
     }
   };
 
   const handleGetRealEstateRecommendedByUser = async () => {
-    const { json, status } = await getRealEstateRecommendedByUser<
-      RealEstate[]
-    >();
+    const { json, status } = await getRERecommendedByUser<RealEstate[]>();
     if (json) {
-      setRecommendedByUser(json);
+      if (status != 404) {
+        setRecommendedByUser(json);
+        return;
+      }
+      setRecommendedByUser([]);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
     handleGetRealEstateMostRecent();
     handleGetRealEstate();
     handleGetRealEstateRecommendedByUser();
+    setLoading(false);
   }, []);
 
   return (
