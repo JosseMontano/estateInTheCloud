@@ -32,21 +32,31 @@ interface Params {
   data: RealEstate[];
   loading: boolean;
   showbtn: boolean;
+  deleteRealEstate: (id: number) => void;
 }
 
-const Index = ({ data, loading, showbtn }: Params) => {
+const Index = (params: Params) => {
   const { text } = useLanguage();
   function showTitle() {
-    if (loading) {
+    if (params.loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
     }
-    if (data.length === 0) return <TextEmpty>{text.visitUserNoEmpty}</TextEmpty>;
+    if (params.data.length === 0)
+      return <TextEmpty>{text.visitUserNoEmpty}</TextEmpty>;
     return <Title>{text.visitUserTitle}</Title>;
   }
 
   function showData() {
-    if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
-    return data.map((v, i) => <ContentImg key={i} v={v} showbtn={showbtn} />);
+    if (params.loading)
+      return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
+    return params.data.map((v, i) => (
+      <ContentImg
+        deleteRealEstate={params.deleteRealEstate}
+        key={i}
+        v={v}
+        showbtn={params.showbtn}
+      />
+    ));
   }
 
   return (

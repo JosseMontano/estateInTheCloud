@@ -19,13 +19,22 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   color: ${(props) => props.ColorText};
 `;
 
-
-
 const Profile = () => {
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
-  const { data, loading, handleGetData } = useFetch<RealEstate>(services, idUser);
+  const { data, loading, handleGetData, setData } = useFetch<RealEstate>(
+    services,
+    idUser
+  );
   const { isShown, toggle } = UseModal();
+
+  const createRealEstate = (newData: RealEstate) => {
+    setData([...data, newData]);
+  };
+
+  const deleteRealEstate = (id: number) => {
+    setData(data.filter((v) => v.idrealestate != id));
+  };
 
   useEffect(() => {
     if (idUser != 0) {
@@ -34,7 +43,14 @@ const Profile = () => {
   }, [idUser]);
 
   const showPublication = () => {
-    return <Publication data={data} loading={loading} showbtn={true} />;
+    return (
+      <Publication
+        deleteRealEstate={deleteRealEstate}
+        data={data}
+        loading={loading}
+        showbtn={true}
+      />
+    );
   };
 
   return (
@@ -49,7 +65,7 @@ const Profile = () => {
       <Modal
         isShown={isShown}
         hide={toggle}
-        modalContent={<ContentModal getRealEstate={handleGetData} />}
+        modalContent={<ContentModal createRealEstate={createRealEstate} />}
       />
     </Suspense>
   );

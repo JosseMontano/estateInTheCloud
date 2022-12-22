@@ -42,6 +42,7 @@ function useFetch <T>(services: serviceType, id?: number) {
     data,
     loading,
     handleGetData,
+    setData
   };
 };
 

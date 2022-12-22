@@ -18,9 +18,10 @@ import REOnePublicationType from "@/interface/realEstateOfOnePublication";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
+  deleteRealEstate: (id: number) => void;
 }
 
-export const ContentModal = ({ v, showbtn }: Params) => {
+export const ContentModal = ({ v, showbtn, deleteRealEstate }: Params) => {
   const { toast, handleToast } = useContext(ToastContext);
 
   const [response, setResponse] = useState(false);
@@ -46,6 +47,7 @@ export const ContentModal = ({ v, showbtn }: Params) => {
     } else {
       handleToast("Ha ocurrido un error");
     }
+    deleteRealEstate(v.idrealestate);
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
     setLoading(false);

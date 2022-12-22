@@ -5,17 +5,17 @@ import { NameUserContext } from "@/context/nameUser";
 import { saveRealEstate } from "@/services/realEstate";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
-
+import { RealEstate } from "@/interface/realEstate";
 const Container = styled.div`
   display: grid;
   place-content: center;
 `;
 
 interface Params {
-  getRealEstate: () => void;
+  createRealEstate: (data: RealEstate) => void;
 }
 
-const Index = ({ getRealEstate }: Params) => {
+const Index = ({ createRealEstate }: Params) => {
   const { toast } = useContext(ToastContext);
   const { idUser } = useContext<any>(NameUserContext);
   const [response, setResponse] = useState(false);
@@ -46,8 +46,8 @@ const Index = ({ getRealEstate }: Params) => {
       data.append("id_user", idUser);
       const res = await saveRealEstate(data);
       if (res?.status === 200) {
+        createRealEstate(await res.json());
         handleToast("El proceso fue exitoso");
-        getRealEstate();
       } else {
         handleToast("Ha ocurrido un error");
       }
