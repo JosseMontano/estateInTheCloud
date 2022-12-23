@@ -15,22 +15,15 @@ import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
 import useLoadData from "@/hooks/useFetch";
 import REOnePublicationType from "@/interface/realEstateOfOnePublication";
 import Event from "@/interface/event";
-
+import { useProfile } from "@/context/profile/profileContext";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
-  updateStateRE?: (available: boolean, id: number) => void;
 }
 
-export const ContentModal = ({
-  v,
-  showbtn,
-  deleteRealEstate,
-  updateStateRE,
-}: Params) => {
+export const ContentModal = ({ v, showbtn }: Params) => {
   const { toast, handleToast } = useContext(ToastContext);
-
+  const { updateStateRE, deleteRealEstate } = useProfile();
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");
   const [loading, setLoading] = useState(false);
@@ -53,7 +46,7 @@ export const ContentModal = ({
     } else {
       handleToast("Ha ocurrido un error");
     }
-    if (deleteRealEstate) deleteRealEstate(v.idrealestate);
+    deleteRealEstate(v.idrealestate);
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
     setLoading(false);
@@ -83,7 +76,7 @@ export const ContentModal = ({
 
   const handleUpdateState = async (id: number, available: number) => {
     await updateStateRealEstate(id, available);
-    if (updateStateRE) updateStateRE(v.available, id);
+    updateStateRE(v.available, id);
   };
 
   return (

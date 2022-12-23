@@ -3,6 +3,7 @@ import ContentImg from "./contentImg";
 import { RealEstate } from "@/interface/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
+import { useProfile } from "@/context/profile/profileContext";
 
 const Title = styled.h2`
   text-align: center;
@@ -29,39 +30,28 @@ const TextEmpty = styled.div`
   text-transform: uppercase;
 `;
 interface Params {
-  data: RealEstate[];
-  loading: boolean;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
-  updateStateRE?: (available: boolean, id: number) => void;
 }
 
 const Index = (params: Params) => {
   const { text } = useLanguage();
+  const { data, loading } = useProfile();
 
   function showTitle() {
-    if (params.loading) {
+    if (loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
     }
-    if (params.data.length === 0)
+    if (data.length === 0)
       return <TextEmpty>{text.visitUserNoEmpty}</TextEmpty>;
     return <Title>{text.visitUserTitle}</Title>;
   }
 
   function showData() {
-    if (params.loading)
-      return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
+    if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
 
-      return params.data.map((v, i) => (
-        <ContentImg
-          deleteRealEstate={params.deleteRealEstate}
-          key={i}
-          v={v}
-          showbtn={params.showbtn}
-          updateStateRE={params.updateStateRE}
-        />
-      ));
-    
+    return data.map((v, i) => (
+      <ContentImg key={i} v={v} showbtn={params.showbtn} />
+    ));
   }
 
   return (

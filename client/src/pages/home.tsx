@@ -40,7 +40,6 @@ const Home = () => {
       data: dataContext.homeData,
     },
   ];
-  console.log('hola')
   const showDataComplete = () => {
     return <Content dataComplete={data} visitUser={visitUser} />;
   };

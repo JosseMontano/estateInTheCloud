@@ -25,11 +25,9 @@ const Img = styled.img`
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
-  updateStateRE?: (available: boolean, id: number) => void;
 }
 
-const ContentImg = ({ v, showbtn, deleteRealEstate, updateStateRE }: Params) => {
+const ContentImg = ({ v, showbtn }: Params) => {
   const { isShown, toggle } = UseModal();
 
   return (
@@ -41,8 +39,6 @@ const ContentImg = ({ v, showbtn, deleteRealEstate, updateStateRE }: Params) => 
           <ContentModal
             v={v}
             showbtn={showbtn}
-            deleteRealEstate={deleteRealEstate}
-            updateStateRE={updateStateRE}
           />
         }
       />
