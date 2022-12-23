@@ -6,6 +6,7 @@ const useToast = () => {
     const msg = newToast;
     seToast(msg);
   };
+
   return {
     toast,
     handleToast,

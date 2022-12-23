@@ -6,6 +6,9 @@ import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
 import { RealEstate } from "@/interface/realEstate";
 import useToast from "@/hooks/useToast";
+import funFormData from "@/utilities/formData";
+import Event from "@/interface/event";
+
 const Container = styled.div`
   display: grid;
   place-content: center;
@@ -27,7 +30,7 @@ const Index = ({ createRealEstate }: Params) => {
     id_type: "1",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: Event["inputChange"]) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -37,21 +40,36 @@ const Index = ({ createRealEstate }: Params) => {
   const sendData = async (photo: any) => {
     try {
       setLoading(true);
-      const data = new FormData();
-      data.append("url", photo);
-      data.append("title", formData.title);
-      data.append("description", formData.description);
-      data.append("id_type", formData.id_type);
-      data.append("id_user", idUser);
+      let vecFormData = [
+        {
+          type: "url",
+          val: photo,
+        },
+        {
+          type: "title",
+          val: formData.title,
+        },
+        {
+          type: "description",
+          val: formData.description,
+        },
+        {
+          type: "id_type",
+          val: formData.id_type,
+        },
+        {
+          type: "id_user",
+          val: idUser,
+        },
+      ];
+      const data = funFormData(vecFormData);
       const res = await saveRealEstate(data);
-      if (res) {
-        console.log(res.status);
-        if (res.status == 200) {
-          handleToast("El proceso fue exitoso");
-          createRealEstate(await res.json());
-        } else {
-          handleToast("Ha ocurrido un error");
-        }
+
+      if (res?.status == 200) {
+        handleToast("El proceso fue exitoso");
+        createRealEstate(await res.json());
+      } else {
+        handleToast("Ha ocurrido un error");
       }
 
       setResponse(true);

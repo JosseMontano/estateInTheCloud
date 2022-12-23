@@ -6,8 +6,9 @@ import useLoadData from "@/hooks/useFetch";
 import Select from "./select";
 import ParamsTypeRealEstate from "@/interface/typeRealEstate";
 import { useLanguage } from "@/context/languageContext";
+import Event from "@/interface/event";
 interface Params {
-  handleChange: (e: any) => void;
+  handleChange: (e: Event["inputChange"]) => void;
   sendData: (photo: any) => void;
 }
 
@@ -23,12 +24,7 @@ const Form = ({ handleChange, sendData }: Params) => {
   return (
     <>
       <Label colorText={ColorText}>{text.createPublicationTitle}</Label>
-      <Input
-        type="text"
-        name={"title"}
-        onChange={(e) => handleChange(e)}
-        required
-      />
+      <Input type="text" name={"title"} onChange={(e) => handleChange(e)} />
 
       <Label colorText={ColorText}>{text.createPublicationDescription}</Label>
       <TextArea
@@ -36,7 +32,6 @@ const Form = ({ handleChange, sendData }: Params) => {
         rows={7}
         name={"description"}
         onChange={(e) => handleChange(e)}
-        required
       />
 
       <Label colorText={ColorText}>{text.createPublicationType}</Label>
