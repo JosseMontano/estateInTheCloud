@@ -1,16 +1,17 @@
 import { Modal } from "../global/modal";
 import ContentModal from "./contentModal";
 import Question from "@/interface/question";
-
+import Answer from "@/interface/answer";
+import Event from "@/interface/event";
 interface Params {
   isShown: boolean;
   toggle: () => void;
   id: number;
   idQuestion: number;
   data: Question[];
-  form: any;
-  handleChange: (e: any) => void;
-  errors: any;
+  form: Answer;
+  handleChange: (e: Event["inputChangeIT"]) => void;
+  errors: Answer;
   sendData: (e: any) => void;
   loadingForm: boolean;
   msg: string;

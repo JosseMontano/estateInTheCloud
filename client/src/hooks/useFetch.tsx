@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type serviceType = (id?: number) => Promise<any>;
+type serviceType = (id?: number) => Promise<{ json:any; status: number; }>;
 
 
 /**

@@ -15,6 +15,9 @@ import { CommentsContext } from "@/context/commentsContext";
 import { getUser } from "@/services/user";
 import { UseForm } from "jz-validation-form";
 import { User } from "@/interface/user";
+import Event from "@/interface/event";
+import { FormComment } from "@/interface/formComment";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -55,7 +58,7 @@ const Header = ({ email, idParam, cellphonenumber }: Params) => {
   }, []);
 
   /* Content Modal */
-  const useForm = UseForm(
+  const useForm = UseForm<FormComment>(
     initialForm,
     validationsForm,
     postComment,
@@ -63,7 +66,7 @@ const Header = ({ email, idParam, cellphonenumber }: Params) => {
     getComments
   );
 
-  const SenData = (e: any) => {
+  const SenData = (e: Event['buttonSend']) => {
     useForm.form.commentator = idUser;
     useForm.form.person_commented = personCommentedId;
     useForm.form.amount_start = amountStart;

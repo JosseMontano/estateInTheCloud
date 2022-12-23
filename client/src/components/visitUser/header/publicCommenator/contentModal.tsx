@@ -4,16 +4,17 @@ import Loader from "../../../global/loading";
 import Message from "../../../global/message";
 import Starts from "./starts";
 import { Button, MsgError, TextArea } from "jz-validation-form";
+import Event from "@/interface/event";
+import { FormComment } from "@/interface/formComment";
+
 interface UseFormType {
-  form: any;
-  errors: any;
+  form: FormComment;
+  errors: FormComment;
   loading: boolean;
   response: boolean;
   msg: string;
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleChange: (e: Event["htmlChange"]) => void;
+  handleSubmit: (e: Event["buttonSend"]) => void;
 }
 interface params {
   useForm: UseFormType;

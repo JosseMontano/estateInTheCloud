@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { RealEstate } from "@/interface/realEstate";
+
+interface Params {
+  url:string;
+}
 
 const Img = styled.img`
   height: 300px;
@@ -12,17 +17,15 @@ const Img = styled.img`
     height: 300px;
   }
   @media screen and (max-width: 572px) {
-  width: 100%;
+    width: 100%;
   }
   @media screen and (max-width: 470px) {
     height: 240px;
   }
 `;
 
-const ImgCom = (v:any) => {
-  return (
-    <Img src={v.url} alt="" />
-  )
-}
+function ImgCom (v: Params) {
+  return <Img src={v.url} alt="" />;
+};
 
-export default ImgCom
+export default ImgCom;

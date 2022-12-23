@@ -36,7 +36,7 @@ interface ResponseData {
 
 const translate = async (
   msg: string
-): Promise<{ json: TranslateType; status: any }> => {
+): Promise<{ json: TranslateType; status: number }> => {
   const url = `https://api.mymemory.translated.net/get?q=${msg}&langpair=es|en`;
   const { json, status } = await index<TranslateType>(url);
   return { json, status };

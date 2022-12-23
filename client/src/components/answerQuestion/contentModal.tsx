@@ -3,13 +3,15 @@ import { ColorText, Title, ColorBtn } from "@/styles/globals";
 import Loader from "../global/loading";
 import Message from "../global/message";
 import { Button, MsgError, TextArea } from "jz-validation-form";
+import Event from "@/interface/event";
+import Answer from "@/interface/answer";
 const Container = styled.div``;
 
 interface Params {
-  form: any;
-  handleChange: (e: any) => void;
-  errors: any;
-  sendData: (e: any) => void;
+  form: Answer;
+  handleChange: (e: Event["inputChangeIT"]) => void;
+  errors: Answer;
+  sendData: (e: Event["buttonOnclick"]) => void;
   loading: boolean;
   msg: string;
   response: boolean;

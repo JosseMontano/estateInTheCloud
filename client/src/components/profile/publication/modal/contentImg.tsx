@@ -14,7 +14,7 @@ const ContentImg = ({ load, data }: Params) => {
   function content(va: REOnePublicationType, i: number) {
     return (
       <div className="slide" ref={slide}>
-        <ImgCom {...(va as object)} key={i} />
+        <ImgCom url={va.url} key={i} />
       </div>
     );
   }

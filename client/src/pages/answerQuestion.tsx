@@ -13,6 +13,8 @@ import Navbar from "@/components/navbar";
 import { UseForm } from "jz-validation-form";
 import styled from "styled-components";
 import Question from "@/interface/question";
+import Answer from "@/interface/answer";
+import Event from "@/interface/event";
 
 const Container = styled.div`
   width: calc(100%-15px);
@@ -36,9 +38,9 @@ const AnswerQuestion = () => {
     if (id) setIdQuestion(id);
   };
 
-  const valForm = UseForm(initialForm, validationsForm, addAnswer);
+  const valForm = UseForm<Answer>(initialForm, validationsForm, addAnswer);
 
-  const sendData = (e: any) => {
+  const sendData = (e: Event["buttonSend"]) => {
     valForm.form.id_real_estate = IdNumber;
     valForm.form.id_question = idQuestion;
     valForm.handleSubmit(e);
