@@ -11,7 +11,7 @@ import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
 import { initialForm, validationsForm } from "@/validations/comments";
 import { postComment } from "@/services/comment";
-import { CommentsContext } from "@/context/comments";
+import { CommentsContext } from "@/context/comments/commentsContext";
 import { getUser } from "@/services/user";
 import { UseForm } from "jz-validation-form";
 import { User } from "@/interface/user";

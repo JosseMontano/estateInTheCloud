@@ -18,7 +18,8 @@ const contextDefaultValue: LoadContextState = {
 
 export const CommentsContext =
   createContext<LoadContextState>(contextDefaultValue);
-const CommentsProvider = ({ children }: MyContextProp) => {
+
+export const CommentsProvider = ({ children }: MyContextProp) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
 
