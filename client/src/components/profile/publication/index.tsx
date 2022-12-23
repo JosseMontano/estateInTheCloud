@@ -32,14 +32,13 @@ interface Params {
   data: RealEstate[];
   loading: boolean;
   showbtn: boolean;
-  deleteRealEstate: (id: number) => void;
-  updateStateRE: (available: boolean, id: number) => void;
+  deleteRealEstate?: (id: number) => void;
+  updateStateRE?: (available: boolean, id: number) => void;
 }
 
 const Index = (params: Params) => {
   const { text } = useLanguage();
 
-  
   function showTitle() {
     if (params.loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
@@ -52,15 +51,17 @@ const Index = (params: Params) => {
   function showData() {
     if (params.loading)
       return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
-    return params.data.map((v, i) => (
-      <ContentImg
-        deleteRealEstate={params.deleteRealEstate}
-        key={i}
-        v={v}
-        showbtn={params.showbtn}
-        updateStateRE={params.updateStateRE}
-      />
-    ));
+
+      return params.data.map((v, i) => (
+        <ContentImg
+          deleteRealEstate={params.deleteRealEstate}
+          key={i}
+          v={v}
+          showbtn={params.showbtn}
+          updateStateRE={params.updateStateRE}
+        />
+      ));
+    
   }
 
   return (

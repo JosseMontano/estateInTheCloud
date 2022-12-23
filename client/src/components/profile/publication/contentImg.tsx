@@ -25,8 +25,8 @@ const Img = styled.img`
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate: (id: number) => void;
-  updateStateRE: (available: boolean, id: number) => void;
+  deleteRealEstate?: (id: number) => void;
+  updateStateRE?: (available: boolean, id: number) => void;
 }
 
 const ContentImg = ({ v, showbtn, deleteRealEstate, updateStateRE }: Params) => {

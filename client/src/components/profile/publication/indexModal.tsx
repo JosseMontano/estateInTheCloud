@@ -19,8 +19,8 @@ import Event from "@/interface/event";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate: (id: number) => void;
-  updateStateRE: (available: boolean, id: number) => void;
+  deleteRealEstate?: (id: number) => void;
+  updateStateRE?: (available: boolean, id: number) => void;
 }
 
 export const ContentModal = ({
@@ -53,7 +53,7 @@ export const ContentModal = ({
     } else {
       handleToast("Ha ocurrido un error");
     }
-    deleteRealEstate(v.idrealestate);
+    if (deleteRealEstate) deleteRealEstate(v.idrealestate);
     setResponse(true);
     setTimeout(() => setResponse(false), 3000);
     setLoading(false);
@@ -83,7 +83,7 @@ export const ContentModal = ({
 
   const handleUpdateState = async (id: number, available: number) => {
     await updateStateRealEstate(id, available);
-    updateStateRE(available, id);
+    if (updateStateRE) updateStateRE(v.available, id);
   };
 
   return (

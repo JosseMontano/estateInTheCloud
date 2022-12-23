@@ -5,7 +5,7 @@ import { marginGlobal, ColorText } from "../styles/globals";
 import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "../components/profile/publication";
-import { getRealEstateByEmail } from "../services/realEstate";
+import { getRealEstateByEmail, updateStateRealEstate } from "../services/realEstate";
 import useLoadData from "../hooks/useFetch";
 import { RealEstate } from "../interface/realEstate";
 import { Suspense } from "react";
