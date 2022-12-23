@@ -36,18 +36,18 @@ const Profile = () => {
     setData(data.filter((v) => v.idrealestate != id));
   };
 
-  const updateStateRE = (available: boolean, id: number) => {
-    console.log(available)
+  const updateStateRE = (state: boolean, id: number) => {
     setData(
       data.map((v) =>
         v.idrealestate === id
           ? {
               ...v,
-              state: available,
+              state: state,
             }
           : v
       )
     );
+
 
   };
 

@@ -38,7 +38,7 @@ interface Params {
 
 const Index = (params: Params) => {
   const { text } = useLanguage();
-
+  const vecSkeleton = [1, 2, 3, 4, 5, 6];
   function showTitle() {
     if (params.loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
@@ -48,21 +48,22 @@ const Index = (params: Params) => {
     return <Title>{text.visitUserTitle}</Title>;
   }
 
-  function showData() {
-    if (params.loading)
-      return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
+  function showContent(v: RealEstate, i: number) {
+    return (
+      <ContentImg
+        deleteRealEstate={params.deleteRealEstate}
+        key={i}
+        v={v}
+        showbtn={params.showbtn}
+        updateStateRE={params.updateStateRE}
+      />
+    );
+  }
 
-      return params.data.map((v, i) => (
-        <ContentImg
-          deleteRealEstate={params.deleteRealEstate}
-          key={i}
-          v={v}
-          showbtn={params.showbtn}
-          updateStateRE={params.updateStateRE}
-        />
-      ));
-     
-   }
+  function showData() {
+    if (params.loading) return vecSkeleton.map((_, i) => <Skeleton key={i} />);
+    return params.data.map((v, i) => showContent(v, i));
+  }
 
   return (
     <>

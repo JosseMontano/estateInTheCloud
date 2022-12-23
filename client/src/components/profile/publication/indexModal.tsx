@@ -6,7 +6,7 @@ import {
   updateStateRealEstate,
 } from "@/services/realEstate";
 import { useContext, useState } from "react";
-import { ToastContext } from "@/context/toast";
+import useToast from "@/hooks/useToast";
 import { Container } from "@/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ export const ContentModal = ({
   deleteRealEstate,
   updateStateRE,
 }: Params) => {
-  const { toast, handleToast } = useContext(ToastContext);
+  const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");

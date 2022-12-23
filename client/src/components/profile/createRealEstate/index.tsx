@@ -1,4 +1,3 @@
-import { ToastContext } from "@/context/toast";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { NameUserContext } from "@/context/nameUserContext";
@@ -6,6 +5,7 @@ import { saveRealEstate } from "@/services/realEstate";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
 import { RealEstate } from "@/interface/realEstate";
+import useToast from "@/hooks/useToast";
 const Container = styled.div`
   display: grid;
   place-content: center;
@@ -16,11 +16,10 @@ interface Params {
 }
 
 const Index = ({ createRealEstate }: Params) => {
-  const { toast } = useContext(ToastContext);
+  const { toast, handleToast } = useToast();
   const { idUser } = useContext<any>(NameUserContext);
   const [response, setResponse] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { handleToast } = useContext(ToastContext); //toast
 
   const [formData, setFormData] = useState({
     title: "",
@@ -45,12 +44,16 @@ const Index = ({ createRealEstate }: Params) => {
       data.append("id_type", formData.id_type);
       data.append("id_user", idUser);
       const res = await saveRealEstate(data);
-      if (res?.status === 200) {
-        createRealEstate(await res.json());
-        handleToast("El proceso fue exitoso");
-      } else {
-        handleToast("Ha ocurrido un error");
+      if (res) {
+        console.log(res.status);
+        if (res.status == 200) {
+          handleToast("El proceso fue exitoso");
+          createRealEstate(await res.json());
+        } else {
+          handleToast("Ha ocurrido un error");
+        }
       }
+
       setResponse(true);
       setTimeout(() => setResponse(false), 3000);
       setLoading(false);
