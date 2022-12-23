@@ -7,11 +7,12 @@ const contextDefaulValue: ToastContextState = {
 };
 export const ToastContext =
   createContext<ToastContextState>(contextDefaulValue);
-const ToastProvider = ({ children }: MyContextProp) => {
+
+export const ToastProvider = ({ children }: MyContextProp) => {
   const [toast, seToast] = useState<string>(contextDefaulValue.toast);
   const handleToast = (newToast: string) => {
-        const msg = newToast
-        seToast(msg);
+    const msg = newToast;
+    seToast(msg);
   };
   return (
     <ToastContext.Provider

@@ -1,4 +1,4 @@
-import { NameUserContext } from "@/context/nameUser";
+import { NameUserContext } from "@/context/nameUser/nameUserContext";
 import useLoadDataParams from "@/hooks/useFetch";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";

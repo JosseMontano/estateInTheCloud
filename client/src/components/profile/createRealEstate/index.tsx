@@ -1,7 +1,7 @@
-import { ToastContext } from "@/context/toast";
+import { ToastContext } from "@/context/toast/toast";
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { NameUserContext } from "@/context/nameUser";
+import { NameUserContext } from "@/context/nameUser/nameUserContext";
 import { saveRealEstate } from "@/services/realEstate";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";

@@ -3,7 +3,7 @@ import { deleteComment } from "../../../services/comment";
 import { useContext, useEffect, useState } from "react";
 import Message from "../../global/message";
 import { getCommentsByUser } from "@/services/comment";
-import { NameUserContext } from "@/context/nameUser";
+import { NameUserContext } from "@/context/nameUser/nameUserContext";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
 import { useLanguage } from "@/context/languageContext";

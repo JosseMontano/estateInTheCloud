@@ -268,4 +268,3 @@ export const LanguageContextProvider = ({ children }: Children) => {
   );
 };
 
-export default {};

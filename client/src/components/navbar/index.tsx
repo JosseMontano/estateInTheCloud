@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Check from "./check";
 import ContainerLinks from "./containerLinks";
-import { NameUserContext } from "@/context/nameUser";
+import { NameUserContext } from "@/context/nameUser/nameUserContext";
 import NameUser from "./nameUser";
 import { getEmail } from "@/services/auth";
 import AuxNav from "./auxNav";

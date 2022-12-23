@@ -17,7 +17,8 @@ const contextDefaultValue: LoadContextState = {
 };
 export const NameUserContext =
   createContext<LoadContextState>(contextDefaultValue);
-const NameUserProvider = ({ children }: MyContextProp) => {
+
+export const NameUserProvider = ({ children }: MyContextProp) => {
   const [nameUser, setnameUser] = useState<string>(
     contextDefaultValue.nameUser
   );
