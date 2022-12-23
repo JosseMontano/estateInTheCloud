@@ -49,8 +49,17 @@ const Index = ({ data, loading, showbtn }: Params) => {
   function showData() {
     if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
 
-    return data.map((v, i) => <ContentImg key={i} v={v} showbtn={showbtn} />);
-  }
+      return params.data.map((v, i) => (
+        <ContentImg
+          deleteRealEstate={params.deleteRealEstate}
+          key={i}
+          v={v}
+          showbtn={params.showbtn}
+          updateStateRE={params.updateStateRE}
+        />
+      ));
+     
+   }
 
   return (
     <>
