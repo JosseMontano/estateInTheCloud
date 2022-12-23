@@ -7,10 +7,11 @@ import useLoadData from "@/hooks/useFetch";
 import { useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "../dynamic/carousel";
-import translate from "@/services/translate";
 import { useNavigate } from "react-router-dom";
 import env from "@/config";
 import { useLanguage } from "@/context/languageContext";
+import handleDownloadImg from "@/utilities/downloadImg";
+import translate from "@/utilities/translate";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();
@@ -21,30 +22,10 @@ export const ContentModal = (v: RealEstate) => {
   const { data, loading } = useLoadData(getRealEstate, v.idrealestate);
   const slide = useRef<HTMLDivElement>(null);
 
-  const handelDownloadImg = (url: string) => {
-    //url is thr route of the app
-    fetch(url, {
-      method: "GET",
-      headers: {},
-    })
-      .then((response) => {
-        response.arrayBuffer().then(function (buffer) {
-          const url = window.URL.createObjectURL(new Blob([buffer]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", "image.png"); //or any other extension
-          document.body.appendChild(link);
-          link.click();
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleSeeQuestions = (idRealEstate: number) => {
     navigate(`/answeQuestionInterested/${idRealEstate}`);
   };
+  
   const handle360 = () => {
     window.open(`${env.img360Url}#/${v.idphoto}`, "_blank");
     /* navigate(`/img360/${v.idphoto}`); */
@@ -52,15 +33,11 @@ export const ContentModal = (v: RealEstate) => {
 
   const handleTranslate = async () => {
     setLoadTxt(true);
-    const { json } = await translate(v.description);
-    const { json: jsonTtitle } = await translate(v.title);
-    if (json) {
-      const des = json.responseData.translatedText;
-      setDescription(des);
-      const tit = jsonTtitle.responseData.translatedText;
-      setTitle(tit);
-      setLoadTxt(false);
-    }
+    const des = await translate(v.description);
+    setDescription(des!);
+    const tit = await translate(v.title);
+    setTitle(tit!);
+    setLoadTxt(false);
   };
 
   let btnJSX = [
@@ -69,7 +46,7 @@ export const ContentModal = (v: RealEstate) => {
       txt: text.homeBtnQuestionFrequent,
     },
     {
-      click: () => handelDownloadImg(v.url),
+      click: () => handleDownloadImg(v.url),
       txt: text.homeBtnDownload,
     },
     {

@@ -1,6 +1,8 @@
 import { ColorText } from "@/styles/globals";
 import { MsgError, Input, Label } from "jz-validation-form";
 import styled from "styled-components";
+import { FormRegister } from "@/interface/formAuth";
+import Event from "@/interface/event";
 
 const ContainerEye = styled.div`
   & svg {
@@ -14,17 +16,15 @@ const ContainerEye = styled.div`
 interface V {
   label: string;
   name: string;
-  value: any;
-  errors: any;
+  value: string;
+  errors: string;
   placeHolder: string;
   type: string;
 }
 
 interface Params {
   v: V;
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
+  handleChange: (e: Event["htmlChange"]) => void;
   EyeJSX: () => JSX.Element;
   handleShowPass: () => void;
 }

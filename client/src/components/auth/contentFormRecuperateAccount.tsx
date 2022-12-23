@@ -1,18 +1,17 @@
 import React from "react";
 import { Input, Label, MsgError } from "jz-validation-form";
 import { ColorText } from "@/styles/globals";
+import Event from "@/interface/event";
 interface V {
   label: string;
   name: string;
-  value: any;
-  errors: any;
+  value: string;
+  errors: string;
 }
 
 interface Params {
   v: V;
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
+  handleChange: (e: Event["htmlChange"]) => void;
 }
 
 const ContentFormRecuperateAccount = ({ v, handleChange }: Params) => {

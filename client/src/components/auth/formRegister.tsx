@@ -11,14 +11,14 @@ import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-
+import { FormRegister } from "@/interface/formAuth";
 const Container = styled.form``;
 
 interface V {
   label: string;
   name: string;
-  value: any;
-  errors: any;
+  value: string;
+  errors: string;
   placeHolder: string;
   type: string;
 }
@@ -26,7 +26,7 @@ interface V {
 const Form = () => {
   const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
-    UseForm(initialForm, validationsForm, signUp);
+    UseForm<FormRegister>(initialForm, validationsForm, signUp);
 
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +48,7 @@ const Form = () => {
     },
   ];
 
-  let dataForm = [
+  let dataForm: V[] = [
     {
       label: text.registerLabelGmail,
       name: "email",

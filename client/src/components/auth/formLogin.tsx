@@ -16,8 +16,8 @@ interface BtnType {
 interface DataformType {
   label: string;
   name: string;
-  value: any;
-  errors: any;
+  value: string;
+  errors: string;
   type: string;
 }
 

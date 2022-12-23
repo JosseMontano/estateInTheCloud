@@ -16,8 +16,8 @@ const ContainerEye = styled.div`
 interface V {
   label: string;
   name: string;
-  value: any;
-  errors: any;
+  value: string;
+  errors: string;
   type: string;
 }
 

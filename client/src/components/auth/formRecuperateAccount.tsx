@@ -10,7 +10,7 @@ import { FormRecuperateAccount } from "@/interface/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
 import { startTransition } from "react";
-
+import Event from "@/interface/event";
 const Container = styled.form``;
 
 const Form = () => {
