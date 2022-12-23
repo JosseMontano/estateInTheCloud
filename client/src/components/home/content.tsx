@@ -22,6 +22,7 @@ interface Params {
 const Index = ({ data, title, visitUser }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
   const { text } = useLanguage();
+  
   function content(v: RealEstate, i: number) {
     return (
       <ContainerCard key={i}>

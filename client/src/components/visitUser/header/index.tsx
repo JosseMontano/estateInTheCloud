@@ -1,4 +1,4 @@
-import { NameUserContext } from "@/context/nameUser/nameUserContext";
+import { NameUserContext } from "@/context/nameUserContext";
 import useLoadDataParams from "@/hooks/useFetch";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
@@ -11,7 +11,7 @@ import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
 import { initialForm, validationsForm } from "@/validations/comments";
 import { postComment } from "@/services/comment";
-import { CommentsContext } from "@/context/comments/commentsContext";
+import { CommentsContext } from "@/context/commentsContext";
 import { getUser } from "@/services/user";
 import { UseForm } from "jz-validation-form";
 import { User } from "@/interface/user";

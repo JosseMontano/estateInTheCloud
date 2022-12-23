@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { getCommentsByUser } from "../../services/comment";
-import { Comments } from "../../interface/comments";
+import { getCommentsByUser } from "../services/comment";
+import { Comments } from "../interface/comments";
 
 interface LoadContextState {
   comments: Comments[];

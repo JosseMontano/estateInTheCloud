@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { ToastContextState, MyContextProp } from "../../interface/toastContext";
+import { ToastContextState, MyContextProp } from "../interface/toastContext";
 
 const contextDefaulValue: ToastContextState = {
   toast: "Ha ocurrido un error",

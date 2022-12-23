@@ -4,7 +4,7 @@ import { marginGlobal, ColorText } from "../styles/globals";
 import Publication from "../components/profile/publication";
 import { Suspense, useContext, useEffect } from "react";
 import { getRealEstateProfil as services } from "../services/realEstate";
-import { NameUserContext } from "@/context/nameUser/nameUserContext";
+import { NameUserContext } from "@/context/nameUserContext";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";

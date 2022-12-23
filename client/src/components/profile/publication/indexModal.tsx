@@ -6,7 +6,7 @@ import {
   updateStateRealEstate,
 } from "@/services/realEstate";
 import { useContext, useState } from "react";
-import { ToastContext } from "@/context/toast/toast";
+import { ToastContext } from "@/context/toast";
 import { Container } from "@/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";

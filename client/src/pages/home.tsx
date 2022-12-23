@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Content from "../components/home";
-import { useHome } from "../context/home/homeContext";
+import { useHome } from "../context/homeContext";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import Skeleton from "../components/home/skeleton";
 import { useNavigate } from "react-router-dom";
