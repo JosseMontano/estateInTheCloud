@@ -10,6 +10,10 @@ import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
 import Navbar from "@/components/navbar";
 import { useProfile } from "@/context/profile/profileContext";
+import useFetch from "@/hooks/useFetch";
+import { getRealEstateProfil as services } from "@/services/realEstate";
+import { RealEstate } from "@/interface/realEstate";
+
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   min-height: 100vh;
   margin: ${(props) => props.marginGlobal};
@@ -19,8 +23,11 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 const Profile = () => {
   const {} = useVerifyUserLogin();
   const { idUser, email } = useContext(NameUserContext);
-  const { handleGetData, createRealEstate } = useProfile();
-
+  const { createRealEstate, loadData, data:dataContext } = useProfile();
+  const { data, loading, handleGetData, setData } = useFetch<RealEstate>(
+    services,
+    idUser
+  );
   const { isShown, toggle } = UseModal();
 
   useEffect(() => {
@@ -30,7 +37,7 @@ const Profile = () => {
   }, [idUser]);
 
   const showPublication = () => {
-    return <Publication showbtn={true} />;
+    return <Publication data={dataContext} loading={loading} showbtn={true} />;
   };
 
   return (

@@ -3,7 +3,6 @@ import ContentImg from "./contentImg";
 import { RealEstate } from "@/interface/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
-import { useProfile } from "@/context/profile/profileContext";
 
 const Title = styled.h2`
   text-align: center;
@@ -31,11 +30,12 @@ const TextEmpty = styled.div`
 `;
 interface Params {
   showbtn: boolean;
+  data: RealEstate[];
+  loading: boolean;
 }
 
-const Index = (params: Params) => {
+const Index = ({ data, loading, showbtn }: Params) => {
   const { text } = useLanguage();
-  const { data, loading } = useProfile();
 
   function showTitle() {
     if (loading) {
@@ -49,9 +49,7 @@ const Index = (params: Params) => {
   function showData() {
     if (loading) return [1, 2, 3, 4, 5, 6].map((_, i) => <Skeleton key={i} />);
 
-    return data.map((v, i) => (
-      <ContentImg key={i} v={v} showbtn={params.showbtn} />
-    ));
+    return data.map((v, i) => <ContentImg key={i} v={v} showbtn={showbtn} />);
   }
 
   return (
