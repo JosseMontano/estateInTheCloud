@@ -61,8 +61,8 @@ const Index = (params: Params) => {
           updateStateRE={params.updateStateRE}
         />
       ));
-    
-  }
+     
+   }
 
   return (
     <>
