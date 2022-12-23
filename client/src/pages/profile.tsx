@@ -36,6 +36,21 @@ const Profile = () => {
     setData(data.filter((v) => v.idrealestate != id));
   };
 
+  const updateStateRE = (available: boolean, id: number) => {
+    console.log(available)
+    setData(
+      data.map((v) =>
+        v.idrealestate === id
+          ? {
+              ...v,
+              state: available,
+            }
+          : v
+      )
+    );
+
+  };
+
   useEffect(() => {
     if (idUser != 0) {
       handleGetData();
@@ -49,6 +64,7 @@ const Profile = () => {
         data={data}
         loading={loading}
         showbtn={true}
+        updateStateRE={updateStateRE}
       />
     );
   };

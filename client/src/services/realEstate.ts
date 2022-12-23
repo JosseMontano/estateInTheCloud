@@ -106,7 +106,7 @@ export const deleteRealEstateProfil = async (
   return response;
 };
 
-export const updateStateRealEstate = async (id: Number, available: Number) => {
+export const updateStateRealEstate = async (id: Number, available: number) => {
   try {
     const response = await fetch(`${http}availableEstate/${id}`, {
       method: "PUT",

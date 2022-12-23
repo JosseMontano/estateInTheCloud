@@ -33,10 +33,13 @@ interface Params {
   loading: boolean;
   showbtn: boolean;
   deleteRealEstate: (id: number) => void;
+  updateStateRE: (available: boolean, id: number) => void;
 }
 
 const Index = (params: Params) => {
   const { text } = useLanguage();
+
+  
   function showTitle() {
     if (params.loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;
@@ -55,6 +58,7 @@ const Index = (params: Params) => {
         key={i}
         v={v}
         showbtn={params.showbtn}
+        updateStateRE={params.updateStateRE}
       />
     ));
   }

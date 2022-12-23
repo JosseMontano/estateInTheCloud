@@ -18,7 +18,7 @@ interface params {
 const ContentTextModal = (p: params) => {
   const { text } = useLanguage();
   const [stateAvailable, setStateAvailable] = useState(
-    p.v.state === "Disponible" ? true : false
+    p.v.available ? true : false
   );
   let btnJSX = [
     {

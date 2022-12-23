@@ -13,21 +13,27 @@ import { useNavigate } from "react-router-dom";
 import ContentImg from "./modal/contentImg";
 import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
 import useLoadData from "@/hooks/useFetch";
-import Message from "@/components/global/message";
 import REOnePublicationType from "@/interface/realEstateOfOnePublication";
+import Event from "@/interface/event";
+
 interface Params {
   v: RealEstate;
   showbtn: boolean;
   deleteRealEstate: (id: number) => void;
+  updateStateRE: (available: boolean, id: number) => void;
 }
 
-export const ContentModal = ({ v, showbtn, deleteRealEstate }: Params) => {
+export const ContentModal = ({
+  v,
+  showbtn,
+  deleteRealEstate,
+  updateStateRE,
+}: Params) => {
   const { toast, handleToast } = useContext(ToastContext);
 
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");
   const [loading, setLoading] = useState(false);
-  const [showMsg, setshowMsg] = useState(false);
   const navigate = useNavigate();
 
   const { data, loading: load } = useLoadData<REOnePublicationType>(
@@ -67,7 +73,7 @@ export const ContentModal = ({ v, showbtn, deleteRealEstate }: Params) => {
     setLoading(false);
   };
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (e: Event["file"]) => {
     setPhoto(e.target.files![0]);
   };
 
@@ -77,10 +83,7 @@ export const ContentModal = ({ v, showbtn, deleteRealEstate }: Params) => {
 
   const handleUpdateState = async (id: number, available: number) => {
     await updateStateRealEstate(id, available);
-    setshowMsg(true);
-    setTimeout(() => {
-      setshowMsg(false);
-    }, 3000);
+    updateStateRE(available, id);
   };
 
   return (
@@ -98,8 +101,6 @@ export const ContentModal = ({ v, showbtn, deleteRealEstate }: Params) => {
       />
 
       <LoadAndResponse loading={loading} response={response} msg={toast} />
-
-      {showMsg && <Message msg="El proceso fue exitoso" />}
     </Container>
   );
 };
