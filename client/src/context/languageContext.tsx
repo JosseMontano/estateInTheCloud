@@ -53,6 +53,11 @@ interface TextType {
   filterBedroom: string;
   filterStore: string;
   filterShop: string;
+  filterCustom: string;
+  filterCustomPrice: string;
+  filterCustomBedroom: string;
+  filterCustomBathroom: string;
+  filterCustomSize: string;
   profileSendMessage: string;
   profileSendRequest: string;
   profileCreatePublicate: string;
@@ -135,6 +140,11 @@ const translations: TranslationType = {
     filterBedroom: "Dormitorios",
     filterStore: "Almacenes",
     filterShop: "Tiendas",
+    filterCustom: "Filtrado",
+    filterCustomPrice: "Precio",
+    filterCustomBedroom: "Cuarto",
+    filterCustomBathroom: "Baño",
+    filterCustomSize: "Metros cuadrados",
     profileSendMessage: "Enviar mensaje",
     profileSendRequest: "Enviar solicitud",
     profileCreatePublicate: "Crear publicacion",
@@ -210,6 +220,11 @@ const translations: TranslationType = {
     filterBedroom: "Bedroom's",
     filterStore: "Store's",
     filterShop: "Shop's",
+    filterCustom: "Filter",
+    filterCustomPrice: "Price",
+    filterCustomBedroom: "Bedroom",
+    filterCustomBathroom: "Bathroom",
+    filterCustomSize: "Squeare meter",
     profileSendMessage: "Send message",
     profileSendRequest: "send Request",
     profileCreatePublicate: "Create publication",

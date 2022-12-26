@@ -6,9 +6,10 @@ import useSearch from "@/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
 import { getRealEstateByType } from "@/services/realEstate";
 import ContainerBtn from "@/components/typeRealEstate/containerBtn";
+import ModalContent from "@/components/typeRealEstate/modal";
 import ContainerCard from "@/components/typeRealEstate/containerCard";
 import Navbar from "@/components/navbar";
-
+import { Modal } from "@/components/global/modal";
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -19,7 +20,7 @@ export const Container = styled.div`
 
 const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
-
+  const { isShown, toggle } = UseModal({});
   const { filter, getValueSearch } = useSearch();
 
   const changeData = async (type: string) => {
@@ -49,9 +50,10 @@ const TypeRealEstate = () => {
       <Container>
         <Navbar />
         <Search getValueSearch={getValueSearch} />
-        <ContainerBtn changeData={changeData} />
+        <ContainerBtn toggle={toggle} changeData={changeData} />
         <ContainerCard dataFilter={dataFilter} />
       </Container>
+      <Modal hide={toggle} isShown={isShown} modalContent={<ModalContent />} />
     </Suspense>
   );
 };

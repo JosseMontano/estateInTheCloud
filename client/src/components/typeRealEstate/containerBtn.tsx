@@ -22,6 +22,7 @@ const Btn = styled.button`
 
 interface ParamsType {
   changeData: (type: string) => void;
+  toggle: () => void;
 }
 
 interface BtnJSXType {
@@ -29,7 +30,7 @@ interface BtnJSXType {
   text: string;
 }
 
-const Index = ({ changeData }: ParamsType) => {
+const Index = ({ changeData, toggle }: ParamsType) => {
   const { text } = useLanguage();
   let btnJSX: BtnJSXType[] = [
     {
@@ -59,6 +60,10 @@ const Index = ({ changeData }: ParamsType) => {
     {
       onclick: () => changeData("Tienda"),
       text: text.filterShop,
+    },
+    {
+      onclick: toggle,
+      text: text.filterCustom,
     },
   ];
 
