@@ -11,14 +11,12 @@ export const ContainerCardCss = styled.div`
 
 interface ParamsType {
   dataFilter: RealEstate[];
-  toggle: () => void;
-  isShown: boolean;
 }
 
-const ContainerCard = ({ dataFilter, toggle, isShown }: ParamsType) => {
+const ContainerCard = ({ dataFilter}: ParamsType) => {
   return (
     <ContainerCardCss>
-      <Card dataFilter={dataFilter} toggle={toggle} isShown={isShown} />
+      <Card dataFilter={dataFilter} />
       <NoFound dataFilter={dataFilter} />
     </ContainerCardCss>
   );

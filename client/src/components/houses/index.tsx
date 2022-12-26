@@ -8,15 +8,13 @@ export const ContainerSoon = styled.div`
 
 interface Params {
   dataFilter: RealEstate[];
-  toggle: () => void;
-  isShown: boolean;
 }
 
-const Index = ({ dataFilter, toggle, isShown }: Params) => {
+const Index = ({ dataFilter }: Params) => {
   return (
     <>
       {dataFilter.map((v, i) => (
-        <Card key={i} toggle={toggle} v={v} isShown={isShown} />
+        <Card key={i} v={v} />
       ))}
     </>
   );

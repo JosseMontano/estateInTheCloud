@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
-  const { isShown, toggle } = UseModal({});
+
   const { filter, getValueSearch } = useSearch();
 
   const changeData = async (type: string) => {
@@ -50,11 +50,7 @@ const TypeRealEstate = () => {
         <Navbar />
         <Search getValueSearch={getValueSearch} />
         <ContainerBtn changeData={changeData} />
-        <ContainerCard
-          dataFilter={dataFilter}
-          isShown={isShown}
-          toggle={toggle}
-        />
+        <ContainerCard dataFilter={dataFilter} />
       </Container>
     </Suspense>
   );
