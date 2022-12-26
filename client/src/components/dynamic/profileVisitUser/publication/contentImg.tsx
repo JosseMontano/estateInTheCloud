@@ -3,6 +3,7 @@ import { UseModal } from "@/hooks/useModal";
 import { Modal } from "../../../global/modal";
 import { RealEstate } from "@/interface/realEstate";
 import { ContentModal } from "./modal/indexModal";
+import ModalCom from "./modal";
 
 const Containersoon = styled.div`
   justify-self: center;
@@ -38,24 +39,32 @@ const ContentImg = ({
   updateStateRE,
   idRealEstate,
 }: Params) => {
-  const { isShown, toggle } = UseModal({ show: idRealEstate ? true : false });
+  const { isShown, toggle } = UseModal({ show: false });
+  const { isShown: isShowTrue, toggle: toggleTrue } = UseModal({
+    show: idRealEstate ? true : false,
+  });
 
   return (
     <Containersoon>
       {idRealEstate == v.idrealestate ? (
-        <Modal
-          isShown={isShown}
-          hide={toggle}
-          modalContent={
-            <ContentModal
-              v={v}
-              showbtn={showbtn}
-              deleteRealEstate={deleteRealEstate}
-              updateStateRE={updateStateRE}
-            />
-          }
+        <ModalCom
+          isShowTrue={isShowTrue}
+          showbtn={showbtn}
+          toggleTrue={toggleTrue}
+          v={v}
+          deleteRealEstate={deleteRealEstate}
+          updateStateRE={updateStateRE}
         />
-      ) : <p>ok</p>} 
+      ) : (
+        <ModalCom
+          isShowTrue={isShown}
+          showbtn={showbtn}
+          toggleTrue={toggle}
+          v={v}
+          deleteRealEstate={deleteRealEstate}
+          updateStateRE={updateStateRE}
+        />
+      )}
 
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
