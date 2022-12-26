@@ -59,6 +59,11 @@ export const routes: RouteType[] = [
     name: "VisitUser",
   },
   {
+    path: "/visitUser/:id/:email/:realEstate",
+    Component: VisitUser,
+    name: "VisitUser",
+  },
+  {
     path: "/answeQuestion/:id",
     Component: AnswerQuestion,
     name: "AnswerQuestion",

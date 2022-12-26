@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import Language from "../language/index";
+import Language from "../global/language";
 const Container = styled.form``;
 
 interface BtnType {

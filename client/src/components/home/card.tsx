@@ -15,13 +15,13 @@ const Container = styled.div`
   }
 `;
 
-interface ParamsType{
-  v:RealEstate;
+interface ParamsType {
+  v: RealEstate;
   visitUser: (idUser: number, email: string) => void;
 }
 
-const Index = ({v, visitUser}:ParamsType) => {
-  const { isShown, toggle } = UseModal();
+const Index = ({ v, visitUser }: ParamsType) => {
+  const { isShown, toggle } = UseModal({});
   return (
     <Container>
       <Modal

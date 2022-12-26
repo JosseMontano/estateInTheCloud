@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
-import Publication from "../components/profile/publication";
+import Publication from "../components/dynamic/profileVisitUser";
 import { Suspense, useContext, useEffect } from "react";
 import { getRealEstateProfil as services } from "../services/realEstate";
 import { NameUserContext } from "@/context/nameUserContext";
@@ -26,7 +26,7 @@ const Profile = () => {
     services,
     idUser
   );
-  const { isShown, toggle } = UseModal();
+  const { isShown, toggle } = UseModal({});
 
   const createRealEstate = (newData: RealEstate) => {
     setData([...data, newData]);
@@ -47,8 +47,6 @@ const Profile = () => {
           : v
       )
     );
-
-
   };
 
   useEffect(() => {

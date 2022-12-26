@@ -30,7 +30,7 @@ const AnswerQuestion = () => {
   //verify user
   const {} = useVerifyUserLogin();
 
-  const { isShown, toggle } = UseModal();
+  const { isShown, toggle } = UseModal({});
   const [idQuestion, setIdQuestion] = useState(0);
 
   const handleClick = (id?: number) => {

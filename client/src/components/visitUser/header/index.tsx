@@ -44,7 +44,7 @@ interface Params {
 const Header = ({ email, idParam, cellphonenumber }: Params) => {
   const { idUser } = useContext(NameUserContext);
   const { data } = useLoadDataParams<User>(getUserById, idParam);
-  const { isShown, toggle } = UseModal();
+  const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
   const { getComments } = useContext(CommentsContext);
   const [amountStart, setAmountStart] = useState(1);

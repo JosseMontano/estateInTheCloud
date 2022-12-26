@@ -4,10 +4,10 @@ import { UseModal } from "@/hooks/useModal";
 import Links from "./links";
 import { logOut } from "@/services/auth";
 import { useLanguage } from "@/context/languageContext";
-import Languages from "../language/index";
+
 import { Modal } from "../global/modal";
 import ModalQuestion from "./../home/modalQuestion";
-
+import ModalConfig from "./modalConfig";
 const Ul = styled.ul`
   float: right;
   margin-right: 20px;
@@ -38,8 +38,8 @@ interface Params {
 const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
   const { text } = useLanguage();
   const navigate = useNavigate();
-  const { isShown, toggle } = UseModal();
-  const { isShown: isShownConfig, toggle: toggleConfig } = UseModal();
+  const { isShown, toggle } = UseModal({});
+  const { isShown: isShownConfig, toggle: toggleConfig } = UseModal({});
 
   let dataJSX = [
     {
@@ -47,7 +47,7 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       click: () => {
         handleRedirect(`/profile/${emailState}`);
       },
-    },  
+    },
     {
       text: text.navbarFilter,
       click: () => {
@@ -86,9 +86,8 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       <Modal
         isShown={isShownConfig}
         hide={toggleConfig}
-        modalContent={<p>Hola</p>}
+        modalContent={<ModalConfig />}
       />
-      <Languages />
     </Ul>
   );
 };

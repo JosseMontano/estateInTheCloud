@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ContentImg from "./contentImg";
+import ContentImg from "../../dynamic/profileVisitUser/contentImg";
 import { RealEstate } from "@/interface/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
@@ -34,6 +34,7 @@ interface Params {
   showbtn: boolean;
   deleteRealEstate?: (id: number) => void;
   updateStateRE?: (available: boolean, id: number) => void;
+  idRealEstate?: number;
 }
 
 const Index = (params: Params) => {
@@ -56,6 +57,7 @@ const Index = (params: Params) => {
         v={v}
         showbtn={params.showbtn}
         updateStateRE={params.updateStateRE}
+        idRealEstate={params.idRealEstate}
       />
     );
   }

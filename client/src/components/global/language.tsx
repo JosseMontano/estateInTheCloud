@@ -5,8 +5,7 @@ const ContainerLabel = styled.div`
   text-align: center;
   color: #fff;
   font-size: 22px;
-  margin-top: 10px;
-  button {
+  input {
     margin: 0px 5px;
     background-color: transparent;
     color: #fff;
@@ -22,11 +21,22 @@ const ContainerLabel = styled.div`
   }
 `;
 const Index = () => {
-  const { changeLanguage } = useLanguage();
+  const { changeLanguage, text } = useLanguage();
+  let inputJSX = [
+    {
+      click: () => changeLanguage("en"),
+      val: text.languageValEn,
+    },
+    {
+      click: () => changeLanguage("es"),
+      val: text.languageValEs,
+    },
+  ];
   return (
     <ContainerLabel>
-      <input type={"button"} onClick={() => changeLanguage("en")} value="Ingles" />
-      <input type={"button"} onClick={() => changeLanguage("es")} value="Español" />
+      {inputJSX.map((v, i) => (
+        <input key={i} type={"button"} onClick={v.click} value={v.val} />
+      ))}
     </ContainerLabel>
   );
 };

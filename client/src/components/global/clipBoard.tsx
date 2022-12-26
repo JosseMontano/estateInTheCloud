@@ -2,15 +2,19 @@ import { useState } from "react";
 import Message from "./message";
 import { Btn } from "@/styles/btn";
 import { useLanguage } from "@/context/languageContext";
-
+import config from "@/config";
 interface Params {
-  txt: string;
+  idUser: number;
+  email: string;
+  realeEstate:number;
 }
-const Clipboard = (params: Params) => {
+const Clipboard = ({ email, idUser,realeEstate }: Params) => {
   const { text } = useLanguage();
   const [copied, setCopied] = useState(false);
-  const copyText = (text: string) => {
-    navigator.clipboard.writeText(text);
+  const urlFront = config.frontendUrlDev;
+  const copyText = () => {
+    const urlShare = `${urlFront}visitUser/${idUser}/${email}/${realeEstate}`;
+    navigator.clipboard.writeText(urlShare);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -18,12 +22,7 @@ const Clipboard = (params: Params) => {
   };
   return (
     <>
-      <Btn
-        marginInElements="10px"
-        onClick={() => {
-          copyText(params.txt);
-        }}
-      >
+      <Btn marginInElements="10px" onClick={copyText}>
         {text.homeBtnCopyText}
       </Btn>
       {copied && <Message msg={"Copiado con exito"} />}

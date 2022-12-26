@@ -4,8 +4,11 @@ import Header from "../components/visitUser/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
-import Publication from "../components/profile/publication";
-import { getRealEstateByEmail, updateStateRealEstate } from "../services/realEstate";
+import Publication from "../components/dynamic/profileVisitUser"
+import {
+  getRealEstateByEmail,
+  updateStateRealEstate,
+} from "../services/realEstate";
 import useLoadData from "../hooks/useFetch";
 import { RealEstate } from "../interface/realEstate";
 import { Suspense } from "react";
@@ -16,20 +19,29 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   color: ${(props) => props.ColorText};
 `;
 
-
 const VisitUser = () => {
-  const { id: idParam, email } = useParams();
+  const { id: idParam, email, realEstate } = useParams();
   const idParamNumber = Number(idParam);
   const {} = useVerifyUserLogin();
-
-  const { data, loading } = useLoadData<RealEstate>(getRealEstateByEmail, idParamNumber);
+  const realEstateNumber = parseFloat(realEstate!);
+  const { data, loading } = useLoadData<RealEstate>(
+    getRealEstateByEmail,
+    idParamNumber
+  );
   //get cellphone of user
   let dataObj = {} as RealEstate;
   dataObj = Object.assign({}, data[0]);
   const { cellphonenumber } = dataObj;
 
   const showPublication = () => {
-    return <Publication showbtn={false} data={data} loading={loading} />;
+    return (
+      <Publication
+        showbtn={false}
+        data={data}
+        loading={loading}
+        idRealEstate={realEstateNumber}
+      />
+    );
   };
 
   return (

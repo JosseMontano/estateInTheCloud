@@ -1,6 +1,5 @@
 import { Btn } from "@/styles/btn";
 import Clipboard from "../global/clipBoard";
-
 import { RealEstate } from "@/interface/realEstate";
 
 interface btnJSXType {
@@ -15,7 +14,11 @@ interface Params {
 const ContainerBtnModal = ({ v, btnJSX }: Params) => {
   return (
     <>
-      <Clipboard txt={v.description} />
+      <Clipboard
+        email={v.email}
+        idUser={v.iduser}
+        realeEstate={v.idrealestate}
+      />
       {btnJSX.map((val, i) => (
         <Btn key={i} marginInElements="10px" onClick={val.click}>
           {val.txt}

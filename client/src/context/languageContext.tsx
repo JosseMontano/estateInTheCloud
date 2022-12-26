@@ -72,6 +72,9 @@ interface TextType {
   createPublicationTitle: string;
   createPublicationDescription: string;
   createPublicationType: string;
+  configurationLanguage: string;
+  languageValEn: string;
+  languageValEs: string;
 }
 
 interface TranslationType {
@@ -116,7 +119,7 @@ const translations: TranslationType = {
     homeForYou: "Solo para ti",
     homeMoreInfor: "Mas informacion",
     homeVist: "Visitar",
-    homeBtnCopyText: "Copiar texto",
+    homeBtnCopyText: "Compartir Url",
     homeBtnQuestionFrequent: "Preguntas frecuentes",
     homeBtnDownload: "Descargar Foto",
     homeBtnSee360: "Ver en 360",
@@ -151,6 +154,9 @@ const translations: TranslationType = {
     createPublicationTitle: "Titulo",
     createPublicationDescription: "Descripcion",
     createPublicationType: "Tipo",
+    configurationLanguage: "Idioma:",
+    languageValEn: "Ingles",
+    languageValEs: "Español",
   },
   en: {
     dataEmpty: "There is not data",
@@ -188,7 +194,7 @@ const translations: TranslationType = {
     homeForYou: "Just for you",
     homeMoreInfor: "More information",
     homeVist: "to visit",
-    homeBtnCopyText: "Copy Text",
+    homeBtnCopyText: "Share Url",
     homeBtnQuestionFrequent: "Frequent Question",
     homeBtnDownload: "Downlaod Photo",
     homeBtnSee360: "See 360",
@@ -223,6 +229,9 @@ const translations: TranslationType = {
     createPublicationTitle: "Title",
     createPublicationDescription: "Description",
     createPublicationType: "Type",
+    configurationLanguage: "Language:",
+    languageValEn: "English",
+    languageValEs: "Spanish",
   },
 };
 
@@ -267,4 +276,3 @@ export const LanguageContextProvider = ({ children }: Children) => {
     <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>
   );
 };
-

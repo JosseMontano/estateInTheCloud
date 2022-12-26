@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
-  const { isShown, toggle } = UseModal();
+  const { isShown, toggle } = UseModal({});
   const { filter, getValueSearch } = useSearch();
 
   const changeData = async (type: string) => {
