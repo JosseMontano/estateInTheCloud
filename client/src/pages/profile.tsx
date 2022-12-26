@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
-import Publication from "../components/dynamic/profileVisitUser";
+import Publication from "@/components/dynamic/profileVisitUser/publication";
 import { Suspense, useContext, useEffect } from "react";
 import { getRealEstateProfil as services } from "../services/realEstate";
 import { NameUserContext } from "@/context/nameUserContext";

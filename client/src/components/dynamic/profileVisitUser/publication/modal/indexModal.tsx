@@ -8,10 +8,10 @@ import {
 import { useContext, useState } from "react";
 import useToast from "@/hooks/useToast";
 import { Container } from "@/styles/modal/perfil";
-import ContentTextModal from "./contentTextModal";
+import ContentTextModal from "../contentTextModal";
 import { useNavigate } from "react-router-dom";
-import ContentImg from "../../dynamic/profileVisitUser/modal/contentImg";
-import LoadAndResponse from "../../home/modalQuestion/loadAndResponse";
+import ContentImg from "./contentImg";
+import LoadAndResponse from "../../../../home/modalQuestion/loadAndResponse";
 import useLoadData from "@/hooks/useFetch";
 import REOnePublicationType from "@/interface/realEstateOfOnePublication";
 import Event from "@/interface/event";

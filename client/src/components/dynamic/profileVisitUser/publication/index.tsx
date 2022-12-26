@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ContentImg from "../../dynamic/profileVisitUser/contentImg";
+import ContentImg from "./contentImg";
 import { RealEstate } from "@/interface/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
@@ -39,7 +39,9 @@ interface Params {
 
 const Index = (params: Params) => {
   const { text } = useLanguage();
+
   const vecSkeleton = [1, 2, 3, 4, 5, 6];
+
   function showTitle() {
     if (params.loading) {
       return <TextEmpty>{text.visitUserLoadTitle}</TextEmpty>;

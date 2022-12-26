@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { UseModal } from "@/hooks/useModal";
-import { Modal } from "../../global/modal";
+import { Modal } from "../../../global/modal";
 import { RealEstate } from "@/interface/realEstate";
-import { ContentModal } from "./indexModal";
+import { ContentModal } from "./modal/indexModal";
 
 const Containersoon = styled.div`
   justify-self: center;
@@ -42,7 +42,7 @@ const ContentImg = ({
 
   return (
     <Containersoon>
-      {idRealEstate == v.idrealestate && (
+      {idRealEstate == v.idrealestate ? (
         <Modal
           isShown={isShown}
           hide={toggle}
@@ -55,20 +55,7 @@ const ContentImg = ({
             />
           }
         />
-      )}
-
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        modalContent={
-          <ContentModal
-            v={v}
-            showbtn={showbtn}
-            deleteRealEstate={deleteRealEstate}
-            updateStateRE={updateStateRE}
-          />
-        }
-      />
+      ) : <p>ok</p>} 
 
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>
