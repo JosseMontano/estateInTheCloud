@@ -1,14 +1,21 @@
 import { GraphQLSchema, GraphQLObjectType } from "graphql";
-import { metRoute } from "../routes";
-import { greeting } from "./queries/greeting";
-
+import { createAnswer } from "./mutations/answer";
+import { getAnswerQuestionByRealEstate } from "./queries/answer";
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
   fields: {
-    greeting: greeting,
+    getAnswerQuestionByRealEstate,
   },
 });
 
-export const schema= new GraphQLSchema({
+const Mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    createAnswer,
+  },
+});
+
+export const schema = new GraphQLSchema({
   query: RootQuery,
+  mutation: Mutation,
 });

@@ -4,7 +4,6 @@ import morgan from "morgan";
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import "reflect-metadata";
-
 import { graphqlHTTP } from "express-graphql";
 
 import { schema } from "./schema";
