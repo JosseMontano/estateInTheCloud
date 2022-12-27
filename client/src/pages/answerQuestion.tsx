@@ -44,9 +44,8 @@ const AnswerQuestion = () => {
         id_question: id_question,
       },
     });
+    alert("guardado");
   };
-
-  
 
   const handleClick = (id?: number) => {
     toggle();

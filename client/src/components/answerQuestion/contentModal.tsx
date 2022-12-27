@@ -1,35 +1,46 @@
 import styled from "styled-components";
 import { ColorText, Title, ColorBtn } from "@/styles/globals";
-import Loader from "../global/loading";
-import Message from "../global/message";
-import { Button, MsgError, TextArea } from "jz-validation-form";
-import Event from "@/interface/event";
-import Answer from "@/interface/answer";
-import { useState } from "react";
+import { Button } from "jz-validation-form";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 const Container = styled.div``;
 
 interface Params {
   handleAddAnswer: (answerInput: string) => void;
 }
 
+interface FormType {
+  answer: string;
+}
+
 const ContentModal = ({ handleAddAnswer }: Params) => {
-  const [answer, setAnswer] = useState("");
-  const handleSubmit = () => {
+  /*   const [answer, setAnswer] = useState(""); */
+  const handleSubmit = (values: FormType) => {
+    const { answer } = values;
     handleAddAnswer(answer);
   };
   return (
     <Container>
-      <Title colorText={ColorText}>Responder Pregunta</Title>
-      <TextArea
-        onChange={(e) => setAnswer(e.target.value)}
-        name={"answer"}
-        cols={50}
-        rows={5}
-      />
-
-      <Button onClick={handleSubmit} ColorBtn={ColorBtn}>
-        Guardar
-      </Button>
+      <Formik
+        initialValues={{
+          answer: "",
+        }}
+        validationSchema={Yup.object({
+          answer: Yup.string().required("This field is required"),
+        })}
+        onSubmit={(values) => {
+          handleSubmit(values);
+        }}
+      >
+        <Form>
+          <Title colorText={ColorText}>Responder Pregunta</Title>
+          <Field className="input" name={"answer"} cols={50} rows={5} />
+          <ErrorMessage className="msgError" component={"span"} name="answer" />
+          <Button type="submit" ColorBtn={ColorBtn}>
+            Guardar
+          </Button>
+        </Form>
+      </Formik>
     </Container>
   );
 };
