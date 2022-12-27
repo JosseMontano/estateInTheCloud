@@ -10,12 +10,6 @@ export const getUser = async <T>(
   return { json, status };
 };
 
-export const getUserByEmail = async (email?: number) => {
-  const url = `${http}getUserPhotoProfile/${email}`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
-
 export const getUserById = async (id?: number) => {
   const url = `${http}getUserComplete/${id}`;
   const { json, status } = await index(url);
