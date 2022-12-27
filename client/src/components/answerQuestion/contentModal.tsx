@@ -5,35 +5,31 @@ import Message from "../global/message";
 import { Button, MsgError, TextArea } from "jz-validation-form";
 import Event from "@/interface/event";
 import Answer from "@/interface/answer";
+import { useState } from "react";
 const Container = styled.div``;
 
 interface Params {
-  form: Answer;
-  handleChange: (e: Event["inputChangeIT"]) => void;
-  errors: Answer;
-  sendData: (e: Event["buttonOnclick"]) => void;
-  loading: boolean;
-  msg: string;
-  response: boolean;
+  handleAddAnswer: (answerInput: string) => void;
 }
 
-const ContentModal = (params: Params) => {
+const ContentModal = ({ handleAddAnswer }: Params) => {
+  const [answer, setAnswer] = useState("");
+  const handleSubmit = () => {
+    handleAddAnswer(answer);
+  };
   return (
     <Container>
       <Title colorText={ColorText}>Responder Pregunta</Title>
       <TextArea
+        onChange={(e) => setAnswer(e.target.value)}
         name={"answer"}
-        value={params.form.answer}
-        onChange={(e) => params.handleChange(e)}
         cols={50}
         rows={5}
       />
-      {params.errors.answer && <MsgError>{params.errors.answer}</MsgError>}
-      <Button onClick={(e) => params.sendData(e)} ColorBtn={ColorBtn}>
+
+      <Button onClick={handleSubmit} ColorBtn={ColorBtn}>
         Guardar
       </Button>
-      {params.loading && <Loader />}
-      {params.response && <Message msg={params.msg} />}
     </Container>
   );
 };

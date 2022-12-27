@@ -9,13 +9,7 @@ interface Params {
   id: number;
   idQuestion: number;
   data: Question[];
-  form: Answer;
-  handleChange: (e: Event["inputChangeIT"]) => void;
-  errors: Answer;
-  sendData: (e: any) => void;
-  loadingForm: boolean;
-  msg: string;
-  response: boolean;
+  handleAddAnswer:(answerInput: string)=>void;
 }
 
 const ModalCom = (params: Params) => {
@@ -25,13 +19,7 @@ const ModalCom = (params: Params) => {
       hide={params.toggle}
       modalContent={
         <ContentModal
-          form={params.form}
-          handleChange={params.handleChange}
-          errors={params.errors}
-          loading={params.loadingForm}
-          msg={params.msg}
-          response={params.response}
-          sendData={params.sendData}
+        handleAddAnswer={params.handleAddAnswer}
         />
       }
     />

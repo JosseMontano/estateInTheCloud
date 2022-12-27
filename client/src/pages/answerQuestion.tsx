@@ -10,7 +10,6 @@ import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { initialForm, validationsForm } from "@/validations/answer";
 import { addAnswer } from "@/services/answer";
 import Navbar from "@/components/navbar";
-import { UseForm } from "jz-validation-form";
 import styled from "styled-components";
 import Question from "@/interface/question";
 import Answer from "@/interface/answer";
@@ -25,38 +24,33 @@ const Container = styled.div`
 const AnswerQuestion = () => {
   //parse id to Number
   const { id } = useParams();
-  const IdNumber = parseInt(id!);
+  const id_real_estate = parseInt(id!);
   //get data
-  const { data, loading } = useLoadData<Question>(getQuestions, IdNumber);
+  const { data, loading } = useLoadData<Question>(getQuestions, id_real_estate);
   //verify user
   const {} = useVerifyUserLogin();
 
   const { isShown, toggle } = UseModal({});
   const [idQuestion, setIdQuestion] = useState(0);
 
+  const [createAnswer] = useMutation(addAnswer());
+
+  const handleAddAnswer = (answer: string) => {
+    const id_question = idQuestion;
+    createAnswer({
+      variables: {
+        answer: answer,
+        id_real_estate: id_real_estate,
+        id_question: id_question,
+      },
+    });
+  };
+
+  
+
   const handleClick = (id?: number) => {
     toggle();
     if (id) setIdQuestion(id);
-  };
-
-  const handleAddAnswer = () => {
-    createAnswer();
-  };
-
-
-  const valForm = UseForm<Answer>(
-    initialForm,
-    validationsForm,
-    handleAddAnswer
-  );
-
-  const res = addAnswer(valForm.form);
-  const [createAnswer] = useMutation(res);
-
-  const sendData = (e: Event["buttonSend"]) => {
-    valForm.form.id_real_estate = IdNumber;
-    valForm.form.id_question = idQuestion;
-    valForm.handleSubmit(e);
   };
 
   const showCardComponent = () => {
@@ -73,16 +67,10 @@ const AnswerQuestion = () => {
         <ModalCom
           toggle={toggle}
           isShown={isShown}
-          id={IdNumber}
+          id={id_real_estate}
           idQuestion={idQuestion}
           data={data}
-          form={valForm.form}
-          handleChange={valForm.handleChange}
-          errors={valForm.errors}
-          loadingForm={valForm.loading}
-          msg={valForm.msg}
-          response={valForm.response}
-          sendData={sendData}
+          handleAddAnswer={handleAddAnswer}
         />
       </Container>
     </Suspense>

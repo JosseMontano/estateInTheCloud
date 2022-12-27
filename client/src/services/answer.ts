@@ -1,5 +1,4 @@
-import FormAnswer from "../interface/answer";
-import { http, headers } from "./http";
+import { http } from "./http";
 import deleteServ from "../utilities/deleteServices";
 import { gql } from "@apollo/client/core";
 
@@ -7,8 +6,8 @@ export const addAnswer = () => {
   const query = gql`
     mutation CreateAnswer(
       $answer: String!
-      $id_question: String!
-      $id_real_estate: String!
+      $id_real_estate: Float!
+      $id_question: Float!
     ) {
       createAnswer(
         answer: $answer
@@ -22,7 +21,7 @@ export const addAnswer = () => {
       }
     }
   `;
-  return query
+  return query;
 };
 
 export const getAnswerByRealEstate = (id: number) => {
