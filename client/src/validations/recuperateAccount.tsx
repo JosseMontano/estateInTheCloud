@@ -2,8 +2,7 @@ import { FormRecuperateAccount } from "../interface/formAuth";
 import { validateEmpty, validateEmail } from "jz-validation-form";
 export const initialForm = {
   email: "",
-  password: "",
-  secrect_password: "",
+  subject: "",
 };
 
 export const validationsForm = (form: FormRecuperateAccount) => {
@@ -12,11 +11,9 @@ export const validationsForm = (form: FormRecuperateAccount) => {
   const email = validateEmail(form.email);
   if (email) errors.email = email;
 
-  const password = validateEmpty(form.password);
-  if (password) errors.password = password;
+  const subject = validateEmpty(form.subject);
+  if (subject) errors.subject = subject;
 
-  const secrect_password = validateEmpty(form.secrect_password);
-  if (secrect_password) errors.secrect_password = secrect_password;
 
   return errors;
 };

@@ -10,7 +10,9 @@ import { FormRecuperateAccount } from "@/interface/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
 import { startTransition } from "react";
-import Event from "@/interface/event";
+import { recuperateAccountGmail } from "@/services/user";
+
+
 const Container = styled.form``;
 
 const Form = () => {
@@ -19,17 +21,19 @@ const Form = () => {
     UseForm<FormRecuperateAccount>(
       initialForm,
       validationsForm,
-      recuperateAccount
+      recuperateAccountGmail
     );
 
   const navigate = useNavigate();
 
+
+
   let dataBtn = [
-    {
+/*     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
       text: text.recuperateAccountSave,
-    },
+    }, */
     {
       onclick: () => {
         startTransition(() => {
@@ -38,6 +42,11 @@ const Form = () => {
       },
       color: ColorBtn,
       text: text.recuperateAccountReturn,
+    },
+    {
+      onclick: handleSubmit,
+      color: ColorBtnSecond,
+      text: "Correo",
     },
   ];
   let dataForm = [
@@ -49,16 +58,10 @@ const Form = () => {
     },
     {
       label: text.recuperateAccountPasswordNew,
-      name: "password",
-      value: form.password,
+      name: "subject",
+      value: form.subject,
       errors: errors.password,
-    },
-    {
-      label: text.recuperateAccountSecretKey,
-      name: "secrect_password",
-      value: form.secrect_password,
-      errors: errors.secrect_password,
-    },
+    }
   ];
   return (
     <Container>

@@ -13,6 +13,5 @@ export interface FormRegister {
 
 export interface FormRecuperateAccount {
   email: string;
-  password: string;
-  secrect_password: string;
+  subject: string;
 }
