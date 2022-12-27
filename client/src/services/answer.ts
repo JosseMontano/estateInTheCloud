@@ -1,32 +1,43 @@
 import FormAnswer from "../interface/answer";
 import { http, headers } from "./http";
-import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
+import { gql } from "@apollo/client/core";
 
-export const addAnswer = async (form: FormAnswer) => {
-  const { answer, id_question, id_real_estate } = form;
-  try {
-    const response = await fetch(`${http}answer`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify({
-        answer,
-        id_real_estate,
-        id_question,
-      }),
-    });
-    if (response.ok) {
-      return true;
+export const addAnswer = () => {
+  const query = gql`
+    mutation CreateAnswer(
+      $answer: String!
+      $id_question: String!
+      $id_real_estate: String!
+    ) {
+      createAnswer(
+        answer: $answer
+        id_real_estate: $id_real_estate
+        id_question: $id_question
+      ) {
+        id
+        answer
+        id_real_estate
+        id_question
+      }
     }
-  } catch (err) {
-    console.error(err);
-  }
+  `;
+  return query
 };
 
-export const getAnswerByRealEstate = async (id: number | undefined) => {
-  const url = `${http}answer/${id}`;
-  const { json, status } = await index(url);
-  return { json, status };
+export const getAnswerByRealEstate = (id: number) => {
+  const query = gql`
+    query {
+      getAnswerQuestionByRealEstate(id_real_estate: ${id}) {
+        id_real_estate
+        answer
+        question
+        id
+        id_question
+      }
+    }
+  `;
+  return query;
 };
 
 export const deleteAnswer = async (id: number) => {

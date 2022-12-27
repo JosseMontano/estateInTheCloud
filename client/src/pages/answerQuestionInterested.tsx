@@ -3,11 +3,10 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DataEmpty from "../components/global/dataEmpty";
 import CardSoon from "../components/answerQuestionInterested";
-import useLoadData from "../hooks/useFetch";
 import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
-import IAQ from "@/interface/answerQuestionInterested";
+import { useQuery } from "@apollo/client";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -21,18 +20,22 @@ const Card = styled.div`
   flex-wrap: wrap;
 `;
 
-
-
 const AnswerQuestionInterested = () => {
   const { id } = useParams();
   const idNumer = parseFloat(id!);
-  const { data } = useLoadData<IAQ>(getAnswerByRealEstate, idNumer);
+  const query = getAnswerByRealEstate(idNumer);
+  const { data, loading, error } = useQuery(query);
   const {} = useVerifyUserLogin();
 
   function validateData() {
-    if (data.length > 0) return <CardSoon data={data} />;
+    if (data) {
+      const dataCut = data.getAnswerQuestionByRealEstate;
+      if (dataCut.length > 0) return <CardSoon data={dataCut} />;
+    }
     return <DataEmpty msg="No hay respuestas" />;
   }
+
+  if (error) return <p>{error.message}</p>;
 
   return (
     <Suspense fallback={null}>

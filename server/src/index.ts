@@ -16,14 +16,7 @@ var cookieParser = require("cookie-parser");
 const app = express();
 
 async function start() {
-  //apollo
-  app.use(
-    "/graphql",
-    graphqlHTTP({
-      graphiql: true,
-      schema,
-    })
-  );
+
 
   /* img */
   app.use(
@@ -46,6 +39,15 @@ async function start() {
   app.use(cookieParser());
 
   app.use(express.static("src"));
+
+    //apollo
+    app.use(
+      "/graphql",
+      graphqlHTTP({
+        graphiql: true,
+        schema,
+      })
+    );
 
   //routes
   metRoute(app);

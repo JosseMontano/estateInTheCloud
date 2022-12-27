@@ -15,6 +15,7 @@ import styled from "styled-components";
 import Question from "@/interface/question";
 import Answer from "@/interface/answer";
 import Event from "@/interface/event";
+import { useMutation } from "@apollo/client";
 
 const Container = styled.div`
   width: calc(100%-15px);
@@ -38,7 +39,19 @@ const AnswerQuestion = () => {
     if (id) setIdQuestion(id);
   };
 
-  const valForm = UseForm<Answer>(initialForm, validationsForm, addAnswer);
+  const handleAddAnswer = () => {
+    createAnswer();
+  };
+
+
+  const valForm = UseForm<Answer>(
+    initialForm,
+    validationsForm,
+    handleAddAnswer
+  );
+
+  const res = addAnswer(valForm.form);
+  const [createAnswer] = useMutation(res);
 
   const sendData = (e: Event["buttonSend"]) => {
     valForm.form.id_real_estate = IdNumber;
