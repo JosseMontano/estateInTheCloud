@@ -37,7 +37,7 @@ const Img360 = () => {
       {/* <img src={data?.url} alt="" />  */}
       {data && (
         <Container>
-     
+
         </Container>
       )}
     </>

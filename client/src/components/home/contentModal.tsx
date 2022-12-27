@@ -4,7 +4,7 @@ import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
 import Load from "./modal/load";
 import ImgCom from "./modal/img";
 import useLoadData from "@/hooks/useFetch";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "../dynamic/carousel";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +13,12 @@ import { useLanguage } from "@/context/languageContext";
 import handleDownloadImg from "@/utilities/downloadImg";
 import translate from "@/utilities/translate";
 
+enum Language {
+  english = "en",
+}
+
 export const ContentModal = (v: RealEstate) => {
-  const { text } = useLanguage();
+  const { text, lanActually } = useLanguage();
   const [description, setDescription] = useState(v.description);
   const [title, setTitle] = useState(v.title);
   const [loadTxt, setLoadTxt] = useState(false);
@@ -25,7 +29,7 @@ export const ContentModal = (v: RealEstate) => {
   const handleSeeQuestions = (idRealEstate: number) => {
     navigate(`/answeQuestionInterested/${idRealEstate}`);
   };
-  
+
   const handle360 = () => {
     window.open(`${env.img360Url}#/${v.idphoto}`, "_blank");
     /* navigate(`/img360/${v.idphoto}`); */
@@ -53,11 +57,11 @@ export const ContentModal = (v: RealEstate) => {
       click: handle360,
       txt: text.homeBtnSee360,
     },
-    {
-      click: handleTranslate,
-      txt: text.homeBtnTranslate,
-    },
   ];
+
+  useEffect(() => {
+    if (lanActually == Language.english) handleTranslate();
+  }, []);
 
   function children() {
     return data.map((v, i) => (
@@ -73,15 +77,19 @@ export const ContentModal = (v: RealEstate) => {
 
   return (
     <Container>
-      {loading ? <Load /> : showCarousel()}
-      {loadTxt ? (
-        <Load />
+      {loading && loadTxt ? (
+        <div className="load">
+          <Load />
+        </div>
       ) : (
-        <ContainerContent>
-          <H2>{title}</H2>
-          <P>{description}</P>
-          <ContainerBtnModal v={v} btnJSX={btnJSX} />
-        </ContainerContent>
+        <>
+          {showCarousel()}
+          <ContainerContent>
+            <H2>{title}</H2>
+            <P>{description}</P>
+            <ContainerBtnModal v={v} btnJSX={btnJSX} />
+          </ContainerContent>
+        </>
       )}
     </Container>
   );

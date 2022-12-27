@@ -57,6 +57,7 @@ interface TextType {
   filterCustomPrice: string;
   filterCustomBedroom: string;
   filterCustomBathroom: string;
+  filterCustomBtn: string;
   filterCustomSize: string;
   profileSendMessage: string;
   profileSendRequest: string;
@@ -145,6 +146,7 @@ const translations: TranslationType = {
     filterCustomBedroom: "Cuarto",
     filterCustomBathroom: "Baño",
     filterCustomSize: "Metros cuadrados",
+    filterCustomBtn: "Buscar",
     profileSendMessage: "Enviar mensaje",
     profileSendRequest: "Enviar solicitud",
     profileCreatePublicate: "Crear publicacion",
@@ -225,6 +227,7 @@ const translations: TranslationType = {
     filterCustomBedroom: "Bedroom",
     filterCustomBathroom: "Bathroom",
     filterCustomSize: "Squeare meter",
+    filterCustomBtn: "Search",
     profileSendMessage: "Send message",
     profileSendRequest: "send Request",
     profileCreatePublicate: "Create publication",
@@ -253,6 +256,7 @@ const translations: TranslationType = {
 interface ContextType {
   text: TextType;
   changeLanguage: (len: string) => void;
+  lanActually: string;
 }
 
 const initialText: TextType = translations["es"];
@@ -260,6 +264,7 @@ const initialText: TextType = translations["es"];
 const initialValue: ContextType = {
   text: initialText,
   changeLanguage: () => {},
+  lanActually: "",
 };
 
 const LanguageContext = createContext<ContextType>(initialValue);
@@ -276,16 +281,18 @@ export const useLanguage = () => {
 
 export const LanguageContextProvider = ({ children }: Children) => {
   const [text, setText] = useState<TextType>(translations["es"]);
-
+  const [lanActually, setLanActually] = useState("es");
   const changeLanguage = (lan: string) => {
     if (lan === "en") {
       setText(translations["en"]);
+      setLanActually("en");
       return;
     }
     setText(translations["es"]);
+    setLanActually("es");
   };
 
-  const data = { text, changeLanguage };
+  const data = { text, changeLanguage, lanActually };
 
   return (
     <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>

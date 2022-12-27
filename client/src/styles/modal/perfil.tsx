@@ -3,6 +3,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   width: 500px;
+  .load {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
   @media screen and (max-width: 572px) {
     grid-template-columns: 100%;
     justify-content: center;
