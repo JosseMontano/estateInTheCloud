@@ -52,25 +52,6 @@ export const signUp = async (form: FormRegister) => {
   }
 };
 
-export const recuperateAccount = async (form: FormRecuperateAccount) => {
-  try {
-    const response = await fetch(`${http}recuperateAccount`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify({
-        email: form.email,
-        password: form.password,
-        secret_password: form.secrect_password,
-      }),
-    });
-    if (response.ok) {
-      return true;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const getEmail = async () => {
   try {
     const token = document.cookie.replace("token=", "");
