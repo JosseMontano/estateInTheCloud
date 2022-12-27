@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getDestinates } from "@/services/realEstate";
 import { useEffect, useState } from "react";
-import { RealEstate } from "@/interface/realEstate";
 import styled from "styled-components";
-
 
 const Container = styled.div`
   background-color: #282c34;
@@ -17,9 +15,9 @@ const Container = styled.div`
 
 const Img360 = () => {
   let { id } = useParams();
-  const [data, setData] = useState<RealEstate | null>();
-  const getRealEstate = async (id: number) => {
-    const { json } = await getDestinates<RealEstate[]>(id);
+  const [data, setData] = useState();
+  const getRealEstate = async (id) => {
+    const { json } = await getDestinates(id);
     if (json) {
       setData(json[0]);
       console.log(json[0]);
@@ -34,10 +32,11 @@ const Img360 = () => {
 
   return (
     <>
-      {/* <img src={data?.url} alt="" />  */}
       {data && (
         <Container>
-
+          <a-scene className="RV">
+            <a-sky src={data.url} rotation="0 -130 0"></a-sky>
+          </a-scene>
         </Container>
       )}
     </>

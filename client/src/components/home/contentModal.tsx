@@ -31,8 +31,8 @@ export const ContentModal = (v: RealEstate) => {
   };
 
   const handle360 = () => {
-    window.open(`${env.img360Url}#/${v.idphoto}`, "_blank");
-    /* navigate(`/img360/${v.idphoto}`); */
+    /*     window.open(`${env.img360Url}#/${v.idphoto}`, "_blank"); */
+    navigate(`/img360/${v.idphoto}`);
   };
 
   const handleTranslate = async () => {
