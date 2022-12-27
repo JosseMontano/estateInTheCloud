@@ -2,6 +2,7 @@ import FormAnswer from "../interface/answer";
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
+
 export const addAnswer = async (form: FormAnswer) => {
   const { answer, id_question, id_real_estate } = form;
   try {
