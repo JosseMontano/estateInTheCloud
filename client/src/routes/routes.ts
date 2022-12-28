@@ -1,10 +1,5 @@
 import { lazy, LazyExoticComponent } from "react";
-import {
-  RecuperateAccount,
-  AnswerQuestion,
-  AnswerQuestionInterested,
-  Img360,
-} from "../pages";
+import { AnswerQuestion, AnswerQuestionInterested, Img360 } from "../pages";
 
 type JSXComponent = () => JSX.Element;
 
@@ -16,7 +11,6 @@ interface RouteType {
 }
 
 const Login = lazy(() => import("../pages/login"));
-const Register = lazy(() => import("../pages/register"));
 const VisitUser = lazy(() => import("../pages/visitUser"));
 const Home = lazy(() => import("../pages/home"));
 const Profile = lazy(() => import("../pages/profile"));
@@ -27,16 +21,6 @@ export const routes: RouteType[] = [
     path: "/",
     Component: Login,
     name: "Login",
-  },
-  {
-    path: "/register",
-    Component: Register,
-    name: "Register",
-  },
-  {
-    path: "/recuperateAccount",
-    Component: RecuperateAccount,
-    name: "RecuperateAccount",
   },
   {
     path: "/home",

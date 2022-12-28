@@ -6,8 +6,6 @@ import Home from "./home";
 import Img360 from "./img360";
 import Login from "./login";
 import Profile from "./profile";
-import RecuperateAccount from "./recuperateAccount";
-import Register from "./register";
 import TypeRealEstate from "./typeRealEstate";
 import VisitUser from "./visitUser";
 
@@ -18,8 +16,6 @@ export {
   Img360,
   Login,
   Profile,
-  RecuperateAccount,
-  Register,
   TypeRealEstate,
   VisitUser,
 };

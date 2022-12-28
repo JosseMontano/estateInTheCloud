@@ -10,6 +10,7 @@ import useLoadData from "../hooks/useFetch";
 import { RealEstate } from "../interface/realEstate";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
+
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
   margin: ${(props) => props.marginGlobal};

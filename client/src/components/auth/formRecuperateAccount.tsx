@@ -14,7 +14,7 @@ import { recuperateAccountGmail } from "@/services/user";
 
 const Container = styled.form``;
 
-const Form = () => {
+const FormRecuperate = () => {
   const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRecuperateAccount>(
@@ -80,4 +80,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormRecuperate;

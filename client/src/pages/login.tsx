@@ -2,22 +2,27 @@ import Form from "../components/auth/formLogin";
 import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecuperate";
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
-import { useNavigate } from "react-router-dom";
 import { initialForm, validationsForm } from "@/validations/login";
 import { signIn } from "@/services/auth";
 import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/styles/globals";
-import { startTransition, Suspense, useState } from "react";
+import { Suspense, useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
+import { Modal } from "@/components/global/modal";
+import { UseModal } from "@/hooks/useModal";
+import FormRegister from "@/components/auth/formRegister";
+import FormRecuperate from "@/components/auth/formRecuperateAccount";
+
 export function Login(): JSX.Element {
   const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signIn);
   const [showPassword, setShowPassword] = useState(false);
+  const { isShown: isShownRegister, toggle: toggleRegister } = UseModal({});
+  const { isShown: isShownRA, toggle: toggleRA } = UseModal({});
 
-  const navigate = useNavigate();
   let dataBtn = [
     {
       onclick: handleSubmit,
@@ -25,18 +30,12 @@ export function Login(): JSX.Element {
       text: text.loginBtnGetInto,
     },
     {
-      onclick: () => {
-        startTransition(() => {
-          navigate(`/register`);
-        });
-      },
+      onclick: toggleRegister,
       color: ColorBtn,
       text: text.loginBtnCreateAccount,
     },
     {
-      onclick: () => {
-        navigate(`/recuperateAccount`);
-      },
+      onclick: toggleRA,
       color: ColorBtnThird,
       text: text.loginBtnRecuperateAccount,
     },
@@ -94,6 +93,16 @@ export function Login(): JSX.Element {
             <ColPhoto />
           </>
         }
+      />
+      <Modal
+        isShown={isShownRegister}
+        hide={toggleRegister}
+        modalContent={<FormRegister />}
+      />
+      <Modal
+        isShown={isShownRA}
+        hide={toggleRA}
+        modalContent={<FormRecuperate />}
       />
     </Suspense>
   );

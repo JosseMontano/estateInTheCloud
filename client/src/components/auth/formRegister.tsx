@@ -1,18 +1,21 @@
 import styled from "styled-components";
-import { ColorBtn, ColorBtnSecond } from "@/styles/globals";
-import { useNavigate } from "react-router-dom";
+import {  ColorBtnSecond } from "@/styles/globals";
 import Button from "./button";
 import { initialForm, validationsForm } from "@/validations/register";
 import { signUp } from "@/services/auth";
 import ContentFormRegister from "./contentFormRegister";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import { startTransition, useState } from "react";
+import { useState } from "react";
 import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
 import { FormRegister } from "@/interface/formAuth";
-const Container = styled.form``;
+
+const Container = styled.form`
+padding: 15px;
+min-width: 380px;
+`;
 
 interface V {
   label: string;
@@ -23,12 +26,11 @@ interface V {
   type: string;
 }
 
-const Form = () => {
+const FormRegisterCom = () => {
   const { text } = useLanguage();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRegister>(initialForm, validationsForm, signUp);
 
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   let dataBtn = [
@@ -36,15 +38,6 @@ const Form = () => {
       onclick: handleSubmit,
       color: ColorBtnSecond,
       text: text.registerBtnCreateAccount,
-    },
-    {
-      onclick: () => {
-        startTransition(() => {
-          navigate(`/`);
-        });
-      },
-      color: ColorBtn,
-      text: text.registerBtnReturn,
     },
   ];
 
@@ -127,4 +120,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormRegisterCom;
