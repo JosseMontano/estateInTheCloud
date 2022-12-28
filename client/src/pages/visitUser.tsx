@@ -18,13 +18,13 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 `;
 
 const VisitUser = () => {
-  const { id: idParam, email, realEstate } = useParams();
-  const idParamNumber = Number(idParam);
+  const { id: idUser, email, realEstate } = useParams();
+  const iUserNumber = Number(idUser);
   const {} = useVerifyUserLogin();
   const realEstateNumber = parseFloat(realEstate!);
   const { data, loading } = useLoadData<RealEstate>(
     getRealEstateByEmail,
-    idParamNumber
+    iUserNumber
   );
   //get cellphone of user
   let dataObj = {} as RealEstate;
@@ -48,11 +48,11 @@ const VisitUser = () => {
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         <Header
           email={email}
-          idParam={idParamNumber}
+          iUserNumber={iUserNumber}
           cellphonenumber={cellphonenumber}
         />
-        {idParamNumber != 0 && showPublication()}
-        <Comments idParam={idParamNumber} />
+        {iUserNumber != 0 && showPublication()}
+        <Comments idParam={iUserNumber} />
       </Container>
     </Suspense>
   );

@@ -1,35 +1,47 @@
 import { FormComment } from "../interface/formComment";
-import { http, headers } from "./http";
+import { http } from "./http";
 import deleteServ from "../utilities/deleteServices";
+import { gql } from "@apollo/client";
 
-export const getCommentsByUser = async (id: number) => {
-  try {
-    const response = await fetch(`${http}comment/${id}`, {
-      method: "GET",
-    });
-    return await response.json();
-  } catch (error) {}
+export const getCommentsByUser = (id: number) => {
+  const query = gql`
+    query{
+      getAllCommentsByUser(person_commented:${id}){
+        id
+        email
+        id_comment
+        commentator
+        description
+        amount_start
+        url
+      }
+    } 
+  `;
+  return query;
 };
 
-export const postComment = async (form: FormComment) => {
-  try {
-    const response = await fetch(`${http}comment`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify({
-        commentator: form.commentator,
-        description: form.description,
-        person_commented: form.person_commented,
-        amount_start: form.amount_start,
-      }),
-    });
-    console.log(response);
-    if (response.status === 200) {
-      return true;
+export const postComment = () => {
+  const query = gql`
+    mutation CREATECOMMENT(
+      $person_commented: Float!
+      $commentator: Float!
+      $description: String!
+      $amount_start: Float!
+    ) {
+      CREATE_COMMENT(
+        person_commented: $person_commented
+        commentator: $commentator
+        description: $description
+        amount_start: $amount_start
+      ) {
+        id
+        commentator
+        description
+        amount_start
+      }
     }
-  } catch (err) {
-    console.error(err);
-  }
+  `;
+  return query;
 };
 
 export const deleteComment = async (id: number) => {

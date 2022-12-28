@@ -9,14 +9,10 @@ import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
-import { initialForm, validationsForm } from "@/validations/comments";
 import { postComment } from "@/services/comment";
 import { CommentsContext } from "@/context/commentsContext";
-import { getUser } from "@/services/user";
-import { UseForm } from "jz-validation-form";
 import { User } from "@/interface/user";
-import Event from "@/interface/event";
-import { FormComment } from "@/interface/formComment";
+import { useMutation } from "@apollo/client";
 
 const Container = styled.div`
   display: grid;
@@ -38,18 +34,16 @@ const ContainerContent = styled.div`
 
 interface Params {
   email?: string;
-  idParam: number;
+  iUserNumber: number;
   cellphonenumber: string;
 }
-const Header = ({ email, idParam, cellphonenumber }: Params) => {
+const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
   const { idUser } = useContext(NameUserContext);
-  const { data } = useLoadDataParams<User>(getUserById, idParam);
+  const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
   const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
   const { getComments } = useContext(CommentsContext);
   const [amountStart, setAmountStart] = useState(1);
-
-  const [personCommentedId, setPersonCommentedId] = useState(0);
 
   useEffect(() => {
     if (data) {
@@ -57,33 +51,22 @@ const Header = ({ email, idParam, cellphonenumber }: Params) => {
     }
   }, []);
 
-  /* Content Modal */
-  const useForm = UseForm<FormComment>(
-    initialForm,
-    validationsForm,
-    postComment,
-    idUser,
-    getComments
-  );
+  const [CREATE_COMMENT] = useMutation(postComment());
 
-  const SenData = (e: Event['buttonSend']) => {
-    useForm.form.commentator = idUser;
-    useForm.form.person_commented = personCommentedId;
-    useForm.form.amount_start = amountStart;
-    useForm.handleSubmit(e);
+  const handleAddComment = async (description: string) => {
+    await CREATE_COMMENT({
+      variables: {
+        person_commented: iUserNumber,
+        commentator: idUser,
+        description,
+        amount_start: amountStart,
+      },
+    });
+    alert("guardado");
   };
 
   const getStart = (val: number) => {
     setAmountStart(val);
-  };
-
-  const handleGetPersonCommented = async () => {
-    const { json } = await getUser<any>(email);
-    if (json) {
-      const { id_usuario } = Object.assign({}, json[0]);
-      const auxId = id_usuario;
-      setPersonCommentedId(auxId);
-    }
   };
 
   return (
@@ -103,12 +86,7 @@ const Header = ({ email, idParam, cellphonenumber }: Params) => {
         isShown={isShown}
         hide={toggle}
         modalContent={
-          <ContentModal
-            useForm={useForm}
-            getStart={getStart}
-            SenData={SenData}
-            handleGetPersonCommented={handleGetPersonCommented}
-          />
+          <ContentModal getStart={getStart} SenData={handleAddComment} />
         }
       />
     </Container>
