@@ -7,7 +7,7 @@ import { NameUserContext } from "@/context/nameUserContext";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
 import { useLanguage } from "@/context/languageContext";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 const Container = styled.div`
   margin: 0 10%;
@@ -29,19 +29,19 @@ const Index = ({ idParam }: params) => {
   const { text } = useLanguage();
   const [deleteBool, setDeleteBool] = useState(false);
   const { idUser } = useContext(NameUserContext);
-
+  const [DELETE_COMMENT] = useMutation(deleteComment());
   const id = getCommentsByUser(idParam);
   const { data, loading, error } = useQuery(id);
 
   const handleDelete = async (id: number) => {
-    await deleteComment(id);
+    DELETE_COMMENT({ variables: { id } });
     setDeleteBool(true);
     setTimeout(() => {
       setDeleteBool(false);
     }, 3000);
   };
 
-  function showComments(){
+  function showComments() {
     if (data) {
       const newData = data.getAllCommentsByUser;
       return (
@@ -52,7 +52,7 @@ const Index = ({ idParam }: params) => {
         />
       );
     }
-  };
+  }
 
   return (
     <>

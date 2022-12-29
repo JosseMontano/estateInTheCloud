@@ -44,8 +44,11 @@ export const postComment = () => {
   return query;
 };
 
-export const deleteComment = async (id: number) => {
-  const url = `${http}comment/${id}`;
-  const response = await deleteServ(url);
-  return response;
+export const deleteComment = () => {
+  const query = gql`
+    mutation DELETE_COMMENT($id: ID!) {
+      DELETE_COMMENT(id: $id)
+    }
+  `;
+  return query;
 };

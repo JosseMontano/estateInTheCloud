@@ -4,7 +4,7 @@ import {
   FormRecuperateAccount,
 } from "../interface/formAuth";
 import { http, headers } from "./http";
-
+import saveCookie from "@/utilities/saveCookie";
 export const signIn = async (form: FormLogin) => {
   try {
     const response = await fetch(`${http}signin`, {
@@ -19,9 +19,7 @@ export const signIn = async (form: FormLogin) => {
 
     const res = await response.json();
     if (res.auth) {
-      document.cookie = `token=${res.token}; max-age=${
-        60 * 60 * 24
-      }; path=/; samesite=stric`;
+      saveCookie(res.token, "token");
     }
     if (response.ok) {
       return true;
