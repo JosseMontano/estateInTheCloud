@@ -3,7 +3,7 @@ import { Comments as CommentsTypes } from "@/interface/comments";
 
 interface ParamsType {
   data: CommentsTypes[];
-  handleDelete: (id: number) => {};
+  handleDelete: (id: number) => void;
   idUser: number;
 }
 

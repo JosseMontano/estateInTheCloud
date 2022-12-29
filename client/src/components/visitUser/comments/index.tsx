@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { deleteComment } from "../../../services/comment";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Message from "../../global/message";
 import { getCommentsByUser } from "@/services/comment";
 import { NameUserContext } from "@/context/nameUserContext";
@@ -8,7 +8,7 @@ import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
 import { useLanguage } from "@/context/languageContext";
 import { useMutation, useQuery } from "@apollo/client";
-
+import { useComments } from "@/context/comments/commentsContext";
 const Container = styled.div`
   margin: 0 10%;
   @media screen and (max-width: 1050px) {
@@ -30,16 +30,21 @@ const Index = ({ idParam }: params) => {
   const [deleteBool, setDeleteBool] = useState(false);
   const { idUser } = useContext(NameUserContext);
   const [DELETE_COMMENT] = useMutation(deleteComment());
-  const id = getCommentsByUser(idParam);
-  const { data, loading, error } = useQuery(id);
+  const { data, setIdCommentUser, loading, handleDelete } = useComments();
+  /*   const id = getCommentsByUser(idParam);
+  const { data, loading, error } = useQuery(id); */
 
-  const handleDelete = async (id: number) => {
+/*   const handleDelete = async (id: number) => {
     DELETE_COMMENT({ variables: { id } });
     setDeleteBool(true);
     setTimeout(() => {
       setDeleteBool(false);
     }, 3000);
-  };
+  }; */
+
+  useEffect(() => {
+    setIdCommentUser(idParam)
+  }, []);
 
   function showComments() {
     if (data) {

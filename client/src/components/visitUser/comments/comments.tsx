@@ -18,7 +18,7 @@ const Container = styled.div`
 
 interface Params {
   v: IComments;
-  handleDeleteComment: (id: number) => {};
+  handleDeleteComment: (id: number) => void;
   idUser:number
 }
 

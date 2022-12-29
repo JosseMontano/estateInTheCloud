@@ -21,7 +21,7 @@ const Button = styled.button`
 `;
 
 interface Params {
-  handleDeleteComment: (id: number) => {};
+  handleDeleteComment: (id: number) => void;
   id: number;
 }
 

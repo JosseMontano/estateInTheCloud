@@ -8,7 +8,7 @@ import { ApolloClient, HttpLink } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
 import { http } from "./services/http";
 import { ApolloProvider } from "@apollo/client/react";
-
+import { CommentsContextProvider } from "./context/comments/commentsContext";
 const client = new ApolloClient({
   connectToDevTools: true, //devtools browser
   cache: new InMemoryCache(),
@@ -23,7 +23,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <LoadProvider>
         <HomeContextProvider>
           <LanguageContextProvider>
-            <App />
+            <CommentsContextProvider>
+              <App />
+            </CommentsContextProvider>
           </LanguageContextProvider>
         </HomeContextProvider>
       </LoadProvider>
