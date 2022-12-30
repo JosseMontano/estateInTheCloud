@@ -74,14 +74,6 @@ const FormRegisterCom = () => {
       placeHolder: "Contraseña",
       type: showPassword ? "text" : "password",
     },
-    {
-      label: text.registerLabelSecretKey,
-      name: "secrect_password",
-      value: form.secrect_password,
-      errors: errors.secrect_password,
-      placeHolder: text.registerLabelSecretKey,
-      type: "text",
-    },
   ];
 
   const handleShowPass = () => {

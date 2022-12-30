@@ -1,12 +1,13 @@
 import React, { SyntheticEvent } from "react";
 import styled from "styled-components";
 import { Button } from "jz-validation-form";
+import { FormRecuperateAccount } from "@/interface/formAuth";
 const Container = styled.div`
   display: flex;
   justify-content: center;
 `;
 interface Params {
-  onclick: ((e: React.FormEvent<HTMLFormElement>) => void) | any;
+  onclick: any
   color: string;
   text: string;
 }

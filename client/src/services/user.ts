@@ -16,13 +16,30 @@ export const getUserById = async (id?: number) => {
   return { json, status };
 };
 
-export const recuperateAccountGmail = async (form: FormRecuperateAccount) => {
+export const sendCodeGmail = async (form: FormRecuperateAccount) => {
   try {
     const response = await fetch(`${http}recuperateAccount/${form.email}`, {
-      method: "PUT",
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({}),
+    });
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const recuperateAccount = async (form: FormRecuperateAccount) => {
+  try {
+    const response = await fetch(`${http}changePassword`, {
+      method: "POST",
       headers: headers,
       body: JSON.stringify({
-        subject: form.subject,
+        email: form.email,
+        password: form.password,
+        codeEmail: form.codeGmail,
       }),
     });
     if (response.status === 200) {

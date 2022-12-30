@@ -9,7 +9,6 @@ export const initialForm = {
   username: "",
   numberPhone: "",
   password: "",
-  secrect_password: "",
 };
 
 export const validationsForm = (form: FormRegister) => {
@@ -26,9 +25,6 @@ export const validationsForm = (form: FormRegister) => {
 
   const password = validateEmpty(form.password);
   if (password) errors.password = password;
-
-  const secret_password = validateEmpty(form.secrect_password);
-  if (secret_password) errors.secrect_password = secret_password;
 
   return errors;
 };

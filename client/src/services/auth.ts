@@ -39,7 +39,6 @@ export const signUp = async (form: FormRegister) => {
         email: form.email,
         cellphone_number: form.numberPhone,
         password: form.password,
-        secrect_password: form.secrect_password,
       }),
     });
     if (response.ok) {

@@ -1,8 +1,9 @@
 import { FormRecuperateAccount } from "../interface/formAuth";
-import { validateEmpty, validateEmail } from "jz-validation-form";
+import { validateEmail } from "jz-validation-form";
 export const initialForm = {
   email: "",
-  subject: "",
+  password: "",
+  codeGmail:"",
 };
 
 export const validationsForm = (form: FormRecuperateAccount) => {
@@ -10,10 +11,6 @@ export const validationsForm = (form: FormRecuperateAccount) => {
 
   const email = validateEmail(form.email);
   if (email) errors.email = email;
-
-  const subject = validateEmpty(form.subject);
-  if (subject) errors.subject = subject;
-
 
   return errors;
 };

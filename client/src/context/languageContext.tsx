@@ -23,8 +23,10 @@ interface TextType {
   recuperateAccountSubtitle: string;
   recuperateAccountGmail: string;
   recuperateAccountPasswordNew: string;
+  recuperateAccountCodeGmail: string;
   recuperateAccountSecretKey: string;
   recuperateAccountSave: string;
+  recuperateAccountSendEmail: string;
   recuperateAccountReturn: string;
   navbarTitle: string;
   navbarFilter: string;
@@ -111,8 +113,10 @@ const translations: TranslationType = {
     recuperateAccountSubtitle: "Ingresa la contraseña nueva",
     recuperateAccountGmail: "Gmail",
     recuperateAccountPasswordNew: "Contraseña Nueva",
+    recuperateAccountCodeGmail: "Codigo del email",
     recuperateAccountSecretKey: "Clave secreta",
-    recuperateAccountSave: "Guardar",
+    recuperateAccountSave: "Guardar nueva contraseña",
+    recuperateAccountSendEmail: "Enviar codigo al correo",
     recuperateAccountReturn: "Volver",
     navbarTitle: "Inicio",
     navbarFilter: "Filtrar",
@@ -192,8 +196,10 @@ const translations: TranslationType = {
     recuperateAccountSubtitle: "New Passord",
     recuperateAccountGmail: "Email",
     recuperateAccountPasswordNew: "Password New",
+    recuperateAccountCodeGmail: "Code from email",
     recuperateAccountSecretKey: "Secret Key",
-    recuperateAccountSave: "Save",
+    recuperateAccountSave: "Save new password",
+    recuperateAccountSendEmail: "Send code to your account",
     recuperateAccountReturn: "Return",
     navbarTitle: "Home",
     navbarFilter: "Filter",

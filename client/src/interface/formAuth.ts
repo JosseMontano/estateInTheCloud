@@ -8,10 +8,10 @@ export interface FormRegister {
   username: string;
   numberPhone: string;
   password: string;
-  secrect_password: string;
 }
 
 export interface FormRecuperateAccount {
   email: string;
-  subject: string;
+  password: string;
+  codeGmail: string;
 }

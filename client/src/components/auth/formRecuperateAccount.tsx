@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorBtnSecond } from "@/styles/globals";
+import { ColorBtnSecond, ColorBtn } from "@/styles/globals";
 import Button from "./button";
 import { initialForm, validationsForm } from "@/validations/recuperateAccount";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
@@ -7,32 +7,47 @@ import LoadingAndResponse from "../dynamic/loadingAndResponse";
 import { FormRecuperateAccount } from "@/interface/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import { recuperateAccountGmail } from "@/services/user";
+import { sendCodeGmail } from "@/services/user";
+import Event from "@/interface/event";
+import { recuperateAccount } from "@/services/user";
+import { useState } from "react";
 
 const Container = styled.form`
-padding: 15px;
-min-width: 380px;
+  padding: 15px;
+  min-width: 380px;
 `;
 
 const FormRecuperate = () => {
   const { text } = useLanguage();
+  const [changePassFlag, setChangePassFlag] = useState(false);
+  const [changePassLoad, setChangePassLoad] = useState(false);
+  const [changePassMsg, setChangePassMsg] = useState('Ha ocurrido un error')
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
-    UseForm<FormRecuperateAccount>(
-      initialForm,
-      validationsForm,
-      recuperateAccountGmail
-    );
+    UseForm<FormRecuperateAccount>(initialForm, validationsForm, sendCodeGmail);
+
+  const handleChangePassword = async (e: Event["buttonSend"]) => {
+    e.preventDefault();
+    setChangePassLoad(true);
+    const res = await recuperateAccount(form);
+    setTimeout(() => {
+      setChangePassLoad(false);
+    }, 2000);
+      setChangePassFlag(true);
+    if(res){
+      setChangePassMsg("El proceso fue exito")
+    }
+  };
 
   let dataBtn = [
-    /*     {
-      onclick: handleSubmit,
-      color: ColorBtnSecond,
-      text: text.recuperateAccountSave,
-    }, */
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: "Correo",
+      text: text.recuperateAccountSendEmail,
+    },
+    {
+      onclick: handleChangePassword,
+      color: ColorBtn,
+      text: text.recuperateAccountSave,
     },
   ];
   let dataForm = [
@@ -44,9 +59,15 @@ const FormRecuperate = () => {
     },
     {
       label: text.recuperateAccountPasswordNew,
-      name: "subject",
-      value: form.subject,
+      name: "password",
+      value: form.password,
       errors: errors.password,
+    },
+    {
+      label: text.recuperateAccountCodeGmail,
+      name: "codeGmail",
+      value: form.codeGmail,
+      errors: errors.codeGmail,
     },
   ];
   return (
@@ -62,6 +83,11 @@ const FormRecuperate = () => {
         <Button key={i} {...v} />
       ))}
       <LoadingAndResponse loading={loading} msg={msg} response={response} />
+      <LoadingAndResponse
+        loading={changePassLoad}
+        msg={"Ha ocurrido un error"}
+        response={changePassFlag}
+      />
     </Container>
   );
 };
