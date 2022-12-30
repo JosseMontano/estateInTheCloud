@@ -3,7 +3,7 @@ import { marginInElements } from "@/styles/globals";
 import { Btn } from "@/styles/btn";
 import { useLanguage } from "@/context/languageContext";
 import { useContext } from "react";
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 const Container = styled.div`
   display: flex;
   @media screen and (max-width: 450px) {
@@ -21,7 +21,7 @@ interface Params {
   toggle: () => void;
 }
 const ContentBtn = ({ toggle }: Params) => {
-  const { email } = useContext(NameUserContext);
+  const { email } = useNameUser();
   const { text } = useLanguage();
   return (
     <Container>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface LoadContextState {
   nameUser: string;
@@ -15,8 +15,18 @@ const contextDefaultValue: LoadContextState = {
   email: "",
   handlenameUser: () => {},
 };
-export const NameUserContext =
-  createContext<LoadContextState>(contextDefaultValue);
+export const NameUserContext = createContext(contextDefaultValue);
+
+export const useNameUser = () => {
+  const context = useContext(NameUserContext);
+  if (!context) {
+    throw new Error(
+      "this contexts must be used whitin a nameUserContextProvider"
+    );
+  }
+  return context;
+};
+
 
 export const NameUserProvider = ({ children }: MyContextProp) => {
   const [nameUser, setnameUser] = useState<string>(

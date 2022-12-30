@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import Message from "../../global/message";
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
 import { useLanguage } from "@/context/languageContext";
@@ -25,7 +25,7 @@ interface params {
 
 const Index = ({ idParam }: params) => {
   const { text } = useLanguage();
-  const { idUser } = useContext(NameUserContext);
+  const { idUser } = useNameUser();
   const { data, setIdCommentUser, loading, deleteCommentState } = useComments();
 
   useEffect(() => {

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Check from "./check";
 import ContainerLinks from "./containerLinks";
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import NameUser from "./nameUser";
 import { getEmail } from "@/services/auth";
 import AuxNav from "./auxNav";
@@ -37,7 +37,7 @@ const Logo = styled.label`
 
 const Index = () => {
   const { text } = useLanguage();
-  const { nameUser, handlenameUser } = useContext(NameUserContext);
+  const { nameUser, handlenameUser } = useNameUser();
   const [emailState, setEmailState] = useState("");
   const [textBig, setTextBig] = useState(false);
   const navigate = useNavigate();

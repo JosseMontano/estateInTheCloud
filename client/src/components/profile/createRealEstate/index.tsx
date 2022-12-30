@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import { saveRealEstate } from "@/services/realEstate";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
@@ -20,7 +20,7 @@ interface Params {
 
 const Index = ({ createRealEstate }: Params) => {
   const { toast, handleToast } = useToast();
-  const { idUser } = useContext<any>(NameUserContext);
+  const { idUser } = useNameUser();
   const [response, setResponse] = useState(false);
   const [loading, setLoading] = useState(false);
 

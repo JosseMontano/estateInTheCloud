@@ -1,4 +1,4 @@
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import { useContext } from "react";
 import styled from "styled-components";
 
@@ -10,7 +10,7 @@ const H2 = styled.h2`
 `;
 
 const ContentUser = () => {
-  const { nameUser } = useContext(NameUserContext);
+  const { nameUser } = useNameUser();
 
   return (
     <Container>

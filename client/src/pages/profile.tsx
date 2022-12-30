@@ -2,9 +2,9 @@ import styled from "styled-components";
 import Header from "../components/profile/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
-import { Suspense, useContext, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { getRealEstateProfil as services } from "../services/realEstate";
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import { UseModal } from "../hooks/useModal";
 import { Modal } from "../components/global/modal";
@@ -21,7 +21,7 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 
 const Profile = () => {
   const {} = useVerifyUserLogin();
-  const { idUser, email } = useContext(NameUserContext);
+  const { idUser, email } = useNameUser();
   const { data, loading, handleGetData, setData } = useFetch<RealEstate>(
     services,
     idUser

@@ -1,4 +1,4 @@
-import { NameUserContext } from "@/context/nameUserContext";
+import { useNameUser } from "@/context/nameUserContext";
 import useLoadDataParams from "@/hooks/useFetch";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
@@ -38,7 +38,7 @@ interface Params {
   cellphonenumber: string;
 }
 const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
-  const { idUser } = useContext(NameUserContext);
+  const { idUser } = useNameUser();
   const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
   const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
