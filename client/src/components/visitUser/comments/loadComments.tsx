@@ -3,18 +3,16 @@ import { Comments as CommentsTypes } from "@/interface/comments";
 
 interface ParamsType {
   data: CommentsTypes[];
-  handleDelete: (id: number) => void;
   idUser: number;
 }
 
-const LoadComments = ({ idUser, data, handleDelete }: ParamsType) => {
+const LoadComments = ({ idUser, data }: ParamsType) => {
   return (
     <>
       {data.map((v, i) => (
         <Comments
           key={i}
           v={v}
-          handleDeleteComment={handleDelete}
           idUser={idUser}
         />
       ))}

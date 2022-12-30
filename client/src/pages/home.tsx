@@ -44,6 +44,8 @@ const Home = () => {
     return <Content dataComplete={data} visitUser={visitUser} />;
   };
 
+  window.scroll(0, 0);
+
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Container>

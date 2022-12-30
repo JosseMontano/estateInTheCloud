@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import Children from "@/interface/children";
-import { Comments as CommentsTypes } from "@/interface/comments";
 import { getCommentsByUser } from "@/services/comment";
-import { DocumentNode, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { deleteComment } from "@/services/comment";
 
 interface ContextType {
@@ -10,6 +9,7 @@ interface ContextType {
   setIdCommentUser: React.Dispatch<React.SetStateAction<number>>;
   loading: boolean;
   handleDelete: (id: number) => void;
+  deleteCommentState: boolean;
 }
 
 const initialVal: ContextType = {
@@ -17,6 +17,7 @@ const initialVal: ContextType = {
   setIdCommentUser: () => {},
   loading: false,
   handleDelete: () => {},
+  deleteCommentState: false,
 };
 
 const CommentsContext = createContext(initialVal);
@@ -33,7 +34,7 @@ export const useComments = () => {
 
 export const CommentsContextProvider = ({ children }: Children) => {
   const [idCommentUser, setIdCommentUser] = useState(0);
-  const [loadingDelete, setLoadingDelete] = useState(true);
+  const [deleteCommentState, setDeleteCommentState] = useState(false);
 
   const { data, loading, error } = useQuery(getCommentsByUser(idCommentUser));
 
@@ -43,13 +44,13 @@ export const CommentsContextProvider = ({ children }: Children) => {
 
   const handleDelete = async (id: number) => {
     DELETE_COMMENT({ variables: { id } });
-    setLoadingDelete(true);
+    setDeleteCommentState(true);
     setTimeout(() => {
-      setLoadingDelete(false);
+      setDeleteCommentState(false);
     }, 3000);
   };
 
-  const val = { data, setIdCommentUser, loading, handleDelete };
+  const val = { data, setIdCommentUser, loading, handleDelete, deleteCommentState };
 
   return (
     <CommentsContext.Provider value={val}>{children}</CommentsContext.Provider>

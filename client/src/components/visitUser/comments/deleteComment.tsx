@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useLanguage } from "@/context/languageContext";
+import { useComments } from "@/context/comments/commentsContext";
 
 const Container = styled.div`
   display: flex;
@@ -21,17 +22,16 @@ const Button = styled.button`
 `;
 
 interface Params {
-  handleDeleteComment: (id: number) => void;
   id: number;
 }
 
-const DeleteComment = ({ handleDeleteComment, id }: Params) => {
-  const {text} = useLanguage();
+const DeleteComment = ({ id }: Params) => {
+  const { text } = useLanguage();
+  const { handleDelete } = useComments();
+
   return (
     <Container>
-      <Button onClick={() => handleDeleteComment(id)}>
-        {text.comentsDelete}
-      </Button>
+      <Button onClick={() => handleDelete(id)}>{text.comentsDelete}</Button>
     </Container>
   );
 };
