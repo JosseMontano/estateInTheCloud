@@ -1,8 +1,5 @@
+import { MixinsAfter } from "@/styles/skeleton";
 import styled from "styled-components";
-
-const ContainerFather = styled.div`
-  width: 100%;
-`;
 
 const ContainerCardFather = styled.div`
   width: 100%;
@@ -21,6 +18,7 @@ const Container = styled.div`
     transform: scale(1.1);
   }
 `;
+
 const Content = styled.div`
   padding: 2px 16px;
   margin: 10px;
@@ -60,36 +58,14 @@ const H4 = styled.h4`
     }
   }
 `;
+
 const P = styled.p`
   font-size: 18px;
   color: #fff;
   position: relative;
   overflow: hidden;
   margin-top: 5px;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
 `;
 const ContainerBtn = styled.div`
   display: flex;
@@ -103,30 +79,8 @@ const Btn = styled.p`
   margin-left: 15px;
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
+  ${MixinsAfter}
 
-    100% {
-      transform: translateX(100%);
-    }
-  }
   @media screen and (max-width: 732px) {
     text-align: center;
     font-size: 26px;
@@ -139,30 +93,7 @@ const ImgSty = styled.div`
   object-fit: cover;
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
 `;
 const Title = styled.h1`
   font-size: 42px;
@@ -173,36 +104,16 @@ const Title = styled.h1`
   /* EFFEC SLOADER */
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
 
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
+
   @media screen and (max-width: 732px) {
     text-align: center;
     font-size: 26px;
   }
 `;
 const Skeleton = () => {
+  const backgroundSkeleton = "rgb(190, 190, 190)";
   return (
     <>
       <Title>&#160;</Title>
@@ -214,10 +125,14 @@ const Skeleton = () => {
                 <ImgSty />
               </div>
               <H4 className="loading">&#160;</H4>
-              <P className="loading">&#160;</P>
+              <P className="loading">
+                &#160;
+              </P>
               <ContainerBtn>
                 {[1, 2].map((_, i) => (
-                  <Btn key={i}>&#160;</Btn>
+                  <Btn key={i}>
+                    &#160;
+                  </Btn>
                 ))}
               </ContainerBtn>
             </Content>

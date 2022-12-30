@@ -50,7 +50,8 @@ const Home = () => {
     <Suspense fallback={<p>Loading</p>}>
       <Container>
         <Navbar />
-        {!dataContext.loading ? showDataComplete() : <Skeleton />}
+     {!dataContext.loading ? showDataComplete() : <Skeleton />} 
+
       </Container>
     </Suspense>
   );

@@ -43,6 +43,7 @@ const Index = ({ idParam }: params) => {
     <>
       <Title>{text.comentsTitle}</Title>
       <Container>{loading ? <LoadSkeleton /> : showComments()}</Container>
+
       {deleteCommentState && <Message msg="Se borro con exito" />}
     </>
   );

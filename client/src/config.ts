@@ -16,7 +16,7 @@ const env: EnvType = {
   backendUrlDev: "http://localhost:3000/",
   backendUrlProd: "https://realestate-server-production.up.railway.app/",
   img360Url: "https://realestate360-db9fa.web.app/",
-  frontendUrlDev: "http://localhost:5173/#/",
+  frontendUrlDev: "http://127.0.0.1:5173/#/",
 };
 
 export default env;

@@ -1,5 +1,5 @@
 import { Btn } from "@/styles/btn";
-import Clipboard from "../global/clipBoard";
+import Clipboard from "../global/copyText";
 import { RealEstate } from "@/interface/realEstate";
 
 interface btnJSXType {

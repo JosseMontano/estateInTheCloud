@@ -1,5 +1,4 @@
 import Form from "../components/auth/formLogin";
-import LoginRegisterRecuperate from "../components/dynamic/loginRegisterRecuperate";
 import ColContent from "../components/auth/colContent";
 import ColPhoto from "../components/auth/colPhoto";
 import { initialForm, validationsForm } from "@/validations/login";
@@ -14,6 +13,7 @@ import { Modal } from "@/components/global/modal";
 import { UseModal } from "@/hooks/useModal";
 import FormRegister from "@/components/auth/formRegister";
 import FormRecuperate from "@/components/auth/formRecuperateAccount";
+import { Container, ContainerSoon } from "@/styles/auth";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
@@ -71,29 +71,30 @@ export function Login(): JSX.Element {
 
   return (
     <Suspense fallback={<p>Loading</p>}>
-      <LoginRegisterRecuperate
-        content={
-          <>
-            <ColContent
-              title={text.loginTitle}
-              text={text.loginSubtitle}
-              form={
-                <Form
-                  handleShowPass={handleShowPass}
-                  dataBtn={dataBtn}
-                  dataForm={dataForm}
-                  handleChange={handleChange}
-                  loading={loading}
-                  msg={msg}
-                  response={response}
-                  EyeJSX={showIconEye}
+      <Container>
+        <ContainerSoon>
+              <>
+                <ColContent
+                  title={text.loginTitle}
+                  text={text.loginSubtitle}
+                  form={
+                    <Form
+                      handleShowPass={handleShowPass}
+                      dataBtn={dataBtn}
+                      dataForm={dataForm}
+                      handleChange={handleChange}
+                      loading={loading}
+                      msg={msg}
+                      response={response}
+                      EyeJSX={showIconEye}
+                    />
+                  }
                 />
-              }
-            />
-            <ColPhoto />
-          </>
-        }
-      />
+                <ColPhoto />
+              </>
+        </ContainerSoon>
+      </Container>
+
       <Modal
         isShown={isShownRegister}
         hide={toggleRegister}

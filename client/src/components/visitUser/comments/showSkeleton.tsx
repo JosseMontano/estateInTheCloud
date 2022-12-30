@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MixinsAfter } from "@/styles/skeleton";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
@@ -22,30 +23,7 @@ const ImgSty = styled.div`
   object-fit: cover;
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
 `;
 const ContainerContent = styled.div`
   align-self: center;
@@ -56,30 +34,7 @@ const NameUser = styled.h3`
   margin-bottom: 5px;
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
   @media screen and (max-width: 732px) {
     text-align: center;
     font-size: 26px;
@@ -91,30 +46,7 @@ const Desc = styled.p`
   background-color: rgb(190, 190, 190);
   position: relative;
   overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgb(216, 216, 216),
-      transparent
-    );
-    animation: loading-ans 1s linear infinite;
-  }
-  @keyframes loading-ans {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
+  ${MixinsAfter}
 `;
 const Skeleton = () => {
   return (
