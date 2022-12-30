@@ -13,6 +13,7 @@ import useFetch from "../hooks/useFetch";
 import Navbar from "@/components/navbar";
 import { RealEstate } from "@/interface/realEstate";
 
+
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   min-height: 100vh;
   margin: ${(props) => props.marginGlobal};
@@ -49,7 +50,6 @@ const Profile = () => {
     );
   };
 
-  console.log(data.length);
 
   useEffect(() => {
     if (idUser != 0) {

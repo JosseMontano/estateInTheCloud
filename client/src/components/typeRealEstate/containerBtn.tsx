@@ -1,5 +1,8 @@
 import { useLanguage } from "@/context/languageContext";
 import styled from "styled-components";
+import useLoadData from "@/hooks/useFetch";
+import ParamsTypeRealEstate from "@/interface/typeRealEstate";
+import { getTypeRealEstate } from "@/services/realEstate";
 
 const ContainerBtn = styled.div`
   display: flex;
@@ -32,46 +35,13 @@ interface BtnJSXType {
 
 const Index = ({ changeData, toggle }: ParamsType) => {
   const { text } = useLanguage();
-  let btnJSX: BtnJSXType[] = [
-    {
-      onclick: () => changeData("Casa"),
-      text: text.filterHouse,
-    },
-    {
-      onclick: () => changeData("Departamento"),
-      text: text.filterDepartament,
-    },
-    {
-      onclick: () => changeData("Monoambiente"),
-      text: text.filterStudio,
-    },
-    {
-      onclick: () => changeData("Garzonier"),
-      text: text.filterGarzonier,
-    },
-    {
-      onclick: () => changeData("Dormitorio"),
-      text: text.filterBedroom,
-    },
-    {
-      onclick: () => changeData("Almacen"),
-      text: text.filterStore,
-    },
-    {
-      onclick: () => changeData("Tienda"),
-      text: text.filterShop,
-    },
-    {
-      onclick: toggle,
-      text: text.filterCustom,
-    },
-  ];
+  const { data } = useLoadData<ParamsTypeRealEstate>(getTypeRealEstate);
 
   return (
     <ContainerBtn>
-      {btnJSX.map((v, i) => (
-        <Btn key={i} onClick={v.onclick}>
-          {v.text}
+      {data.map((v, i) => (
+        <Btn key={i} onClick={() => changeData(v.name_type)}>
+          {v.name_type}
         </Btn>
       ))}
     </ContainerBtn>

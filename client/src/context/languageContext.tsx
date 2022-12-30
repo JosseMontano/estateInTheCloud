@@ -48,14 +48,6 @@ interface TextType {
   questionPlaceholder: string;
   questionBtnSave: string;
   filterSearch: string;
-  filterHouse: string;
-  filterDepartament: string;
-  filterStudio: string;
-  filterGarzonier: string;
-  filterBedroom: string;
-  filterStore: string;
-  filterShop: string;
-  filterCustom: string;
   filterCustomPrice: string;
   filterCustomBedroom: string;
   filterCustomBathroom: string;
@@ -138,14 +130,6 @@ const translations: TranslationType = {
     questionPlaceholder: "Escribe tu pregunta",
     questionBtnSave: "Publicar",
     filterSearch: "¿Que estas buscando?",
-    filterHouse: "Casas",
-    filterDepartament: "Departamentos",
-    filterStudio: "Monoambientes",
-    filterGarzonier: "Garzoniers",
-    filterBedroom: "Dormitorios",
-    filterStore: "Almacenes",
-    filterShop: "Tiendas",
-    filterCustom: "Filtrado",
     filterCustomPrice: "Precio",
     filterCustomBedroom: "Cuarto",
     filterCustomBathroom: "Baño",
@@ -221,14 +205,6 @@ const translations: TranslationType = {
     questionPlaceholder: "write your question",
     questionBtnSave: "Publish",
     filterSearch: "What are you looking for?",
-    filterHouse: "House's",
-    filterDepartament: "Departament's",
-    filterStudio: "Studio's",
-    filterGarzonier: "Garzonier's",
-    filterBedroom: "Bedroom's",
-    filterStore: "Store's",
-    filterShop: "Shop's",
-    filterCustom: "Filter",
     filterCustomPrice: "Price",
     filterCustomBedroom: "Bedroom",
     filterCustomBathroom: "Bathroom",
