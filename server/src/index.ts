@@ -5,11 +5,13 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import "reflect-metadata";
 import { graphqlHTTP } from "express-graphql";
-
 import { schema } from "./schema";
 import { metRoute } from "./routes";
-const { urlCors, server } = require("./config");
+import ws from "ws";
+import { useServer } from "graphql-ws/lib/use/ws";
+import { execute, subscribe } from "graphql";
 
+const { urlCors, server } = require("./config");
 var cookieParser = require("cookie-parser");
 
 /* Setup Express */
@@ -40,11 +42,20 @@ async function start() {
   //apollo
   app.use(
     "/graphql",
+    graphqlHTTP((req) => ({
+      schema,
+      graphiql: {
+        headerEditorEnabled: true,
+      },
+    }))
+  );
+  /*   app.use(
+    "/graphql",
     graphqlHTTP({
       graphiql: true,
       schema,
     })
-  );
+  ); */
 
   //routes
   metRoute(app);
@@ -58,8 +69,35 @@ async function start() {
 
   const port = server.port || 4000;
 
-  app.listen(port, () => {
-    console.log("server is running");
+  const serverSocket = app.listen(port, () => {
+    console.log(`Listening to port ${port}`);
+    const wsServer = new ws.Server({
+      server: serverSocket,
+      path: "/graphql",
+    });
+    useServer(
+      {
+        schema,
+        execute,
+        subscribe,
+        onConnect: (ctx) => {
+          console.log("connect");
+        },
+        onSubscribe: (ctx, msg) => {
+          console.log("Subscribe");
+        },
+        onNext: (ctx, msg, args, result) => {
+          console.debug("Next");
+        },
+        onError: (ctx, msg, errors) => {
+          console.error("Error");
+        },
+        onComplete: (ctx, msg) => {
+          console.log("Complete");
+        },
+      },
+      wsServer
+    );
   });
 }
 
