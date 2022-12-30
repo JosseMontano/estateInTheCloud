@@ -49,6 +49,8 @@ const Profile = () => {
     );
   };
 
+  console.log(data.length);
+
   useEffect(() => {
     if (idUser != 0) {
       handleGetData();
@@ -72,7 +74,13 @@ const Profile = () => {
       <Navbar />
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        {email && <Header email={email} idUser={idUser} toggle={toggle} />}
+        {email && (
+          <Header
+            amountPublciation={data.length}
+            idUser={idUser}
+            toggle={toggle}
+          />
+        )}
         {idUser != 0 && showPublication()}
       </Container>
 

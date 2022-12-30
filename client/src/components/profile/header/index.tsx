@@ -7,6 +7,7 @@ import ContentUser from "./contentUser";
 import { getUserById } from "@/services/user";
 import UseLoadData from "@/hooks/useFetch";
 import { User } from "@/interface/user";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -26,11 +27,11 @@ const ContainerContent = styled.div`
 `;
 
 interface Params {
-  email?: string;
+  amountPublciation: number;
   idUser: number;
   toggle: () => void;
 }
-const Header = ({ email, idUser, toggle }: Params) => {
+const Header = ({ amountPublciation, idUser, toggle }: Params) => {
   const { data } = UseLoadData<User>(getUserById, idUser);
   const [exists, setExists] = useState(false);
   useEffect(() => {
@@ -43,8 +44,8 @@ const Header = ({ email, idUser, toggle }: Params) => {
     <Container>
       <ContentImg data={data} exists={exists} />
       <ContainerContent>
-        <ContentBtn email={email} toggle={toggle} />
-        <ContentMid />
+        <ContentBtn toggle={toggle} />
+        <ContentMid amountPublciation={amountPublciation} />
         <ContentUser />
       </ContainerContent>
     </Container>
