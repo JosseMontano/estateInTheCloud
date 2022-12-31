@@ -1,8 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import Children from "@/interfaces/children";
 import { getCommentsByUser } from "@/services/comment";
-import { useMutation, useQuery } from "@apollo/client";
-import { deleteComment } from "@/services/comment";
+import {
+  DocumentNode,
+  useMutation,
+  useQuery,
+  useSubscription,
+} from "@apollo/client";
+import { deleteComment, deleteCommentSubs } from "@/services/comment";
+import { Comments } from "@/interfaces/comments";
+import { useApolloClient } from "@apollo/client";
 
 interface ContextType {
   data: any;
@@ -36,11 +43,33 @@ export const CommentsContextProvider = ({ children }: Children) => {
   const [idCommentUser, setIdCommentUser] = useState(0);
   const [deleteCommentState, setDeleteCommentState] = useState(false);
 
-  const { data, loading, error } = useQuery(getCommentsByUser(idCommentUser));
+  const client = useApolloClient();
 
-  const [DELETE_COMMENT] = useMutation(deleteComment(), {
-    refetchQueries: [{ query: getCommentsByUser(idCommentUser) }],
+  const { data, loading, error } = useQuery(
+    getCommentsByUser(idCommentUser)
+  );
+
+  useSubscription(deleteCommentSubs, {
+    onData: ({ data }) => {
+      const { DELETE_A_COMMENT } = data.data;
+
+      const dataInStore = client.readQuery({
+        query: getCommentsByUser(idCommentUser),
+      });
+      console.log(dataInStore);
+      client.writeQuery({
+        query: getCommentsByUser(idCommentUser),
+        data: {
+          ...dataInStore,
+          getAllCommentsByUser: dataInStore.getAllCommentsByUser.filter(
+            (v: Comments) => v.id_comment != DELETE_A_COMMENT.id
+          ),
+        },
+      });
+    },
   });
+
+  const [DELETE_COMMENT] = useMutation(deleteComment());
 
   const handleDelete = async (id: number) => {
     DELETE_COMMENT({ variables: { id } });
