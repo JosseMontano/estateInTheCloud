@@ -18,7 +18,7 @@ export const commentType = new GraphQLObjectType({
   },
 });
 
- export const commentSubscription = new GraphQLObjectType({
+/*  export const commentSubscription = new GraphQLObjectType({
   name: "commentSubscription",
   fields: {
     id: { type: GraphQLID },
@@ -30,4 +30,4 @@ export const commentType = new GraphQLObjectType({
     url: { type: GraphQLString },
   },
 });
- 
+  */

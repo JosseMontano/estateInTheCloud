@@ -52,3 +52,13 @@ export const deleteComment = () => {
   `;
   return query;
 };
+
+
+  export const deleteCommentSubs = gql`
+    subscription {
+      DELETE_A_COMMENT {
+        id
+      }
+    }
+  `;
+

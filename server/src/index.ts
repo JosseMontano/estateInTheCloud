@@ -7,9 +7,11 @@ import "reflect-metadata";
 import { graphqlHTTP } from "express-graphql";
 import { schema } from "./schema";
 import { metRoute } from "./routes";
-import ws from "ws";
+import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
 import { execute, subscribe } from "graphql";
+/* import { schema as subscriptionSchema } from "./schema/subscriptions/comments";
+import {createServer} from "http" */
 
 const { urlCors, server } = require("./config");
 var cookieParser = require("cookie-parser");
@@ -69,36 +71,20 @@ async function start() {
 
   const port = server.port || 4000;
 
-  const serverSocket = app.listen(port, () => {
-    console.log(`Listening to port ${port}`);
-    const wsServer = new ws.Server({
-      server: serverSocket,
+  app.listen(port, () => {
+    const server = new WebSocketServer({
+      port: 3002,
       path: "/graphql",
     });
-    useServer(
-      {
-        schema,
-        execute,
-        subscribe,
-        onConnect: (ctx) => {
-          console.log("connect");
-        },
-        onSubscribe: (ctx, msg) => {
-          console.log("Subscribe");
-        },
-        onNext: (ctx, msg, args, result) => {
-          console.debug("Next");
-        },
-        onError: (ctx, msg, errors) => {
-          console.error("Error");
-        },
-        onComplete: (ctx, msg) => {
-          console.log("Complete");
-        },
-      },
-      wsServer
-    );
+
+    useServer({ schema }, server);
+
+    console.log("Listening to port 3000");
+    /*    console.log(server)  */
   });
+
+  /*   console.log(`server in ${port}`);
+  console.log(`websocket in ${wsServer.path}`); */
 }
 
 start();

@@ -7,6 +7,9 @@ workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 const { registerRoute } = workbox.routing;
 const { CacheFirst, NetworkFirst } = workbox.strategies;
 
+
+
+
 /* 
 save route of internet
 registerRoute(
