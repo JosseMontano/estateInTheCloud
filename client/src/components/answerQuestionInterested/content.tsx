@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import IAQ from "@/interfaces/answerQuestionInterested";
 
-const ContainerSoon = styled.div`
-  background-color: #8f9243c0;
-  color: #fff;
-  width: 300px;
-  height: 200px;
-  margin: 10px;
-  padding: 10px;
-  display: grid;
-  place-content: center;
-`;
-
 const Question = styled.div`
   text-align: center;
   font-weight: bold;
@@ -30,10 +19,10 @@ const Response = styled.div`
 
 const Content = (v: IAQ) => {
   return (
-    <ContainerSoon>
+    <>
       <Question>{v.question}</Question>
       <Response>R. {v.answer}</Response>
-    </ContainerSoon>
+    </>
   );
 };
 

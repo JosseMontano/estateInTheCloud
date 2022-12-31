@@ -10,6 +10,7 @@ import ModalContent from "@/components/typeRealEstate/modal";
 import ContainerCard from "@/components/typeRealEstate/containerCard";
 import Navbar from "@/components/navbar";
 import { Modal } from "@/components/global/modal";
+
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;

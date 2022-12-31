@@ -5,9 +5,10 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import "reflect-metadata";
 import { graphqlHTTP } from "express-graphql";
-
 import { schema } from "./schema";
 import { metRoute } from "./routes";
+
+
 const { urlCors, server } = require("./config");
 
 var cookieParser = require("cookie-parser");
