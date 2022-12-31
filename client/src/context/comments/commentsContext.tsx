@@ -44,24 +44,24 @@ export const CommentsContextProvider = ({ children }: Children) => {
 
   const client = useApolloClient();
 
-  const { data, loading, error, subscribeToMore } = useQuery(
+  const { data, loading, error } = useQuery(
     getCommentsByUser(idCommentUser)
   );
 
   useSubscription(deleteCommentSubs, {
     onData: ({ data }) => {
-      console.log(data.data);
       const { DELETE_A_COMMENT } = data.data;
-      console.log(DELETE_A_COMMENT.id);
+
       const dataInStore = client.readQuery({
         query: getCommentsByUser(idCommentUser),
       });
+      console.log(dataInStore);
       client.writeQuery({
         query: getCommentsByUser(idCommentUser),
         data: {
           ...dataInStore,
           getAllCommentsByUser: dataInStore.getAllCommentsByUser.filter(
-            (v: any) => v.id != DELETE_A_COMMENT
+            (v: Comments) => v.id_comment != DELETE_A_COMMENT.id
           ),
         },
       });

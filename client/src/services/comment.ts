@@ -7,7 +7,6 @@ export const getCommentsByUser = (id: number) => {
   const query = gql`
     query{
       getAllCommentsByUser(person_commented:${id}){
-        id
         email
         id_comment
         commentator
