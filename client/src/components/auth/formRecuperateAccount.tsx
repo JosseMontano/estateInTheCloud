@@ -4,11 +4,11 @@ import Button from "./button";
 import { initialForm, validationsForm } from "@/validations/recuperateAccount";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
 import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import { FormRecuperateAccount } from "@/interface/formAuth";
+import { FormRecuperateAccount } from "@/interfaces/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
 import { sendCodeGmail } from "@/services/user";
-import Event from "@/interface/event";
+import Event from "@/interfaces/event";
 import { recuperateAccount } from "@/services/user";
 import { useState } from "react";
 

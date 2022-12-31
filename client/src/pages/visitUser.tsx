@@ -7,7 +7,7 @@ import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
 import { getRealEstateByEmail } from "../services/realEstate";
 import useLoadData from "../hooks/useFetch";
-import { RealEstate } from "../interface/realEstate";
+import { RealEstate } from "../interfaces/realEstate";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
 

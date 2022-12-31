@@ -1,4 +1,4 @@
-import IAQ from "@/interface/answerQuestionInterested";
+import IAQ from "@/interfaces/answerQuestionInterested";
 import Content from "./content";
 
 interface Params {

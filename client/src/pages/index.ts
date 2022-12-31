@@ -1,5 +1,3 @@
-
-
 import AnswerQuestion from "./answerQuestion";
 import AnswerQuestionInterested from "./answerQuestionInterested";
 import Home from "./home";

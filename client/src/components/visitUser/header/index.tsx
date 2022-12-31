@@ -11,7 +11,7 @@ import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
 import { postComment } from "@/services/comment";
 import { CommentsContext } from "@/context/commentsContext";
-import { User } from "@/interface/user";
+import { User } from "@/interfaces/user";
 import { useMutation } from "@apollo/client";
 
 const Container = styled.div`

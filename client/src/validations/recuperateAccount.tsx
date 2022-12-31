@@ -1,4 +1,4 @@
-import { FormRecuperateAccount } from "../interface/formAuth";
+import { FormRecuperateAccount } from "../interfaces/formAuth";
 import { validateEmail } from "jz-validation-form";
 export const initialForm = {
   email: "",

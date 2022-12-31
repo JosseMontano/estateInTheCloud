@@ -1,5 +1,5 @@
 import Card from "./card";
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import Title from "./title";
 import styled from "styled-components";
 import Carousel from "../dynamic/carousel";

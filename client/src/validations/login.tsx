@@ -1,4 +1,4 @@
-import { FormLogin } from "../interface/formAuth";
+import { FormLogin } from "../interfaces/formAuth";
 import { validateEmail, validateEmpty } from "jz-validation-form";
 export const initialForm = {
   email: "",

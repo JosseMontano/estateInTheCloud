@@ -11,7 +11,7 @@ import { Modal } from "../components/global/modal";
 import ContentModal from "../components/profile/createRealEstate";
 import useFetch from "../hooks/useFetch";
 import Navbar from "@/components/navbar";
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`

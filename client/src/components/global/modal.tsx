@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Params } from "@/interface/modal";
+import { Params } from "@/interfaces/modal";
 import ReactDOM from "react-dom";
 
 const Container = styled.div<{ open: boolean }>`

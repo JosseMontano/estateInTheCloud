@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { RealEstate } from "../interface/realEstate";
+import { RealEstate } from "../interfaces/realEstate";
 import {
   getRealEstateAll,
   getRealEstateMostRecent,
   getRealEstateRecommendedByUser as getRERecommendedByUser,
 } from "../services/realEstate";
-import Children from "@/interface/children";
+import Children from "@/interfaces/children";
 import useFetch from "@/hooks/useFetch";
 interface homeContext {
   homeData: RealEstate[];

@@ -1,4 +1,4 @@
-import { FormComment } from "../interface/formComment";
+import { FormComment } from "../interfaces/formComment";
 import { http } from "./http";
 import deleteServ from "../utilities/deleteServices";
 import { gql } from "@apollo/client";

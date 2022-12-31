@@ -4,10 +4,10 @@ import { useNameUser } from "@/context/nameUserContext";
 import { saveRealEstate } from "@/services/realEstate";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import Form from "./form";
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import useToast from "@/hooks/useToast";
 import funFormData from "@/utilities/formData";
-import Event from "@/interface/event";
+import Event from "@/interfaces/event";
 
 const Container = styled.div`
   display: grid;

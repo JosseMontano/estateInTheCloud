@@ -1,4 +1,4 @@
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
 import Load from "./modal/load";

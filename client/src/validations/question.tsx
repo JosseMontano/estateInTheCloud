@@ -1,4 +1,4 @@
-import Question from "../interface/question";
+import Question from "../interfaces/question";
 import { validateEmpty } from "jz-validation-form";
 export const initialForm = {
   question: "",

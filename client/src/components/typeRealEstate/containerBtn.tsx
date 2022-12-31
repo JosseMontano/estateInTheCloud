@@ -1,7 +1,7 @@
 import { useLanguage } from "@/context/languageContext";
 import styled from "styled-components";
 import useLoadData from "@/hooks/useFetch";
-import ParamsTypeRealEstate from "@/interface/typeRealEstate";
+import ParamsTypeRealEstate from "@/interfaces/typeRealEstate";
 import { getTypeRealEstate } from "@/services/realEstate";
 
 const ContainerBtn = styled.div`

@@ -1,6 +1,6 @@
 import { headers, http } from "./http";
 import { index } from "../utilities/getServices";
-import { FormRecuperateAccount } from "@/interface/formAuth";
+import { FormRecuperateAccount } from "@/interfaces/formAuth";
 
 export const getUser = async <T>(
   email?: string

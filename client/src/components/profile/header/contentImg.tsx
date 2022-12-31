@@ -1,4 +1,4 @@
-import { User } from "@/interface/user";
+import { User } from "@/interfaces/user";
 import {
   Container,
   ChangePhoto,

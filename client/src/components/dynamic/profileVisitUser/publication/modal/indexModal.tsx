@@ -1,4 +1,4 @@
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import {
   deleteRealEstateProfil,
   addNewPhotoToRealEstate,
@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";
 import LoadAndResponse from "../../../../home/modalQuestion/loadAndResponse";
 import useLoadData from "@/hooks/useFetch";
-import REOnePublicationType from "@/interface/realEstateOfOnePublication";
-import Event from "@/interface/event";
+import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
+import Event from "@/interfaces/event";
 
 interface Params {
   v: RealEstate;

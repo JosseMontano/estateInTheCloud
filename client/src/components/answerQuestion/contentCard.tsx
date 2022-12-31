@@ -1,4 +1,4 @@
-import IQuestion from "@/interface/question";
+import IQuestion from "@/interfaces/question";
 import { Content, Btn, Description, Icon, Title } from "@/styles/card";
 
 interface Params {

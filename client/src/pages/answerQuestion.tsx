@@ -10,7 +10,7 @@ import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
 import { addAnswer } from "@/services/answer";
 import Navbar from "@/components/navbar";
 import styled from "styled-components";
-import Question from "@/interface/question";
+import Question from "@/interfaces/question";
 import { useMutation } from "@apollo/client";
 
 const Container = styled.div`

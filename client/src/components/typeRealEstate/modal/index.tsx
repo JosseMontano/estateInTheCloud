@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Input, Label, Button } from "jz-validation-form";
 import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
-import Event from "@/interface/event";
+import Event from "@/interfaces/event";
 import { ColorBtn } from "@/styles/globals";
 import { useLanguage } from "@/context/languageContext";
 import Child from "./child";

@@ -3,7 +3,7 @@ import { ColorBtn, ColorText, InputFile } from "@/styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
 
 import { useLanguage } from "@/context/languageContext";
-import Event from "@/interface/event";
+import Event from "@/interfaces/event";
 import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
 interface Params {
   handleChange: (e: Event["inputChange"]) => void;

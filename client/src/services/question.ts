@@ -1,5 +1,5 @@
 import { http, headers } from "./http";
-import Question from "../interface/question";
+import Question from "../interfaces/question";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
 

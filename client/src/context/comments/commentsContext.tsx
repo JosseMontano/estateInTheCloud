@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Children from "@/interface/children";
+import Children from "@/interfaces/children";
 import { getCommentsByUser } from "@/services/comment";
 import { useMutation, useQuery } from "@apollo/client";
 import { deleteComment } from "@/services/comment";

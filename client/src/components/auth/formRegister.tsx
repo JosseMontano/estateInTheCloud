@@ -10,7 +10,7 @@ import ShowPassword from "@/icons/eye";
 import NoShowPassword from "@/icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import { FormRegister } from "@/interface/formAuth";
+import { FormRegister } from "@/interfaces/formAuth";
 
 const Container = styled.form`
 padding: 15px;

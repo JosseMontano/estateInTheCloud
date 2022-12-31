@@ -1,4 +1,4 @@
-import { FormRegister } from "../interface/formAuth";
+import { FormRegister } from "../interfaces/formAuth";
 import {
   validateEmail,
   validateNumber,

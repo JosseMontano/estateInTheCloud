@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { getCommentsByUser } from "../services/comment";
-import { Comments } from "../interface/comments";
+import { Comments } from "../interfaces/comments";
 import { DocumentNode } from "graphql";
 
 interface LoadContextState {

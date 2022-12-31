@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Search from "@/components/global/search";
 import { UseModal } from "@/hooks/useModal";
-import { RealEstate } from "@/interface/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import useSearch from "@/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
 import { getRealEstateByType } from "@/services/realEstate";
@@ -42,7 +42,7 @@ const TypeRealEstate = () => {
   });
 
   useEffect(() => {
-    changeData("Casa");
+    changeData("Garzonier");
   }, []);
 
   return (
