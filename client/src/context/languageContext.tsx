@@ -48,6 +48,8 @@ interface TextType {
   questionPlaceholder: string;
   questionBtnSave: string;
   filterSearch: string;
+  filterBedroom: string;
+  filterCustom: string;
   filterCustomPrice: string;
   filterCustomBedroom: string;
   filterCustomBathroom: string;
@@ -129,12 +131,14 @@ const translations: TranslationType = {
     questionTitle: "Haz tu propia pregunta",
     questionPlaceholder: "Escribe tu pregunta",
     questionBtnSave: "Publicar",
+    filterBedroom: "Dormitorios",
     filterSearch: "¿Que estas buscando?",
     filterCustomPrice: "Precio",
     filterCustomBedroom: "Cuarto",
     filterCustomBathroom: "Baño",
     filterCustomSize: "Metros cuadrados",
     filterCustomBtn: "Buscar",
+    filterCustom: "Personalizado",
     profileSendMessage: "Enviar mensaje",
     profileSendRequest: "Enviar solicitud",
     profileCreatePublicate: "Crear publicacion",
@@ -204,6 +208,8 @@ const translations: TranslationType = {
     questionTitle: "ask your own question",
     questionPlaceholder: "write your question",
     questionBtnSave: "Publish",
+    filterCustom: "Custom",
+    filterBedroom: "Bethroom",
     filterSearch: "What are you looking for?",
     filterCustomPrice: "Price",
     filterCustomBedroom: "Bedroom",

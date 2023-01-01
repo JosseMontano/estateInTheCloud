@@ -44,6 +44,7 @@ const Index = ({ changeData, toggle }: ParamsType) => {
           {v.name_type}
         </Btn>
       ))}
+      <Btn onClick={toggle}>{text.filterCustom}</Btn>
     </ContainerBtn>
   );
 };

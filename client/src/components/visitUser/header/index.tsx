@@ -2,7 +2,7 @@ import { useNameUser } from "@/context/nameUserContext";
 import useLoadDataParams from "@/hooks/useFetch";
 import { UseModal } from "@/hooks/useModal";
 import { getUserById } from "@/services/user";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Modal } from "../../global/modal";
 import ContentBtn from "./contentBtn";
@@ -10,7 +10,6 @@ import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
 import { postComment } from "@/services/comment";
-import { CommentsContext } from "@/context/commentsContext";
 import { User } from "@/interfaces/user";
 import { useMutation } from "@apollo/client";
 
@@ -42,7 +41,7 @@ const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
   const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
   const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
-  const { getComments } = useContext(CommentsContext);
+
   const [amountStart, setAmountStart] = useState(1);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
     }
   }, []);
 
-  const [CREATE_COMMENT] = useMutation(postComment());
+  const [CREATE_COMMENT] = useMutation(postComment);
 
   const handleAddComment = async (description: string) => {
     await CREATE_COMMENT({

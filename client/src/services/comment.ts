@@ -19,29 +19,26 @@ export const getCommentsByUser = (id: number) => {
   return query;
 };
 
-export const postComment = () => {
-  const query = gql`
-    mutation CREATECOMMENT(
-      $person_commented: Float!
-      $commentator: Float!
-      $description: String!
-      $amount_start: Float!
+export const postComment = gql`
+  mutation CREATECOMMENT(
+    $person_commented: Float!
+    $commentator: Float!
+    $description: String!
+    $amount_start: Float!
+  ) {
+    CREATE_COMMENT(
+      person_commented: $person_commented
+      commentator: $commentator
+      description: $description
+      amount_start: $amount_start
     ) {
-      CREATE_COMMENT(
-        person_commented: $person_commented
-        commentator: $commentator
-        description: $description
-        amount_start: $amount_start
-      ) {
-        id
-        commentator
-        description
-        amount_start
-      }
+      id
+      commentator
+      description
+      amount_start
     }
-  `;
-  return query;
-};
+  }
+`;
 
 export const deleteComment = () => {
   const query = gql`
@@ -52,12 +49,10 @@ export const deleteComment = () => {
   return query;
 };
 
-
-  export const deleteCommentSubs = gql`
-    subscription {
-      DELETE_A_COMMENT {
-        id
-      }
+export const deleteCommentSubs = gql`
+  subscription {
+    DELETE_A_COMMENT {
+      id
     }
-  `;
-
+  }
+`;

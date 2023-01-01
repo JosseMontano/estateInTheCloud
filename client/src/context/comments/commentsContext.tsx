@@ -1,12 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import Children from "@/interfaces/children";
 import { getCommentsByUser } from "@/services/comment";
-import {
-  DocumentNode,
-  useMutation,
-  useQuery,
-  useSubscription,
-} from "@apollo/client";
+import { useMutation, useQuery, useSubscription } from "@apollo/client";
 import { deleteComment, deleteCommentSubs } from "@/services/comment";
 import { Comments } from "@/interfaces/comments";
 import { useApolloClient } from "@apollo/client";
@@ -45,9 +40,7 @@ export const CommentsContextProvider = ({ children }: Children) => {
 
   const client = useApolloClient();
 
-  const { data, loading, error } = useQuery(
-    getCommentsByUser(idCommentUser)
-  );
+  const { data, loading, error } = useQuery(getCommentsByUser(idCommentUser));
 
   useSubscription(deleteCommentSubs, {
     onData: ({ data }) => {
@@ -79,7 +72,13 @@ export const CommentsContextProvider = ({ children }: Children) => {
     }, 3000);
   };
 
-  const val = { data, setIdCommentUser, loading, handleDelete, deleteCommentState };
+  const val = {
+    data,
+    setIdCommentUser,
+    loading,
+    handleDelete,
+    deleteCommentState,
+  };
 
   return (
     <CommentsContext.Provider value={val}>{children}</CommentsContext.Provider>
