@@ -9,11 +9,9 @@ import { schema } from "./schema";
 import { metRoute } from "./routes";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
-import { execute, subscribe } from "graphql";
-/* import { schema as subscriptionSchema } from "./schema/subscriptions/comments";
-import {createServer} from "http" */
 
-const { urlCors, server } = require("./config");
+ 
+const { urlCors, server } = require("./config"); 
 var cookieParser = require("cookie-parser");
 
 /* Setup Express */
@@ -38,7 +36,6 @@ async function start() {
   app.use(morgan("dev"));
   app.use(express.json());
   app.use(cookieParser());
-
   app.use(express.static("src"));
 
   //apollo
@@ -51,13 +48,6 @@ async function start() {
       },
     }))
   );
-  /*   app.use(
-    "/graphql",
-    graphqlHTTP({
-      graphiql: true,
-      schema,
-    })
-  ); */
 
   //routes
   metRoute(app);
@@ -69,22 +59,19 @@ async function start() {
     });
   });
 
-  const port = server.port || 4000;
+  const port = server.port || 3000;
+  const portCors = server.portCors || 3002;
 
   app.listen(port, () => {
     const server = new WebSocketServer({
-      port: 3002,
+      port: portCors,
       path: "/graphql",
     });
 
     useServer({ schema }, server);
 
     console.log("Listening to port 3000");
-    /*    console.log(server)  */
   });
-
-  /*   console.log(`server in ${port}`);
-  console.log(`websocket in ${wsServer.path}`); */
 }
 
 start();
