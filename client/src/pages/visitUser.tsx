@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/visitUser/header";
 import { marginGlobal, ColorText } from "../styles/globals";
