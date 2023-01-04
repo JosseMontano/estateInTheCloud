@@ -40,10 +40,23 @@ export const postComment = gql`
   }
 `;
 
+export const addCommentSubs = gql`
+  subscription {
+    ADD_A_COMMENT {
+      id
+      commentator
+      description
+      amount_start
+    }
+  }
+`;
+
 export const deleteComment = () => {
   const query = gql`
     mutation DELETE_COMMENT($id: ID!) {
-      DELETE_COMMENT(id: $id)
+      DELETE_COMMENT(id: $id) {
+        id_comment
+      }
     }
   `;
   return query;

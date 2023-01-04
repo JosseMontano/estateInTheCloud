@@ -12,7 +12,7 @@ import ContentModal from "./publicCommenator/contentModal";
 import { postComment } from "@/services/comment";
 import { User } from "@/interfaces/user";
 import { useMutation } from "@apollo/client";
-
+import { useComments } from "@/context/comments/commentsContext";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -38,31 +38,23 @@ interface Params {
 }
 const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
   const { idUser } = useNameUser();
+  const { addComment } = useComments();
   const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
   const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
 
   const [amountStart, setAmountStart] = useState(1);
 
+  const handleAddComment = async (description: string) => {
+    const form = { amountStart, description, idUser, iUserNumber };
+    await addComment(form);
+  };
+
   useEffect(() => {
     if (data) {
       setExists(true);
     }
   }, []);
-
-  const [CREATE_COMMENT] = useMutation(postComment);
-
-  const handleAddComment = async (description: string) => {
-    await CREATE_COMMENT({
-      variables: {
-        person_commented: iUserNumber,
-        commentator: idUser,
-        description,
-        amount_start: amountStart,
-      },
-    });
-    alert("guardado");
-  };
 
   const getStart = (val: number) => {
     setAmountStart(val);
