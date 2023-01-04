@@ -18,18 +18,16 @@ const Container = styled.div`
 
 interface Params {
   v: IComments;
-  idUser:number
+  idUser: number;
 }
 
 const Comments = ({ v, idUser }: Params) => {
-
+  const sameUser = v.commentator === idUser;
   return (
     <Container>
       <Img url={v.url} />
       <Content {...v} />
-      {v.commentator === idUser && (
-        <DeleteComment id={v.id_comment} />
-      )}
+      {sameUser && <DeleteComment id={v.id_comment} />}
     </Container>
   );
 };
