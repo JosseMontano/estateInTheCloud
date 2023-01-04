@@ -6,7 +6,6 @@ import {
   createEstate,
   deleteEstate,
   getAllEstates,
-  getEstateByEmail,
   getEstateByUser,
   getEstateOfOnePublication,
   getRealEstatesMostRecent,
@@ -24,7 +23,6 @@ router.get("/estateByType/:type", getAllEstatesByType);
 
 router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
 router.get("/estate/:id", getEstateByUser);
-router.get("/estate/visit/:idUser", getEstateByEmail);
 router.get("/estateOfOnePublication/:idRealEstate", getEstateOfOnePublication);
 router.post("/estate", createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", addNewPhotoToRealEstate);
