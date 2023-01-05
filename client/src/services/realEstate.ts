@@ -1,6 +1,7 @@
 import { http, headers } from "./http";
 import { index } from "../utilities/getServices";
 import deleteServ from "../utilities/deleteServices";
+import { gql } from "@apollo/client";
 
 export const getRealEstateAll = async <T>(): Promise<{
   json: T;
@@ -29,11 +30,23 @@ export const getRealEstateRecommendedByUser = async <T>(): Promise<{
   return { json, status };
 };
 
-export const getRealEstateProfil = async (id?: number) => {
-  const url = `${http}estate/${id}`;
-  const { json, status } = await index(url);
-  return { json, status };
-};
+export const getREByProfile = gql`
+  query GET($idUser: Float!) {
+    GET_REAL_ESTATE_BY_ID_USER(idUser: $idUser) {
+      idphoto
+      url
+      email
+      idrealestatephoto
+      idrealestate
+      iduser
+      title
+      description
+      publicId
+      cellphonenumber
+      available
+    }
+  }
+`;
 
 export const getRealEstateOfOnePublication = async (idRealEstate?: number) => {
   const url = `${http}estateOfOnePublication/${idRealEstate}`;
@@ -55,7 +68,7 @@ export const getRealEstateByType = async <T>(
   return { json, status };
 };
 
-export const getDestinates = async <T>(
+export const getImgTo360 = async <T>(
   id: number
 ): Promise<{ json: T; status: number }> => {
   const url = `${http}photo/${id}`;
@@ -90,15 +103,29 @@ export const addNewPhotoToRealEstate = async (
   }
 };
 
-export const deleteRealEstateProfil = async (
-  idRealEstatePhoto: number,
-  idPhoto: number,
-  idRealEstate: number
-) => {
-  const url = `${http}estate/${idRealEstatePhoto}/${idPhoto}/${idRealEstate}`;
-  const response = await deleteServ(url);
-  return response;
-};
+export const deleteRealEstateProfil = gql`
+  mutation DELETE_REAL_ESTATE(
+    $idRealEstatePhoto: Float!
+    $idPhoto: Float!
+    $idRealEstate: ID!
+  ) {
+    DELETE_REAL_ESTATE(
+      idRealEstatePhoto: $idRealEstatePhoto
+      idPhoto: $idPhoto
+      idRealEstate: $idRealEstate
+    ) {
+      idrealestate
+    }
+  }
+`;
+
+export const deleteRealEstateSubs = gql`
+  subscription {
+    DELETE_A_RE {
+      id
+    }
+  }
+`;
 
 export const updateStateRealEstate = async (id: Number, available: number) => {
   try {

@@ -24,17 +24,3 @@ export const commentDeleteType = new GraphQLObjectType({
     id_comment: { type: GraphQLID },
   },
 });
-
-/*  export const commentSubscription = new GraphQLObjectType({
-  name: "commentSubscription",
-  fields: {
-    id: { type: GraphQLID },
-    email: { type: GraphQLString },
-    id_comment: { type: GraphQLFloat },
-    commentator: { type: GraphQLFloat },
-    description: { type: GraphQLString },
-    amount_start: { type: GraphQLFloat },
-    url: { type: GraphQLString },
-  },
-});
-  */

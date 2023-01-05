@@ -3,6 +3,7 @@ import ContentImg from "./contentImg";
 import { RealEstate } from "@/interfaces/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
+import { Fragment } from "react";
 
 const Title = styled.h2`
   text-align: center;
@@ -32,7 +33,6 @@ interface Params {
   data: RealEstate[];
   loading: boolean;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
   updateStateRE?: (available: boolean, id: number) => void;
   idRealEstate?: number;
 }
@@ -53,20 +53,20 @@ const Index = (params: Params) => {
 
   function showContent(v: RealEstate, i: number) {
     return (
-      <ContentImg
-        deleteRealEstate={params.deleteRealEstate}
-        key={i}
-        v={v}
-        showbtn={params.showbtn}
-        updateStateRE={params.updateStateRE}
-        idRealEstate={params.idRealEstate}
-      />
+      <Fragment key={i}>
+        <ContentImg
+          v={v}
+          showbtn={params.showbtn}
+          updateStateRE={params.updateStateRE}
+          idRealEstate={params.idRealEstate}
+        />
+      </Fragment>
     );
   }
 
   function showData() {
     if (params.loading) return vecSkeleton.map((_, i) => <Skeleton key={i} />);
-    return params.data.map((v, i) => showContent(v, i));
+    if (params.data) return params.data.map((v, i) => showContent(v, i));
   }
 
   return (

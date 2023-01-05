@@ -6,7 +6,7 @@ import {
   createEstate,
   deleteEstate,
   getAllEstates,
-  getEstateByUser,
+/*   getEstateByUser, */
   getEstateOfOnePublication,
   getRealEstatesMostRecent,
   updateEstate,
@@ -20,17 +20,13 @@ router.get("/estate", getAllEstates);
 router.get("/type_real_estate", getTypeRealEstat);
 router.get("/estateMostRecent", getRealEstatesMostRecent);
 router.get("/estateByType/:type", getAllEstatesByType);
-
 router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
-router.get("/estate/:id", getEstateByUser);
+/* router.get("/estate/:id", getEstateByUser); */
 router.get("/estateOfOnePublication/:idRealEstate", getEstateOfOnePublication);
 router.post("/estate", createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", addNewPhotoToRealEstate);
 router.put("/estate/:id", updateEstate);
-router.delete(
-  "/estate/:idRealEstatePhoto/:idPhoto/:idRealEstate",
-  deleteEstate
-);
+
 router.put("/availableEstate/:id", updateStateAvailable);
 
 module.exports = router;

@@ -14,16 +14,10 @@ import { WebSocketLink } from "@apollo/link-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
+import { ProfileContextProvider } from "./context/profile/profileContext";
 const sLink = new HttpLink({
   uri: `${http}graphql`,
 });
-
-/* const wsLink = new WebSocketLink({
-  uri: `ws://localhost:3002/graphql`,
-  options: {
-    reconnect: true,
-  },
-}); */
 
 const wsLink = new GraphQLWsLink(
   createClient({
@@ -56,7 +50,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <HomeContextProvider>
           <LanguageContextProvider>
             <CommentsContextProvider>
-              <App />
+              <ProfileContextProvider>
+                <App />
+              </ProfileContextProvider>
             </CommentsContextProvider>
           </LanguageContextProvider>
         </HomeContextProvider>

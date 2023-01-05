@@ -81,7 +81,7 @@ export const CommentsContextProvider = ({ children }: Children) => {
     alert("guardado");
   };
 
-  useSubscription(deleteCommentSubs, {
+ useSubscription(deleteCommentSubs, {
     onData: ({ data }) => {
       const { DELETE_A_COMMENT } = data.data;
       const dataInStore = client.readQuery({
@@ -99,10 +99,14 @@ export const CommentsContextProvider = ({ children }: Children) => {
     },
   });
 
+
+ 
+
   const [DELETE_COMMENT] = useMutation(deleteComment());
 
   const handleDelete = async (id: number) => {
-    DELETE_COMMENT({ variables: { id } });
+    await DELETE_COMMENT({ variables: { id } });
+    
     setDeleteCommentState(true);
     setTimeout(() => {
       setDeleteCommentState(false);

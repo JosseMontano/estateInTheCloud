@@ -1,11 +1,10 @@
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate, FormDeleteType } from "@/interfaces/realEstate";
 import {
-  deleteRealEstateProfil,
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication as services,
   updateStateRealEstate,
 } from "@/services/realEstate";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import useToast from "@/hooks/useToast";
 import { Container } from "@/styles/modal/perfil";
 import ContentTextModal from "../contentTextModal";
@@ -15,48 +14,33 @@ import LoadAndResponse from "../../../../home/modalQuestion/loadAndResponse";
 import useLoadData from "@/hooks/useFetch";
 import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
 import Event from "@/interfaces/event";
-
+import { useProfile } from "@/context/profile/profileContext";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
   updateStateRE?: (available: boolean, id: number) => void;
 }
 
-export const ContentModal = ({
-  v,
-  showbtn,
-  deleteRealEstate,
-  updateStateRE,
-}: Params) => {
+export const ContentModal = ({ v, showbtn, updateStateRE }: Params) => {
   const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const { deleteRealEstate } = useProfile();
   const { data, loading: load } = useLoadData<REOnePublicationType>(
     services,
     v.idrealestate
   );
 
   const handleDelete = async () => {
-    setLoading(true);
-    const res = await deleteRealEstateProfil(
-      v.idrealestatephoto,
-      v.idphoto,
-      v.idrealestate
-    );
-    if (res.action) {
-      handleToast("El proceso fue exitoso");
-    } else {
-      handleToast("Ha ocurrido un error");
-    }
-    if (deleteRealEstate) deleteRealEstate(v.idrealestate);
-    setResponse(true);
-    setTimeout(() => setResponse(false), 3000);
-    setLoading(false);
+    const form: FormDeleteType = {
+      idrealestatephoto: v.idrealestatephoto,
+      idphoto: v.idphoto,
+      idrealestate: v.idrealestate,
+    };
+    await deleteRealEstate(form);
   };
 
   const handleAddNewPhoto = async () => {

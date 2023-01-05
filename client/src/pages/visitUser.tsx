@@ -5,11 +5,10 @@ import { marginGlobal, ColorText } from "../styles/globals";
 import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
-import { getRealEstateProfil } from "../services/realEstate";
-import useLoadData from "../hooks/useFetch";
 import { RealEstate } from "../interfaces/realEstate";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Navbar from "@/components/navbar";
+import { useProfile } from "@/context/profile/profileContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;
@@ -22,25 +21,31 @@ const VisitUser = () => {
   const idUserNumber = Number(idUser);
   const {} = useVerifyUserLogin();
   const realEstateNumber = parseFloat(realEstate!);
-  const { data, loading } = useLoadData<RealEstate>(
-    getRealEstateProfil,
-    idUserNumber
-  );
+  const { data, loading, getRealEstate } = useProfile();
+
   //get cellphone of user
   let dataObj = {} as RealEstate;
-  dataObj = Object.assign({}, data[0]);
+  if (data) {
+    dataObj = Object.assign({}, data.GET_REAL_ESTATE_BY_ID_USER[0]);
+  }
   const { cellphonenumber } = dataObj;
 
   const showPublication = () => {
-    return (
-      <Publication
-        showbtn={false}
-        data={data}
-        loading={loading}
-        idRealEstate={realEstateNumber}
-      />
-    );
+    if (data) {
+      return (
+        <Publication
+          showbtn={false}
+          data={data.GET_REAL_ESTATE_BY_ID_USER}
+          loading={loading}
+          idRealEstate={realEstateNumber}
+        />
+      );
+    }
   };
+
+  useEffect(() => {
+    getRealEstate(idUserNumber);
+  }, [idUserNumber]);
 
   return (
     <Suspense fallback={null}>

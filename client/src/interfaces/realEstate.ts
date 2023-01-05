@@ -9,5 +9,11 @@ export interface RealEstate {
   publicId: string;
   email: string;
   cellphonenumber: string;
-  available:boolean;
+  available: boolean;
+}
+
+export interface FormDeleteType {
+  idrealestatephoto: number;
+  idphoto: number;
+  idrealestate: number;
 }

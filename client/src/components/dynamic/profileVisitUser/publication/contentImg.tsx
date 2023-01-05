@@ -6,6 +6,7 @@ import ModalCom from "./modal";
 const Containersoon = styled.div`
   justify-self: center;
 `;
+
 const Img = styled.img`
   height: 300px;
   width: 300px;
@@ -50,7 +51,6 @@ const ContentImg = ({
           showbtn={showbtn}
           toggleTrue={toggleTrue}
           v={v}
-          deleteRealEstate={deleteRealEstate}
           updateStateRE={updateStateRE}
         />
       ) : (
@@ -59,7 +59,6 @@ const ContentImg = ({
           showbtn={showbtn}
           toggleTrue={toggle}
           v={v}
-          deleteRealEstate={deleteRealEstate}
           updateStateRE={updateStateRE}
         />
       )}
