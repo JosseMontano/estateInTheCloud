@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import useToast from "@/hooks/useToast";
 import { Container } from "@/styles/modal/perfil";
-import ContentTextModal from "../contentTextModal";
+import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";
 import LoadAndResponse from "../../../../home/modalQuestion/loadAndResponse";
@@ -18,17 +18,16 @@ import { useProfile } from "@/context/profile/profileContext";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  updateStateRE?: (available: boolean, id: number) => void;
 }
 
-export const ContentModal = ({ v, showbtn, updateStateRE }: Params) => {
+export const ContentModal = ({ v, showbtn }: Params) => {
   const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
   const [photo, setPhoto] = useState<any>("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { deleteRealEstate } = useProfile();
+  const { deleteRealEstate, updateState } = useProfile();
   const { data, loading: load } = useLoadData<REOnePublicationType>(
     services,
     v.idrealestate
@@ -66,8 +65,7 @@ export const ContentModal = ({ v, showbtn, updateStateRE }: Params) => {
   };
 
   const handleUpdateState = async (id: number, available: number) => {
-    await updateStateRealEstate(id, available);
-    if (updateStateRE) updateStateRE(v.available, id);
+    await updateState(id, available);
   };
 
   return (

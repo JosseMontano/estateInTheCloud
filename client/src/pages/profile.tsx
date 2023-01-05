@@ -30,19 +30,6 @@ const Profile = () => {
     /* setData([...data, newData]); */
   };
 
-  const updateStateRE = (state: boolean, id: number) => {
-    /*  setData(
-      data.map((v) =>
-        v.idrealestate === id
-          ? {
-              ...v,
-              state: state,
-            }
-          : v
-      )
-    ); */
-  };
-
   useEffect(() => {
     getRealEstate(idUser);
   }, [idUser]);
@@ -55,7 +42,6 @@ const Profile = () => {
           data={realEstate}
           loading={loading}
           showbtn={true}
-          updateStateRE={updateStateRE}
         />
       );
     }

@@ -127,17 +127,20 @@ export const deleteRealEstateSubs = gql`
   }
 `;
 
-export const updateStateRealEstate = async (id: Number, available: number) => {
-  try {
-    const response = await fetch(`${http}availableEstate/${id}`, {
-      method: "PUT",
-      headers: headers,
-      body: JSON.stringify({
-        available,
-      }),
-    });
-    return response;
-  } catch (error) {
-    console.log(error);
+export const updateStateRealEstate = gql`
+  mutation UPDATE_STATE_RE($id: ID!, $state: Float!) {
+    UPDATE_STATE_RE(idRealEstate: $id, state: $state) {
+      idRealEstate
+      state
+    }
   }
-};
+`;
+
+export const updateStateRealEstateSubs = gql`
+  subscription {
+    UPDATE_STATE_A_RE {
+      id
+      state
+    }
+  }
+`;

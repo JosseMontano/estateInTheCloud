@@ -26,18 +26,10 @@ const Img = styled.img`
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  deleteRealEstate?: (id: number) => void;
-  updateStateRE?: (available: boolean, id: number) => void;
   idRealEstate?: number;
 }
 
-const ContentImg = ({
-  v,
-  showbtn,
-  deleteRealEstate,
-  updateStateRE,
-  idRealEstate,
-}: Params) => {
+const ContentImg = ({ v, showbtn, idRealEstate }: Params) => {
   const { isShown, toggle } = UseModal({ show: false });
   const { isShown: isShowTrue, toggle: toggleTrue } = UseModal({
     show: idRealEstate ? true : false,
@@ -51,7 +43,6 @@ const ContentImg = ({
           showbtn={showbtn}
           toggleTrue={toggleTrue}
           v={v}
-          updateStateRE={updateStateRE}
         />
       ) : (
         <ModalCom
@@ -59,7 +50,6 @@ const ContentImg = ({
           showbtn={showbtn}
           toggleTrue={toggle}
           v={v}
-          updateStateRE={updateStateRE}
         />
       )}
 

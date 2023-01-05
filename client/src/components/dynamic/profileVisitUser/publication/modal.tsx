@@ -7,7 +7,6 @@ interface Params {
   toggleTrue: () => void;
   v: RealEstate;
   showbtn: boolean;
-  updateStateRE?: (available: boolean, id: number) => void;
 }
 
 const ModalCom = (params: Params) => {
@@ -15,13 +14,7 @@ const ModalCom = (params: Params) => {
     <Modal
       isShown={params.isShowTrue}
       hide={params.toggleTrue}
-      modalContent={
-        <ContentModal
-          v={params.v}
-          showbtn={params.showbtn}
-          updateStateRE={params.updateStateRE}
-        />
-      }
+      modalContent={<ContentModal v={params.v} showbtn={params.showbtn} />}
     />
   );
 };

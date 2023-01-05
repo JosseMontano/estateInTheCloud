@@ -20,6 +20,12 @@ const ContentTextModal = (p: params) => {
   const [stateAvailable, setStateAvailable] = useState(
     p.v.available ? true : false
   );
+  let stateNumber = stateAvailable ? 0 : 1;
+  //variable to show the text of the btn
+  const available = text.profileBtnAvailable;
+  const noAvailable = text.profileBtnNoAvailable;
+  let textBtn = stateAvailable ? available : noAvailable;
+
   let btnJSX = [
     {
       click: () => p.handleAddNewPhoto(),
@@ -34,12 +40,18 @@ const ContentTextModal = (p: params) => {
       txt: text.profileBtnQuestion,
     },
   ];
+
+  const handleUpdateStateRE = () => {
+    p.handleUpdateState(p.v.idrealestate, stateNumber);
+    setStateAvailable(!stateAvailable);
+  };
+
   return (
     <ContainerContent>
       <H2>{p.v.title}</H2>
       <P>{p.v.description}</P>
 
-      {p.showbtn && (
+      {p.showbtn ? (
         <>
           <InputFile type="file" onChange={(e) => p.handleFile(e)} />
           <ContainerBtn>
@@ -48,30 +60,15 @@ const ContentTextModal = (p: params) => {
                 {v.txt}
               </Btn>
             ))}
-
-            {stateAvailable ? (
-              <Btn
-                marginInElements="0px"
-                onClick={() => {
-                  p.handleUpdateState(p.v.idrealestate, 0);
-                  setStateAvailable(false);
-                }}
-              >
-                {text.profileBtnAvailable}
-              </Btn>
-            ) : (
-              <Btn
-                marginInElements="0px"
-                onClick={() => {
-                  p.handleUpdateState(p.v.idrealestate, 1);
-                  setStateAvailable(true);
-                }}
-              >
-                {text.profileBtnNoAvailable}
-              </Btn>
-            )}
+            <Btn marginInElements="0px" onClick={handleUpdateStateRE}>
+              {stateAvailable
+                ? text.profileBtnAvailable
+                : text.profileBtnNoAvailable}
+            </Btn>
           </ContainerBtn>
         </>
+      ) : (
+        <Btn marginInElements="0px">{textBtn}</Btn>
       )}
     </ContainerContent>
   );

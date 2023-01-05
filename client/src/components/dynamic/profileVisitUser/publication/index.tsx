@@ -33,7 +33,6 @@ interface Params {
   data: RealEstate[];
   loading: boolean;
   showbtn: boolean;
-  updateStateRE?: (available: boolean, id: number) => void;
   idRealEstate?: number;
 }
 
@@ -57,7 +56,6 @@ const Index = (params: Params) => {
         <ContentImg
           v={v}
           showbtn={params.showbtn}
-          updateStateRE={params.updateStateRE}
           idRealEstate={params.idRealEstate}
         />
       </Fragment>

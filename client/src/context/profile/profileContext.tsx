@@ -1,6 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import Children from "@/interfaces/children";
-import { deleteRealEstateSubs, getREByProfile } from "@/services/realEstate";
+import {
+  deleteRealEstateSubs,
+  getREByProfile,
+  updateStateRealEstate,
+  updateStateRealEstateSubs,
+} from "@/services/realEstate";
 import {
   useApolloClient,
   useMutation,
@@ -18,11 +23,8 @@ interface ContextType {
   data: ValuesDataType;
   loading: boolean;
   getRealEstate: (id: number) => void;
-  deleteRealEstate: ({
-    idrealestatephoto,
-    idphoto,
-    idrealestate,
-  }: FormDeleteType) => void;
+  deleteRealEstate: (form: FormDeleteType) => void;
+  updateState: (id: number, state: number) => void;
 }
 
 const initialValues: ContextType = {
@@ -30,6 +32,7 @@ const initialValues: ContextType = {
   loading: true,
   getRealEstate: () => {},
   deleteRealEstate: () => {},
+  updateState: () => {},
 };
 
 const ProfileContext = createContext(initialValues);
@@ -51,6 +54,13 @@ export const ProfileContextProvider = ({ children }: Children) => {
     variables: { idUser: 0 },
   });
 
+  const getRealEstate = (id: number) => {
+    refetch({
+      idUser: id,
+    });
+    setIdUserState(id);
+  };
+
   const [DELETE_REAL_ESTATE] = useMutation(deleteRealEstateProfil);
 
   const deleteRealEstate = async (form: FormDeleteType) => {
@@ -64,7 +74,7 @@ export const ProfileContextProvider = ({ children }: Children) => {
     });
   };
 
-useSubscription(deleteRealEstateSubs, {
+  useSubscription(deleteRealEstateSubs, {
     onData: ({ data }) => {
       const { DELETE_A_RE } = data.data;
       const dataInStore = client.readQuery({
@@ -89,20 +99,54 @@ useSubscription(deleteRealEstateSubs, {
     },
   });
 
+  const [UPDATE_STATE_RE] = useMutation(updateStateRealEstate);
 
-
-  const getRealEstate = (id: number) => {
-    refetch({
-      idUser: id,
+  const updateState = async (id: number, state: number) => {
+    await UPDATE_STATE_RE({
+      variables: {
+        id,
+        state,
+      },
     });
-    setIdUserState(id);
   };
+
+  useSubscription(updateStateRealEstateSubs, {
+    onData: ({ data }) => {
+      console.log(data.data);
+      const { UPDATE_STATE_A_RE } = data.data;
+      const dataInStore = client.readQuery({
+        query: getREByProfile,
+        variables: {
+          idUser: idUserState,
+        },
+      });
+      client.writeQuery({
+        query: getREByProfile,
+        variables: {
+          idUser: idUserState,
+        },
+        data: {
+          ...dataInStore,
+          GET_REAL_ESTATE_BY_ID_USER:
+            dataInStore.GET_REAL_ESTATE_BY_ID_USER.map((v: RealEstate) =>
+              v.idrealestate == UPDATE_STATE_A_RE.id
+                ? {
+                    ...v,
+                    available: UPDATE_STATE_A_RE.state,
+                  }
+                : v
+            ),
+        },
+      });
+    },
+  });
 
   const val = {
     data,
     loading,
     getRealEstate,
     deleteRealEstate,
+    updateState,
   };
   return (
     <ProfileContext.Provider value={val}>{children}</ProfileContext.Provider>
