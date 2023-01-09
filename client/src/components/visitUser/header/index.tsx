@@ -35,8 +35,10 @@ interface Params {
   email?: string;
   iUserNumber: number;
   cellphonenumber: string;
+  amountPublication: number;
 }
-const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
+const Header = (params: Params) => {
+  const { email, iUserNumber, cellphonenumber, amountPublication } = params;
   const { idUser } = useNameUser();
   const { addComment } = useComments();
   const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
@@ -70,7 +72,7 @@ const Header = ({ email, iUserNumber, cellphonenumber }: Params) => {
           cellphonenumber={cellphonenumber}
           toggle={toggle}
         />
-        <ContentMid />
+        <ContentMid amountPublication={amountPublication} />
       </ContainerContent>
 
       <Modal

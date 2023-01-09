@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { marginInElements } from "@/styles/globals";
 import { Btn } from "@/styles/btn";
 import { useLanguage } from "@/context/languageContext";
-import { useContext } from "react";
 import { useNameUser } from "@/context/nameUserContext";
+
 const Container = styled.div`
   display: flex;
   @media screen and (max-width: 450px) {
@@ -26,8 +26,7 @@ const ContentBtn = ({ toggle }: Params) => {
   return (
     <Container>
       <SPAN marginInElements={marginInElements}>{email}</SPAN>
-      <Btn marginInElements={marginInElements}>{text.profileSendMessage}</Btn>
-      <Btn marginInElements={marginInElements}>{text.profileSendRequest}</Btn>
+      <Btn marginInElements={marginInElements}>{text.profileEditProfile}</Btn>
       <Btn onClick={toggle} marginInElements={marginInElements}>
         {text.profileCreatePublicate}
       </Btn>

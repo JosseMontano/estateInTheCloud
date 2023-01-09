@@ -50,15 +50,18 @@ const VisitUser = () => {
   return (
     <Suspense fallback={null}>
       <Navbar />
-      <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        <Header
-          email={email}
-          iUserNumber={idUserNumber}
-          cellphonenumber={cellphonenumber}
-        />
-        {idUserNumber != 0 && showPublication()}
-        <Comments idParam={idUserNumber} />
-      </Container>
+      {data && (
+        <Container marginGlobal={marginGlobal} ColorText={ColorText}>
+          <Header
+            amountPublication={data.GET_REAL_ESTATE_BY_ID_USER.length}
+            email={email}
+            iUserNumber={idUserNumber}
+            cellphonenumber={cellphonenumber}
+          />
+          {idUserNumber != 0 && showPublication()}
+          <Comments idParam={idUserNumber} />
+        </Container>
+      )}
     </Suspense>
   );
 };

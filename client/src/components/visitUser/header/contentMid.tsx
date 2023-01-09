@@ -9,10 +9,17 @@ const P = styled.p<{ marginInElements: string }>`
   margin-bottom: ${(props) => props.marginInElements};
   text-align: center;
 `;
-const ContentMid = () => {
+
+interface Params {
+  amountPublication: number;
+}
+
+const ContentMid = ({ amountPublication }: Params) => {
   return (
     <Container>
-      <P marginInElements={marginInElements}>0 publicaciones</P>
+      <P marginInElements={marginInElements}>
+        {amountPublication} publicaciones
+      </P>
       <P marginInElements={marginInElements}>100 seguidores</P>
       <P marginInElements={marginInElements}>100 seguidos</P>
     </Container>

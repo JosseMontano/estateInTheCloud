@@ -55,8 +55,7 @@ interface TextType {
   filterCustomBathroom: string;
   filterCustomBtn: string;
   filterCustomSize: string;
-  profileSendMessage: string;
-  profileSendRequest: string;
+  profileEditProfile: string;
   profileCreatePublicate: string;
   profilePublication: string;
   profileFollower: string;
@@ -139,8 +138,7 @@ const translations: TranslationType = {
     filterCustomSize: "Metros cuadrados",
     filterCustomBtn: "Buscar",
     filterCustom: "Personalizado",
-    profileSendMessage: "Enviar mensaje",
-    profileSendRequest: "Enviar solicitud",
+    profileEditProfile: "Editar perfil",
     profileCreatePublicate: "Crear publicacion",
     profilePublication: "publicaciones",
     profileFollower: "seguidores",
@@ -216,8 +214,7 @@ const translations: TranslationType = {
     filterCustomBathroom: "Bathroom",
     filterCustomSize: "Squeare meter",
     filterCustomBtn: "Search",
-    profileSendMessage: "Send message",
-    profileSendRequest: "send Request",
+    profileEditProfile: "Edit profile",
     profileCreatePublicate: "Create publication",
     profilePublication: "publications",
     profileFollower: "followers",

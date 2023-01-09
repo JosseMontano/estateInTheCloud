@@ -35,6 +35,7 @@ const Form = ({ handleChange, sendData }: Params) => {
 
       <InputFile type="file" onChange={(e) => setPhoto(e.target.files![0])} />
 
+
       <Button ColorBtn={ColorBtn} onClick={() => handleSend()}>
         Save
       </Button>

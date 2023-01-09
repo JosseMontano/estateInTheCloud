@@ -48,7 +48,7 @@ const ContentBtn = ({ email, cellphonenumber, toggle }: Params) => {
     },
     {
       element: Btn,
-      text: "Enviar solicitud",
+      text: "Seguir",
       onclick: () => {},
     },
     {
