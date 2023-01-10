@@ -7,9 +7,9 @@ import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
 import styled from "styled-components";
 
 const Container = styled.div`
-/*   animation: move 1s;
+  animation: moveNext 1s;
   transform: translateX(0px);
-  @keyframes move {
+  @keyframes moveNext {
     0% {
       transform: translateX(-50px);
       opacity: 0;
@@ -18,7 +18,7 @@ const Container = styled.div`
       transform: translateX(0px);
       opacity: 1;
     }
-  } */
+  }
 `;
 
 interface Params {

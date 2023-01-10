@@ -4,18 +4,18 @@ import { postQuestion } from "@/services/question";
 import { initialForm, validationsForm } from "@/validations/question";
 import FormComponent from "./form";
 import styled from "styled-components";
-import LoadAndResponse from "./loadAndResponse";
+import LoadAndResponse from "../../../../components/global/loadAndResponse";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-
+import Event from "@/interfaces/event";
 
 const Container = styled.div``;
 
 const Index = () => {
-  const {text} = useLanguage()
+  const { text } = useLanguage();
   const { form, errors, loading, response, msg, handleSubmit, handleChange } =
     UseForm(initialForm, validationsForm, postQuestion);
-  const sendData = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendData = (e: Event["buttonSend"]) => {
     handleSubmit(e);
   };
   return (

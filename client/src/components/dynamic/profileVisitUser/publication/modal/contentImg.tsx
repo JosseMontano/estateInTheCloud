@@ -1,4 +1,4 @@
-import Load from "./load";
+import Loader from "@/components/global/loading";
 import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
 import Carousel from "@/components/dynamic/carousel";
 import { useRef } from "react";
@@ -24,7 +24,7 @@ const ContentImg = ({ load, data }: Params) => {
   }
 
   return (
-    <>{load ? <Load /> : <Carousel children={children()} slide={slide} />}</>
+    <>{load ? <Loader /> : <Carousel children={children()} slide={slide} />}</>
   );
 };
 

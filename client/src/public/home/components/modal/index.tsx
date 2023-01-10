@@ -1,7 +1,7 @@
 import { RealEstate } from "@/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
-import Load from "./load";
+import Loader from "@/components/global/loading";
 import ImgCom from "./img";
 import useLoadData from "@/hooks/useFetch";
 import { useRef } from "react";
@@ -63,7 +63,7 @@ export const ContentModal = (v: RealEstate) => {
     <Container>
       {loading && loadTxt ? (
         <div className="load">
-          <Load />
+          <Loader />
         </div>
       ) : (
         <>

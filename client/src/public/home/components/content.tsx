@@ -20,6 +20,7 @@ interface Params {
   data: RealEstate[];
   visitUser: (idUser: number, email: string) => void;
 }
+
 const Index = ({ data, title, visitUser }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
   const { text } = useLanguage();
