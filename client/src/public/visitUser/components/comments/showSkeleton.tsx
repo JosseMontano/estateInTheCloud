@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MixinsAfter } from "@/styles/skeleton";
+import { MixinsAfter } from "@/global/styles/skeleton";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;

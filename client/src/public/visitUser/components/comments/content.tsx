@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Comments } from "@/interfaces/comments";
+import { Comments } from "@/public/visitUser/interfaces/comments";
 import { getUserById } from "@/services/user";
 import ShowStarts from "./showStarts";
 

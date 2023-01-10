@@ -1,4 +1,4 @@
-import { ColorBtnSecond, ColorText, InputFile } from "@/styles/globals";
+import { ColorBtnSecond, ColorText, InputFile } from "@/global/styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
 
 import { useLanguage } from "@/global/context/languageContext";

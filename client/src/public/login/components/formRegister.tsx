@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorBtnSecond } from "@/styles/globals";
+import { ColorBtnSecond } from "@/global/styles/globals";
 import Button from "./button";
 import { initialForm, validationsForm } from "@/public/login/validations/register";
 import { signUp } from "../services/auth";

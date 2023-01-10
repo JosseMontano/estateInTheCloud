@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Content from "./content";
 import Img from "./img";
-import { Comments as IComments } from "@/interfaces/comments";
+import { Comments as IComments } from "@/public/visitUser/interfaces/comments";
 import DeleteComment from "./deleteComment";
 
 const Container = styled.div`

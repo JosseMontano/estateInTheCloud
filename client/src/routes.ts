@@ -1,5 +1,7 @@
 import { lazy, LazyExoticComponent } from "react";
-import { AnswerQuestion, AnswerQuestionInterested, Img360 } from "./pages";
+import AnswerQuestion from "./public/answerQuestion";
+import AnswerQuestionInterested from "./public/questionsAnswered";
+import Img360 from "./public/img360";
 
 type JSXComponent = () => JSX.Element;
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "./components/header";
-import { marginGlobal, ColorText } from "@/styles/globals";
+import { marginGlobal, ColorText } from "@/global/styles/globals";
 import Publication from "@/global/components/dynamic/profileVisitUser/publication";
 import { Suspense, useEffect } from "react";
 import { useNameUser } from "@/global/context/nameUserContext";

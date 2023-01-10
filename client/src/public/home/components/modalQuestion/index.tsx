@@ -1,4 +1,4 @@
-import { Title, ColorText } from "@/styles/globals";
+import { Title, ColorText } from "@/global/styles/globals";
 import { postQuestion } from "@/public/answerQuestion/services/question";
 import { initialForm, validationsForm } from "@/public/answerQuestion/validations/question";
 import FormComponent from "./form";

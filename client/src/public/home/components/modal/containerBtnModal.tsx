@@ -1,4 +1,4 @@
-import { Btn } from "@/styles/btn";
+import { Btn } from "@/global/styles/btn";
 import Clipboard from "@/global/components/copyText";
 import { RealEstate } from "@/global/interfaces/realEstate";
 

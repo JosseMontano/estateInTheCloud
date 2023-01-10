@@ -4,7 +4,7 @@ import {
   ColorText,
   InputFile,
   ColorBtnSecond,
-} from "@/styles/globals";
+} from "@/global/styles/globals";
 import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
 import { useState } from "react";

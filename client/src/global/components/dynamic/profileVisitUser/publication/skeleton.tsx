@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MixinsAfterBlue } from "@/styles/skeleton";
+import { MixinsAfterBlue } from "@/global/styles/skeleton";
 const SkeletonStyled = styled.div`
   justify-self: center;
 `;

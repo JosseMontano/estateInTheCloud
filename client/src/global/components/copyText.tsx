@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Message from "./message";
-import { Btn } from "@/styles/btn";
+import { Btn } from "@/global/styles/btn";
 import { useLanguage } from "@/global/context/languageContext";
 import config from "@/config";
 interface Params {

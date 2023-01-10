@@ -5,7 +5,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { RealEstateFilterCustom } from "../../interfaces/filterCustom";
 import TextInput from "./textInput";
-import { ColorBtn } from "@/styles/globals";
+import { ColorBtn } from "@/global/styles/globals";
 
 const ChildSty = styled.div`
   margin-top: 10px;

@@ -1,5 +1,5 @@
 import QuestionType from "../interfaces/question";
-import { Content, Btn, Description, Icon, Title } from "@/styles/card";
+import { Content, Btn, Description, Icon, Title } from "@/global/styles/card";
 
 interface Params {
   v: QuestionType;

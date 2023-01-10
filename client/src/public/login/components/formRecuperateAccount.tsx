@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorBtnSecond, ColorBtn } from "@/styles/globals";
+import { ColorBtnSecond, ColorBtn } from "@/global/styles/globals";
 import Button from "./button";
 import {
   initialForm,

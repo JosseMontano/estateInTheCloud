@@ -1,5 +1,5 @@
 import QuestionType from "../interfaces/question";
-import { CardSoon, Box } from "@/styles/card";
+import { CardSoon, Box } from "@/global/styles/card";
 import ContentCard from "./contentCard";
 
 interface Params {

@@ -6,7 +6,7 @@ import {
 } from "@/services/realEstate";
 import { useState } from "react";
 import useToast from "@/global/hooks/useToast";
-import { Container } from "@/styles/modal/perfil";
+import { Container } from "@/global/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";

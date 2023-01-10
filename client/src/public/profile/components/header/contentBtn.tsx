@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { marginInElements } from "@/styles/globals";
-import { Btn } from "@/styles/btn";
+import { marginInElements } from "@/global/styles/globals";
+import { Btn } from "@/global/styles/btn";
 import { useLanguage } from "@/global/context/languageContext";
 import { useNameUser } from "@/global/context/nameUserContext";
 

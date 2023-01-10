@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorBtn } from "@/styles/globals";
+import { ColorBtn } from "@/global/styles/globals";
 import { Input, Button, MsgError } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorText, Title, ColorBtn } from "@/styles/globals";
+import { ColorText, Title, ColorBtn } from "@/global/styles/globals";
 import { Button } from "jz-validation-form";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";

@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorText } from "@/styles/globals";
+import { ColorText } from "@/global/styles/globals";
 import { Label, MsgError, Input } from "jz-validation-form";
 import styled from "styled-components";
 

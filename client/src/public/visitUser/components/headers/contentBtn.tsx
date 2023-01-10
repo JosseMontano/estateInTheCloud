@@ -1,4 +1,4 @@
-import { marginInElements } from "@/styles/globals";
+import { marginInElements } from "@/global/styles/globals";
 import handleSendWhatsapp from "@/utilities/sendWhatsapp";
 import styled from "styled-components";
 

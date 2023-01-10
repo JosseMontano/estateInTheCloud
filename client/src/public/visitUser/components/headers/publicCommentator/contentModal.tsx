@@ -1,4 +1,4 @@
-import { ColorText, Title } from "@/styles/globals";
+import { ColorText, Title } from "@/global/styles/globals";
 import Starts from "./starts";
 import { Button } from "jz-validation-form";
 import { Formik, Form, Field, ErrorMessage } from "formik";

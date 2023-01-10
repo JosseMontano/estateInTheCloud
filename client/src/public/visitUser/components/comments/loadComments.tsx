@@ -1,5 +1,5 @@
 import Comments from "./comments";
-import { Comments as CommentsTypes } from "@/interfaces/comments";
+import { Comments as CommentsTypes } from "@/public/visitUser/interfaces/comments";
 
 interface ParamsType {
   data: CommentsTypes[];

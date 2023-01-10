@@ -1,4 +1,4 @@
-import Card from "../../styles/card";
+import Card from "../../global/styles/card";
 import { Suspense, useState } from "react";
 import { UseModal } from "@/global/hooks/useModal";
 import ModalCom from "./components/modal";

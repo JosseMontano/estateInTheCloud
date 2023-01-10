@@ -3,10 +3,10 @@ import Children from "@/global/interfaces/children";
 import { addCommentSubs, getCommentsByUser } from "@/public/visitUser/services/comment";
 import { useMutation, useQuery, useSubscription } from "@apollo/client";
 import { deleteComment, deleteCommentSubs } from "@/public/visitUser/services/comment";
-import { Comments } from "@/interfaces/comments";
+import { Comments } from "@/public/visitUser/interfaces/comments";
 import { useApolloClient } from "@apollo/client";
 import { postComment } from "@/public/visitUser/services/comment";
-import { CommentsPostType } from "@/interfaces/comments";
+import { CommentsPostType } from "@/public/visitUser/interfaces/comments";
 interface ContextType {
   data: any;
   setIdCommentUser: React.Dispatch<React.SetStateAction<number>>;

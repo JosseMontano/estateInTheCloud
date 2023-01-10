@@ -1,4 +1,4 @@
-import { MixinsAfter } from "@/styles/skeleton";
+import { MixinsAfter } from "@/global/styles/skeleton";
 import styled from "styled-components";
 
 const ContainerCardFather = styled.div`

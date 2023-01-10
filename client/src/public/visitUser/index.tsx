@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./components/headers";
-import { marginGlobal, ColorText } from "../../styles/globals";
+import { marginGlobal, ColorText } from "../../global/styles/globals";
 import Comments from "./components/comments";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import Publication from "@/global/components/dynamic/profileVisitUser/publication";

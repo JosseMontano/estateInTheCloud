@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ImgLogin from "../assets/imgLogin.png";
-import { ColorBtn } from "@/styles/globals";
+import { ColorBtn } from "@/global/styles/globals";
 const Container = styled.div<{ ColorBtn: string }>`
   background-color: ${(props) => props.ColorBtn};
   display: grid;

@@ -1,6 +1,6 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
-import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
+import { H2, P, Container, ContainerContent } from "@/global/styles/modal/perfil";
 import Loader from "@/global/components/loading";
 import ImgCom from "./img";
 import useLoadData from "@/global/hooks/useFetch";

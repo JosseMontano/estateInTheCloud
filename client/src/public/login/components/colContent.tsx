@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorText, Title } from "@/styles/globals";
+import { ColorText, Title } from "@/global/styles/globals";
 
 const Container = styled.div`
   display: grid;
