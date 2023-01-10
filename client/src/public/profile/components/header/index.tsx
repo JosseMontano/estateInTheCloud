@@ -6,7 +6,7 @@ import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
 import { getUserById } from "@/services/user";
 import UseLoadData from "@/global/hooks/useFetch";
-import { User } from "@/interfaces/user";
+import  UserType from "@/interfaces/user";
 
 const Container = styled.div`
   display: grid;
@@ -32,7 +32,7 @@ interface Params {
   toggle: () => void;
 }
 const Header = ({ amountPublciation, idUser, toggle }: Params) => {
-  const { data } = UseLoadData<User>(getUserById, idUser);
+  const { data } = UseLoadData<UserType>(getUserById, idUser);
   const [exists, setExists] = useState(false);
   useEffect(() => {
     if (data) {

@@ -9,9 +9,7 @@ import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
-import { postComment } from "@/services/comment";
-import { User } from "@/interfaces/user";
-import { useMutation } from "@apollo/client";
+import  UserType from "@/interfaces/user";
 import { useComments } from "@/context/comments/commentsContext";
 const Container = styled.div`
   display: grid;
@@ -41,7 +39,7 @@ const Header = (params: Params) => {
   const { email, iUserNumber, cellphonenumber, amountPublication } = params;
   const { idUser } = useNameUser();
   const { addComment } = useComments();
-  const { data } = useLoadDataParams<User>(getUserById, iUserNumber);
+  const { data } = useLoadDataParams<UserType>(getUserById, iUserNumber);
   const { isShown, toggle } = UseModal({});
   const [exists, setExists] = useState(false);
 

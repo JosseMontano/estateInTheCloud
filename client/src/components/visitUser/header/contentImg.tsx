@@ -1,4 +1,4 @@
-import { User } from "@/interfaces/user";
+import  UserType  from "@/interfaces/user";
 import {
   Container,
   ChangePhoto,
@@ -7,7 +7,7 @@ import {
 import ImgDataBase from "./imgDataBase";
 
 interface Params {
-  data: User[];
+  data: UserType[];
   exists: boolean;
 }
 

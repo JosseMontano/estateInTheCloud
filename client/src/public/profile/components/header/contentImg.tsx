@@ -1,10 +1,10 @@
-import { User } from "@/interfaces/user";
+import  UserType  from "@/interfaces/user";
 import { Container, ChangePhoto, InputFile } from "../../styles/contentImg";
 import ImgDataBase from "./imgDataBase";
 
 interface Params {
   exists: boolean;
-  data: User[];
+  data: UserType[];
 }
 
 const ContentImg = ({ data, exists }: Params) => {
