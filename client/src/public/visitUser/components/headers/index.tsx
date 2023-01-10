@@ -1,4 +1,4 @@
-import { useNameUser } from "@/context/nameUserContext";
+import { useNameUser } from "@/global/context/nameUserContext";
 import useLoadDataParams from "@/global/hooks/useFetch";
 import { UseModal } from "@/global/hooks/useModal";
 import { getUserById } from "@/services/user";
@@ -8,9 +8,9 @@ import { Modal } from "@/global/components/modal";
 import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
-import ContentModal from "./publicCommenator/contentModal";
+import ContentModal from "./publicCommentator/contentModal";
 import  UserType from "@/global/interfaces/user";
-import { useComments } from "@/context/comments/commentsContext";
+import { useComments } from "@/public/visitUser/context/commentsContext";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;

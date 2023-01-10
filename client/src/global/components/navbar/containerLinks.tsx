@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { UseModal } from "@/global/hooks/useModal";
 import Links from "./links";
 import { logOut } from "@/services/auth";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 
 import { Modal } from "@/global/components/modal";
 import ModalQuestion from "@/public/home/components/modalQuestion";

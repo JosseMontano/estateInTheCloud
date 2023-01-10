@@ -3,14 +3,14 @@ import Header from "./components/header";
 import { marginGlobal, ColorText } from "@/styles/globals";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
 import { Suspense, useEffect } from "react";
-import { useNameUser } from "@/context/nameUserContext";
+import { useNameUser } from "@/global/context/nameUserContext";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import { UseModal } from "@/global/hooks/useModal";
 import { Modal } from "@/global/components/modal";
 import ContentModal from "./components/createRealEstate";
 import Navbar from "@/global/components/navbar";
 import { RealEstate } from "@/global/interfaces/realEstate";
-import { useProfile } from "@/context/profile/profileContext";
+import { useProfile } from "@/global/context/profileContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   min-height: 100vh;

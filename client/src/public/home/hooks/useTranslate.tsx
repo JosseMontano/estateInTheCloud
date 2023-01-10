@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import translate from "@/utilities/translate";
-import { useLanguage } from "@/context/languageContext";
+import translate from "@/public/home/utilities/translate";
+import { useLanguage } from "@/global/context/languageContext";
 
 interface Params {
   description: string;

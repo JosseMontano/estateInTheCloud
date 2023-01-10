@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../components/visitUser/header";
-import { marginGlobal, ColorText } from "../styles/globals";
-import Comments from "../components/visitUser/comments";
+import Header from "./components/headers";
+import { marginGlobal, ColorText } from "../../styles/globals";
+import Comments from "./components/comments";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
-import { RealEstate } from "../global/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import { Suspense, useEffect } from "react";
 import Navbar from "@/global/components/navbar";
-import { useProfile } from "@/context/profile/profileContext";
+import { useProfile } from "@/global/context/profileContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   height: 100%;

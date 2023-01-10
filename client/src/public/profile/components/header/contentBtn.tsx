@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { marginInElements } from "@/styles/globals";
 import { Btn } from "@/styles/btn";
-import { useLanguage } from "@/context/languageContext";
-import { useNameUser } from "@/context/nameUserContext";
+import { useLanguage } from "@/global/context/languageContext";
+import { useNameUser } from "@/global/context/nameUserContext";
 
 const Container = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Message from "./message";
 import { Btn } from "@/styles/btn";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import config from "@/config";
 interface Params {
   idUser: number;

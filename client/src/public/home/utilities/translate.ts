@@ -1,4 +1,4 @@
-import translateSer from "@/services/translate";
+import translateSer from "../services/translate";
 
 const translate = async (text: string) => {
   const { json } = await translateSer(text);

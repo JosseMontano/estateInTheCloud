@@ -8,7 +8,7 @@ import { Suspense, useState } from "react";
 import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "./icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import { Modal } from "@/global/components/modal";
 import { UseModal } from "@/global/hooks/useModal";
 import FormRegister from "./components/formRegister";

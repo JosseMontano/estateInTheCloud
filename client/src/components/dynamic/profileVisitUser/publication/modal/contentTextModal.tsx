@@ -2,7 +2,7 @@ import { RealEstate } from "@/global/interfaces/realEstate";
 import { ContainerContent, H2, P, ContainerBtn } from "@/styles/modal/perfil";
 import { InputFile } from "@/styles/globals";
 import { useState } from "react";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import { Btn } from "@/styles/btn";
 
 interface params {

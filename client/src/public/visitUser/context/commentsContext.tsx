@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import Children from "@/global/interfaces/children";
-import { addCommentSubs, getCommentsByUser } from "@/services/comment";
+import { addCommentSubs, getCommentsByUser } from "@/public/visitUser/services/comment";
 import { useMutation, useQuery, useSubscription } from "@apollo/client";
-import { deleteComment, deleteCommentSubs } from "@/services/comment";
+import { deleteComment, deleteCommentSubs } from "@/public/visitUser/services/comment";
 import { Comments } from "@/interfaces/comments";
 import { useApolloClient } from "@apollo/client";
-import { postComment } from "@/services/comment";
+import { postComment } from "@/public/visitUser/services/comment";
 import { CommentsPostType } from "@/interfaces/comments";
 interface ContextType {
   data: any;

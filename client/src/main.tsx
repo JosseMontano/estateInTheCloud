@@ -1,20 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import LoadProvider from "./context/nameUserContext";
+import LoadProvider from "./global/context/nameUserContext";
 import { HomeContextProvider } from "./public/home/context/homeContext";
-import { LanguageContextProvider } from "./context/languageContext";
-import { CommentsContextProvider } from "./context/comments/commentsContext";
+import { LanguageContextProvider } from "./global/context/languageContext";
+import { CommentsContextProvider } from "./public/visitUser/context/commentsContext";
 
 import { ApolloClient, HttpLink, split } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
 import { http } from "./services/http";
 import { ApolloProvider } from "@apollo/client/react";
-import { WebSocketLink } from "@apollo/link-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
-import { ProfileContextProvider } from "./context/profile/profileContext";
+import { ProfileContextProvider } from "./global/context/profileContext";
 const sLink = new HttpLink({
   uri: `${http}graphql`,
 });

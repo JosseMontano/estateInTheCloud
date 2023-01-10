@@ -1,6 +1,6 @@
 import { Label } from "jz-validation-form";
 import SelectCom from "./select";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
 import { getTypeRealEstate } from "@/services/realEstate";
 import useLoadData from "@/global/hooks/useFetch";

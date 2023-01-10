@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import Message from "@/global/components/message";
-import { useNameUser } from "@/context/nameUserContext";
+import { useNameUser } from "@/global/context/nameUserContext";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";
-import { useLanguage } from "@/context/languageContext";
-import { useComments } from "@/context/comments/commentsContext";
+import { useLanguage } from "@/global/context/languageContext";
+import { useComments } from "@/public/visitUser/context/commentsContext";
 
 const Container = styled.div`
   margin: 0 10%;

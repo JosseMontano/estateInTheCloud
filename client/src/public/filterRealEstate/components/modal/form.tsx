@@ -1,4 +1,4 @@
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 import { Button } from "jz-validation-form";
 import { Form, Formik } from "formik";

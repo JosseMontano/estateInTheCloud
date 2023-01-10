@@ -14,7 +14,7 @@ import LoadAndResponse from "@/global/components/loadAndResponse";
 import useLoadData from "@/global/hooks/useFetch";
 import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import Event from "@/global/interfaces/event";
-import { useProfile } from "@/context/profile/profileContext";
+import { useProfile } from "@/global/context/profileContext";
 interface Params {
   v: RealEstate;
   showbtn: boolean;

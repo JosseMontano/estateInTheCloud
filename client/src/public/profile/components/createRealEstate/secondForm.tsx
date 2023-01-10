@@ -5,7 +5,7 @@ import {
   InputFile,
   ColorBtnSecond,
 } from "@/styles/globals";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
 import { useState } from "react";
 import styled from "styled-components";

@@ -2,10 +2,10 @@ import Card from "./card";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import Title from "./title";
 import styled from "styled-components";
-import Carousel from "@/components/dynamic/carousel";
+import Carousel from "@/global/components/carousel";
 import { useRef } from "react";
 import DataEmpty from "@/global/components/dataEmpty";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 
 const ContainerCard = styled.div`
   display: flex;

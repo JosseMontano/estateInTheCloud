@@ -6,7 +6,7 @@ import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
 import Navbar from "@/global/components/navbar";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 
 const Container = styled.div`
   width: 100%;

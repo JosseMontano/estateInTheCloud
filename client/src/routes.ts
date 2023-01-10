@@ -11,7 +11,7 @@ interface RouteType {
 }
 
 const Login = lazy(() => import("./public/login"));
-const VisitUser = lazy(() => import("./pages/visitUser"));
+const VisitUser = lazy(() => import("./public/visitUser"));
 const Home = lazy(() => import("./public/home"));
 const Profile = lazy(() => import("./public/profile"));
 const TypeRealEstate = lazy(() => import("./public/filterRealEstate"));

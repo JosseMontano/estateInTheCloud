@@ -4,12 +4,12 @@ import Button from "./button";
 import { initialForm, validationsForm } from "@/public/login/validations/register";
 import { signUp } from "../services/auth";
 import ContentFormRegister from "./contentFormRegister";
-import LoadingAndResponse from "@/components/dynamic/loadingAndResponse";
+import LoadingAndResponse from "@/global/components/loadAndResponse";
 import { useState } from "react";
 import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "../icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import { FormRegister } from "@/public/login/interfaces/formAuth";
 
 const Container = styled.form`

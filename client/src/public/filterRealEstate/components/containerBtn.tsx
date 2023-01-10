@@ -1,4 +1,4 @@
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";

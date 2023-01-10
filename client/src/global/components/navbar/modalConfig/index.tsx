@@ -1,5 +1,5 @@
 import Languages from "@/global/components/language";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 
 const Container = styled.div`

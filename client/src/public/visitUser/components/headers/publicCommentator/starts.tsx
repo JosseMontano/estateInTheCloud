@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import StartIcon from "../../../../icons/start";
+import StartIcon from "../../../../../icons/start";
 
 const Container = styled.div<{ puntuation: number; hover: number }>`
   .star-widget {

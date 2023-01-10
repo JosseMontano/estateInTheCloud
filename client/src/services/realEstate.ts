@@ -2,8 +2,6 @@ import { http } from "./http";
 import { index } from "@/utilities/getServices";
 import { gql } from "@apollo/client";
 
-
-
 export const getREByProfile = gql`
   query GET($idUser: Float!) {
     GET_REAL_ESTATE_BY_ID_USER(idUser: $idUser) {

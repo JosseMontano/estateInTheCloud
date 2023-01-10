@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useLanguage } from "@/context/languageContext";
-import { useComments } from "@/context/comments/commentsContext";
+import { useLanguage } from "@/global/context/languageContext";
+import { useComments } from "@/public/visitUser/context/commentsContext";
 
 const Container = styled.div`
   display: flex;

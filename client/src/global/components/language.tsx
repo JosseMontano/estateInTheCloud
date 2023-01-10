@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 
 const ContainerLabel = styled.div`
   text-align: center;

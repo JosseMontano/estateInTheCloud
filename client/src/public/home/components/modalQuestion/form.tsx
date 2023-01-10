@@ -1,7 +1,7 @@
 import React from "react";
 import { ColorBtn } from "@/styles/globals";
 import { Input, Button, MsgError } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 
 interface params {
   handleChange: (

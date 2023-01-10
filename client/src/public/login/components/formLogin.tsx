@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
-import LoadingAndResponse from "@/components/dynamic/loadingAndResponse";
+import LoadingAndResponse from "@/global/components/loadAndResponse";
 import Language from "@/global/components/language";
 const Container = styled.form``;
 

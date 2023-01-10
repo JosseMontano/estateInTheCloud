@@ -5,7 +5,7 @@ import FormComponent from "./form";
 import styled from "styled-components";
 import LoadAndResponse from "@/global/components/loadAndResponse";
 import { UseForm } from "jz-validation-form";
-import { useLanguage } from "@/context/languageContext";
+import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
 
 const Container = styled.div``;
