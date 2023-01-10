@@ -28,11 +28,6 @@ interface ParamsType {
   toggle: () => void;
 }
 
-interface BtnJSXType {
-  onclick: () => void;
-  text: string;
-}
-
 const Index = ({ changeData, toggle }: ParamsType) => {
   const { text } = useLanguage();
   const { data } = useLoadData<ParamsTypeRealEstate>(getTypeRealEstate);

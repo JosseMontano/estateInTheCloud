@@ -4,7 +4,7 @@ import Home from "./home";
 import Img360 from "./img360";
 import Login from "./login";
 import Profile from "./profile";
-import TypeRealEstate from "./filterRealEstate";
+import TypeRealEstate from "../public/filterRealEstate";
 import VisitUser from "./visitUser";
 
 export {

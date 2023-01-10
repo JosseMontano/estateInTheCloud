@@ -1,11 +1,10 @@
 import styled from "styled-components";
-
 import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
 import Event from "@/interfaces/event";
-
 import { useLanguage } from "@/context/languageContext";
 import FormComponent from "./form";
-import { RealEstateFilterCustom } from "@/interfaces/realEstate";
+import { RealEstateFilterCustom } from "../../interfaces/filterCustom";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -22,7 +21,6 @@ const Index = ({ searchCustom }: Params) => {
   return (
     <Container>
       <FormComponent searchCustom={searchCustom} />
-
       <ShowTypeRealEstate handleChange={handleChange} />
     </Container>
   );

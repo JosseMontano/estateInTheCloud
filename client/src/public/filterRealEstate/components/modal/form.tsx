@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "jz-validation-form";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { RealEstateFilterCustom } from "@/interfaces/realEstate";
+import { RealEstateFilterCustom } from "../../interfaces/filterCustom";
 import TextInput from "./textInput";
 import { ColorBtn } from "@/styles/globals";
 

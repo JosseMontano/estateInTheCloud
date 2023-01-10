@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import Search from "@/components/global/search";
 import { UseModal } from "@/hooks/useModal";
-import { RealEstate, RealEstateFilterCustom } from "@/interfaces/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import useSearch from "@/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
-import { getRealEstateByType } from "@/services/realEstate";
-import ContainerBtn from "@/components/typeRealEstate/containerBtn";
-import ModalContent from "@/components/typeRealEstate/modal";
-import ContainerCard from "@/components/typeRealEstate/containerCard";
+import ContainerBtn from "./components/containerBtn";
+import ModalContent from "./components/modal";
+import ContainerCard from "./components/containerCard";
 import Navbar from "@/components/navbar";
 import { Modal } from "@/components/global/modal";
-import { getRealEstateByFilterCustom } from "@/services/realEstate";
+import {
+  getRealEstateByFilterCustom,
+  getRealEstateByType,
+} from "./services/get";
+import { RealEstateFilterCustom } from "./interfaces/filterCustom";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -44,10 +47,9 @@ const TypeRealEstate = () => {
   });
 
   const searchCustom = async (form: RealEstateFilterCustom) => {
-    console.log(form);
-    const {json, status} = await getRealEstateByFilterCustom(form)
-    console.log(status)
-    console.log(json)
+    const { json } = await getRealEstateByFilterCustom(form);
+    setData(json);
+    toggle();
   };
 
   useEffect(() => {
