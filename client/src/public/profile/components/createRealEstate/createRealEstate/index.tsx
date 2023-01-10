@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useNameUser } from "@/context/nameUserContext";
-import { saveRealEstate } from "@/services/realEstate";
+import { saveRealEstate } from "@/public/profile/services/post";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import FirstForm from "./firstForm";
 import { RealEstate } from "@/interfaces/realEstate";

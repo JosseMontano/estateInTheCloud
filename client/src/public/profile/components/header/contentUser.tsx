@@ -1,5 +1,4 @@
 import { useNameUser } from "@/context/nameUserContext";
-import { useContext } from "react";
 import styled from "styled-components";
 
 const Container = styled.div``;

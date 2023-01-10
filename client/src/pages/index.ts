@@ -3,7 +3,7 @@ import AnswerQuestionInterested from "./answerQuestionInterested";
 import Home from "./home";
 import Img360 from "./img360";
 import Login from "./login";
-import Profile from "./profile";
+import Profile from "../public/profile";
 import TypeRealEstate from "../public/filterRealEstate";
 import VisitUser from "./visitUser";
 

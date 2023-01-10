@@ -13,7 +13,7 @@ interface RouteType {
 const Login = lazy(() => import("../pages/login"));
 const VisitUser = lazy(() => import("../pages/visitUser"));
 const Home = lazy(() => import("../pages/home"));
-const Profile = lazy(() => import("../pages/profile"));
+const Profile = lazy(() => import("../public/profile"));
 const TypeRealEstate = lazy(() => import("../public/filterRealEstate"));
 
 export const routes: RouteType[] = [

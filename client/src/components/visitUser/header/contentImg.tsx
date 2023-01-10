@@ -3,7 +3,7 @@ import {
   Container,
   ChangePhoto,
   InputFile,
-} from "@/styles/profile/header/contentImg";
+} from "@/public/profile/styles/contentImg";
 import ImgDataBase from "./imgDataBase";
 
 interface Params {
