@@ -1,9 +1,9 @@
-import IQuestion from "@/interfaces/question";
+import QuestionType from "../interfaces/question";
 import { CardSoon, Box } from "@/styles/card";
 import ContentCard from "./contentCard";
 
 interface Params {
-  v: IQuestion;
+  v: QuestionType;
   handleClick: (id?: number) => void;
 }
 

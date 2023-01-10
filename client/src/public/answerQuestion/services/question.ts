@@ -1,7 +1,7 @@
-import { http, headers } from "./http";
-import Question from "../interfaces/question";
-import { index } from "../utilities/getServices";
-import deleteServ from "../utilities/deleteServices";
+import { http, headers } from "@/services/http";
+import QuestionType from "../interfaces/question";
+import { index } from "@/utilities/getServices";
+import deleteServ from "@/utilities/deleteServices";
 
 export const getQuestions = async (idRealEstate: number | undefined) => {
   const url = `${http}question/${idRealEstate}`;
@@ -9,7 +9,7 @@ export const getQuestions = async (idRealEstate: number | undefined) => {
   return { json, status };
 };
 
-export const postQuestion = async (form: Question) => {
+export const postQuestion = async (form: QuestionType) => {
   try {
     const response = await fetch(`${http}question`, {
       method: "POST",

@@ -1,8 +1,8 @@
-import IQuestion from "@/interfaces/question";
+import QuestionType from "../interfaces/question";
 import { Content, Btn, Description, Icon, Title } from "@/styles/card";
 
 interface Params {
-  v: IQuestion;
+  v: QuestionType;
   handleClick: (id?: number) => void;
 }
 

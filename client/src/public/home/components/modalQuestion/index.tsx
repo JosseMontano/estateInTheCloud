@@ -1,7 +1,6 @@
-import React from "react";
 import { Title, ColorText } from "@/styles/globals";
-import { postQuestion } from "@/services/question";
-import { initialForm, validationsForm } from "@/validations/question";
+import { postQuestion } from "@/public/answerQuestion/services/question";
+import { initialForm, validationsForm } from "@/public/answerQuestion/validations/question";
 import FormComponent from "./form";
 import styled from "styled-components";
 import LoadAndResponse from "@/global/components/loadAndResponse";

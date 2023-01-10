@@ -1,16 +1,16 @@
-import Card from "../styles/card";
+import Card from "../../styles/card";
 import { Suspense, useState } from "react";
 import { UseModal } from "@/global/hooks/useModal";
-import ModalCom from "../components/answerQuestion/modal";
+import ModalCom from "./components/modal";
 import { useParams } from "react-router-dom";
-import CardComponent from "../components/answerQuestion";
-import useLoadData from "../global/hooks/useFetch";
-import { getQuestions } from "../services/question";
+import CardComponent from "./components";
+import useLoadData from "../../global/hooks/useFetch";
+import { getQuestions } from "./services/question";
 import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { addAnswer } from "@/services/answer";
 import Navbar from "@/global/components/navbar";
 import styled from "styled-components";
-import Question from "@/interfaces/question";
+import QuestionType from "@/public/answerQuestion/interfaces/question";
 import { useMutation } from "@apollo/client";
 
 const Container = styled.div`
@@ -23,7 +23,10 @@ const AnswerQuestion = () => {
   const { id } = useParams();
   const id_real_estate = parseInt(id!);
   //get data
-  const { data, loading } = useLoadData<Question>(getQuestions, id_real_estate);
+  const { data, loading } = useLoadData<QuestionType>(
+    getQuestions,
+    id_real_estate
+  );
   //verify user
   const {} = useVerifyUserLogin();
 

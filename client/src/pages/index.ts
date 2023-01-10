@@ -1,4 +1,4 @@
-import AnswerQuestion from "./answerQuestion";
+import AnswerQuestion from "../public/answerQuestion";
 import AnswerQuestionInterested from "../public/questionsAnswered";
 import Img360 from "../public/img360";
 import VisitUser from "./visitUser";

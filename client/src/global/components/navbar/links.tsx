@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Enlace } from "@/interfaces/nav";
+import { Enlace } from "@/global/interfaces/nav";
 
 
 const Container = styled.li`

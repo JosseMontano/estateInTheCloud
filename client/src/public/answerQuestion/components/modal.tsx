@@ -1,14 +1,12 @@
-import { Modal } from "@/global/components//modal";
+import { Modal } from "@/global/components/modal";
 import ContentModal from "./contentModal";
-import Question from "@/interfaces/question";
-import Answer from "@/interfaces/answer";
-import Event from "@/global/interfaces/event";
+import QuestionType from "../interfaces/question";
 interface Params {
   isShown: boolean;
   toggle: () => void;
   id: number;
   idQuestion: number;
-  data: Question[];
+  data: QuestionType[];
   handleAddAnswer:(answerInput: string)=>void;
 }
 
