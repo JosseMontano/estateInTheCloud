@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { HashRouter } from "react-router-dom";
-import "./App.css";
+import "@/global/styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 const App = () => {

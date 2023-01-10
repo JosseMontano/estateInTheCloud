@@ -1,4 +1,4 @@
-import Config from "../config";
+import Config from "./config";
 
 export const http = Config.backendUrlDev;
 /* export const http = Config.backendUrlProd; */

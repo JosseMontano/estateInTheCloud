@@ -2,7 +2,7 @@ import { useState } from "react";
 import Message from "./message";
 import { Btn } from "@/global/styles/btn";
 import { useLanguage } from "@/global/context/languageContext";
-import config from "@/config";
+import config from "@/config/config";
 interface Params {
   idUser: number;
   email: string;

@@ -1,9 +1,7 @@
 /* import 'vite/client'  */
-
 interface EnvType {
   backendUrlDev: string;
   backendUrlProd: String;
-  img360Url: string;
   frontendUrlDev: string;
 }
 /* const env:EnvType = {
@@ -15,7 +13,6 @@ interface EnvType {
 const env: EnvType = {
   backendUrlDev: "http://localhost:3000/",
   backendUrlProd: "https://realestate-server-production.up.railway.app/",
-  img360Url: "https://realestate360-db9fa.web.app/",
   frontendUrlDev: "http://127.0.0.1:5173/#/",
 };
 

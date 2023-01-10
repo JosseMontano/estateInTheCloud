@@ -5,7 +5,6 @@ import LoadProvider from "./global/context/nameUserContext";
 import { HomeContextProvider } from "./public/home/context/homeContext";
 import { LanguageContextProvider } from "./global/context/languageContext";
 import { CommentsContextProvider } from "./public/visitUser/context/commentsContext";
-
 import { ApolloClient, HttpLink, split } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
 import { http } from "./config/http";
@@ -14,6 +13,7 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import { ProfileContextProvider } from "./global/context/profileContext";
+
 const sLink = new HttpLink({
   uri: `${http}graphql`,
 });
