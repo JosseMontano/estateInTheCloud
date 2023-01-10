@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "./components/header";
 import { marginGlobal, ColorText } from "@/styles/globals";
-import Publication from "@/components/dynamic/profileVisitUser/publication";
+import Publication from "@/global/components/dynamic/profileVisitUser/publication";
 import { Suspense, useEffect } from "react";
 import { useNameUser } from "@/global/context/nameUserContext";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
