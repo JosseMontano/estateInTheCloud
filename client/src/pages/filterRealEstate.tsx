@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Search from "@/components/global/search";
 import { UseModal } from "@/hooks/useModal";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate, RealEstateFilterCustom } from "@/interfaces/realEstate";
 import useSearch from "@/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
 import { getRealEstateByType } from "@/services/realEstate";
@@ -10,6 +10,7 @@ import ModalContent from "@/components/typeRealEstate/modal";
 import ContainerCard from "@/components/typeRealEstate/containerCard";
 import Navbar from "@/components/navbar";
 import { Modal } from "@/components/global/modal";
+import { getRealEstateByFilterCustom } from "@/services/realEstate";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -42,6 +43,13 @@ const TypeRealEstate = () => {
     return search(v);
   });
 
+  const searchCustom = async (form: RealEstateFilterCustom) => {
+    console.log(form);
+    const {json, status} = await getRealEstateByFilterCustom(form)
+    console.log(status)
+    console.log(json)
+  };
+
   useEffect(() => {
     changeData("Garzonier");
   }, []);
@@ -54,7 +62,11 @@ const TypeRealEstate = () => {
         <ContainerBtn toggle={toggle} changeData={changeData} />
         <ContainerCard dataFilter={dataFilter} />
       </Container>
-      <Modal hide={toggle} isShown={isShown} modalContent={<ModalContent />} />
+      <Modal
+        hide={toggle}
+        isShown={isShown}
+        modalContent={<ModalContent searchCustom={searchCustom} />}
+      />
     </Suspense>
   );
 };
