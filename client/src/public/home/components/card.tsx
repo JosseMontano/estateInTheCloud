@@ -3,7 +3,7 @@ import { RealEstate } from "@/interfaces/realEstate";
 import styled from "styled-components";
 import { Modal } from "@/global/components/modal";
 import ContentCard from "./contentCard";
-import { ContentModal } from "./modal";
+import { ContentModal } from "./modal/contentModal";
 
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

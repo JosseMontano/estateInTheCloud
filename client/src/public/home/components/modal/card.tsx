@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CardCom from "@/public/home/components/contentCard";
 import { RealEstate } from "@/interfaces/realEstate";
 import { Modal } from "@/global/components/modal";
-import { ContentModal } from "@/public/home/components/modal";
+import { ContentModal } from "@/public/home/components/modal/contentModal";
 import { UseModal } from "@/global/hooks/useModal";
 
 export const ContainerSoon = styled.div`

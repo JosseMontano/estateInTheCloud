@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Card from "@/components/houses";
-import NoFound from "@/components/houses/notFound";
+import Card from "@/public/home/components/modal";
+import NoFound from "@/public/home/components/modal/notFound";
 import { RealEstate } from "@/interfaces/realEstate";
 
 export const ContainerCardCss = styled.div`
@@ -13,7 +13,7 @@ interface ParamsType {
   dataFilter: RealEstate[];
 }
 
-const ContainerCard = ({ dataFilter}: ParamsType) => {
+const ContainerCard = ({ dataFilter }: ParamsType) => {
   return (
     <ContainerCardCss>
       <Card dataFilter={dataFilter} />
