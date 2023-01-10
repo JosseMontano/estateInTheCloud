@@ -1,9 +1,9 @@
-import { getAnswerByRealEstate } from "../services/answer";
+import { getAnswerByRealEstate } from "../../services/answer";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import DataEmpty from "../components/global/dataEmpty";
-import CardSoon from "../components/answerQuestionInterested";
-import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+import DataEmpty from "../../components/global/dataEmpty";
+import CardSoon from "./components/";
+import useVerifyUserLogin from "../../hooks/useVerifyUserLogin";
 import { Suspense } from "react";
 import Navbar from "@/components/navbar";
 import { useQuery } from "@apollo/client";

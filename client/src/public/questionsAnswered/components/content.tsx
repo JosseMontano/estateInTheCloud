@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IAQ from "@/interfaces/answerQuestionInterested";
+import IAQ from "@/public/questionsAnswered/interfaces/answerQuestionInterested";
 
 const Question = styled.div`
   text-align: center;

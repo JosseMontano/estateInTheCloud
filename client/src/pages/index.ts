@@ -1,5 +1,5 @@
 import AnswerQuestion from "./answerQuestion";
-import AnswerQuestionInterested from "./answerQuestionInterested";
+import AnswerQuestionInterested from "../public/questionsAnswered";
 import Home from "../public/home";
 import Img360 from "../public/img360";
 import Login from "./login";

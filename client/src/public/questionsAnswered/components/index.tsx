@@ -1,4 +1,4 @@
-import IAQ from "@/interfaces/answerQuestionInterested";
+import IAQ from "@/public/questionsAnswered/interfaces/answerQuestionInterested";
 import styled from "styled-components";
 import Content from "./content";
 
