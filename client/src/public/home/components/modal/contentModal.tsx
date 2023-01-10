@@ -1,5 +1,5 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
-import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
+import { getRealEstateOfOnePublication as getRealEstate } from "@/global/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/global/styles/modal/perfil";
 import Loader from "@/global/components/loading";
 import ImgCom from "./img";
@@ -8,7 +8,7 @@ import { useRef } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "@/global/components/carousel";
 import { useLanguage } from "@/global/context/languageContext";
-import handleDownloadImg from "@/utilities/downloadImg";
+import handleDownloadImg from "@/global/utilities/downloadImg";
 import useModal from "../../hooks/useModal";
 import useTranslate from "../../hooks/useTranslate";
 

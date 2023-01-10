@@ -7,7 +7,7 @@ import CardComponent from "./components";
 import useLoadData from "../../global/hooks/useFetch";
 import { getQuestions } from "./services/question";
 import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
-import { addAnswer } from "@/services/answer";
+import { addAnswer } from "./services/answer";
 import Navbar from "@/global/components/navbar";
 import styled from "styled-components";
 import QuestionType from "@/public/answerQuestion/interfaces/question";

@@ -1,5 +1,5 @@
 import { marginInElements } from "@/global/styles/globals";
-import handleSendWhatsapp from "@/utilities/sendWhatsapp";
+import handleSendWhatsapp from "@/global/utilities/sendWhatsapp";
 import styled from "styled-components";
 
 const Container = styled.div`

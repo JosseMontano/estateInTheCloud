@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Comments } from "@/public/visitUser/interfaces/comments";
-import { getUserById } from "@/services/user";
+import { getUserById } from "@/global/services/user";
 import ShowStarts from "./showStarts";
 
 const Container = styled.div`

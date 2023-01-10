@@ -1,4 +1,4 @@
-import { index } from "@/utilities/getServices";
+import { index } from "@/global/utilities/getServices";
 
 interface TranslateType {
   responseData: ResponseData;

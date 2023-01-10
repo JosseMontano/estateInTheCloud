@@ -1,4 +1,4 @@
-import { http } from "./http";
+import { http } from "../../../config/http";
 import deleteServ from "../utilities/deleteServices";
 import { gql } from "@apollo/client/core";
 

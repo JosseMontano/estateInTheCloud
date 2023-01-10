@@ -11,7 +11,7 @@ import Check from "./check";
 import ContainerLinks from "./containerLinks";
 import { useNameUser } from "@/global/context/nameUserContext";
 import NameUser from "./nameUser";
-import { getEmail } from "@/services/auth";
+import { getEmail } from "@/global/services/auth";
 import AuxNav from "./auxNav";
 import { useLanguage } from "@/global/context/languageContext";
 const Nav = styled.nav<{ ColorBtn: string }>`

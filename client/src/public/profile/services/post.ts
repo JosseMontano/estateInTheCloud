@@ -1,4 +1,4 @@
-import { http } from "@/services/http";
+import { http } from "@/config/http";
 
 export const saveRealEstate = async (data: FormData) => {
     try {

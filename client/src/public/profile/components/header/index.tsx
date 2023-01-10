@@ -4,7 +4,7 @@ import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
-import { getUserById } from "@/services/user";
+import { getUserById } from "@/global/services/user";
 import UseLoadData from "@/global/hooks/useFetch";
 import  UserType from "@/global/interfaces/user";
 

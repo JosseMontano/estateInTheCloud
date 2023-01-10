@@ -2,7 +2,7 @@ import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
-import { getTypeRealEstate } from "@/services/realEstate";
+import { getTypeRealEstate } from "@/global/services/realEstate";
 
 const ContainerBtn = styled.div`
   display: flex;

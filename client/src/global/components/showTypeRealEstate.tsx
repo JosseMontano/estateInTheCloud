@@ -2,7 +2,7 @@ import { Label } from "jz-validation-form";
 import SelectCom from "./select";
 import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
-import { getTypeRealEstate } from "@/services/realEstate";
+import { getTypeRealEstate } from "@/global/services/realEstate";
 import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
 import styled from "styled-components";

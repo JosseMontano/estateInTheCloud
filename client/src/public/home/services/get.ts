@@ -1,5 +1,5 @@
-import { http } from "@/services/http";
-import { index } from "@/utilities/getServices";
+import { http } from "@/config/http";
+import { index } from "@/global/utilities/getServices";
 
 export const getREAll = async <T>(): Promise<{
   json: T;

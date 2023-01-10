@@ -3,7 +3,7 @@ import {
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication as services,
   updateStateRealEstate,
-} from "@/services/realEstate";
+} from "@/global/services/realEstate";
 import { useState } from "react";
 import useToast from "@/global/hooks/useToast";
 import { Container } from "@/global/styles/modal/perfil";

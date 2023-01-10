@@ -1,7 +1,7 @@
-import { http, headers } from "@/services/http";
+import { http, headers } from "@/config/http";
 import QuestionType from "../interfaces/question";
-import { index } from "@/utilities/getServices";
-import deleteServ from "@/utilities/deleteServices";
+import { index } from "@/global/utilities/getServices";
+import deleteServ from "@/public/answerQuestion/utilities/deleteServices";
 
 export const getQuestions = async (idRealEstate: number | undefined) => {
   const url = `${http}question/${idRealEstate}`;

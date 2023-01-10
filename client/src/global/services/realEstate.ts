@@ -1,5 +1,5 @@
-import { http } from "./http";
-import { index } from "@/utilities/getServices";
+import { http } from "../../config/http";
+import { index } from "@/global/utilities/getServices";
 import { gql } from "@apollo/client";
 
 export const getREByProfile = gql`
@@ -31,10 +31,6 @@ export const getTypeRealEstate = async () => {
   const { json, status } = await index(url);
   return { json, status };
 };
-
-
-
-
 
 export const addNewPhotoToRealEstate = async (
   id_real_estate: number,

@@ -5,7 +5,7 @@ import {
   getREByProfile,
   updateStateRealEstate,
   updateStateRealEstateSubs,
-} from "@/services/realEstate";
+} from "@/global/services/realEstate";
 import {
   useApolloClient,
   useMutation,
@@ -13,7 +13,7 @@ import {
   useSubscription,
 } from "@apollo/client";
 import { RealEstate, FormDeleteType } from "@/global/interfaces/realEstate";
-import { deleteRealEstateProfil } from "@/services/realEstate";
+import { deleteRealEstateProfil } from "@/global/services/realEstate";
 
 interface ValuesDataType {
   GET_REAL_ESTATE_BY_ID_USER: RealEstate[];

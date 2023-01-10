@@ -1,7 +1,7 @@
 import { useNameUser } from "@/global/context/nameUserContext";
 import useLoadDataParams from "@/global/hooks/useFetch";
 import { UseModal } from "@/global/hooks/useModal";
-import { getUserById } from "@/services/user";
+import { getUserById } from "@/global/services/user";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Modal } from "@/global/components/modal";

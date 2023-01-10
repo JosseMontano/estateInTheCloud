@@ -1,4 +1,4 @@
-import { getAnswerByRealEstate } from "../../services/answer";
+import { getAnswerByRealEstate } from "../answerQuestion/services/answer";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DataEmpty from "@/global/components/dataEmpty";

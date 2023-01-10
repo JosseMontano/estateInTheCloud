@@ -6,7 +6,7 @@ import Loading from "@/global/components/loadAndResponse";
 import FirstForm from "./firstForm";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import useToast from "@/global/hooks/useToast";
-import funFormData from "@/utilities/formData";
+import funFormData from "@/global/utilities/formData";
 import Event from "@/global/interfaces/event";
 import SecondForm from "./secondForm";
 

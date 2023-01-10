@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { UseModal } from "@/global/hooks/useModal";
 import Links from "./links";
-import { logOut } from "@/services/auth";
+import { logOut } from "@/global/services/auth";
 import { useLanguage } from "@/global/context/languageContext";
 
 import { Modal } from "@/global/components/modal";

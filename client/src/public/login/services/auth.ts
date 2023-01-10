@@ -1,6 +1,6 @@
 import { FormLogin, FormRegister } from "@/public/login/interfaces/formAuth";
-import saveCookie from "@/utilities/saveCookie";
-import { http, headers } from "@/services/http";
+import saveCookie from "@/global/utilities/saveCookie";
+import { http, headers } from "@/config/http";
 import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
 
 export const signIn = async (form: FormLogin) => {

@@ -1,4 +1,4 @@
-import { http, headers } from "./http";
+import { http, headers } from "../../config/http";
 
 export const getEmail = async () => {
   try {

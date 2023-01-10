@@ -1,6 +1,6 @@
 import { RealEstateFilterCustom } from "../interfaces/filterCustom";
-import { http, headers } from "@/services/http";
-import { index } from "@/utilities/getServices";
+import { http, headers } from "@/config/http";
+import { index } from "@/global/utilities/getServices";
 
 export const getRealEstateByFilterCustom = async <T>(
   form: RealEstateFilterCustom
