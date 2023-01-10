@@ -7,7 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import ContainerBtn from "./components/containerBtn";
 import ModalContent from "./components/modal";
 import ContainerCard from "./components/containerCard";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import { Modal } from "@/global/components/modal";
 import {
   getRealEstateByFilterCustom,

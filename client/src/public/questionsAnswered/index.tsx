@@ -5,7 +5,7 @@ import DataEmpty from "@/global/components/dataEmpty";
 import CardSoon from "./components/";
 import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { Suspense } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import { useQuery } from "@apollo/client";
 
 const Container = styled.div`

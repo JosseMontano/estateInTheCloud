@@ -8,7 +8,7 @@ import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import { UseModal } from "@/global/hooks/useModal";
 import { Modal } from "@/global/components/modal";
 import ContentModal from "./components/createRealEstate";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import { RealEstate } from "@/interfaces/realEstate";
 import { useProfile } from "@/context/profile/profileContext";
 

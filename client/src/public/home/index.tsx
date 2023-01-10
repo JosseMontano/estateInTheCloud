@@ -5,7 +5,7 @@ import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import { useLanguage } from "@/context/languageContext";
 
 const Container = styled.div`

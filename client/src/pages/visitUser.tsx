@@ -7,7 +7,7 @@ import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
 import { RealEstate } from "../interfaces/realEstate";
 import { Suspense, useEffect } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import { useProfile } from "@/context/profile/profileContext";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`

@@ -8,7 +8,7 @@ import useLoadData from "../global/hooks/useFetch";
 import { getQuestions } from "../services/question";
 import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { addAnswer } from "@/services/answer";
-import Navbar from "@/components/navbar";
+import Navbar from "@/global/components/navbar";
 import styled from "styled-components";
 import Question from "@/interfaces/question";
 import { useMutation } from "@apollo/client";
