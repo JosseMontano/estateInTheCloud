@@ -1,6 +1,6 @@
 import AnswerQuestion from "./answerQuestion";
 import AnswerQuestionInterested from "./answerQuestionInterested";
-import Home from "./home";
+import Home from "../public/home";
 import Img360 from "../public/img360";
 import Login from "./login";
 import Profile from "../public/profile";

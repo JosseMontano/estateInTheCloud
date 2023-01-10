@@ -1,9 +1,11 @@
-import Slider from "../home/content";
+import Slider from "./content";
 import { RealEstate } from "@/interfaces/realEstate";
+
 interface Params {
   dataComplete: { title: string; data: RealEstate[] }[];
   visitUser: (idUser: number, email: string) => void;
 }
+
 const index = ({ dataComplete, visitUser }: Params) => {
   return (
     <>

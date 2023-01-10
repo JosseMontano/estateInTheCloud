@@ -3,32 +3,6 @@ import { index } from "@/utilities/getServices";
 import { gql } from "@apollo/client";
 
 
-export const getRealEstateAll = async <T>(): Promise<{
-  json: T;
-  status: number;
-}> => {
-  const url = `${http}estate`;
-  const { json, status } = await index<T>(url);
-  return { json, status };
-};
-
-export const getRealEstateMostRecent = async <T>(): Promise<{
-  json: T;
-  status: number;
-}> => {
-  const url = `${http}estateMostRecent`;
-  const { json, status } = await index<T>(url);
-  return { json, status };
-};
-
-export const getRealEstateRecommendedByUser = async <T>(): Promise<{
-  json: T;
-  status: number;
-}> => {
-  const url = `${http}estateRecommendedByUser`;
-  const { json, status } = await index<T>(url);
-  return { json, status };
-};
 
 export const getREByProfile = gql`
   query GET($idUser: Float!) {

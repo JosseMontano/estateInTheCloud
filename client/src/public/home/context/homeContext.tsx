@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { RealEstate } from "../interfaces/realEstate";
+import { RealEstate } from "@/interfaces/realEstate";
 import {
-  getRealEstateAll,
-  getRealEstateMostRecent,
-  getRealEstateRecommendedByUser as getRERecommendedByUser,
-} from "../services/realEstate";
+  getREAll,
+  getREMostRecent,
+  getRERecommendedByUser,
+} from "../services/get";
 import Children from "@/interfaces/children";
-import useFetch from "@/hooks/useFetch";
+
 interface homeContext {
   homeData: RealEstate[];
   homeDataMostRecent: RealEstate[];
@@ -42,7 +42,7 @@ export const HomeContextProvider = ({ children }: Children) => {
   const [loading, setLoading] = useState(true);
 
   const handleGetRealEstateMostRecent = async () => {
-    const { json, status } = await getRealEstateMostRecent<RealEstate[]>();
+    const { json, status } = await getREMostRecent<RealEstate[]>();
     if (json) {
       if (status != 404) {
         setDataMostRecent(json);
@@ -53,7 +53,7 @@ export const HomeContextProvider = ({ children }: Children) => {
   };
 
   const handleGetRealEstate = async () => {
-    const { json, status } = await getRealEstateAll<RealEstate[]>();
+    const { json, status } = await getREAll<RealEstate[]>();
     if (json) {
       if (status != 404) {
         setData(json);

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import CardCom from "@/components/home/contentCard";
+import CardCom from "@/public/home/components/contentCard";
 import { RealEstate } from "@/interfaces/realEstate";
 import { Modal } from "../global/modal";
-import { ContentModal } from "../home/contentModal";
+import { ContentModal } from "@/public/home/components/modal";
 import { UseModal } from "@/hooks/useModal";
 
 export const ContainerSoon = styled.div`

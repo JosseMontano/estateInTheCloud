@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import LoadProvider from "./context/nameUserContext";
-import { HomeContextProvider } from "./context/homeContext";
+import { HomeContextProvider } from "./public/home/context/homeContext";
 import { LanguageContextProvider } from "./context/languageContext";
 import { CommentsContextProvider } from "./context/comments/commentsContext";
 

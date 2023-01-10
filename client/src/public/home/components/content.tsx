@@ -2,10 +2,11 @@ import Card from "./card";
 import { RealEstate } from "@/interfaces/realEstate";
 import Title from "./title";
 import styled from "styled-components";
-import Carousel from "../dynamic/carousel";
+import Carousel from "@/components/dynamic/carousel";
 import { useRef } from "react";
-import DataEmpty from "../global/dataEmpty";
+import DataEmpty from "@/components/global/dataEmpty";
 import { useLanguage } from "@/context/languageContext";
+
 const ContainerCard = styled.div`
   display: flex;
   flex-direction: column !important;

@@ -1,6 +1,6 @@
 import React from "react";
-import Message from "../../global/message";
-import Loader from "../../global/loading";
+import Message from "@/components/global/message";
+import Loader from "@/components/global/loading";
 interface props {
   loading: boolean;
   response: boolean;

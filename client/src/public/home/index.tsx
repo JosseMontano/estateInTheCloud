@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Content from "../components/home";
-import { useHome } from "../context/homeContext";
-import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
-import Skeleton from "../components/home/skeleton";
+import Content from "./components/";
+import { useHome } from "./context/homeContext";
+import useVerifyUserLogin from "@/hooks/useVerifyUserLogin";
+import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
 import Navbar from "@/components/navbar";
@@ -51,8 +51,7 @@ const Home = () => {
     <Suspense fallback={<p>Loading</p>}>
       <Container>
         <Navbar />
-     {!dataContext.loading ? showDataComplete() : <Skeleton />} 
-
+        {!dataContext.loading ? showDataComplete() : <Skeleton />}
       </Container>
     </Suspense>
   );

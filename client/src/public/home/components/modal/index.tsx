@@ -1,52 +1,40 @@
 import { RealEstate } from "@/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
-import Load from "./modal/load";
-import ImgCom from "./modal/img";
+import Load from "./load";
+import ImgCom from "./img";
 import useLoadData from "@/hooks/useFetch";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import ContainerBtnModal from "./containerBtnModal";
-import Carousel from "../dynamic/carousel";
-import { useNavigate } from "react-router-dom";
-import env from "@/config";
+import Carousel from "@/components/dynamic/carousel";
 import { useLanguage } from "@/context/languageContext";
 import handleDownloadImg from "@/utilities/downloadImg";
-import translate from "@/utilities/translate";
-
-enum Language {
-  english = "en",
-}
+import useModal from "../../hooks/useModal";
+import useTranslate from "../../hooks/useTranslate";
 
 export const ContentModal = (v: RealEstate) => {
-  const { text, lanActually } = useLanguage();
-  const [description, setDescription] = useState(v.description);
-  const [title, setTitle] = useState(v.title);
-  const [loadTxt, setLoadTxt] = useState(false);
-  const navigate = useNavigate();
+  const { text } = useLanguage();
   const { data, loading } = useLoadData(getRealEstate, v.idrealestate);
   const slide = useRef<HTMLDivElement>(null);
 
-  const handleSeeQuestions = (idRealEstate: number) => {
-    navigate(`/answeQuestionInterested/${idRealEstate}`);
+  // ? Paramaters that received useModal
+  const formHookModal = {
+    idPhoto: v.idphoto,
+    idRealEstate: v.idrealestate,
   };
+  const { handleSeeQuestions, handle360 } = useModal(formHookModal);
 
-  const handle360 = () => {
-    /*     window.open(`${env.img360Url}#/${v.idphoto}`, "_blank"); */
-    navigate(`/img360/${v.idphoto}`);
+  // ? Paramaters that received useTranslate
+  const formHookTranslate = {
+    description: v.description,
+    title: v.title,
   };
-
-  const handleTranslate = async () => {
-    setLoadTxt(true);
-    const des = await translate(v.description);
-    setDescription(des!);
-    const tit = await translate(v.title);
-    setTitle(tit!);
-    setLoadTxt(false);
-  };
+  const { descriptionState, loadTxt, titleState } =
+    useTranslate(formHookTranslate);
 
   let btnJSX = [
     {
-      click: () => handleSeeQuestions(v.idrealestate),
+      click: () => handleSeeQuestions(),
       txt: text.homeBtnQuestionFrequent,
     },
     {
@@ -58,10 +46,6 @@ export const ContentModal = (v: RealEstate) => {
       txt: text.homeBtnSee360,
     },
   ];
-
-  useEffect(() => {
-    if (lanActually == Language.english) handleTranslate();
-  }, []);
 
   function children() {
     return data.map((v, i) => (
@@ -85,8 +69,8 @@ export const ContentModal = (v: RealEstate) => {
         <>
           {showCarousel()}
           <ContainerContent>
-            <H2>{title}</H2>
-            <P>{description}</P>
+            <H2>{titleState}</H2>
+            <P>{descriptionState}</P>
             <ContainerBtnModal v={v} btnJSX={btnJSX} />
           </ContainerContent>
         </>

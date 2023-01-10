@@ -6,7 +6,7 @@ import { logOut } from "@/services/auth";
 import { useLanguage } from "@/context/languageContext";
 
 import { Modal } from "../global/modal";
-import ModalQuestion from "./../home/modalQuestion";
+import ModalQuestion from "@/public/home/components/modalQuestion";
 import ModalConfig from "./modalConfig";
 const Ul = styled.ul`
   float: right;
