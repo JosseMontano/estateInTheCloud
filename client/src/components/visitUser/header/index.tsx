@@ -1,10 +1,10 @@
 import { useNameUser } from "@/context/nameUserContext";
-import useLoadDataParams from "@/hooks/useFetch";
-import { UseModal } from "@/hooks/useModal";
+import useLoadDataParams from "@/global/hooks/useFetch";
+import { UseModal } from "@/global/hooks/useModal";
 import { getUserById } from "@/services/user";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Modal } from "../../global/modal";
+import { Modal } from "@/global/components/modal";
 import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";

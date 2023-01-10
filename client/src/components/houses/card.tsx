@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CardCom from "@/public/home/components/contentCard";
 import { RealEstate } from "@/interfaces/realEstate";
-import { Modal } from "../global/modal";
+import { Modal } from "@/global/components/modal";
 import { ContentModal } from "@/public/home/components/modal";
-import { UseModal } from "@/hooks/useModal";
+import { UseModal } from "@/global/hooks/useModal";
 
 export const ContainerSoon = styled.div`
   width: 300px;

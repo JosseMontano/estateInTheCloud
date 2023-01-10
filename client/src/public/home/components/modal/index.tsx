@@ -1,9 +1,9 @@
 import { RealEstate } from "@/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/styles/modal/perfil";
-import Loader from "@/components/global/loading";
+import Loader from "@/global/components/loading";
 import ImgCom from "./img";
-import useLoadData from "@/hooks/useFetch";
+import useLoadData from "@/global/hooks/useFetch";
 import { useRef } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "@/components/dynamic/carousel";

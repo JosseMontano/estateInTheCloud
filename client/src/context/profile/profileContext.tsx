@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Children from "@/interfaces/children";
+import Children from "@/global/interfaces/children";
 import {
   deleteRealEstateSubs,
   getREByProfile,

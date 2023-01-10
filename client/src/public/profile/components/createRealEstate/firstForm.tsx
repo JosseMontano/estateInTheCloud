@@ -2,8 +2,8 @@ import { ColorBtnSecond, ColorText, InputFile } from "@/styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
 
 import { useLanguage } from "@/context/languageContext";
-import Event from "@/interfaces/event";
-import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
+import Event from "@/global/interfaces/event";
+import ShowTypeRealEstate from "@/global/components/showTypeRealEstate";
 import styled from "styled-components";
 
 const Container = styled.div`

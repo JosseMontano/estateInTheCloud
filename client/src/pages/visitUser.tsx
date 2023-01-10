@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../components/visitUser/header";
 import { marginGlobal, ColorText } from "../styles/globals";
 import Comments from "../components/visitUser/comments";
-import { useVerifyUserLogin } from "../hooks/useVerifyUserLogin";
+import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
 import { RealEstate } from "../interfaces/realEstate";
 import { Suspense, useEffect } from "react";

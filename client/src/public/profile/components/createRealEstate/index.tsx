@@ -5,9 +5,9 @@ import { saveRealEstate } from "@/public/profile/services/post";
 import Loading from "@/components/dynamic/loadingAndResponse";
 import FirstForm from "./firstForm";
 import { RealEstate } from "@/interfaces/realEstate";
-import useToast from "@/hooks/useToast";
+import useToast from "@/global/hooks/useToast";
 import funFormData from "@/utilities/formData";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 import SecondForm from "./secondForm";
 
 const Container = styled.div`

@@ -1,19 +1,19 @@
-import Form from "../components/auth/formLogin";
-import ColContent from "../components/auth/colContent";
-import ColPhoto from "../components/auth/colPhoto";
-import { initialForm, validationsForm } from "@/validations/login";
-import { signIn } from "@/services/auth";
+import Form from "./components/formLogin";
+import ColContent from "./components/colContent";
+import ColPhoto from "./components/colPhoto";
+import { initialForm, validationsForm } from "./validations/login";
+import { signIn } from "./services/auth";
 import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/styles/globals";
 import { Suspense, useState } from "react";
-import ShowPassword from "@/icons/eye";
-import NoShowPassword from "@/icons/noShowPassword";
+import ShowPassword from "@/public/login/icons/eye";
+import NoShowPassword from "./icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import { Modal } from "@/components/global/modal";
-import { UseModal } from "@/hooks/useModal";
-import FormRegister from "@/components/auth/formRegister";
-import FormRecuperate from "@/components/auth/formRecuperateAccount";
-import { Container, ContainerSoon } from "@/styles/auth";
+import { Modal } from "@/global/components/modal";
+import { UseModal } from "@/global/hooks/useModal";
+import FormRegister from "./components/formRegister";
+import FormRecuperate from "./components/formRecuperateAccount";
+import { Container, ContainerSoon } from "@/public/login/styles";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();

@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
-import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import Language from "../global/language";
+import LoadingAndResponse from "@/components/dynamic/loadingAndResponse";
+import Language from "@/global/components/language";
 const Container = styled.form``;
 
 interface BtnType {

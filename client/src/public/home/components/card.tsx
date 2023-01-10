@@ -1,7 +1,7 @@
-import { UseModal } from "@/hooks/useModal";
+import { UseModal } from "@/global/hooks/useModal";
 import { RealEstate } from "@/interfaces/realEstate";
 import styled from "styled-components";
-import { Modal } from "@/components/global/modal";
+import { Modal } from "@/global/components/modal";
 import ContentCard from "./contentCard";
 import { ContentModal } from "./modal";
 

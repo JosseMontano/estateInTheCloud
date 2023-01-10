@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Label, MsgError } from "jz-validation-form";
 import { ColorText } from "@/styles/globals";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 interface V {
   label: string;
   name: string;

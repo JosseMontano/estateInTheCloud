@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { validateTokenExits } from "../services/auth";
+import { validateTokenExits } from "@/services/auth";
 
 export const useVerifyUserLogin = () => {
   let navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useLanguage } from "@/context/languageContext";
 import styled from "styled-components";
-import useLoadData from "@/hooks/useFetch";
+import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/interfaces/typeRealEstate";
 import { getTypeRealEstate } from "@/services/realEstate";
 

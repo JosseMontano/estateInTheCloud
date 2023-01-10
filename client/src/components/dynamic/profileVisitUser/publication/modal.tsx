@@ -1,5 +1,5 @@
 import { RealEstate } from "@/interfaces/realEstate";
-import { Modal } from "../../../global/modal";
+import { Modal } from "@/global/components/modal";
 import { ContentModal } from "./modal/indexModal";
 
 interface Params {

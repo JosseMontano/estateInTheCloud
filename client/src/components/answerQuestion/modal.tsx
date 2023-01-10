@@ -1,8 +1,8 @@
-import { Modal } from "../global/modal";
+import { Modal } from "@/global/components//modal";
 import ContentModal from "./contentModal";
 import Question from "@/interfaces/question";
 import Answer from "@/interfaces/answer";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 interface Params {
   isShown: boolean;
   toggle: () => void;

@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import Search from "@/components/global/search";
-import { UseModal } from "@/hooks/useModal";
+import Search from "@/global/components/search";
+import { UseModal } from "@/global/hooks/useModal";
 import { RealEstate } from "@/interfaces/realEstate";
-import useSearch from "@/hooks/useSearch";
+import useSearch from "@/global/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
 import ContainerBtn from "./components/containerBtn";
 import ModalContent from "./components/modal";
 import ContainerCard from "./components/containerCard";
 import Navbar from "@/components/navbar";
-import { Modal } from "@/components/global/modal";
+import { Modal } from "@/global/components/modal";
 import {
   getRealEstateByFilterCustom,
   getRealEstateByType,

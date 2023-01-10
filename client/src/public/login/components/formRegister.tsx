@@ -1,20 +1,20 @@
 import styled from "styled-components";
-import {  ColorBtnSecond } from "@/styles/globals";
+import { ColorBtnSecond } from "@/styles/globals";
 import Button from "./button";
-import { initialForm, validationsForm } from "@/validations/register";
-import { signUp } from "@/services/auth";
+import { initialForm, validationsForm } from "@/public/login/validations/register";
+import { signUp } from "../services/auth";
 import ContentFormRegister from "./contentFormRegister";
-import LoadingAndResponse from "../dynamic/loadingAndResponse";
+import LoadingAndResponse from "@/components/dynamic/loadingAndResponse";
 import { useState } from "react";
-import ShowPassword from "@/icons/eye";
-import NoShowPassword from "@/icons/noShowPassword";
+import ShowPassword from "@/public/login/icons/eye";
+import NoShowPassword from "../icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import { FormRegister } from "@/interfaces/formAuth";
+import { FormRegister } from "@/public/login/interfaces/formAuth";
 
 const Container = styled.form`
-padding: 15px;
-min-width: 380px;
+  padding: 15px;
+  min-width: 380px;
 `;
 
 interface V {

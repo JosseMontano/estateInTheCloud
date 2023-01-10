@@ -1,9 +1,9 @@
 import { Label } from "jz-validation-form";
 import SelectCom from "./select";
 import { useLanguage } from "@/context/languageContext";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 import { getTypeRealEstate } from "@/services/realEstate";
-import useLoadData from "@/hooks/useFetch";
+import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/interfaces/typeRealEstate";
 import styled from "styled-components";
 

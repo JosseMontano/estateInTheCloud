@@ -5,15 +5,15 @@ import {
   updateStateRealEstate,
 } from "@/services/realEstate";
 import { useState } from "react";
-import useToast from "@/hooks/useToast";
+import useToast from "@/global/hooks/useToast";
 import { Container } from "@/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";
-import LoadAndResponse from "@/components/global/loadAndResponse";
-import useLoadData from "@/hooks/useFetch";
+import LoadAndResponse from "@/global/components/loadAndResponse";
+import useLoadData from "@/global/hooks/useFetch";
 import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 import { useProfile } from "@/context/profile/profileContext";
 interface Params {
   v: RealEstate;

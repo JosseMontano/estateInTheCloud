@@ -1,4 +1,4 @@
-import NotFoundComp from "@/components/global/dataEmpty";
+import NotFoundComp from "@/global/components/dataEmpty";
 import { RealEstate } from "@/interfaces/realEstate";
 import { useLanguage } from "@/context/languageContext";
 interface Params {

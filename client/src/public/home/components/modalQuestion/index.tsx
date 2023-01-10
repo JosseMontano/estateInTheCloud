@@ -4,10 +4,10 @@ import { postQuestion } from "@/services/question";
 import { initialForm, validationsForm } from "@/validations/question";
 import FormComponent from "./form";
 import styled from "styled-components";
-import LoadAndResponse from "../../../../components/global/loadAndResponse";
+import LoadAndResponse from "@/global/components/loadAndResponse";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import Event from "@/interfaces/event";
+import Event from "@/global/interfaces/event";
 
 const Container = styled.div``;
 

@@ -5,7 +5,7 @@ import {
   getREMostRecent,
   getRERecommendedByUser,
 } from "../services/get";
-import Children from "@/interfaces/children";
+import Children from "@/global/interfaces/children";
 
 interface homeContext {
   homeData: RealEstate[];

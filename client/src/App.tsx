@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { HashRouter } from "react-router-dom";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import routes from "./routes/routes";
+import routes from "./routes";
 const App = () => {
   const handle = () => {
     const isProduction = import.meta.env.PROD;

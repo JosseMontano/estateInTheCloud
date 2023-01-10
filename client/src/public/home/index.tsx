@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Content from "./components/";
 import { useHome } from "./context/homeContext";
-import useVerifyUserLogin from "@/hooks/useVerifyUserLogin";
+import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";

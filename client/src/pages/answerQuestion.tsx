@@ -1,12 +1,12 @@
 import Card from "../styles/card";
 import { Suspense, useState } from "react";
-import { UseModal } from "../hooks/useModal";
+import { UseModal } from "@/global/hooks/useModal";
 import ModalCom from "../components/answerQuestion/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "../components/answerQuestion";
-import useLoadData from "../hooks/useFetch";
+import useLoadData from "../global/hooks/useFetch";
 import { getQuestions } from "../services/question";
-import useVerifyUserLogin from "../hooks/useVerifyUserLogin";
+import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { addAnswer } from "@/services/answer";
 import Navbar from "@/components/navbar";
 import styled from "styled-components";

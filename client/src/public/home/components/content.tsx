@@ -4,7 +4,7 @@ import Title from "./title";
 import styled from "styled-components";
 import Carousel from "@/components/dynamic/carousel";
 import { useRef } from "react";
-import DataEmpty from "@/components/global/dataEmpty";
+import DataEmpty from "@/global/components/dataEmpty";
 import { useLanguage } from "@/context/languageContext";
 
 const ContainerCard = styled.div`

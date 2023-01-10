@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { UseModal } from "@/hooks/useModal";
+import { UseModal } from "@/global/hooks/useModal";
 import { RealEstate } from "@/interfaces/realEstate";
 import ModalCom from "./modal";
 

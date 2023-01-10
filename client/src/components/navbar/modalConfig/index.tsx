@@ -1,4 +1,4 @@
-import Languages from "@/components/global/language";
+import Languages from "@/global/components/language";
 import { useLanguage } from "@/context/languageContext";
 import styled from "styled-components";
 

@@ -1,8 +1,8 @@
 import { ColorText } from "@/styles/globals";
 import { MsgError, Input, Label } from "jz-validation-form";
 import styled from "styled-components";
-import { FormRegister } from "@/interfaces/formAuth";
-import Event from "@/interfaces/event";
+import { FormRegister } from "@/public/login/interfaces/formAuth";
+import Event from "@/global/interfaces/event";
 
 const ContainerEye = styled.div`
   & svg {

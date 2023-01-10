@@ -1,5 +1,5 @@
-import Message from "@/components/global/message";
-import Loader from "@/components/global/loading";
+import Message from "./message";
+import Loader from "./loading";
 
 interface props {
   loading: boolean;

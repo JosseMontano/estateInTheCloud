@@ -1,4 +1,4 @@
-import Loader from "@/components/global/loading";
+import Loader from "@/global/components/loading";
 import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
 import Carousel from "@/components/dynamic/carousel";
 import { useRef } from "react";

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { UseModal } from "@/hooks/useModal";
+import { UseModal } from "@/global/hooks/useModal";
 import Links from "./links";
 import { logOut } from "@/services/auth";
 import { useLanguage } from "@/context/languageContext";
 
-import { Modal } from "../global/modal";
+import { Modal } from "@/global/components/modal";
 import ModalQuestion from "@/public/home/components/modalQuestion";
 import ModalConfig from "./modalConfig";
 const Ul = styled.ul`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ShowTypeRealEstate from "@/components/global/showTypeRealEstate";
-import Event from "@/interfaces/event";
+import ShowTypeRealEstate from "@/global/components/showTypeRealEstate";
+import Event from "@/global/interfaces/event";
 import { useLanguage } from "@/context/languageContext";
 import FormComponent from "./form";
 import { RealEstateFilterCustom } from "../../interfaces/filterCustom";

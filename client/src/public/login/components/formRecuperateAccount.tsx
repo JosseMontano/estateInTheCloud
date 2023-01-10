@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { ColorBtnSecond, ColorBtn } from "@/styles/globals";
 import Button from "./button";
-import { initialForm, validationsForm } from "@/validations/recuperateAccount";
+import {
+  initialForm,
+  validationsForm,
+} from "@/public/login/validations/recuperateAccount";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
-import LoadingAndResponse from "../dynamic/loadingAndResponse";
-import { FormRecuperateAccount } from "@/interfaces/formAuth";
+import LoadingAndResponse from "@/components/dynamic/loadingAndResponse";
+import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/context/languageContext";
-import { sendCodeGmail } from "@/services/user";
-import Event from "@/interfaces/event";
-import { recuperateAccount } from "@/services/user";
+import { sendCodeGmail } from "../services/auth";
+import Event from "@/global/interfaces/event";
+import { recuperateAccount } from "../services/auth";
 import { useState } from "react";
 
 const Container = styled.form`
@@ -21,7 +24,7 @@ const FormRecuperate = () => {
   const { text } = useLanguage();
   const [changePassFlag, setChangePassFlag] = useState(false);
   const [changePassLoad, setChangePassLoad] = useState(false);
-  const [changePassMsg, setChangePassMsg] = useState('Ha ocurrido un error')
+  const [changePassMsg, setChangePassMsg] = useState("Ha ocurrido un error");
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRecuperateAccount>(initialForm, validationsForm, sendCodeGmail);
 
@@ -32,9 +35,9 @@ const FormRecuperate = () => {
     setTimeout(() => {
       setChangePassLoad(false);
     }, 2000);
-      setChangePassFlag(true);
-    if(res){
-      setChangePassMsg("El proceso fue exito")
+    setChangePassFlag(true);
+    if (res) {
+      setChangePassMsg("El proceso fue exito");
     }
   };
 
