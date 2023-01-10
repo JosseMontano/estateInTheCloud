@@ -1,5 +1,5 @@
 import { http } from "./http";
-import { index } from "../utilities/getServices";
+import { index } from "@/utilities/getServices";
 import { gql } from "@apollo/client";
 
 
@@ -62,13 +62,7 @@ export const getTypeRealEstate = async () => {
 
 
 
-export const getImgTo360 = async <T>(
-  id: number
-): Promise<{ json: T; status: number }> => {
-  const url = `${http}photo/${id}`;
-  const { json, status } = await index<T>(url);
-  return { json, status };
-};
+
 
 export const addNewPhotoToRealEstate = async (
   id_real_estate: number,

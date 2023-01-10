@@ -7,7 +7,7 @@ import { useNameUser } from "@/context/nameUserContext";
 import { useVerifyUserLogin } from "@/hooks/useVerifyUserLogin";
 import { UseModal } from "@/hooks/useModal";
 import { Modal } from "@/components/global/modal";
-import ContentModal from "./components/createRealEstate/createRealEstate";
+import ContentModal from "./components/createRealEstate";
 import Navbar from "@/components/navbar";
 import { RealEstate } from "@/interfaces/realEstate";
 import { useProfile } from "@/context/profile/profileContext";
