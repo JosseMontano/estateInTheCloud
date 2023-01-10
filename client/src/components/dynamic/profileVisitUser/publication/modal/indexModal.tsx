@@ -1,4 +1,4 @@
-import { RealEstate, FormDeleteType } from "@/interfaces/realEstate";
+import { RealEstate, FormDeleteType } from "@/global/interfaces/realEstate";
 import {
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication as services,
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";
 import LoadAndResponse from "@/global/components/loadAndResponse";
 import useLoadData from "@/global/hooks/useFetch";
-import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
+import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import Event from "@/global/interfaces/event";
 import { useProfile } from "@/context/profile/profileContext";
 interface Params {

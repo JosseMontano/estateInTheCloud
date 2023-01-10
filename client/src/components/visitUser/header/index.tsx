@@ -9,7 +9,7 @@ import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
 import ContentModal from "./publicCommenator/contentModal";
-import  UserType from "@/interfaces/user";
+import  UserType from "@/global/interfaces/user";
 import { useComments } from "@/context/comments/commentsContext";
 const Container = styled.div`
   display: grid;

@@ -1,5 +1,5 @@
 import Loader from "@/global/components/loading";
-import REOnePublicationType from "@/interfaces/realEstateOfOnePublication";
+import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import Carousel from "@/components/dynamic/carousel";
 import { useRef } from "react";
 import ImgCom from "./img";

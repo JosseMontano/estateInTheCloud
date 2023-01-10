@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Search from "@/global/components/search";
 import { UseModal } from "@/global/hooks/useModal";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import useSearch from "@/global/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
 import ContainerBtn from "./components/containerBtn";

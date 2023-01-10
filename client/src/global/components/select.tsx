@@ -1,4 +1,4 @@
-import ParamsTypeRealEstate from "@/interfaces/typeRealEstate";
+import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
 
 interface v {
   v: ParamsTypeRealEstate;

@@ -1,4 +1,4 @@
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import { ContainerContent, H2, P, ContainerBtn } from "@/styles/modal/perfil";
 import { InputFile } from "@/styles/globals";
 import { useState } from "react";

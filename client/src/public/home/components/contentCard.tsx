@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import ContainterBtn from "./containterBtn";
 
 const Content = styled.div`

@@ -1,5 +1,5 @@
 import Slider from "./content";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 
 interface Params {
   dataComplete: { title: string; data: RealEstate[] }[];

@@ -4,7 +4,7 @@ import { useLanguage } from "@/context/languageContext";
 import Event from "@/global/interfaces/event";
 import { getTypeRealEstate } from "@/services/realEstate";
 import useLoadData from "@/global/hooks/useFetch";
-import ParamsTypeRealEstate from "@/interfaces/typeRealEstate";
+import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
 import styled from "styled-components";
 
 interface Params {

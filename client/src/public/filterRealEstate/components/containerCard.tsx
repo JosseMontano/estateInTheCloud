@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "@/public/home/components/modal";
 import NoFound from "@/public/home/components/modal/notFound";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 
 export const ContainerCardCss = styled.div`
   display: flex;

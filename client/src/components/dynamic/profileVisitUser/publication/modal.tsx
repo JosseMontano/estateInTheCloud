@@ -1,4 +1,4 @@
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import { Modal } from "@/global/components/modal";
 import { ContentModal } from "./modal/indexModal";
 

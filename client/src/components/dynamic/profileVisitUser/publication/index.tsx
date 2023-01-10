@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ContentImg from "./contentImg";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import Skeleton from "./skeleton";
 import { useLanguage } from "@/context/languageContext";
 import { Fragment } from "react";

@@ -1,5 +1,5 @@
 import NotFoundComp from "@/global/components/dataEmpty";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import { useLanguage } from "@/context/languageContext";
 interface Params {
   dataFilter: RealEstate[];

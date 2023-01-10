@@ -1,4 +1,4 @@
-import  UserType from "@/interfaces/user";
+import  UserType from "@/global/interfaces/user";
 import { Img } from "@/public/profile/styles/contentImg";
 
 interface Params{

@@ -12,7 +12,7 @@ import {
   useQuery,
   useSubscription,
 } from "@apollo/client";
-import { RealEstate, FormDeleteType } from "@/interfaces/realEstate";
+import { RealEstate, FormDeleteType } from "@/global/interfaces/realEstate";
 import { deleteRealEstateProfil } from "@/services/realEstate";
 
 interface ValuesDataType {

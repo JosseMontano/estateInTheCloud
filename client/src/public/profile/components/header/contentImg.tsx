@@ -1,4 +1,4 @@
-import  UserType  from "@/interfaces/user";
+import  UserType  from "@/global/interfaces/user";
 import { Container, ChangePhoto, InputFile } from "../../styles/contentImg";
 import ImgDataBase from "./imgDataBase";
 

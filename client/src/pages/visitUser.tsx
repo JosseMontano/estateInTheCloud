@@ -5,7 +5,7 @@ import { marginGlobal, ColorText } from "../styles/globals";
 import Comments from "../components/visitUser/comments";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import Publication from "@/components/dynamic/profileVisitUser/publication";
-import { RealEstate } from "../interfaces/realEstate";
+import { RealEstate } from "../global/interfaces/realEstate";
 import { Suspense, useEffect } from "react";
 import Navbar from "@/global/components/navbar";
 import { useProfile } from "@/context/profile/profileContext";

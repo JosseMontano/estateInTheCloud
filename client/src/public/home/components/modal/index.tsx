@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Card from "./card";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 export const ContainerSoon = styled.div`
   width: 300px;
   height: 400px;

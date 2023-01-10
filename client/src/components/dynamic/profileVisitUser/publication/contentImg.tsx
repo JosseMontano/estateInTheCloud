@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { UseModal } from "@/global/hooks/useModal";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import ModalCom from "./modal";
 
 const Containersoon = styled.div`

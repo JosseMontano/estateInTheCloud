@@ -6,7 +6,7 @@ import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
 import { getUserById } from "@/services/user";
 import UseLoadData from "@/global/hooks/useFetch";
-import  UserType from "@/interfaces/user";
+import  UserType from "@/global/interfaces/user";
 
 const Container = styled.div`
   display: grid;

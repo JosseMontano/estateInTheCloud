@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { RealEstate } from "@/interfaces/realEstate";
+import { RealEstate } from "@/global/interfaces/realEstate";
 import {
   getREAll,
   getREMostRecent,
