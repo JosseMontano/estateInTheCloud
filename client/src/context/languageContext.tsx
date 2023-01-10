@@ -73,6 +73,13 @@ interface TextType {
   createPublicationTitle: string;
   createPublicationDescription: string;
   createPublicationType: string;
+  createPublicationBedrom: string;
+  createPublicationPrice: string;
+  createPublicationBathroom: string;
+  createPublicationSquareMert: string;
+  createPublciationBtnNext: string;
+  createPublciationBtnBack: string;
+  createPublciationBtnSave: string;
   configurationLanguage: string;
   languageValEn: string;
   languageValEs: string;
@@ -156,6 +163,13 @@ const translations: TranslationType = {
     createPublicationTitle: "Titulo",
     createPublicationDescription: "Descripcion",
     createPublicationType: "Tipo",
+    createPublicationBedrom: "Dormitorio",
+    createPublicationPrice: "Precio",
+    createPublicationBathroom: "Baño",
+    createPublicationSquareMert: "Metros cuadrados",
+    createPublciationBtnNext: "siguente",
+    createPublciationBtnBack: "atras",
+    createPublciationBtnSave: "guardar",
     configurationLanguage: "Idioma:",
     languageValEn: "Ingles",
     languageValEs: "Español",
@@ -232,6 +246,13 @@ const translations: TranslationType = {
     createPublicationTitle: "Title",
     createPublicationDescription: "Description",
     createPublicationType: "Type",
+    createPublicationBedrom: "Bedrom",
+    createPublicationPrice: "Price",
+    createPublicationBathroom: "Bathroom",
+    createPublicationSquareMert: "Square Meter",
+    createPublciationBtnNext: "next",
+    createPublciationBtnBack: "back",
+    createPublciationBtnSave: "save",
     configurationLanguage: "Language:",
     languageValEn: "English",
     languageValEs: "Spanish",

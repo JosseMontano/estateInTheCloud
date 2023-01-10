@@ -125,13 +125,34 @@ export const createEstate = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { title, description, id_user, id_type } = req.body;
+  const {
+    title,
+    description,
+    id_user,
+    id_type,
+    bedroom,
+    price,
+    bathroom,
+    squareMeter,
+  } = req.body;
 
   try {
     //save data of the realEstate
     const result = await pool.query(
-      "insert into real_estates (title, description, id_user, id_type_real_estate, available) values ($1, $2, $3, $4, $5) returning *",
-      [title, description, id_user, id_type, 1]
+      `insert into real_estates (title, description, id_user, id_type_real_estate, 
+        available,amount_bedroom,price,amount_bathroom,square_meter) 
+      values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`,
+      [
+        title,
+        description,
+        id_user,
+        id_type,
+        1,
+        bedroom,
+        price,
+        bathroom,
+        squareMeter,
+      ]
     );
     const id_real_estate = result.rows[0].id;
 

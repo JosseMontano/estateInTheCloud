@@ -52,6 +52,10 @@ create table real_estates(
     title VARCHAR(255),
     description VARCHAR(1000),
     available INT,
+    amount_bedroom INT,
+    price INT,
+    amount_bathroom INT,
+    square_meter INT,
 	id_user INT,
     id_type_real_estate INT,
 	 CONSTRAINT fk_user
