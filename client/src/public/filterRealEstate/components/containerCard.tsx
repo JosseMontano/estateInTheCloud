@@ -7,6 +7,7 @@ export const ContainerCardCss = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 interface ParamsType {

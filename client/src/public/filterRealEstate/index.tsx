@@ -27,8 +27,10 @@ const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
   const { isShown, toggle } = UseModal({});
   const { filter, getValueSearch } = useSearch();
+  const [catActually, setCatActually] = useState("Garzonier");
 
   const changeData = async (type: string) => {
+    setCatActually(type);
     const { json } = await getRealEstateByType<RealEstate[]>(type);
     if (json) {
       setData(json);
@@ -49,6 +51,7 @@ const TypeRealEstate = () => {
   const searchCustom = async (form: RealEstateFilterCustom) => {
     const { json } = await getRealEstateByFilterCustom(form);
     setData(json);
+    setCatActually("Custom");
     toggle();
   };
 
@@ -61,7 +64,7 @@ const TypeRealEstate = () => {
       <Container>
         <Navbar />
         <Search getValueSearch={getValueSearch} />
-        <ContainerBtn toggle={toggle} changeData={changeData} />
+        <ContainerBtn catActually={catActually} toggle={toggle} changeData={changeData} />
         <ContainerCard dataFilter={dataFilter} />
       </Container>
       <Modal

@@ -7,7 +7,7 @@ import { LanguageContextProvider } from "./global/context/languageContext";
 import { CommentsContextProvider } from "./public/visitUser/context/commentsContext";
 import { ApolloClient, HttpLink, split } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
-import { http } from "./config/http";
+import { http, httpWS } from "./config/http";
 import { ApolloProvider } from "@apollo/client/react";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
@@ -17,10 +17,10 @@ import { ProfileContextProvider } from "./global/context/profileContext";
 const sLink = new HttpLink({
   uri: `${http}graphql`,
 });
-
+//"ws://localhost:3002/graphql",
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://localhost:3002/graphql",
+    url: `${httpWS}`,
   })
 );
 

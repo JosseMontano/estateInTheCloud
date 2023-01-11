@@ -1,7 +1,9 @@
 /* import 'vite/client'  */
 interface EnvType {
   backendUrlDev: string;
-  backendUrlProd: String;
+  backendUrlDevWS: string;
+  backendUrlProd: string;
+  backendUrlProdWS: string;
   frontendUrlDev: string;
 }
 /* const env:EnvType = {
@@ -12,7 +14,9 @@ interface EnvType {
 
 const env: EnvType = {
   backendUrlDev: "http://localhost:3000/",
+  backendUrlDevWS: "ws://localhost:3000/graphql",
   backendUrlProd: "https://realestate-server-production.up.railway.app/",
+  backendUrlProdWS: "wss://realestate-server-production.up.railway.app/graphql",
   frontendUrlDev: "http://127.0.0.1:5173/#/",
 };
 
