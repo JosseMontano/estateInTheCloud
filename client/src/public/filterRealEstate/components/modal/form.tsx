@@ -2,15 +2,14 @@ import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 import { Button } from "jz-validation-form";
 import { Form, Formik } from "formik";
-import * as Yup from "yup";
 import { RealEstateFilterCustom } from "../../interfaces/filterCustom";
 import TextInput from "./textInput";
 import { ColorBtn } from "@/global/styles/globals";
+import validationSchema, { initialValues } from "../../validations/filter";
 
 const ChildSty = styled.div`
   margin-top: 10px;
 `;
-
 
 interface Params {
   searchCustom: (form: RealEstateFilterCustom) => void;
@@ -18,42 +17,13 @@ interface Params {
 
 const FormComponent = ({ searchCustom }: Params) => {
   const { text } = useLanguage();
-  const requiredText = "Este campo es obligatiorio";
-  const obligatedNumber = "Este campo es de tipo numero";
+
   return (
     <ChildSty>
       <Formik
         validateOnChange={false}
-        initialValues={{
-          type: "Departamento",
-          amountBathroom: "",
-          amountBedroom: "",
-          minPrice: "",
-          maxPrice: "",
-          minSquareMeter: "",
-          maxSquareMeter: "",
-        }}
-        validationSchema={Yup.object({
-          type: Yup.string(),
-          amountBathroom: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-          amountBedroom: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-          minPrice: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-          maxPrice: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-          minSquareMeter: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-          maxSquareMeter: Yup.number()
-            .required(requiredText)
-            .typeError(obligatedNumber),
-        })}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           searchCustom(values);
         }}

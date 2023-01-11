@@ -64,7 +64,11 @@ const TypeRealEstate = () => {
       <Container>
         <Navbar />
         <Search getValueSearch={getValueSearch} />
-        <ContainerBtn catActually={catActually} toggle={toggle} changeData={changeData} />
+        <ContainerBtn
+          catActually={catActually}
+          toggle={toggle}
+          changeData={changeData}
+        />
         <ContainerCard dataFilter={dataFilter} />
       </Container>
       <Modal

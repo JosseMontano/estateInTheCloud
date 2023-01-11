@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Params } from "@/global/interfaces/modal";
 import ReactDOM from "react-dom";
+import { useModalStore } from "../store/modalStore";
+
+type StyType = string | undefined;
 
 const Container = styled.div<{ open: boolean }>`
   position: fixed;
@@ -27,22 +30,9 @@ const Container = styled.div<{ open: boolean }>`
   }
 `;
 
-const ContainerSoon = styled.div`
-  background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to bottom,
-    #2c5364,
-    #203a43,
-    #0f2027
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    #2c5364,
-    #203a43,
-    #0f2027
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: #fff;
+const ContainerSoon = styled.div<{ background: StyType; color: StyType }>`
+  background: ${({ background }) => (background ? background : "#2c5364")};
+  color: ${({ color }) => (color ? color : "#fff")};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   padding: 1rem;
@@ -73,11 +63,18 @@ const Close = styled.p`
 
 type Event = React.MouseEvent<HTMLDivElement, MouseEvent>;
 
-export const Modal = ({ isShown, hide, modalContent }: Params) => {
+export const Modal = (params: Params) => {
+  const { isShown, hide, modalContent } = params;
+
   const handleModalContainerClick = (e: Event) => e.stopPropagation();
+  const { background, color } = useModalStore();
   const modal = (
     <Container open={isShown} onClick={hide}>
-      <ContainerSoon onClick={(e) => handleModalContainerClick(e)}>
+      <ContainerSoon
+        background={background}
+        color={color}
+        onClick={(e) => handleModalContainerClick(e)}
+      >
         <Close onClick={hide}>X</Close>
         {modalContent}
       </ContainerSoon>

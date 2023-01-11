@@ -23,7 +23,8 @@
     "rm": "^0.1.8",
     "serve": "^14.1.2",
     "styled-components": "^5.3.5",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zustand": "^4.3.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",

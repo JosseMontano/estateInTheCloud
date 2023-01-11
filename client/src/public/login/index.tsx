@@ -3,7 +3,11 @@ import ColContent from "./components/colContent";
 import ColPhoto from "./components/colPhoto";
 import { initialForm, validationsForm } from "./validations/login";
 import { signIn } from "./services/auth";
-import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/global/styles/globals";
+import {
+  ColorBtn,
+  ColorBtnSecond,
+  ColorBtnThird,
+} from "@/global/styles/globals";
 import { Suspense, useState } from "react";
 import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "./icons/noShowPassword";
@@ -73,25 +77,23 @@ export function Login(): JSX.Element {
     <Suspense fallback={<p>Loading</p>}>
       <Container>
         <ContainerSoon>
-              <>
-                <ColContent
-                  title={text.loginTitle}
-                  text={text.loginSubtitle}
-                  form={
-                    <Form
-                      handleShowPass={handleShowPass}
-                      dataBtn={dataBtn}
-                      dataForm={dataForm}
-                      handleChange={handleChange}
-                      loading={loading}
-                      msg={msg}
-                      response={response}
-                      EyeJSX={showIconEye}
-                    />
-                  }
-                />
-                <ColPhoto />
-              </>
+          <ColContent
+            title={text.loginTitle}
+            text={text.loginSubtitle}
+            form={
+              <Form
+                handleShowPass={handleShowPass}
+                dataBtn={dataBtn}
+                dataForm={dataForm}
+                handleChange={handleChange}
+                loading={loading}
+                msg={msg}
+                response={response}
+                EyeJSX={showIconEye}
+              />
+            }
+          />
+          <ColPhoto />
         </ContainerSoon>
       </Container>
 

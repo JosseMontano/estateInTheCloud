@@ -27,7 +27,6 @@ const FormRecuperate = () => {
   const { text } = useLanguage();
   const [changePassFlag, setChangePassFlag] = useState(false);
   const [changePassLoad, setChangePassLoad] = useState(false);
-  const [changePassMsg, setChangePassMsg] = useState("Ha ocurrido un error");
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRecuperateAccount>(initialForm, validationsForm, sendCodeGmail);
 
@@ -39,9 +38,6 @@ const FormRecuperate = () => {
       setChangePassLoad(false);
     }, 2000);
     setChangePassFlag(true);
-    if (res) {
-      setChangePassMsg("El proceso fue exito");
-    }
   };
 
   let dataBtn = [

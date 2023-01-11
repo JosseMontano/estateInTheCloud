@@ -14,6 +14,7 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import { ProfileContextProvider } from "./global/context/profileContext";
 
+
 const sLink = new HttpLink({
   uri: `${http}graphql`,
 });

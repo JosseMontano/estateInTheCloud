@@ -4,8 +4,10 @@ import "@/global/styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import "@/global/styles/textArea.css";
+import { useModalStore } from "@/global/store/modalStore";
 
 const App = () => {
+  const { changeBackground, changeColor } = useModalStore();
   const handle = () => {
     const isProduction = import.meta.env.PROD;
     if (isProduction && "serviceWorker" in navigator) {
@@ -16,6 +18,8 @@ const App = () => {
   };
   useEffect(() => {
     handle();
+    changeBackground("#203a43");
+    changeColor("#000");
   }, []);
 
   return (
