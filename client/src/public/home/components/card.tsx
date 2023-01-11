@@ -1,7 +1,7 @@
-import { UseModal } from "@/global/hooks/useModal";
+import { useModal, Modal } from "jz-modal";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import styled from "styled-components";
-import { Modal } from "@/global/components/modal";
+
 import ContentCard from "./contentCard";
 import { ContentModal } from "./modal/contentModal";
 
@@ -21,7 +21,7 @@ interface ParamsType {
 }
 
 const Index = ({ v, visitUser }: ParamsType) => {
-  const { isShown, toggle } = UseModal({});
+  const { isShown, toggle } = useModal({});
   return (
     <Container>
       <Modal

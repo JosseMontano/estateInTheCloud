@@ -1,6 +1,6 @@
 import Card from "../../global/styles/card";
 import { Suspense, useState } from "react";
-import { UseModal } from "@/global/hooks/useModal";
+import { useModal } from "jz-modal";
 import ModalCom from "./components/modal";
 import { useParams } from "react-router-dom";
 import CardComponent from "./components";
@@ -30,7 +30,7 @@ const AnswerQuestion = () => {
   //verify user
   const {} = useVerifyUserLogin();
 
-  const { isShown, toggle } = UseModal({});
+  const { isShown, toggle } = useModal({});
   const [idQuestion, setIdQuestion] = useState(0);
 
   const [createAnswer] = useMutation(addAnswer());

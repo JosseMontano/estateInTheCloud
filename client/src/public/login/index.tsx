@@ -13,8 +13,7 @@ import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "./icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
-import { Modal } from "@/global/components/modal";
-import { UseModal } from "@/global/hooks/useModal";
+import { Modal, useModal } from "jz-modal";
 import FormRegister from "./components/formRegister";
 import FormRecuperate from "./components/formRecuperateAccount";
 import { Container, ContainerSoon } from "@/public/login/styles";
@@ -24,8 +23,8 @@ export function Login(): JSX.Element {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signIn);
   const [showPassword, setShowPassword] = useState(false);
-  const { isShown: isShownRegister, toggle: toggleRegister } = UseModal({});
-  const { isShown: isShownRA, toggle: toggleRA } = UseModal({});
+  const { isShown: isShownRegister, toggle: toggleRegister } = useModal({});
+  const { isShown: isShownRA, toggle: toggleRA } = useModal({});
 
   let dataBtn = [
     {

@@ -1,10 +1,9 @@
 import { useNameUser } from "@/global/context/nameUserContext";
 import useLoadDataParams from "@/global/hooks/useFetch";
-import { UseModal } from "@/global/hooks/useModal";
 import { getUserById } from "@/global/services/user";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Modal } from "@/global/components/modal";
+import { useModal, Modal } from "jz-modal";
 import ContentBtn from "./contentBtn";
 import ContentImg from "./contentImg";
 import ContentMid from "./contentMid";
@@ -40,7 +39,7 @@ const Header = (params: Params) => {
   const { idUser } = useNameUser();
   const { addComment } = useComments();
   const { data } = useLoadDataParams<UserType>(getUserById, iUserNumber);
-  const { isShown, toggle } = UseModal({});
+  const { isShown, toggle } = useModal({});
   const [exists, setExists] = useState(false);
 
   const [amountStart, setAmountStart] = useState(1);

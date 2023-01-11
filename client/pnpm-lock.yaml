@@ -13,6 +13,7 @@ specifiers:
   global: ^4.4.0
   graphql: ^16.6.0
   graphql-ws: ^5.11.2
+  jz-modal: ^0.0.1
   jz-validation-form: ^2.0.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -33,6 +34,7 @@ dependencies:
   global: 4.4.0
   graphql: 16.6.0
   graphql-ws: 5.11.2_graphql@16.6.0
+  jz-modal: 0.0.1_react@18.2.0
   jz-validation-form: 2.0.0_react-dom@18.2.0+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -4795,6 +4797,18 @@ packages:
       extsprintf: 1.3.0
       json-schema: 0.4.0
       verror: 1.10.0
+    dev: false
+
+  /jz-modal/0.0.1_react@18.2.0:
+    resolution: {integrity: sha512-6X5eS2f/qN4otGteEdFKFvcvnFCN4jJizGgbGB8pajbHKRJ0+rX94P/9vlg5eR5prO/i4GWGUxNSc/kSv0COjQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+      zustand: 4.3.1_react@18.2.0
+    transitivePeerDependencies:
+      - immer
     dev: false
 
   /jz-validation-form/2.0.0_react-dom@18.2.0+react@18.2.0:

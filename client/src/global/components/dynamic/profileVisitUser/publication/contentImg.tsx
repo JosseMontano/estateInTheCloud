@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { UseModal } from "@/global/hooks/useModal";
+import { useModal } from "jz-modal";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import ModalCom from "./modal";
 
@@ -30,8 +30,8 @@ interface Params {
 }
 
 const ContentImg = ({ v, showbtn, idRealEstate }: Params) => {
-  const { isShown, toggle } = UseModal({ show: false });
-  const { isShown: isShowTrue, toggle: toggleTrue } = UseModal({
+  const { isShown, toggle } = useModal({ show: false });
+  const { isShown: isShowTrue, toggle: toggleTrue } = useModal({
     show: idRealEstate ? true : false,
   });
 

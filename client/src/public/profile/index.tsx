@@ -5,8 +5,7 @@ import Publication from "@/global/components/dynamic/profileVisitUser/publicatio
 import { Suspense, useEffect } from "react";
 import { useNameUser } from "@/global/context/nameUserContext";
 import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
-import { UseModal } from "@/global/hooks/useModal";
-import { Modal } from "@/global/components/modal";
+import { Modal, useModal } from "jz-modal";
 import ContentModal from "./components/createRealEstate";
 import Navbar from "@/global/components/navbar";
 import { RealEstate } from "@/global/interfaces/realEstate";
@@ -24,7 +23,7 @@ const Profile = () => {
 
   const { data, loading, getRealEstate } = useProfile();
 
-  const { isShown, toggle } = UseModal({});
+  const { isShown, toggle } = useModal({});
 
   const createRealEstate = (newData: RealEstate) => {
     /* setData([...data, newData]); */

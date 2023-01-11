@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { UseModal } from "@/global/hooks/useModal";
+import { Modal, useModal } from "jz-modal";
 import Links from "./links";
 import { logOut } from "@/global/services/auth";
 import { useLanguage } from "@/global/context/languageContext";
-
-import { Modal } from "@/global/components/modal";
 import ModalQuestion from "@/public/home/components/modalQuestion";
 import ModalConfig from "./modalConfig";
 const Ul = styled.ul`
@@ -38,8 +36,8 @@ interface Params {
 const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
   const { text } = useLanguage();
   const navigate = useNavigate();
-  const { isShown, toggle } = UseModal({});
-  const { isShown: isShownConfig, toggle: toggleConfig } = UseModal({});
+  const { isShown, toggle } = useModal({});
+  const { isShown: isShownConfig, toggle: toggleConfig } = useModal({});
 
   let dataJSX = [
     {

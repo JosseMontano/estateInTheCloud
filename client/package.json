@@ -16,6 +16,7 @@
     "global": "^4.4.0",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.11.2",
+    "jz-modal": "^0.0.1",
     "jz-validation-form": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

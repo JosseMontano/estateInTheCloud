@@ -4,7 +4,7 @@ import "@/global/styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import "@/global/styles/textArea.css";
-import { useModalStore } from "@/global/store/modalStore";
+import { useModalStore } from "jz-modal";
 
 const App = () => {
   const { changeBackground, changeColor } = useModalStore();
@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     handle();
     changeBackground("#203a43");
-    changeColor("#000");
+    changeColor("#fff");
   }, []);
 
   return (

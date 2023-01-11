@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Search from "@/global/components/search";
-import { UseModal } from "@/global/hooks/useModal";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import useSearch from "@/global/hooks/useSearch";
 import { Suspense, useEffect, useState } from "react";
@@ -8,12 +7,13 @@ import ContainerBtn from "./components/containerBtn";
 import ModalContent from "./components/modal";
 import ContainerCard from "./components/containerCard";
 import Navbar from "@/global/components/navbar";
-import { Modal } from "@/global/components/modal";
+
 import {
   getRealEstateByFilterCustom,
   getRealEstateByType,
 } from "./services/get";
 import { RealEstateFilterCustom } from "./interfaces/filterCustom";
+import { useModal, Modal } from "jz-modal";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -25,7 +25,7 @@ export const Container = styled.div`
 
 const TypeRealEstate = () => {
   const [data, setData] = useState<RealEstate[]>([]);
-  const { isShown, toggle } = UseModal({});
+  const { isShown, toggle } = useModal({});
   const { filter, getValueSearch } = useSearch();
   const [catActually, setCatActually] = useState("Garzonier");
 

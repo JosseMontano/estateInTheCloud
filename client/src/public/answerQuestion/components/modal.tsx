@@ -1,4 +1,4 @@
-import { Modal } from "@/global/components/modal";
+import { Modal } from "jz-modal";
 import ContentModal from "./contentModal";
 import QuestionType from "../interfaces/question";
 interface Params {
