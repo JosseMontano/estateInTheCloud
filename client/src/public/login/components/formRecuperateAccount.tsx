@@ -17,7 +17,10 @@ import { useState } from "react";
 
 const Container = styled.form`
   padding: 15px;
-  min-width: 380px;
+  width: 380px;
+  @media screen and (max-width: 455px) {
+    width: 250px;
+  }
 `;
 
 const FormRecuperate = () => {

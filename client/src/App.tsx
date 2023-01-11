@@ -3,6 +3,8 @@ import { HashRouter } from "react-router-dom";
 import "@/global/styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
+import "@/global/styles/textArea.css";
+
 const App = () => {
   const handle = () => {
     const isProduction = import.meta.env.PROD;

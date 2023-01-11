@@ -13,7 +13,6 @@ interface FormikType {
 }
 
 const ContentModal = (params: params) => {
-
   const handleSendData = (form: FormikType) => {
     const { description } = form;
     params.SenData(description);
@@ -33,7 +32,7 @@ const ContentModal = (params: params) => {
     >
       <Form>
         <Title colorText={ColorText}>Agregar un comentario</Title>
-        <Field name={"description"} cols={50} />
+        <Field className="textArea" name={"description"} cols={50} />
         <ErrorMessage name="description" component={"span"} />
 
         <Starts getStart={params.getStart} />

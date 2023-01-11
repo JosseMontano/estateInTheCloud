@@ -3,14 +3,27 @@ import { ColorText } from "@/global/styles/globals";
 import { Label, MsgError, Input } from "jz-validation-form";
 import styled from "styled-components";
 
-const ContainerEye = styled.div`
-  & svg {
-    position: relative;
-    bottom: 50px;
-    left: 370px;
-    margin-bottom: -32px;
+const ContainerInput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 95%;
+  border-radius: 3px;
+  &:focus-within {
+    border: 2px double rgba(7, 7, 204,.5) ;
   }
-  position: absolute;
+  input {
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    &:focus {
+      outline: none;
+    }
+  }
+  div{
+    margin-top: 5px;
+  }
 `;
 
 interface V {
@@ -31,28 +44,29 @@ interface Params {
 }
 
 const ContentFormLogin = (props: Params) => {
-  function showInputPassword() {
+  const isPassword = props.v.name === "password";
+  function showInputPass() {
     return (
-      <>
-        <Input
+      <ContainerInput>
+        <input
           type={props.v.type}
           name={props.v.name}
           onChange={props.handleChange}
           value={props.v.value}
           required
         />
-        <ContainerEye onClick={props.handleShowPass}>
+        <div onClick={props.handleShowPass}>
           <props.EyeJSX />
-        </ContainerEye>
-      </>
+        </div>
+      </ContainerInput>
     );
   }
 
   return (
     <>
       <Label colorText={ColorText}>{props.v.label}</Label>
-      {props.v.name === "password" ? (
-        showInputPassword()
+      {isPassword ? (
+        showInputPass()
       ) : (
         <Input
           type={props.v.type}

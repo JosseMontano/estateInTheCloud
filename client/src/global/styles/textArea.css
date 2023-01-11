@@ -1,0 +1,13 @@
+.textArea {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  padding: 10px;
+  border-radius: 0.2rem;
+  border: none;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+  width: 90%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
