@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect } from "react";
-import Message from "@/global/components/message";
+import Message from "@/global/components/toast/message";
 import { useNameUser } from "@/global/context/nameUserContext";
 import LoadSkeleton from "./loadSkeleton";
 import LoadComments from "./loadComments";

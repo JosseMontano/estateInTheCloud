@@ -1,7 +1,7 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { getRealEstateOfOnePublication as getRealEstate } from "@/global/services/realEstate";
 import { H2, P, Container, ContainerContent } from "@/global/styles/modal/perfil";
-import Loader from "@/global/components/loading";
+import Loader from "@/global/components/toast/loading";
 import ImgCom from "./img";
 import useLoadData from "@/global/hooks/useFetch";
 import { useRef } from "react";

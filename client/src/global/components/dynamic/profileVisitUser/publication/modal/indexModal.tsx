@@ -10,7 +10,7 @@ import { Container } from "@/global/styles/modal/perfil";
 import ContentTextModal from "./contentTextModal";
 import { useNavigate } from "react-router-dom";
 import ContentImg from "./contentImg";
-import LoadAndResponse from "@/global/components/loadAndResponse";
+import LoadAndResponse from "@/global/components/toast/loadAndResponse";
 import useLoadData from "@/global/hooks/useFetch";
 import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import Event from "@/global/interfaces/event";

@@ -4,7 +4,7 @@ import Button from "./button";
 import { initialForm, validationsForm } from "@/public/login/validations/register";
 import { signUp } from "../services/auth";
 import ContentFormRegister from "./contentFormRegister";
-import LoadingAndResponse from "@/global/components/loadAndResponse";
+import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import { useState } from "react";
 import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "../icons/noShowPassword";

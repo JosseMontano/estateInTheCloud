@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Message from "./message";
+import Message from "./toast/message";
 import { Btn } from "@/global/styles/btn";
 import { useLanguage } from "@/global/context/languageContext";
 import config from "@/config/config";

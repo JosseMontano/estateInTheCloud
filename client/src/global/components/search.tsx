@@ -5,6 +5,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
 `;
+
 const SearchTerm = styled.input`
   width: 100%;
   border: 3px solid #0299ad;
@@ -19,6 +20,7 @@ const SearchTerm = styled.input`
     color: #027685;
   }
 `;
+
 const SearchButton = styled.button`
   width: 40px;
   height: 33px;

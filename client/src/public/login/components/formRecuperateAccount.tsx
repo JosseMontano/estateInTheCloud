@@ -6,7 +6,7 @@ import {
   validationsForm,
 } from "@/public/login/validations/recuperateAccount";
 import ContentFormRecuperateAccount from "./contentFormRecuperateAccount";
-import LoadingAndResponse from "@/global/components/loadAndResponse";
+import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
