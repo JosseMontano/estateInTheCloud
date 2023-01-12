@@ -14,7 +14,7 @@
 
 <p align="center">
     <a href="" target="_blank">
-        <img src="https://skillshack.blob.core.windows.net/uploads/express.webp" width="200">
+        <img src="https://skillshack.blob.core.windows.net/uploads/express.webp" width="150">
     </a>
 </p>
 
@@ -27,8 +27,7 @@
 
 <p align="center">
     <a href="" target="_blank">
-        <img src="
-            https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png?width=256&s=3f7493995143d3cf40b1fedc582607cea194b579" width="200">
+        <img src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png?width=256&s=3f7493995143d3cf40b1fedc582607cea194b579" width="150">
     </a>
 </p>
 
