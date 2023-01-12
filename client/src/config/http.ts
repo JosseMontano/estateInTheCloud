@@ -1,6 +1,6 @@
 import Config from "./config";
 
- export const http = Config.backendUrlDev;
+export const http = Config.backendUrlDev;
 export const httpWS = Config.backendUrlDevWS;  
 /* export const http = Config.backendUrlProd;
 export const httpWS = Config.backendUrlProdWS */

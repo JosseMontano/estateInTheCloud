@@ -1,10 +1,10 @@
-/* import 'vite/client'  */
 interface EnvType {
   backendUrlDev: string;
   backendUrlDevWS: string;
   backendUrlProd: string;
   backendUrlProdWS: string;
 }
+
 const env: EnvType = {
   backendUrlDev: import.meta.env.VITE_BACKEND_URL_DEV,
   backendUrlProd: import.meta.env.VITE_BACKEND_URL_PROD,
