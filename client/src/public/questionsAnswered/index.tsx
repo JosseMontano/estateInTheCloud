@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import DataEmpty from "@/global/components/dataEmpty";
 import CardSoon from "./components/";
-import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { Suspense } from "react";
-import Navbar from "@/global/components/navbar";
 import { useQuery } from "@apollo/client";
 
 const Container = styled.div`
@@ -25,7 +23,6 @@ const AnswerQuestionInterested = () => {
   const idNumer = parseFloat(id!);
   const query = getAnswerByRealEstate(idNumer);
   const { data, loading, error } = useQuery(query);
-  const {} = useVerifyUserLogin();
 
   function validateData() {
     if (data) {
@@ -40,7 +37,6 @@ const AnswerQuestionInterested = () => {
   return (
     <Suspense fallback={null}>
       <Container>
-        <Navbar />
         <Card>{validateData()}</Card>
       </Container>
     </Suspense>

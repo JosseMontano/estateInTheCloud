@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import "@/global/styles/textArea.css";
 import { useModalStore } from "jz-modal";
+import ProtectedRoute from "./global/components/protectedRoute";
+
 
 const App = () => {
   const { changeBackground, changeColor } = useModalStore();
@@ -26,7 +28,15 @@ const App = () => {
     <HashRouter>
       <Routes>
         {routes.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} />
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ProtectedRoute path={path}>
+                <Component />
+              </ProtectedRoute>
+            }
+          />
         ))}
         <Route path="*" element={<p>Page no found</p>} />
       </Routes>

@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import Content from "./components/";
 import { useHome } from "./context/homeContext";
-import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
-import Navbar from "@/global/components/navbar";
 import { useLanguage } from "@/global/context/languageContext";
 
 const Container = styled.div`
@@ -15,7 +13,6 @@ const Container = styled.div`
 const Home = () => {
   const { text } = useLanguage();
   const dataContext = useHome();
-  const {} = useVerifyUserLogin();
   const navigate = useNavigate();
   const visitUser = (idUser: number, email: string) => {
     startTransition(() => {
@@ -50,7 +47,6 @@ const Home = () => {
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Container>
-        <Navbar />
         {!dataContext.loading ? showDataComplete() : <Skeleton />}
       </Container>
     </Suspense>

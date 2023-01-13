@@ -6,9 +6,7 @@ import { useParams } from "react-router-dom";
 import CardComponent from "./components";
 import useLoadData from "../../global/hooks/useFetch";
 import { getQuestions } from "./services/question";
-import useVerifyUserLogin from "@/global/hooks/useVerifyUserLogin";
 import { addAnswer } from "./services/answer";
-import Navbar from "@/global/components/navbar";
 import styled from "styled-components";
 import QuestionType from "@/public/answerQuestion/interfaces/question";
 import { useMutation } from "@apollo/client";
@@ -27,9 +25,6 @@ const AnswerQuestion = () => {
     getQuestions,
     id_real_estate
   );
-  //verify user
-  const {} = useVerifyUserLogin();
-
   const { isShown, toggle } = useModal({});
   const [idQuestion, setIdQuestion] = useState(0);
 
@@ -61,7 +56,6 @@ const AnswerQuestion = () => {
   return (
     <Suspense fallback={null}>
       <Container>
-        <Navbar />
         <Card>{loading ? <p>Cargando</p> : showCardComponent()}</Card>
         <ModalCom
           toggle={toggle}

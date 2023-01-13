@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import ContainerBtn from "./components/containerBtn";
 import ModalContent from "./components/modal";
 import ContainerCard from "./components/containerCard";
-import Navbar from "@/global/components/navbar";
+
 
 import {
   getRealEstateByFilterCustom,
@@ -62,7 +62,6 @@ const TypeRealEstate = () => {
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Container>
-        <Navbar />
         <Search getValueSearch={getValueSearch} />
         <ContainerBtn
           catActually={catActually}

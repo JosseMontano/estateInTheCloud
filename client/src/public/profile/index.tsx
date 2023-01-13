@@ -4,10 +4,8 @@ import { marginGlobal, ColorText } from "@/global/styles/globals";
 import Publication from "@/global/components/dynamic/profileVisitUser/publication";
 import { Suspense, useEffect } from "react";
 import { useNameUser } from "@/global/context/nameUserContext";
-import { useVerifyUserLogin } from "@/global/hooks/useVerifyUserLogin";
 import { Modal, useModal } from "jz-modal";
 import ContentModal from "./components/createRealEstate";
-import Navbar from "@/global/components/navbar";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { useProfile } from "@/global/context/profileContext";
 
@@ -18,7 +16,6 @@ const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
 `;
 
 const Profile = () => {
-  const {} = useVerifyUserLogin();
   const { idUser, email } = useNameUser();
 
   const { data, loading, getRealEstate } = useProfile();
@@ -42,7 +39,6 @@ const Profile = () => {
 
   return (
     <Suspense fallback={<p>Loading</p>}>
-      <Navbar />
 
       <Container marginGlobal={marginGlobal} ColorText={ColorText}>
         {email && (
