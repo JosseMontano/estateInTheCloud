@@ -34,7 +34,7 @@ const ContentModal = ({ handleAddAnswer }: Params) => {
       >
         <Form>
           <Title colorText={ColorText}>Responder Pregunta</Title>
-          <Field className="input" name={"answer"} cols={50} rows={5} />
+          <Field id={"answer"} className="input" name={"answer"} cols={50} rows={5} />
           <ErrorMessage className="msgError" component={"span"} name="answer" />
           <Button type="submit" ColorBtn={ColorBtn}>
             Guardar
