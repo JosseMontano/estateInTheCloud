@@ -1,4 +1,4 @@
-import { RefObject, useRef } from "react";
+import { RefObject, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -22,30 +22,28 @@ const Container = styled.div`
 `;
 const ContainerSlide = styled.div`
   display: flex;
-  /*  overflow: scroll;  */
-  overflow: hidden;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   list-style: none;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
 `;
 const Btn = styled.button`
   position: absolute;
-  display: flex;
-  top: 10px;
   bottom: 0px;
   margin: auto;
   height: 4rem;
   background-color: white;
   border: none;
   width: 2rem;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 0;
   cursor: pointer;
   opacity: 0.5;
   transition: opacity 100ms;
   z-index: 999;
-
   &:hover,
   &:focus {
     opacity: 1;
@@ -88,7 +86,7 @@ function Carousel({ slide, children }: Params) {
     <Container>
       {JSXBtn.map((v) => (
         <Btn onClick={v.click} id={v.id} key={v.id}>
-          {v.txt}
+          <span>{v.txt}</span>
         </Btn>
       ))}
       <ContainerSlide ref={slidesContainer}>{children}</ContainerSlide>
