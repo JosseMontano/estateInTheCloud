@@ -9,7 +9,7 @@ const queryRealEstate = `
   select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
   p.public_id, re.title, re.description, u.email, u.id as idUser
   from real_estates_photos rp , photos p, real_estates re, users u 
-  where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=1
+  where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=true
   ORDER BY re.id`;
 
 export const getAllEstates = async (

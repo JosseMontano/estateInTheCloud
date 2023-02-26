@@ -1,9 +1,9 @@
-import { http, headers } from "../../config/http";
+import { http, headers, httpGo } from "../../config/http";
 
 export const getEmail = async () => {
   try {
     const token = document.cookie.replace("token=", "");
-    const response = await fetch(`${http}me`, {
+    const response = await fetch(`${httpGo}me`, {
       headers: { authorization: token },
       credentials: "include",
     });

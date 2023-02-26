@@ -1,7 +1,6 @@
 import {
   startTransition,
   Suspense,
-  useContext,
   useEffect,
   useState,
 } from "react";
@@ -43,10 +42,10 @@ const Index = () => {
   const navigate = useNavigate();
 
   const CallGetEmail = async () => {
-    const { email, id, username } = await getEmail();
-    handlenameUser(username, id, email);
+    const { email, id, user_name } = await getEmail();
+    handlenameUser(user_name, id, email);
     setEmailState(email);
-    if (username.length > 10) setTextBig(true);
+    if (user_name.length > 10) setTextBig(true);
   };
 
   const handleRedirect = (url: string) => {

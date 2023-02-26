@@ -1,11 +1,11 @@
 import { FormLogin, FormRegister } from "@/public/login/interfaces/formAuth";
 import saveCookie from "@/global/utilities/saveCookie";
-import { http, headers } from "@/config/http";
+import { http, headers, httpGo } from "@/config/http";
 import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
 
 export const signIn = async (form: FormLogin) => {
   try {
-    const response = await fetch(`${http}signin`, {
+    const response = await fetch(`${httpGo}signin`, {
       method: "POST",
       headers: headers,
       credentials: "include", // This here
@@ -29,7 +29,7 @@ export const signIn = async (form: FormLogin) => {
 
 export const signUp = async (form: FormRegister) => {
   try {
-    const response = await fetch(`${http}signup`, {
+    const response = await fetch(`${httpGo}signup`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
