@@ -43,3 +43,12 @@
     <img src="https://styles.redditmedia.com/t5_2v6gg/styles/communityIcon_4w7vh6c21f871.png" width="100">
     <img src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png?width=256&s=3f7493995143d3cf40b1fedc582607cea194b579" width="100">
 </p>
+
+# NEWS
+
+We're on a mission to replace the technology stack Node Js - Express to
+go - Fiber
+
+<p align="center">
+    <img src="https://gofiber.io/assets/images/logo.svg" width="100">
+</p>
