@@ -13,7 +13,8 @@ func Setup(app *fiber.App) {
 
 	app.Post("/api/signup", controllers.Register)
 	app.Post("/api/signin", controllers.SingIn)
-	app.Post("/api/recuperateAccount", controllers.SendCodeToGmail)
+	app.Post("/api/sendCodeGmail", controllers.SendCodeToGmail)
+	app.Post("/api/changePassword", controllers.ChangePassword)
 
 	app.Use(middleware.ValidateJwt)
 

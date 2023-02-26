@@ -49,7 +49,7 @@ export const signUp = async (form: FormRegister) => {
 
 export const sendCodeGmail = async (form: FormRecuperateAccount) => {
   try {
-    const response = await fetch(`${httpGo}recuperateAccount`, {
+    const response = await fetch(`${httpGo}sendCodeGmail`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
@@ -66,15 +66,17 @@ export const sendCodeGmail = async (form: FormRecuperateAccount) => {
 
 export const recuperateAccount = async (form: FormRecuperateAccount) => {
   try {
-    const response = await fetch(`${http}changePassword`, {
+    const response = await fetch(`${httpGo}changePassword`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
         email: form.email,
         password: form.password,
-        codeEmail: form.codeGmail,
+        code_recuperation: form.codeGmail,
       }),
     });
+    const ok=await response.json()
+    console.log(ok)
     if (response.status === 200) {
       return true;
     }
