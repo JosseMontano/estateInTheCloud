@@ -7,10 +7,12 @@ import (
 	"github.com/JosseMontano/estateInTheCloud/database"
 	"github.com/JosseMontano/estateInTheCloud/middleware"
 	"github.com/JosseMontano/estateInTheCloud/models"
+	"github.com/JosseMontano/estateInTheCloud/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v4"
 	"golang.org/x/crypto/bcrypt"
+	"gopkg.in/gomail.v2"
 )
 
 var validate = validator.New()
@@ -181,4 +183,43 @@ func Logout(c *fiber.Ctx) error {
 		"message": "success",
 	})
 
+}
+
+func SendCodeToGmail(c *fiber.Ctx) error {
+	var data map[string]string
+
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	numberRandom := utils.Random(5)
+
+	user := models.User{
+		Email: data["email"],
+	}
+
+	database.DB.Model(&user).
+		Where("email = ?", data["email"]).
+		Update("CodeRecuperation", numberRandom)
+
+	msg := gomail.NewMessage()
+	text := "<b>This is the code: " + numberRandom + "</b>"
+	msg.SetHeader("From", "eljosema505@gmail.com")
+	msg.SetHeader("To", data["email"])
+	msg.SetHeader("Subject", "Recuperate account")
+	msg.SetBody("text/html", text)
+	/* 	msg.Attach("/home/User/cat.jpg") */
+
+	gmail := utils.DotEnvVariable("GMAIL")
+	codeGmail := utils.DotEnvVariable("CODE_GMAIL")
+	n := gomail.NewDialer("smtp.gmail.com", 587, gmail, codeGmail)
+
+	if err := n.DialAndSend(msg); err != nil {
+		panic(err)
+	}
+
+	c.Status(200)
+	return c.JSON(fiber.Map{
+		"operation": true,
+	})
 }

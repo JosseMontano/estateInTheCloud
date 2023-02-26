@@ -39,7 +39,6 @@ const Header = ({ amountPublciation, idUser, toggle }: Params) => {
       setExists(true);
     }
   }, []);
-  console.log(data)
   return (
     <Container>
       <ContentImg data={data} exists={exists} />

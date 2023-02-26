@@ -49,10 +49,12 @@ export const signUp = async (form: FormRegister) => {
 
 export const sendCodeGmail = async (form: FormRecuperateAccount) => {
   try {
-    const response = await fetch(`${http}recuperateAccount/${form.email}`, {
+    const response = await fetch(`${httpGo}recuperateAccount`, {
       method: "POST",
       headers: headers,
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        email:form.email
+      }),
     });
     if (response.status === 200) {
       return true;
