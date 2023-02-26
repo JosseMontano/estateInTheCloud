@@ -16,7 +16,7 @@ export const getEmail = async () => {
   }
 };
 
-export const validateTokenExits = async () => {
+/* export const validateTokenExits = async () => {
   const token = document.cookie.replace("token=", "");
   const response = await fetch(`${http}verifyToken`, {
     headers: { authorization: token },
@@ -24,7 +24,7 @@ export const validateTokenExits = async () => {
   const res = await response.json();
   return res;
 };
-
+ */
 export const logOut = async () => {
   document.cookie = `token=; max-age=0`;
   try {
