@@ -4,7 +4,7 @@ import ImgDataBase from "./imgDataBase";
 
 interface Params {
   exists: boolean;
-  data: UserType[];
+  data: UserType;
 }
 
 const ContentImg = ({ data, exists }: Params) => {

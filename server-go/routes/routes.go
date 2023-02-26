@@ -18,6 +18,9 @@ func Setup(app *fiber.App) {
 
 	app.Use(middleware.ValidateJwt)
 
+	//User
+	app.Get("/api/getUserComplete/:id", controllers.GetUser)
+
 	//Sign
 	app.Get("/api/me", controllers.User)
 	app.Post("/api/logout", controllers.Logout)

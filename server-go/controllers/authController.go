@@ -3,7 +3,6 @@ package controllers
 import (
 	"fmt"
 	"time"
-
 	"github.com/JosseMontano/estateInTheCloud/database"
 	"github.com/JosseMontano/estateInTheCloud/middleware"
 	"github.com/JosseMontano/estateInTheCloud/models"
@@ -232,7 +231,7 @@ func ChangePassword(c *fiber.Ctx) error {
 	}
 
 	user := models.User{}
-	
+
 	database.DB.
 		Where("email = ?", data["email"]).Where("code_recuperation = ?", data["code_recuperation"]).
 		First(&user)

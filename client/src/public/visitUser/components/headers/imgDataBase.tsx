@@ -10,7 +10,7 @@ const ImgDataBase = (params:Params) => {
     <>
       {params.data.map((v, i) => (
         <div key={i}>
-          <Img src={v.url} alt="" />
+          <Img src={v.url_photo} alt="" />
         </div>
       ))}
     </>

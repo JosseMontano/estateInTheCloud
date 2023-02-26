@@ -3,7 +3,7 @@
 export default interface UserType {
   email: string;
   id_usuario: number;
-  url: string;
+  url_photo: string;
   public_id: string;
   id_photo: number;
 }

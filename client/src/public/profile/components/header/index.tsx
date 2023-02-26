@@ -34,6 +34,10 @@ interface Params {
 const Header = ({ amountPublciation, idUser, toggle }: Params) => {
   const { data } = UseLoadData<UserType>(getUserById, idUser);
   const [exists, setExists] = useState(false);
+
+  //Parse the vec to object 
+  const dataObj = Object.assign({}, data[0])
+
   useEffect(() => {
     if (data) {
       setExists(true);
@@ -41,7 +45,7 @@ const Header = ({ amountPublciation, idUser, toggle }: Params) => {
   }, []);
   return (
     <Container>
-      <ContentImg data={data} exists={exists} />
+      <ContentImg data={dataObj} exists={exists} />
       <ContainerContent>
         <ContentBtn toggle={toggle} />
         <ContentMid amountPublciation={amountPublciation} />
