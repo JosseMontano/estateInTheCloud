@@ -50,5 +50,5 @@ We're on a mission to replace the technology stack Node Js - Express to
 go - Fiber
 
 <p align="center">
-    <img src="https://gofiber.io/assets/images/logo.svg" width="100">
+    <img src="https://gofiber.io/assets/images/logo.svg" width="250">
 </p>
