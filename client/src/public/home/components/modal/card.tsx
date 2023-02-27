@@ -18,6 +18,7 @@ const Card = ({ v }: Params) => {
   const navigate = useNavigate();
   const visitUser = () => navigate(`/visitUser/${v.id_user}/${v.email}`);
   const { isShown, toggle } = useModal({});
+
   return (
     <ContainerSoon>
       <CardCom v={v} toggle={toggle} visitUser={visitUser} />

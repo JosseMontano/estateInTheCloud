@@ -1,4 +1,4 @@
-import { index } from "@/global/utilities/getServices";
+import { apisExternal } from "@/global/utilities/getServices";
 
 interface TranslateType {
   responseData: ResponseData;
@@ -38,7 +38,7 @@ const translate = async (
   msg: string
 ): Promise<{ json: TranslateType; status: number }> => {
   const url = `https://api.mymemory.translated.net/get?q=${msg}&langpair=es|en`;
-  const { json, status } = await index<TranslateType>(url);
+  const { json, status } = await apisExternal<TranslateType>(url);
   return { json, status };
 };
 export default translate;
