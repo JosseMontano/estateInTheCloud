@@ -18,9 +18,10 @@ router.get("/estate", getAllEstates);
 router.get("/type_real_estate", getTypeRealEstat);
 router.get("/estateMostRecent", getRealEstatesMostRecent);
 router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
-
-
 router.get("/estateOfOnePublication/:idRealEstate", getEstateOfOnePublication);
+
+
+
 router.post("/estate", createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", addNewPhotoToRealEstate);
 router.put("/estate/:id", updateEstate);

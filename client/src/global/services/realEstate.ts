@@ -21,7 +21,7 @@ export const getREByProfile = gql`
 `;
 
 export const getRealEstateOfOnePublication = async (idRealEstate?: number) => {
-  const url = `${http}estateOfOnePublication/${idRealEstate}`;
+  const url = `${httpGo}realEstate/${idRealEstate}`;
   const { json, status } = await index(url);
   return { json, status };
 };

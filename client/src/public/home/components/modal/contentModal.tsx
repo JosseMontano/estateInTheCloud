@@ -11,10 +11,11 @@ import { useLanguage } from "@/global/context/languageContext";
 import handleDownloadImg from "@/global/utilities/downloadImg";
 import useModal from "../../hooks/useModal";
 import useTranslate from "../../hooks/useTranslate";
+import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();
-  const { data, loading } = useLoadData(getRealEstate, v.id_real_estate);
+  const { data, loading } = useLoadData<REOnePublicationType>(getRealEstate, v.id_real_estate);
   const slide = useRef<HTMLDivElement>(null);
 
   // ? Paramaters that received useModal
@@ -48,9 +49,10 @@ export const ContentModal = (v: RealEstate) => {
   ];
 
   function children() {
-    return data.map((v, i) => (
+    const newData = Object.assign({}, data[0])
+    return newData.photos.map((v, i) => (
       <div className="slide" key={i} ref={slide}>
-        <ImgCom {...(v as RealEstate)} />
+        <ImgCom url={v.url} />
       </div>
     ));
   }

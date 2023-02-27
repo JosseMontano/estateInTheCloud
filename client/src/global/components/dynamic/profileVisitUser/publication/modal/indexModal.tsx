@@ -2,7 +2,6 @@ import { RealEstate, FormDeleteType } from "@/global/interfaces/realEstate";
 import {
   addNewPhotoToRealEstate,
   getRealEstateOfOnePublication as services,
-  updateStateRealEstate,
 } from "@/global/services/realEstate";
 import { useState } from "react";
 import useToast from "@/global/hooks/useToast";

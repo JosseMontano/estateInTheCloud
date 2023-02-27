@@ -12,9 +12,12 @@ const ContentImg = ({ load, data }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
 
   function content(va: REOnePublicationType, i: number) {
+    console.log(va)
     return (
       <div className="slide" ref={slide} key={i}>
-        <ImgCom url={va.url} />
+        {va.photos.map((v) => (
+          <ImgCom url={v.url} />
+        ))}
       </div>
     );
   }

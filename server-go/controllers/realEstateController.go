@@ -39,12 +39,12 @@ type AllREResult struct {
 
 const from = "from real_estates_photos rp , photos p, real_estates re, users u"
 
-const where = "where rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id and re.available=true"
+const where = "where rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id"
 
 const query = ` select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,
 	p.id as id_photo, p.url, p.public_id, re.title,
 	re.description, u.email, u.id as id_user` + " " + from + " " + where + " " +
-	`ORDER BY re.id
+	`and re.available=true ORDER BY re.id
 `
 
 func AllRE(c *fiber.Ctx) error {
@@ -66,9 +66,18 @@ func UserRecommend(c *fiber.Ctx) error {
 	p.id as id_photo,  p.url, 
 	p.public_id, re.title, re.description, u.email, u.id as id_user, u.qualification` +
 		" " + from + " " + where + " " +
-		`ORDER BY u.email DESC) users ORDER BY users.qualification desc`).Scan(&realEstate)
+		`and re.available=true ORDER BY u.email DESC) users ORDER BY users.qualification desc`).Scan(&realEstate)
 	return c.JSON(realEstate)
 }
+
+func RealEstate(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var realEstate []models.RealEstate
+	database.DB.Where("id=?", id).Preload("User").Preload("Photos").Find(&realEstate)
+	c.Status(200)
+	return c.JSON(realEstate)
+}
+
 
 func CreateRE(c *fiber.Ctx) error {
 	/* 	var realEstate models.RealEstate */

@@ -1,5 +1,6 @@
+import { params } from "@/global/components/navbar/auxNav";
 import styled from "styled-components";
-import { RealEstate } from "@/global/interfaces/realEstate";
+
 
 const Img = styled.img`
   height: 300px;
@@ -14,10 +15,14 @@ const Img = styled.img`
   }
 `;
 
-const ImgCom = (v: RealEstate) => {
+interface Params{
+  url: string
+}
+
+const ImgCom = ({url}:Params) => {
   return (
     <>
-      <Img src={v.url} alt="" />
+      <Img src={url} alt="" />
     </>
   );
 };

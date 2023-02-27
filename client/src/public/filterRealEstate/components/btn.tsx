@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
 
@@ -26,14 +25,14 @@ const Btn = ({ v, catActually, changeData }: Params) => {
     changeData(name);
   };
 
-  const backbround = catActually === v.name_type ? "#0a1113" : "#243f47";
+  const backbround = catActually === v.name ? "#0a1113" : "#243f47";
 
   return (
     <StyleBtn
       catActually={backbround}
-      onClick={() => handleChangeData(v.name_type)}
+      onClick={() => handleChangeData(v.name)}
     >
-      {v.name_type}
+      {v.name}
     </StyleBtn>
   );
 };
