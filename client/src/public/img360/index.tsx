@@ -13,14 +13,19 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+interface Type {
+  id: number;
+  public_id: string;
+  url: string;
+}
+
 const Img360 = () => {
   let { id } = useParams();
-  const [data, setData] = useState();
-  const getRealEstate = async (id) => {
-    const { json } = await getImgTo360(id);
+  const [data, setData] = useState<Type>();
+  const getRealEstate = async (id: number) => {
+    const { json } = await getImgTo360<Type[]>(id);
     if (json) {
       setData(json[0]);
-      console.log(json[0]);
     }
   };
 
@@ -34,8 +39,14 @@ const Img360 = () => {
     <>
       {data && (
         <Container>
+          {/* 
+// @ts-ignore */}
           <a-scene className="RV">
+            {/* 
+// @ts-ignore */}
             <a-sky src={data.url} rotation="0 -130 0"></a-sky>
+            {/* 
+// @ts-ignore */}
           </a-scene>
         </Container>
       )}
