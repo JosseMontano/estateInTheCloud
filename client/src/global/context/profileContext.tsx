@@ -92,7 +92,7 @@ export const ProfileContextProvider = ({ children }: Children) => {
           ...dataInStore,
           GET_REAL_ESTATE_BY_ID_USER:
             dataInStore.GET_REAL_ESTATE_BY_ID_USER.filter(
-              (v: RealEstate) => v.idrealestate != DELETE_A_RE.id
+              (v: RealEstate) => v.id_real_estate != DELETE_A_RE.id
             ),
         },
       });
@@ -129,7 +129,7 @@ export const ProfileContextProvider = ({ children }: Children) => {
           ...dataInStore,
           GET_REAL_ESTATE_BY_ID_USER:
             dataInStore.GET_REAL_ESTATE_BY_ID_USER.map((v: RealEstate) =>
-              v.idrealestate == UPDATE_STATE_A_RE.id
+              v.id_real_estate == UPDATE_STATE_A_RE.id
                 ? {
                     ...v,
                     available: UPDATE_STATE_A_RE.state,

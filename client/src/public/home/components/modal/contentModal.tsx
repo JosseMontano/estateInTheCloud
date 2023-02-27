@@ -14,13 +14,13 @@ import useTranslate from "../../hooks/useTranslate";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();
-  const { data, loading } = useLoadData(getRealEstate, v.idrealestate);
+  const { data, loading } = useLoadData(getRealEstate, v.id_real_estate);
   const slide = useRef<HTMLDivElement>(null);
 
   // ? Paramaters that received useModal
   const formHookModal = {
-    idPhoto: v.idphoto,
-    idRealEstate: v.idrealestate,
+    idPhoto: v.id_photo,
+    idRealEstate: v.id_real_estate,
   };
   const { handleSeeQuestions, handle360 } = useModal(formHookModal);
 

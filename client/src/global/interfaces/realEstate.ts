@@ -1,14 +1,14 @@
 export interface RealEstate {
-  idphoto: number;
-  idrealestatephoto: number;
-  idrealestate: number;
-  iduser: number;
+  id_photo: number;
+  id_real_estate_photo: number;
+  id_real_estate: number;
+  id_user: number;
   url: string;
   title: string;
   description: string;
-  publicId: string;
+  public_id: string;
   email: string;
-  cellphonenumber: string;
+  cellphone_number: string;
   available: boolean;
 }
 

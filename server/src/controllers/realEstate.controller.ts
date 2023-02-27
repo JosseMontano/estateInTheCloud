@@ -82,7 +82,7 @@ export const getEstateByUser = async (
     select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
     p.public_id, re.title, re.description, u.email, re.available, u.cellphonenumber
     from real_estates_photos rp , photos p, real_estates re, users u 
-    where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id and re.user_id=${idUser}
+    where rp.photo_ID = p.id and rp.real_estate_id = re.id and re.user_id = u.id and re.user_id=${idUser}
     ORDER BY re.id
       `
   );

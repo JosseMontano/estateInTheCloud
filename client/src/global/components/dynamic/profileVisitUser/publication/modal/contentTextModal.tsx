@@ -36,13 +36,13 @@ const ContentTextModal = (p: params) => {
       txt: text.profileBtnDeletePhoto,
     },
     {
-      click: () => p.handleAnswerQuestion(p.v.idrealestate),
+      click: () => p.handleAnswerQuestion(p.v.id_real_estate),
       txt: text.profileBtnQuestion,
     },
   ];
 
   const handleUpdateStateRE = () => {
-    p.handleUpdateState(p.v.idrealestate, stateNumber);
+    p.handleUpdateState(p.v.id_real_estate, stateNumber);
     setStateAvailable(!stateAvailable);
   };
 

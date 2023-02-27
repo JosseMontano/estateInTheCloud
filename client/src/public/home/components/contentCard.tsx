@@ -33,7 +33,7 @@ const ContentCard = ({ v, toggle, visitUser }: Params) => {
       <H4>{v.title}</H4>
       <P>{v.email}</P>
       <ContainterBtn
-        idUser={v.iduser}
+        idUser={v.id_user}
         email={v.email}
         toggle={toggle}
         visitUser={visitUser}

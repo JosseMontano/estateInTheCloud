@@ -1,11 +1,11 @@
-import { http } from "@/config/http";
+import { http, httpGo } from "@/config/http";
 import { index } from "@/global/utilities/getServices";
 
 export const getREAll = async <T>(): Promise<{
   json: T;
   status: number;
 }> => {
-  const url = `${http}estate`;
+  const url = `${httpGo}allRealEstate`;
   const { json, status } = await index<T>(url);
   return { json, status };
 };

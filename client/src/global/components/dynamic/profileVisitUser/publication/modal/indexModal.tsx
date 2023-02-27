@@ -30,14 +30,14 @@ export const ContentModal = ({ v, showbtn }: Params) => {
   const { deleteRealEstate, updateState } = useProfile();
   const { data, loading: load } = useLoadData<REOnePublicationType>(
     services,
-    v.idrealestate
+    v.id_real_estate
   );
 
   const handleDelete = async () => {
     const form: FormDeleteType = {
-      idrealestatephoto: v.idrealestatephoto,
-      idphoto: v.idphoto,
-      idrealestate: v.idrealestate,
+      idrealestatephoto: v.id_real_estate_photo,
+      idphoto: v.id_photo,
+      idrealestate: v.id_real_estate,
     };
     await deleteRealEstate(form);
   };
@@ -46,7 +46,7 @@ export const ContentModal = ({ v, showbtn }: Params) => {
     setLoading(true);
     const dataForm = new FormData();
     dataForm.append("url", photo);
-    const res = await addNewPhotoToRealEstate(v.idrealestate, dataForm);
+    const res = await addNewPhotoToRealEstate(v.id_real_estate, dataForm);
     const r = await res?.json();
     if (r.action)
       handleToast("guardado!, cierre la ventana y vuelvala a abrir");

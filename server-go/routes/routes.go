@@ -28,7 +28,8 @@ func Setup(app *fiber.App) {
 	app.Post("/api/logout", controllers.Logout)
 
 	//======================= REAL ESTATE =======================
-	app.Get("/api/realEstate", controllers.AllRE)
+	app.Get("/api/allRealEstate", controllers.AllRE)
+	app.Get("/api/typeRealEstate", controllers.AllTypeRE)
 	app.Get("/api/estateMostRecent", controllers.MostRecentRE)
 	app.Get("/api/estateRecommendedByUser", controllers.UserRecommend)
 	app.Post("/api/realEstate", controllers.CreateRE)

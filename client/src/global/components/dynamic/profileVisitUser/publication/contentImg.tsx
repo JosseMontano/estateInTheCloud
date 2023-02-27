@@ -37,7 +37,7 @@ const ContentImg = ({ v, showbtn, idRealEstate }: Params) => {
 
   return (
     <Containersoon>
-      {idRealEstate == v.idrealestate ? (
+      {idRealEstate == v.id_real_estate ? (
         <ModalCom
           isShowTrue={isShowTrue}
           showbtn={showbtn}

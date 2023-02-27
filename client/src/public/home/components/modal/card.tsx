@@ -16,7 +16,7 @@ interface Params {
 
 const Card = ({ v }: Params) => {
   const navigate = useNavigate();
-  const visitUser = () => navigate(`/visitUser/${v.iduser}/${v.email}`);
+  const visitUser = () => navigate(`/visitUser/${v.id_user}/${v.email}`);
   const { isShown, toggle } = useModal({});
   return (
     <ContainerSoon>

@@ -5,7 +5,7 @@ interface v {
 }
 
 const Select = ({ v }: v) => {
-  return <option value={v.id}>{v.name_type}</option>;
+  return <option value={v.id}>{v.name}</option>;
 };
 
 export default Select;

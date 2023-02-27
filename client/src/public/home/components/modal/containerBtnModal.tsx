@@ -16,8 +16,8 @@ const ContainerBtnModal = ({ v, btnJSX }: Params) => {
     <>
       <Clipboard
         email={v.email}
-        idUser={v.iduser}
-        realeEstate={v.idrealestate}
+        idUser={v.id_user}
+        realeEstate={v.id_real_estate}
       />
       {btnJSX.map((val, i) => (
         <Btn key={i} marginInElements="10px" onClick={val.click}>

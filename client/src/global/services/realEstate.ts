@@ -1,4 +1,4 @@
-import { http } from "../../config/http";
+import { http, httpGo } from "../../config/http";
 import { index } from "@/global/utilities/getServices";
 import { gql } from "@apollo/client";
 
@@ -27,7 +27,7 @@ export const getRealEstateOfOnePublication = async (idRealEstate?: number) => {
 };
 
 export const getTypeRealEstate = async () => {
-  const url = `${http}type_real_estate`;
+  const url = `${httpGo}typeRealEstate`;
   const { json, status } = await index(url);
   return { json, status };
 };

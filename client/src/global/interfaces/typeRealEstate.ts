@@ -1,6 +1,6 @@
 export default interface ParamsTypeRealEstate {
     id: number;
-    name_type: string;
+    name: string;
 }
 
 //? various components share is interface

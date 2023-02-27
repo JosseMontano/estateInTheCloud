@@ -25,7 +25,7 @@ const VisitUser = () => {
   if (data) {
     dataObj = Object.assign({}, data.GET_REAL_ESTATE_BY_ID_USER[0]);
   }
-  const { cellphonenumber } = dataObj;
+  const { cellphone_number } = dataObj;
 
   const showPublication = () => {
     if (data) {
@@ -52,7 +52,7 @@ const VisitUser = () => {
             amountPublication={data.GET_REAL_ESTATE_BY_ID_USER.length}
             email={email}
             iUserNumber={idUserNumber}
-            cellphonenumber={cellphonenumber}
+            cellphonenumber={cellphone_number}
           />
           {idUserNumber != 0 && showPublication()}
           <Comments idParam={idUserNumber} />
