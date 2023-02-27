@@ -1,5 +1,7 @@
 import Loader from "@/global/components/toast/loading";
-import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
+import REOnePublicationType, {
+  Photo,
+} from "@/global/interfaces/realEstateOfOnePublication";
 import Carousel from "@/global/components/carousel";
 import { useRef } from "react";
 import ImgCom from "./img";
@@ -11,19 +13,17 @@ interface Params {
 const ContentImg = ({ load, data }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
 
-  function content(va: REOnePublicationType, i: number) {
-    console.log(va)
+  function content(v: Photo, i: number) {
     return (
       <div className="slide" ref={slide} key={i}>
-        {va.photos.map((v) => (
-          <ImgCom url={v.url} />
-        ))}
+        <ImgCom url={v.url} />
       </div>
     );
   }
 
   function children() {
-    return data.map((va, i) => content(va, i));
+    const dataObj = Object.assign({}, data[0]);
+    return dataObj.photos.map((va, i) => content(va, i));
   }
 
   return (

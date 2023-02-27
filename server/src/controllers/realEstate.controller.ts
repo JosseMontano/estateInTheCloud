@@ -79,11 +79,13 @@ export const getEstateByUser = async (
 ): Promise<RealEstateType[]> => {
   const result = await pool.query(
     `
-    select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
-    p.public_id, re.title, re.description, u.email, re.available, u.cellphonenumber
-    from real_estates_photos rp , photos p, real_estates re, users u 
-    where rp.photo_ID = p.id and rp.real_estate_id = re.id and re.user_id = u.id and re.user_id=${idUser}
-    ORDER BY re.id
+    select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,p.id as id_photo,
+    p.url, 
+      p.public_id, re.title, re.description, u.email, re.available, u.cellphone_number, u.id as id_user
+      from real_estates_photos rp , photos p, real_estates re, users u 
+      where rp.photo_ID = p.id and rp.real_estate_id = re.id and re.user_id = u.id and 
+    re.user_id=${idUser}
+      ORDER BY re.id
       `
   );
 

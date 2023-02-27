@@ -20,6 +20,7 @@ interface Params {
 }
 
 export const ContentModal = ({ v, showbtn }: Params) => {
+ 
   const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
@@ -69,7 +70,7 @@ export const ContentModal = ({ v, showbtn }: Params) => {
 
   return (
     <Container>
-      <ContentImg data={data} load={load} />
+    <ContentImg data={data} load={load} /> 
 
       <ContentTextModal
         v={v}

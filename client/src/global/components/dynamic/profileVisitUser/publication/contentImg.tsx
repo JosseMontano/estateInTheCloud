@@ -34,24 +34,23 @@ const ContentImg = ({ v, showbtn, idRealEstate }: Params) => {
   const { isShown: isShowTrue, toggle: toggleTrue } = useModal({
     show: idRealEstate ? true : false,
   });
-
   return (
     <Containersoon>
-      {idRealEstate == v.id_real_estate ? (
+      {idRealEstate == v.id_real_estate && (
         <ModalCom
           isShowTrue={isShowTrue}
           showbtn={showbtn}
           toggleTrue={toggleTrue}
           v={v}
         />
-      ) : (
-        <ModalCom
-          isShowTrue={isShown}
-          showbtn={showbtn}
-          toggleTrue={toggle}
-          v={v}
-        />
       )}
+
+      <ModalCom
+        isShowTrue={isShown}
+        showbtn={showbtn}
+        toggleTrue={toggle}
+        v={v}
+      />
 
       <Img onClick={toggle} src={v.url} alt="" />
     </Containersoon>

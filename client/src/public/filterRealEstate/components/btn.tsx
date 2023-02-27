@@ -28,10 +28,7 @@ const Btn = ({ v, catActually, changeData }: Params) => {
   const backbround = catActually === v.name ? "#0a1113" : "#243f47";
 
   return (
-    <StyleBtn
-      catActually={backbround}
-      onClick={() => handleChangeData(v.name)}
-    >
+    <StyleBtn catActually={backbround} onClick={() => handleChangeData(v.name)}>
       {v.name}
     </StyleBtn>
   );
