@@ -23,7 +23,7 @@ export const getRERecommendedByUser = async <T>(): Promise<{
   json: T;
   status: number;
 }> => {
-  const url = `${http}estateRecommendedByUser`;
+  const url = `${httpGo}estateRecommendedByUser`;
   const { json, status } = await index<T>(url);
   return { json, status };
 };

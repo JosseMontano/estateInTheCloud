@@ -37,12 +37,14 @@ type AllREResult struct {
 	IdUser            int    `json:"id_user"`
 }
 
-const query = `
-	select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,
-	p.id as id_photo, p.url, p.public_id, re.title, re.description, u.email, u.id as id_user
-	from real_estates_photos rp , photos p, real_estates re, users u 
-	where rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id and re.available=true
-	ORDER BY re.id
+const from = "from real_estates_photos rp , photos p, real_estates re, users u"
+
+const where = "where rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id and re.available=true"
+
+const query = ` select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,
+	p.id as id_photo, p.url, p.public_id, re.title,
+	re.description, u.email, u.id as id_user` + " " + from + " " + where + " " +
+	`ORDER BY re.id
 `
 
 func AllRE(c *fiber.Ctx) error {
@@ -57,21 +59,15 @@ func MostRecentRE(c *fiber.Ctx) error {
 	return c.JSON(realEstate)
 }
 
-type RealState struct {
-}
-
 func UserRecommend(c *fiber.Ctx) error {
-	var user []models.User
-
-	//this working
-	/* 	database.DB.Debug().Table("(?) as u",
-	database.DB.Debug().Joins("JOIN users on real_estates.user_id=users.id").
-		Order("users.qualification desc").Preload("User").Find(&realEstate)).
-	Distinct("user_id").Preload("User").Find(&realEstate) */
-
-	database.DB.Order("qualification desc").Find(&user)
-
-	return c.JSON(user)
+	var realEstate []AllREResult
+	database.DB.Raw(`SELECT * 
+	FROM(SELECT DISTINCT on (u.email) re.id as id_real_estate, rp.id as id_real_estate_photo,
+	p.id as id_photo,  p.url, 
+	p.public_id, re.title, re.description, u.email, u.id as id_user, u.qualification` +
+		" " + from + " " + where + " " +
+		`ORDER BY u.email DESC) users ORDER BY users.qualification desc`).Scan(&realEstate)
+	return c.JSON(realEstate)
 }
 
 func CreateRE(c *fiber.Ctx) error {
