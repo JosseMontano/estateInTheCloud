@@ -31,6 +31,8 @@ func Setup(app *fiber.App) {
 	app.Get("/api/allRealEstate", controllers.AllRE)
 	app.Get("/api/typeRealEstate", controllers.AllTypeRE)
 	app.Get("/api/estateMostRecent", controllers.MostRecentRE)
+
+
 	app.Get("/api/estateRecommendedByUser", controllers.UserRecommend)
 	app.Post("/api/realEstate", controllers.CreateRE)
 
