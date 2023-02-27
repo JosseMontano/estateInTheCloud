@@ -9,7 +9,7 @@ const queryRealEstate = `
   select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
   p.public_id, re.title, re.description, u.email, u.id as idUser
   from real_estates_photos rp , photos p, real_estates re, users u 
-  where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=true
+  where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id and re.available=true
   ORDER BY re.id`;
 
 export const getAllEstates = async (
@@ -59,7 +59,7 @@ export const getRealEstatesByUSerRecommended = async (
           p.id as idPhoto,  p.url, 
            p.public_id, re.title, re.description, u.email, u.id as idUser, u.qualification
            from real_estates_photos rp , photos p, real_estates re, users u  
-           where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=true
+           where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id and re.available=true
            ORDER BY u.email DESC) users ORDER BY users.qualification desc;
       `
     );
@@ -82,7 +82,7 @@ export const getEstateByUser = async (
     select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
     p.public_id, re.title, re.description, u.email, re.available, u.cellphonenumber
     from real_estates_photos rp , photos p, real_estates re, users u 
-    where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.id_user=${idUser}
+    where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id and re.user_id=${idUser}
     ORDER BY re.id
       `
   );
@@ -104,7 +104,7 @@ export const getEstateOfOnePublication = async (
       select re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
       p.public_id, re.title, re.description, u.email
       from real_estates_photos rp , photos p, real_estates re, users u 
-      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id
+      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id
       and re.id = ${idRealEstate}
       `
     );
@@ -139,7 +139,7 @@ export const createEstate = async (
   try {
     //save data of the realEstate
     const result = await pool.query(
-      `insert into real_estates (title, description, id_user, id_type_real_estate, 
+      `insert into real_estates (title, description, user_id, id_type_real_estate, 
         available,amount_bedroom,price,amount_bathroom,square_meter) 
       values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`,
       [
@@ -250,7 +250,7 @@ export const updateEstate = async (
     const { id } = req.params;
     const { title, description, id_user } = req.body;
     const result = await pool.query(
-      "update real_estates set title=$1, description=$2, id_user=$3 where id=$3 returning *",
+      "update real_estates set title=$1, description=$2, user_id=$3 where id=$3 returning *",
       [title, description, id_user, id]
     );
     if (result.rows.length === 0)
@@ -304,7 +304,7 @@ export const getAllEstatesByType = async (
       select DISTINCT on (re.id) re.id as idRealEstate, rp.id as idRealEstatePhoto,p.id as idPhoto,  p.url, 
       p.public_id, re.title, re.description, u.email, u.id as idUser
       from real_estates_photos rp , photos p, real_estates re, users u, type_real_estates tre
-      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.id_user = u.id and re.available=true and
+      where rp.id_photo = p.id and rp.id_real_estate = re.id and re.user_id = u.id and re.available=true and
       re.id_type_real_estate = tre.id and tre.name_type =$1
       ORDER BY re.id`,
       [type]

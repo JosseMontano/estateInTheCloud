@@ -11,6 +11,8 @@ func Setup(app *fiber.App) {
 		return c.SendString("Hello, World 👋!")
 	})
 
+	//======================= AUTH =======================
+
 	app.Post("/api/signup", controllers.Register)
 	app.Post("/api/signin", controllers.SingIn)
 	app.Post("/api/sendCodeGmail", controllers.SendCodeToGmail)
@@ -18,14 +20,14 @@ func Setup(app *fiber.App) {
 
 	app.Use(middleware.ValidateJwt)
 
-	//User
+	//======================= USER =======================
 	app.Get("/api/getUserComplete/:id", controllers.GetUser)
 
-	//Sign
+	//======================= AUTH =======================
 	app.Get("/api/me", controllers.User)
 	app.Post("/api/logout", controllers.Logout)
 
-	//========== REAL ESTATE ==========
+	//======================= REAL ESTATE =======================
 	app.Get("/api/realEstate", controllers.AllRE)
 	app.Get("/api/estateMostRecent", controllers.MostRecentRE)
 	app.Get("/api/estateRecommendedByUser", controllers.UserRecommend)

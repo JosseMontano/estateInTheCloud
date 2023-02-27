@@ -145,7 +145,7 @@ export const sendEmailCode = async (
     //save code in database
     const idUser = resultUser.rows[0].id;
     const resulAccountCode = await pool.query(
-      "select id from accounts where id_user = $1",
+      "select id from accounts where user_id = $1",
       [idUser]
     );
     const secrect_password = Math.floor(Math.random() * 90000) + 10000;

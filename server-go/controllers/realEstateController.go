@@ -95,7 +95,7 @@ func CreateRE(c *fiber.Ctx) error {
 
 	database.DB.Create(&realEstate)
 	database.DB.Model(&realEstate).Association("User").Find(&realEstate.User)
-	database.DB.Model(&realEstate).Association("TypeRealState").Find(&realEstate.TypeRealState)
+	database.DB.Model(&realEstate).Association("TypeRealState").Find(&realEstate.TypeRealEstate)
 	database.DB.Model(&realEstate).Association("Photos").Find(&realEstate.Photos)
 	return c.JSON(realEstate)
 }
