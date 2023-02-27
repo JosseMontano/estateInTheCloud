@@ -25,11 +25,6 @@ router.get("/estateOfOnePublication/:idRealEstate", getEstateOfOnePublication);
 router.post("/estate", createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", addNewPhotoToRealEstate);
 router.put("/estate/:id", updateEstate);
-
-
-
-
-
 router.get("/estateByType/:type", getAllEstatesByType);
 router.post("/estateByFilterCustom", getAllEstatesByFilterCustom);
 
