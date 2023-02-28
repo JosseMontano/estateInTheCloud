@@ -78,6 +78,16 @@ func RealEstate(c *fiber.Ctx) error {
 	return c.JSON(realEstate)
 }
 
+func RealEstateByType(c *fiber.Ctx) error {
+	typeRE := c.Params("type")
+	var realEstate []AllREResult
+	database.DB.Raw(`select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,
+	p.id as id_photo, p.url, p.public_id, re.title, re.description, u.email, u.id as id_user` + " " +
+		from + ", " + "type_real_estates tre" + " " + where + " " +
+		`and re.available=true and re.type_real_estate_id = tre.id and tre.name='` + typeRE + `' ORDER BY re.id`).Scan(&realEstate)
+	c.Status(200)
+	return c.JSON(realEstate)
+}
 
 func CreateRE(c *fiber.Ctx) error {
 	/* 	var realEstate models.RealEstate */

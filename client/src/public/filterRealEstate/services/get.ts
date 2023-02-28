@@ -1,5 +1,5 @@
 import { RealEstateFilterCustom } from "../interfaces/filterCustom";
-import { http, headers } from "@/config/http";
+import { http, headers, httpGo } from "@/config/http";
 import { index } from "@/global/utilities/getServices";
 
 export const getRealEstateByFilterCustom = async <T>(
@@ -40,7 +40,7 @@ export const getRealEstateByFilterCustom = async <T>(
 export const getRealEstateByType = async <T>(
   type: string
 ): Promise<{ json: T; status: number }> => {
-  const url = `${http}estateByType/${type}`;
+  const url = `${httpGo}realEstateByType/${type}`;
   const { json, status } = await index<T>(url);
   return { json, status };
 };
