@@ -1,4 +1,5 @@
 import Config from "./config";
+import { Token } from "../global/utilities/getTokenCookie";
 
 export const http = Config.backendUrlDev;
 export const httpWS = Config.backendUrlDevWS;
@@ -9,4 +10,5 @@ export const httpWS = Config.backendUrlProdWS */
 export const headers = {
   Accept: "application/json",
   "Content-Type": "application/json",
+  "authorization":Token
 };

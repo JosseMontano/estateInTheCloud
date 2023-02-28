@@ -24,6 +24,8 @@ router.get("/estateByType/:type", getAllEstatesByType);
 
 
 
+
+
 router.post("/estateByFilterCustom", getAllEstatesByFilterCustom);
 router.post("/estate", createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", addNewPhotoToRealEstate);

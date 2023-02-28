@@ -35,6 +35,14 @@ func Setup(app *fiber.App) {
 	app.Get("/api/realEstate/:id", controllers.RealEstate)
 	app.Get("/api/realEstateByType/:type", controllers.RealEstateByType)
 
+	//======================= Question =======================
+	app.Get("/api/question/:idReal_Estate", controllers.GetQuestion)
+	app.Post("/api/question", controllers.CreateQuestion)
+
+	//======================= Photo =======================
+	app.Get("/api/photo/:id", controllers.GetPhoto)
+
+
 
 
 	app.Post("/api/realEstate", controllers.CreateRE)
