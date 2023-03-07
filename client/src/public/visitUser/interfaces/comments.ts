@@ -4,11 +4,11 @@ export interface Comments {
   id_comment: number;
   description: string;
   amount_start: number;
-  url: string;
+  url_photo: string;
 }
 export interface CommentsPostType {
   description: string;
-  iUserNumber: number;
-  idUser: number;
+  id_user_visited: number;
+  id_user_commentator: number;
   amountStart: number;
 }

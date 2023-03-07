@@ -9,7 +9,7 @@ export const getCommentsByUser = (id: number) => {
         commentator
         description
         amount_start
-        url
+        url_photo
       }
     } 
   `;

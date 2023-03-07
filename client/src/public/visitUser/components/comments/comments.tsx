@@ -25,7 +25,7 @@ const Comments = ({ v, idUser }: Params) => {
   const sameUser = v.commentator === idUser;
   return (
     <Container>
-      <Img url={v.url} />
+      <Img url={v.url_photo} />
       <Content {...v} />
       {sameUser && <DeleteComment id={v.id_comment} />}
     </Container>

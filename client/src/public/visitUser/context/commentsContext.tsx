@@ -1,8 +1,14 @@
 import { createContext, useContext, useState } from "react";
 import Children from "@/global/interfaces/children";
-import { addCommentSubs, getCommentsByUser } from "@/public/visitUser/services/comment";
+import {
+  addCommentSubs,
+  getCommentsByUser,
+} from "@/public/visitUser/services/comment";
 import { useMutation, useQuery, useSubscription } from "@apollo/client";
-import { deleteComment, deleteCommentSubs } from "@/public/visitUser/services/comment";
+import {
+  deleteComment,
+  deleteCommentSubs,
+} from "@/public/visitUser/services/comment";
 import { Comments } from "@/public/visitUser/interfaces/comments";
 import { useApolloClient } from "@apollo/client";
 import { postComment } from "@/public/visitUser/services/comment";
@@ -69,11 +75,12 @@ export const CommentsContextProvider = ({ children }: Children) => {
   });
 
   const addComment = async (form: CommentsPostType) => {
-    const { amountStart, description, iUserNumber, idUser } = form;
+    const { amountStart, description, id_user_visited, id_user_commentator } =
+      form;
     await CREATE_COMMENT({
       variables: {
-        person_commented: iUserNumber,
-        commentator: idUser,
+        person_commented: id_user_visited,
+        commentator: id_user_commentator,
         description,
         amount_start: amountStart,
       },
@@ -81,7 +88,7 @@ export const CommentsContextProvider = ({ children }: Children) => {
     alert("guardado");
   };
 
- useSubscription(deleteCommentSubs, {
+  useSubscription(deleteCommentSubs, {
     onData: ({ data }) => {
       const { DELETE_A_COMMENT } = data.data;
       const dataInStore = client.readQuery({
@@ -99,14 +106,11 @@ export const CommentsContextProvider = ({ children }: Children) => {
     },
   });
 
-
- 
-
   const [DELETE_COMMENT] = useMutation(deleteComment());
 
   const handleDelete = async (id: number) => {
     await DELETE_COMMENT({ variables: { id } });
-    
+
     setDeleteCommentState(true);
     setTimeout(() => {
       setDeleteCommentState(false);

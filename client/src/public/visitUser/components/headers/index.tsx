@@ -10,6 +10,7 @@ import ContentMid from "./contentMid";
 import ContentModal from "./publicCommentator/contentModal";
 import  UserType from "@/global/interfaces/user";
 import { useComments } from "@/public/visitUser/context/commentsContext";
+import { CommentsPostType } from "../../interfaces/comments";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 40%;
@@ -45,7 +46,10 @@ const Header = (params: Params) => {
   const [amountStart, setAmountStart] = useState(1);
 
   const handleAddComment = async (description: string) => {
-    const form = { amountStart, description, idUser, iUserNumber };
+    var id_user_commentator = idUser
+    let id_user_visited= iUserNumber
+    const form:CommentsPostType = { amountStart, description, id_user_commentator, id_user_visited };
+ 
     await addComment(form);
   };
 

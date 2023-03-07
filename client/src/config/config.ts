@@ -5,6 +5,7 @@ interface EnvType {
   backendUrlProdWS: string;
   frontendUrlDev: string;
   backendUrlDevGo: string;
+  backendUrlProdGo:string;
 }
  
 const env: EnvType = {
@@ -14,6 +15,7 @@ const env: EnvType = {
   backendUrlProdWS: import.meta.env.VITE_BACKEND_URL_PROD_WS,
   frontendUrlDev: import.meta.env.VITE_FRONTEND_URL,
   backendUrlDevGo: import.meta.env.VITE_BACKEND_GO_URL_DEV,
+  backendUrlProdGo: import.meta.env.VITE_BACKEND_GO_URL_PROD,
 };
 
 export default env;
