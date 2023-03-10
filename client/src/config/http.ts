@@ -1,13 +1,12 @@
 import Config from "./config";
 import { Token } from "../global/utilities/getTokenCookie";
-
-/* export const http = Config.backendUrlDev;
+/*  export const http = Config.backendUrlDev;
 export const httpWS = Config.backendUrlDevWS;
 export const httpGo = Config.backendUrlDevGo;  */
 
- export const http = Config.backendUrlProd;
+  export const http = Config.backendUrlProd;
 export const httpWS = Config.backendUrlProdWS 
-export const httpGo = Config.backendUrlProdGo; 
+export const httpGo = Config.backendUrlProdGo;  
 
 export const headers = {
   Accept: "application/json",
