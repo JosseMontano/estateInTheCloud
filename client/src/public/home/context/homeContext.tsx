@@ -6,12 +6,13 @@ import {
   getRERecommendedByUser,
 } from "../services/get";
 import Children from "@/global/interfaces/children";
-
+import { useNameUser } from "@/global/context/nameUserContext";
 interface homeContext {
   homeData: RealEstate[];
   homeDataMostRecent: RealEstate[];
   DataRecommendedByUser: RealEstate[];
   loading: boolean;
+  loadData: () => void;
 }
 
 const contextDefaultValue: homeContext = {
@@ -19,6 +20,7 @@ const contextDefaultValue: homeContext = {
   homeDataMostRecent: [],
   DataRecommendedByUser: [],
   loading: true,
+  loadData: () => {},
 };
 
 export const HomeContext = createContext<homeContext>(contextDefaultValue);
@@ -40,9 +42,11 @@ export const HomeContextProvider = ({ children }: Children) => {
     []
   );
   const [loading, setLoading] = useState(true);
+  const {nameUser}= useNameUser()
 
   const handleGetRealEstateMostRecent = async () => {
     const { json, status } = await getREMostRecent<RealEstate[]>();
+    console.log('ya pues')
     if (json) {
       if (status != 404) {
         setDataMostRecent(json);
@@ -74,12 +78,18 @@ export const HomeContextProvider = ({ children }: Children) => {
     }
   };
 
-  useEffect(() => {
-    handleGetRealEstateMostRecent();
-    handleGetRealEstate();
-    handleGetRealEstateRecommendedByUser();
+
+  const loadData = async () => {
+    setLoading(true);
+    await handleGetRealEstateMostRecent();
+    await handleGetRealEstate();
+    await handleGetRealEstateRecommendedByUser();
     setLoading(false);
-  }, []);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, [nameUser]);
 
   return (
     <HomeContext.Provider
@@ -88,6 +98,7 @@ export const HomeContextProvider = ({ children }: Children) => {
         homeDataMostRecent,
         DataRecommendedByUser,
         loading,
+        loadData,
       }}
     >
       {children}

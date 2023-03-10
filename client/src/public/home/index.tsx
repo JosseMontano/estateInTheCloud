@@ -5,6 +5,7 @@ import Skeleton from "./components/skeleton";
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
 import { useLanguage } from "@/global/context/languageContext";
+import { useNameUser } from "@/global/context/nameUserContext";
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +13,7 @@ const Container = styled.div`
 
 const Home = () => {
   const { text } = useLanguage();
+  const { idUser } = useNameUser();
   const dataContext = useHome();
   const navigate = useNavigate();
   const visitUser = (idUser: number, email: string) => {
@@ -38,6 +40,7 @@ const Home = () => {
       data: dataContext.homeData,
     },
   ];
+
   const showDataComplete = () => {
     return <Content dataComplete={data} visitUser={visitUser} />;
   };

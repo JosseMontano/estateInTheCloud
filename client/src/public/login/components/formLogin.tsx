@@ -5,6 +5,8 @@ import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import Language from "@/global/components/language";
+
+
 const Container = styled.form``;
 
 interface BtnType {
@@ -38,6 +40,7 @@ const Form = (props: ParamsType) => {
   useEffect(() => {
     if (props.msg === "El proceso fue exitoso") {
       navigate("/home");
+      location.reload();
     }
   }, [props.msg]);
 
