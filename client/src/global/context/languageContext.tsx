@@ -50,11 +50,13 @@ interface TextType {
   filterSearch: string;
   filterBedroom: string;
   filterCustom: string;
-  filterCustomPrice: string;
+  filterCustomPriceMin: string;
+  filterCustomPriceMax: string;
   filterCustomBedroom: string;
   filterCustomBathroom: string;
   filterCustomBtn: string;
-  filterCustomSize: string;
+  filterCustomMinSize: string;
+  filterCustomMaxSize: string;
   profileEditProfile: string;
   profileCreatePublicate: string;
   profilePublication: string;
@@ -139,10 +141,12 @@ const translations: TranslationType = {
     questionBtnSave: "Publicar",
     filterBedroom: "Dormitorios",
     filterSearch: "¿Que estas buscando?",
-    filterCustomPrice: "Precio",
+    filterCustomPriceMin: "Precio minimo",
+    filterCustomPriceMax: "Precio maximo",
     filterCustomBedroom: "Cuarto",
     filterCustomBathroom: "Baño",
-    filterCustomSize: "Metros cuadrados",
+    filterCustomMinSize: "Metros cuadrados (Min)",
+    filterCustomMaxSize: "Metros cuadrados (Max)",
     filterCustomBtn: "Buscar",
     filterCustom: "Personalizado",
     profileEditProfile: "Editar perfil",
@@ -223,10 +227,12 @@ const translations: TranslationType = {
     filterCustom: "Custom",
     filterBedroom: "Bethroom",
     filterSearch: "What are you looking for?",
-    filterCustomPrice: "Price",
+    filterCustomPriceMin: "Price (Min)",
+    filterCustomPriceMax:"Price (Max)",
     filterCustomBedroom: "Bedroom",
     filterCustomBathroom: "Bathroom",
-    filterCustomSize: "Squeare meter",
+    filterCustomMinSize: "Squeare meter (Min)",
+    filterCustomMaxSize: "Squeare meter (Max)",
     filterCustomBtn: "Search",
     profileEditProfile: "Edit profile",
     profileCreatePublicate: "Create publication",

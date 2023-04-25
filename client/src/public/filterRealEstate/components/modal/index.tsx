@@ -12,16 +12,17 @@ const Container = styled.div`
 
 interface Params {
   searchCustom: (form: RealEstateFilterCustom) => void;
+  handleChangeInput : (e: Event["inputChange"]) =>void
 }
 
-const Index = ({ searchCustom }: Params) => {
+const Index = ({ searchCustom, handleChangeInput }: Params) => {
   const { text } = useLanguage();
-  const handleChange = (e: Event["inputChange"]) => {};
+ 
 
   return (
     <Container>
       <FormComponent searchCustom={searchCustom} />
-      <ShowTypeRealEstate handleChange={handleChange} />
+      <ShowTypeRealEstate handleChange={handleChangeInput} />
     </Container>
   );
 };

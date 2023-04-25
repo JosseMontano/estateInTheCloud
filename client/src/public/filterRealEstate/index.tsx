@@ -6,14 +6,13 @@ import { Suspense, useEffect, useState } from "react";
 import ContainerBtn from "./components/containerBtn";
 import ModalContent from "./components/modal";
 import ContainerCard from "./components/containerCard";
-
-
 import {
   getRealEstateByFilterCustom,
   getRealEstateByType,
 } from "./services/get";
 import { RealEstateFilterCustom } from "./interfaces/filterCustom";
 import { useModal, Modal } from "jz-modal";
+import Event from "@/global/interfaces/event";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -48,12 +47,20 @@ const TypeRealEstate = () => {
     return search(v);
   });
 
+  const [typeRealEstate, setTypeRealEstate] = useState('')
+  const handleChangeInput = (e: Event["inputChange"]) => {
+    setTypeRealEstate(e.target.value)
+  };
+
   const searchCustom = async (form: RealEstateFilterCustom) => {
+    form.type = typeRealEstate;
     const { json } = await getRealEstateByFilterCustom(form);
     setData(json);
+    console.log(json)
     setCatActually("Custom");
     toggle();
   };
+
 
   useEffect(() => {
     changeData("Garzonier");
@@ -73,7 +80,7 @@ const TypeRealEstate = () => {
       <Modal
         hide={toggle}
         isShown={isShown}
-        modalContent={<ModalContent searchCustom={searchCustom} />}
+        modalContent={<ModalContent handleChangeInput={handleChangeInput} searchCustom={searchCustom} />}
       />
     </Suspense>
   );

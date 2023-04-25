@@ -37,27 +37,30 @@ const Profile = () => {
     }
   };
 
-  return (
-    <Suspense fallback={<p>Loading</p>}>
+  if (data != undefined) {
+    return (
+      <Suspense fallback={<p>Loading</p>}>
+        <Container marginGlobal={marginGlobal} ColorText={ColorText}>
+          {email && (
+            <Header
+              amountPublciation={data.GET_REAL_ESTATE_BY_ID_USER.length}
+              idUser={idUser}
+              toggle={toggle}
+            />
+          )}
+          {idUser != 0 && showPublication()}
+        </Container>
 
-      <Container marginGlobal={marginGlobal} ColorText={ColorText}>
-        {email && (
-          <Header
-            amountPublciation={data.GET_REAL_ESTATE_BY_ID_USER.length}
-            idUser={idUser}
-            toggle={toggle}
-          />
-        )}
-        {idUser != 0 && showPublication()}
-      </Container>
+        <Modal
+          isShown={isShown}
+          hide={toggle}
+          modalContent={<ContentModal createRealEstate={createRealEstate} />}
+        />
+      </Suspense>
+    );
+  }
 
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        modalContent={<ContentModal createRealEstate={createRealEstate} />}
-      />
-    </Suspense>
-  );
+  return <></>;
 };
 
 export default Profile;
