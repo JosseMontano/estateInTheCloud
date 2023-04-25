@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const ConAux = styled.div`
   display: flex;
+  flex-direction: column;
   input {
     margin: 0px 5px;
   }
@@ -22,7 +23,7 @@ const TextInput = ({ label, ...props }: Params) => {
       <Label>{label}</Label>
       <ConAux>
         <Input {...field} {...props} />
-        <ErrorMessage name={props.name} component="span" />
+        <ErrorMessage name={props.name} component="span" className="msgError" />
       </ConAux>
     </>
   );

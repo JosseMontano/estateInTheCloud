@@ -9,6 +9,7 @@ import validationSchema, { initialValues } from "../../validations/filter";
 
 const ChildSty = styled.div`
   margin-top: 10px;
+  padding: 10px;
 `;
 
 interface Params {
@@ -36,13 +37,13 @@ const FormComponent = ({ searchCustom }: Params) => {
           />
 
           <TextInput
-            label={text.filterCustomPrice}
+            label={text.filterCustomPriceMin}
             name="minPrice"
             placeholder="700"
           />
 
           <TextInput
-            label={text.filterCustomPrice}
+            label={text.filterCustomPriceMax}
             name="maxPrice"
             placeholder="1000"
           />
@@ -54,13 +55,13 @@ const FormComponent = ({ searchCustom }: Params) => {
           />
 
           <TextInput
-            label={text.filterCustomSize}
+            label={text.filterCustomMinSize}
             name="minSquareMeter"
             placeholder="25"
           />
 
           <TextInput
-            label={text.filterCustomSize}
+            label={text.filterCustomMaxSize}
             name="maxSquareMeter"
             placeholder="40"
           />

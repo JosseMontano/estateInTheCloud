@@ -34,11 +34,13 @@ export const NameUserProvider = ({ children }: MyContextProp) => {
   );
   const [idUser, setidUser] = useState<number>(contextDefaultValue.idUser);
   const [email, setEmail] = useState<string>(contextDefaultValue.email);
+
   const handlenameUser = (sendload: string, id: number, email: string) => {
     setnameUser(sendload);
     setidUser(id);
     setEmail(email);
   };
+  
   return (
     <NameUserContext.Provider
       value={{
