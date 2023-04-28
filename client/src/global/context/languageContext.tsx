@@ -85,6 +85,7 @@ interface TextType {
   configurationLanguage: string;
   languageValEn: string;
   languageValEs: string;
+  msgFavorites: string;
 }
 
 interface TranslationType {
@@ -177,6 +178,7 @@ const translations: TranslationType = {
     configurationLanguage: "Idioma:",
     languageValEn: "Ingles",
     languageValEs: "Español",
+    msgFavorites:"Se agrego a favoritos",
   },
   en: {
     dataEmpty: "There is not data",
@@ -262,6 +264,7 @@ const translations: TranslationType = {
     configurationLanguage: "Language:",
     languageValEn: "English",
     languageValEs: "Spanish",
+    msgFavorites:"It was added to favorites",
   },
 };
 

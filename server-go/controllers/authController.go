@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"time"
 	"github.com/JosseMontano/estateInTheCloud/database"
 	"github.com/JosseMontano/estateInTheCloud/middleware"
 	"github.com/JosseMontano/estateInTheCloud/models"
@@ -12,6 +11,7 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/gomail.v2"
+	"time"
 )
 
 var validate = validator.New()
@@ -105,7 +105,7 @@ func SingIn(c *fiber.Ctx) error {
 		})
 	}
 
-	timeExp := time.Now().Add(24 * time.Hour)
+	timeExp := time.Now().Add(30 * 24 * time.Hour)
 	tokenString, err := middleware.GenerateJwt(user, timeExp)
 
 	if err != nil {

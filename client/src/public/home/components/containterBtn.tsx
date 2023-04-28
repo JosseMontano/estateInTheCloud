@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useLanguage } from "@/global/context/languageContext";
+import { RealEstate } from "@/global/interfaces/realEstate";
 
 const Container = styled.div`
   display: flex;
@@ -16,13 +17,13 @@ const Btn = styled.button`
 `;
 
 interface Params {
-  idUser: number;
-  email: string;
+  v: RealEstate;
   toggle: () => void;
   visitUser: (idUser: number, email: string) => void;
+  addFavorite: (realEstateId: number) => void;
 }
 
-const ContainterBtn = ({ idUser, toggle, visitUser, email }: Params) => {
+const ContainterBtn = ({ v, toggle, visitUser, addFavorite }: Params) => {
   const { text } = useLanguage();
   let data = [
     {
@@ -31,7 +32,11 @@ const ContainterBtn = ({ idUser, toggle, visitUser, email }: Params) => {
     },
     {
       name: text.homeVist,
-      click: () => visitUser(idUser, email),
+      click: () => visitUser(v.id_user, v.email),
+    },
+    {
+      name: "❤",
+      click: () => addFavorite(v.id_real_estate),
     },
   ];
 

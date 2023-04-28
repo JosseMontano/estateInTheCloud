@@ -24,19 +24,20 @@ interface Params {
   v: RealEstate;
   toggle: () => void;
   visitUser: (idUser: number, email: string) => void;
+  addFavorite: (realEstateId: number) => void;
 }
 
-const ContentCard = ({ v, toggle, visitUser }: Params) => {
+const ContentCard = ({ v, toggle, visitUser, addFavorite }: Params) => {
   return (
     <Content>
       <Img className="img" src={v.url} alt="Avatar" />
       <H4>{v.title}</H4>
       <P>{v.email}</P>
       <ContainterBtn
-        idUser={v.id_user}
-        email={v.email}
+        v={v}
         toggle={toggle}
         visitUser={visitUser}
+        addFavorite={addFavorite}
       />
     </Content>
   );

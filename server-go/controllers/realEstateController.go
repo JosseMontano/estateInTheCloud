@@ -1,7 +1,11 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
+
 	"github.com/JosseMontano/estateInTheCloud/database"
 	"github.com/JosseMontano/estateInTheCloud/helper"
 	"github.com/JosseMontano/estateInTheCloud/models"
@@ -119,4 +123,52 @@ func CreateRE(c *fiber.Ctx) error {
 
 	return c.JSON(url)
 
+}
+
+type TypeGetTypeRE struct {
+	TypeRealEstateId int `json:"type_real_estate_id"`
+}
+
+type TypeGetMinMaxRE struct {
+	MaxSquareMeter   int `json:"max_square_meter"`
+	MinSquareMeter   int `json:"min_square_meter"`
+	MaxAmountBedroom int `json:"max_amount_bedroom"`
+	MinAmountBedroom int `json:"min_amount_bedroom"`
+}
+
+func FilterIntelligente(c *fiber.Ctx) error {
+	userId := c.Params("user_id")
+
+	//===== get the types of real estate =====
+	var typesRealEstate []TypeGetTypeRE
+	database.DB.Raw(`select DISTINCT on (RE.type_real_estate_id) RE.type_real_estate_id
+	from favorite_real_estates fav, real_estates RE
+	where fav.real_estate_id = RE.id and Fav.user_id=` + userId).Scan(&typesRealEstate)
+
+	//===== get the min and max =====
+	var MinMaxRE TypeGetMinMaxRE
+	database.DB.Raw(`select max(RE.square_meter) as max_square_meter, min(RE.square_meter) as min_square_meter,
+	max(RE.amount_bedroom) as max_amount_bedroom, min(RE.amount_bedroom) as min_amount_bedroom
+	from favorite_real_estates fav, real_estates RE
+	where fav.real_estate_id = RE.id and Fav.user_id=` + userId).Scan(&MinMaxRE)
+
+	//===== FILTER IA =====
+	var realEstate []models.RealEstate
+
+	var conditions []string
+	for _, t := range typesRealEstate {
+		conditions = append(conditions, fmt.Sprintf("type_real_estate_id = %d", t.TypeRealEstateId))
+	}
+
+	queryWhere := " and square_meter >=" + strconv.Itoa(MinMaxRE.MinSquareMeter) + " and square_meter <=" +
+		strconv.Itoa(MinMaxRE.MaxSquareMeter) +
+		" and amount_bedroom <=" + strconv.Itoa(MinMaxRE.MinAmountBedroom) +
+		" and amount_bedroom >=" + strconv.Itoa(MinMaxRE.MaxAmountBedroom)
+
+	query := fmt.Sprintf("SELECT * FROM real_estates WHERE %s", strings.Join(conditions, " OR "))
+	database.DB.Debug().Raw(query + queryWhere).Scan(&realEstate)
+
+	/* 	database.DB.Debug().Where("(type_real_estate_id) IN ?",typesRealEstate).Find(&realEstate) */
+
+	return c.JSON(realEstate)
 }
