@@ -37,7 +37,7 @@ const Home = () => {
     },
     {
       title: text.homeForYou,
-      data: dataContext.homeData,
+      data: dataContext.homeDataJustForYou,
     },
   ];
 

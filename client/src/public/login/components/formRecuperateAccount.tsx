@@ -30,10 +30,13 @@ const FormRecuperate = () => {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRecuperateAccount>(initialForm, validationsForm, sendCodeGmail);
 
+  const [changePassMsg, setChangePassMsg] = useState("Ha ocurrido un error");
   const handleChangePassword = async (e: Event["buttonSend"]) => {
     e.preventDefault();
     setChangePassLoad(true);
     const res = await recuperateAccount(form);
+    if (res) setChangePassMsg("se cambio la contraseña con exito");
+
     setTimeout(() => {
       setChangePassLoad(false);
     }, 2000);
@@ -85,9 +88,11 @@ const FormRecuperate = () => {
         <Button key={i} {...v} />
       ))}
       <LoadingAndResponse loading={loading} msg={msg} response={response} />
+
+     
       <LoadingAndResponse
         loading={changePassLoad}
-        msg={"Ha ocurrido un error"}
+        msg={changePassMsg}
         response={changePassFlag}
       />
     </Container>

@@ -7,8 +7,9 @@ import Toast from "@/global/components/toast/message";
 import { useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
 
+type dataCompleteType = { title: string; data: RealEstate[] };
 interface Params {
-  dataComplete: { title: string; data: RealEstate[] }[];
+  dataComplete: dataCompleteType[];
   visitUser: (idUser: number, email: string) => void;
 }
 
@@ -31,13 +32,18 @@ const index = ({ dataComplete, visitUser }: Params) => {
       }, 2000);
     }
   };
+
+  function showSlider(v: dataCompleteType, i: number) {
+    return (
+      <div key={i}>
+        <Slider {...v} visitUser={visitUser} addFavorite={addFavorite} />
+      </div>
+    );
+  }
+
   return (
     <>
-      {dataComplete.map((v, i) => (
-        <div key={i}>
-          <Slider {...v} visitUser={visitUser} addFavorite={addFavorite} />
-        </div>
-      ))}
+      {dataComplete.map((v, i) => showSlider(v, i))}
       {saveFav && <Toast msg={text.msgFavorites} />}
     </>
   );

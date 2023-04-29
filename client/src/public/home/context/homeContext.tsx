@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import {
+  getJustForYou,
   getREAll,
   getREMostRecent,
   getRERecommendedByUser,
@@ -11,6 +12,7 @@ interface homeContext {
   homeData: RealEstate[];
   homeDataMostRecent: RealEstate[];
   DataRecommendedByUser: RealEstate[];
+  homeDataJustForYou: RealEstate[];
   loading: boolean;
   loadData: () => void;
 }
@@ -19,6 +21,7 @@ const contextDefaultValue: homeContext = {
   homeData: [],
   homeDataMostRecent: [],
   DataRecommendedByUser: [],
+  homeDataJustForYou: [],
   loading: true,
   loadData: () => {},
 };
@@ -41,12 +44,14 @@ export const HomeContextProvider = ({ children }: Children) => {
   const [DataRecommendedByUser, setRecommendedByUser] = useState<RealEstate[]>(
     []
   );
+  const [homeDataJustForYou, setDataJustForYou] = useState<RealEstate[]>([]);
+
   const [loading, setLoading] = useState(true);
-  const {nameUser}= useNameUser()
+  const { nameUser, idUser } = useNameUser();
 
   const handleGetRealEstateMostRecent = async () => {
     const { json, status } = await getREMostRecent<RealEstate[]>();
-    console.log('ya pues')
+    console.log("ya pues");
     if (json) {
       if (status != 404) {
         setDataMostRecent(json);
@@ -78,12 +83,23 @@ export const HomeContextProvider = ({ children }: Children) => {
     }
   };
 
+  const handleGetJustForYou = async () => {
+    const { json, status } = await getJustForYou<RealEstate[]>(idUser);
+    if (json) {
+      if (status != 404) {
+        setDataJustForYou(json);
+        return;
+      }
+      setDataJustForYou([]);
+    }
+  };
 
   const loadData = async () => {
     setLoading(true);
     await handleGetRealEstateMostRecent();
     await handleGetRealEstate();
     await handleGetRealEstateRecommendedByUser();
+    await handleGetJustForYou();
     setLoading(false);
   };
 
@@ -97,6 +113,7 @@ export const HomeContextProvider = ({ children }: Children) => {
         homeData,
         homeDataMostRecent,
         DataRecommendedByUser,
+        homeDataJustForYou,
         loading,
         loadData,
       }}

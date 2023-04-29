@@ -27,3 +27,14 @@ export const getRERecommendedByUser = async <T>(): Promise<{
   const { json, status } = await index<T>(url);
   return { json, status };
 };
+
+export const getJustForYou = async <T>(
+  userId: number
+): Promise<{
+  json: T;
+  status: number;
+}> => {
+  const url = `${httpGo}filter-intelligent/` + userId;
+  const { json, status } = await index<T>(url);
+  return { json, status };
+};
