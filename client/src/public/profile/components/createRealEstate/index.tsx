@@ -9,6 +9,7 @@ import useToast from "@/global/hooks/useToast";
 import funFormData from "@/global/utilities/formData";
 import Event from "@/global/interfaces/event";
 import SecondForm from "./secondForm";
+import MapForm from "./mapForm";
 
 const Container = styled.div`
   display: grid;
@@ -111,14 +112,15 @@ const Index = ({ createRealEstate }: Params) => {
   };
 
   const mapForm: MapFormType = {
-    1: (
+    1: <MapForm changeForm={changeForm} paginationForm={paginationForm} />,
+    2: (
       <FirstForm
         handleChange={handleChange}
         changeForm={changeForm}
         paginationForm={paginationForm}
       />
     ),
-    2: (
+    3: (
       <SecondForm
         handleChange={handleChange}
         sendData={sendData}

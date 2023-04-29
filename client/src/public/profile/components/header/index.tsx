@@ -30,8 +30,9 @@ interface Params {
   amountPublciation: number;
   idUser: number;
   toggle: () => void;
+  isShown:boolean
 }
-const Header = ({ amountPublciation, idUser, toggle }: Params) => {
+const Header = ({ amountPublciation, idUser, toggle, isShown }: Params) => {
   const { data } = UseLoadData<UserType>(getUserById, idUser);
   const [exists, setExists] = useState(false);
 
@@ -47,7 +48,7 @@ const Header = ({ amountPublciation, idUser, toggle }: Params) => {
     <Container>
       <ContentImg data={dataObj} exists={exists} />
       <ContainerContent>
-        <ContentBtn toggle={toggle} />
+        <ContentBtn isShown={isShown} toggle={toggle} />
         <ContentMid amountPublciation={amountPublciation} />
         <ContentUser />
       </ContainerContent>

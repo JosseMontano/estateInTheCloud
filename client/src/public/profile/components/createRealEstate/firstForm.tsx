@@ -1,6 +1,11 @@
-import { ColorBtnSecond, ColorText, InputFile } from "@/global/styles/globals";
+import {
+  ColorBtn,
+  ColorBtnSecond,
+  ColorBtnThird,
+  ColorText,
+  InputFile,
+} from "@/global/styles/globals";
 import { Input, Label, Button, TextArea } from "jz-validation-form";
-
 import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
 import ShowTypeRealEstate from "@/global/components/showTypeRealEstate";
@@ -47,6 +52,13 @@ const Form = ({ handleChange, changeForm, paginationForm }: Params) => {
 
       <Label colorText={ColorText}>{text.createPublicationBedrom}</Label>
       <Input type="text" name={"bedroom"} onChange={(e) => handleChange(e)} />
+
+      <Button
+        ColorBtn={ColorBtn}
+        onClick={() => changeForm(paginationForm - 1)}
+      >
+        {text.createPublciationBtnBack}
+      </Button>
 
       <Button
         ColorBtn={ColorBtnSecond}
