@@ -8,7 +8,7 @@ import {
 import { Input, Label, Button, TextArea } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
 import Event from "@/global/interfaces/event";
-import ShowTypeRealEstate from "@/global/components/showTypeRealEstate";
+import ShowTypeRealEstate from "./showTypeRealEstate";
 import styled from "styled-components";
 
 const Container = styled.div`

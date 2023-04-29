@@ -38,7 +38,7 @@ const Index = ({ createRealEstate }: Params) => {
     price: "",
     bathroom: "",
     squareMeter: "",
-    id_user: 0,
+    id_user: idUser,
     url: "",
   });
 
@@ -91,13 +91,17 @@ const Index = ({ createRealEstate }: Params) => {
       },
     ];
 
-    const data = funFormData(vecFormData);
+    setFormData({
+      ...formData,
+      id_user: idUser,
+    });
+    /* console.log(vecFormData) */
+    /*  const data = funFormData(vecFormData); */
+    const res = await saveRealEstate(formData, photo);
 
-    const res = await saveRealEstate(data);
-
-    if (res?.status == 200) {
+    if (res != null) {
       handleToast("El proceso fue exitoso");
-      createRealEstate(await res.json());
+      createRealEstate(await res);
     } else {
       handleToast("Ha ocurrido un error");
     }
