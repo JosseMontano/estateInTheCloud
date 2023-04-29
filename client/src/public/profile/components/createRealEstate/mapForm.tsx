@@ -2,16 +2,10 @@ import { Button, Label } from "jz-validation-form";
 import { ColorBtnSecond } from "@/global/styles/globals";
 import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useState } from "react";
 import LocationMarker from "./locationMarket";
+import { MarkerPositionType } from "../../interfaces/map";
 
 const styleMap = {
   height: "350px",
@@ -22,11 +16,8 @@ const styleMap = {
 interface Params {
   changeForm: (pagination: number) => void;
   paginationForm: number;
-}
-
-export interface MarkerPositionType {
-  lat: number;
-  lng: number;
+  markerPosition: MarkerPositionType | null;
+  handleGetLatLng: (e: any) => void;
 }
 
 const Container = styled.div`
@@ -44,16 +35,13 @@ const Container = styled.div`
   }
 `;
 
-const MapForm = ({ changeForm, paginationForm }: Params) => {
+const MapForm = ({
+  changeForm,
+  paginationForm,
+  markerPosition,
+  handleGetLatLng,
+}: Params) => {
   const { text } = useLanguage();
-
-  const [markerPosition, setMarkerPosition] =
-    useState<MarkerPositionType | null>(null);
-
-  const handleGetLatLng = (e: any) => {
-    const { lat, lng } = e.latlng;
-    setMarkerPosition({ lat, lng });
-  };
 
   function showMapJSX() {
     return (

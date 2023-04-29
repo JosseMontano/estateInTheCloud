@@ -30,11 +30,11 @@ def post_realEstate():
     conn = get_conn()
     cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    query = "insert into real_estates (title, description, user_id, type_real_estate_id, available,amount_bedroom,price,amount_bathroom,square_meter) values (%s, %s, %s, %s, %s, %s, %s, %s, %s) returning *"
+    query = "insert into real_estates (title, description, user_id, type_real_estate_id, available,amount_bedroom,price,amount_bathroom,square_meter, lat_long, address) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning *"
 
     cur.execute(
         query, (
-            title, description, id_user, id_type, True, bedroom, price, bathroom, squareMeter)
+            title, description, id_user, id_type, True, bedroom, price, bathroom, squareMeter, ubication, address)
     )
 
     new_created_company = cur.fetchone()

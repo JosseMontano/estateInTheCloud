@@ -1,8 +1,13 @@
 import { http, httpPy } from "@/config/http";
 import { Token } from "@/global/utilities/getTokenCookie";
-export const saveRealEstate = async (data: any, photo: any) => {
+export const saveRealEstate = async (
+  data: any,
+  photo: any,
+  markerPosition: any
+) => {
   try {
     //save realEstate in python
+    const ubicacion=markerPosition.lat + ", " + markerPosition.lng
     const responsePython = await fetch(`${httpPy}real-estate`, {
       method: "POST",
       headers: {
@@ -19,7 +24,7 @@ export const saveRealEstate = async (data: any, photo: any) => {
         price: data.price,
         bathroom: data.bathroom,
         squareMeter: data.squareMeter,
-        ubication: "-17.37393637054124, -66.16148093080919",
+        ubication: ubicacion,
       }),
     });
 
