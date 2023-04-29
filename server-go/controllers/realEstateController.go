@@ -165,6 +165,23 @@ func FilterIntelligente(c *fiber.Ctx) error {
 		" and amount_bedroom <=" + strconv.Itoa(MinMaxRE.MinAmountBedroom) +
 		" and amount_bedroom >=" + strconv.Itoa(MinMaxRE.MaxAmountBedroom)
 
+	query := fmt.Sprintf(`
+	SELECT  re.id as id_real_estate, re.title, re.description,
+        rp.id as id_real_estate_photo,
+        p.id as id_photo, p.url, p.public_id, re.title,
+        re.description, u.email, u.id as id_user
+FROM real_estates re, real_estates_photos rp , photos p, users u
+WHERE rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id 
+  and re.id IN (SELECT DISTINCT ON (re.id) re.id as id_real_estate
+                FROM real_estates re, users u
+                WHERE re.user_id = u.id and %s
+	`, strings.Join(conditions, " OR "))
+	database.DB.Debug().Raw(query + queryWhere + ")").Scan(&realEstate)
+
+	return c.JSON(realEstate)
+}
+
+/*
 	query := fmt.Sprintf(`SELECT DISTINCT on (re.id) re.id as id_real_estate, re.title, re.description,
 	rp.id as id_real_estate_photo,
 	p.id as id_photo, p.url, p.public_id, re.title,
@@ -174,5 +191,4 @@ func FilterIntelligente(c *fiber.Ctx) error {
 	`, strings.Join(conditions, " OR "))
 	database.DB.Debug().Raw(query + queryWhere).Scan(&realEstate)
 
-	return c.JSON(realEstate)
-}
+*/

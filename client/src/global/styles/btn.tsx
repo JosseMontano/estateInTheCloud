@@ -10,8 +10,8 @@ export const Btn = styled.button<{ marginInElements: string }>`
   background: transparent;
   padding: 5px;
   width: 100%;
+  cursor: pointer;
   &:hover {
-    cursor: pointer;
     background-color: #fff;
     color:#000;
   }
