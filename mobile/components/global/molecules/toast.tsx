@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     padding: 10,
     borderRadius: 5,
+    zIndex:100,
   },
   toastText: {
     color: "#fff",

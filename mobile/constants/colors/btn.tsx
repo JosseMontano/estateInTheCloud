@@ -8,7 +8,7 @@ export const btnStyle = (color: string) => {
       backgroundColor: color,
       borderRadius: 5,
       alignItems: "center",
-      marginTop: 20,
+      marginTop: 10,
     },
   });
   return styles.btn;

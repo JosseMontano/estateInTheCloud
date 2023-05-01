@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 import React from "react";
-import { styles } from "../../styles/login";
+import { styles } from "../../../styles/login";
 
 interface Params {
   val: string | undefined;

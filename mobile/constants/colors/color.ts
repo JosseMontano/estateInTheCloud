@@ -4,3 +4,4 @@ export const tertiaryColor = "#e9c58d";
 export const fourtyColor = "#eba99a";
 export const fiveColor = "#fff";
 export const sixColor = "#000";
+export const seventyColor = "#b2b2b2"
