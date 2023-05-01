@@ -1,32 +1,17 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import { fiveColor, tertiaryColor } from "../constants/colors/color";
 import { btnStyle, btnTxtStyle } from "../constants/colors/btn";
 import { styles } from "../styles/login";
 import { loginValidationSchema } from "../validations/login";
-import { LoginFormValues } from "../interfaces/login";
 import Error from "../components/atoms/error";
-import post from "../utils/post";
-import { saveCookie } from "../utils/cookie";
-import { useLinkTo } from "@react-navigation/native";
+
 import Toast from "../components/molecules/toast";
+import { useHandleSubmit } from "../hooks/login/useHandleSubmit";
 
 const Login = () => {
-  const [msgPost, setMsgPost] = useState("");
-  const navigation = useLinkTo();
-  const handleSubmit = async (values: LoginFormValues) => {
-    const res = await post("signin", values);
-    if (res.token) {
-      await saveCookie("token", res.token);
-      navigation("/Home");
-    } else {
-      setMsgPost(res.message);
-      setTimeout(() => {
-        setMsgPost('')
-      }, 3000);
-    }
-  };
+  const { handleSubmit, msgPost } = useHandleSubmit();
 
   return (
     <View style={styles.container}>
