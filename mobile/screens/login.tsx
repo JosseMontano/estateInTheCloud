@@ -1,39 +1,18 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
-import { Formik, FormikProps } from "formik";
-import * as yup from "yup";
-import {
-  fiveColor,
-  primaryColor,
-  sixColor,
-  tertiaryColor,
-} from "../constants/color";
-import { inputStyle } from "../constants/input";
-import { btnStyle, btnTxtStyle } from "../constants/btn";
-
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
-
-const loginValidationSchema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup
-    .string()
-    .min(6, ({ min }) => `Password must be at least ${min} characters`)
-    .required("Password is required"),
-});
+import { Formik } from "formik";
+import { fiveColor, tertiaryColor } from "../constants/colors/color";
+import { btnStyle, btnTxtStyle } from "../constants/colors/btn";
+import { styles } from "../styles/login";
+import { loginValidationSchema } from "../validations/login";
+import { LoginFormValues } from "../interfaces/login";
+import Error from "../components/atoms/error";
 
 const Login = () => {
   const handleSubmit = (values: LoginFormValues) => {
     console.log(values);
   };
+
   return (
     <View style={styles.container}>
       <Formik
@@ -48,7 +27,7 @@ const Login = () => {
           errors,
           touched,
           handleSubmit,
-        }: FormikProps<LoginFormValues>) => (
+        }) => (
           <>
             <TextInput
               placeholder="Email"
@@ -59,9 +38,12 @@ const Login = () => {
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            {errors.email && touched.email && (
-              <Text style={styles.error}>{errors.email}</Text>
-            )}
+
+            <Error
+              msg={errors.email}
+              touched={touched.email}
+              val={errors.email}
+            />
 
             <TextInput
               placeholder="Password"
@@ -71,10 +53,12 @@ const Login = () => {
               value={values.password}
               secureTextEntry
             />
-            {errors.password && touched.password && (
-              <Text style={styles.error}>{errors.password}</Text>
-            )}
 
+            <Error
+              msg={errors.password}
+              touched={touched.password}
+              val={errors.password}
+            />
             <TouchableOpacity
               style={btnStyle(tertiaryColor)}
               onPress={() => handleSubmit()}
@@ -87,19 +71,5 @@ const Login = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: primaryColor,
-  },
-  input: inputStyle,
-  error: {
-    color: "red",
-    marginBottom: 10,
-  },
-});
 
 export default Login;
