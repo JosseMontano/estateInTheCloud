@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { fiveColor, tertiaryColor } from "../constants/colors/color";
 import { btnStyle, btnTxtStyle } from "../constants/colors/btn";
@@ -7,10 +7,25 @@ import { styles } from "../styles/login";
 import { loginValidationSchema } from "../validations/login";
 import { LoginFormValues } from "../interfaces/login";
 import Error from "../components/atoms/error";
+import post from "../utils/post";
+import { saveCookie } from "../utils/cookie";
+import { useLinkTo } from "@react-navigation/native";
+import Toast from "../components/molecules/toast";
 
 const Login = () => {
-  const handleSubmit = (values: LoginFormValues) => {
-    console.log(values);
+  const [msgPost, setMsgPost] = useState("");
+  const navigation = useLinkTo();
+  const handleSubmit = async (values: LoginFormValues) => {
+    const res = await post("signin", values);
+    if (res.token) {
+      await saveCookie("token", res.token);
+      navigation("/Home");
+    } else {
+      setMsgPost(res.message);
+      setTimeout(() => {
+        setMsgPost('')
+      }, 3000);
+    }
   };
 
   return (
@@ -35,8 +50,6 @@ const Login = () => {
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               value={values.email}
-              keyboardType="email-address"
-              autoCapitalize="none"
             />
 
             <Error
@@ -65,6 +78,7 @@ const Login = () => {
             >
               <Text style={btnTxtStyle(fiveColor)}>Login</Text>
             </TouchableOpacity>
+            {msgPost && <Toast msg={msgPost} />}
           </>
         )}
       </Formik>
