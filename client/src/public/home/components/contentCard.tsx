@@ -24,7 +24,7 @@ interface Params {
   v: RealEstate;
   toggle: () => void;
   visitUser: (idUser: number, email: string) => void;
-  addFavorite: (realEstateId: number) => void;
+  addFavorite?: (realEstateId: number) => void;
 }
 
 const ContentCard = ({ v, toggle, visitUser, addFavorite }: Params) => {

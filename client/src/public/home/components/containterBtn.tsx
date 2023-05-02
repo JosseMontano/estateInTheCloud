@@ -20,11 +20,18 @@ interface Params {
   v: RealEstate;
   toggle: () => void;
   visitUser: (idUser: number, email: string) => void;
-  addFavorite: (realEstateId: number) => void;
+  addFavorite?: (realEstateId: number) => void;
 }
 
 const ContainterBtn = ({ v, toggle, visitUser, addFavorite }: Params) => {
   const { text } = useLanguage();
+
+  const handleAddFav = ()=>{
+    if(addFavorite){
+      addFavorite(v.id_real_estate)
+    }
+  }
+
   let data = [
     {
       name: text.homeMoreInfor,
@@ -36,7 +43,7 @@ const ContainterBtn = ({ v, toggle, visitUser, addFavorite }: Params) => {
     },
     {
       name: "❤",
-      click: () => addFavorite(v.id_real_estate),
+      click: handleAddFav,
     },
   ];
 
