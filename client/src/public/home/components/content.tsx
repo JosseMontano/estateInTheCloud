@@ -19,9 +19,10 @@ interface Params {
   title: string;
   data: RealEstate[];
   visitUser: (idUser: number, email: string) => void;
+  addFavorite: (realEstateId:number) => void
 }
 
-const Index = ({ data, title, visitUser }: Params) => {
+const Index = ({ data, title, visitUser, addFavorite }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
   const { text } = useLanguage();
   
@@ -29,7 +30,7 @@ const Index = ({ data, title, visitUser }: Params) => {
     return (
       <ContainerCard key={i}>
         <div className="slide" ref={slide}>
-          <Card v={v} visitUser={visitUser} />
+          <Card v={v} visitUser={visitUser} addFavorite={addFavorite} />
         </div>
       </ContainerCard>
     );

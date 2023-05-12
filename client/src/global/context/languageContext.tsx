@@ -59,6 +59,7 @@ interface TextType {
   filterCustomMaxSize: string;
   profileEditProfile: string;
   profileCreatePublicate: string;
+  profileShowPublicate: string;
   profilePublication: string;
   profileFollower: string;
   profileFollow: string;
@@ -85,6 +86,7 @@ interface TextType {
   configurationLanguage: string;
   languageValEn: string;
   languageValEs: string;
+  msgFavorites: string;
 }
 
 interface TranslationType {
@@ -151,6 +153,7 @@ const translations: TranslationType = {
     filterCustom: "Personalizado",
     profileEditProfile: "Editar perfil",
     profileCreatePublicate: "Crear publicacion",
+    profileShowPublicate: "Mostrar publicaciones",
     profilePublication: "publicaciones",
     profileFollower: "seguidores",
     profileFollow: "seguidos",
@@ -177,6 +180,7 @@ const translations: TranslationType = {
     configurationLanguage: "Idioma:",
     languageValEn: "Ingles",
     languageValEs: "Español",
+    msgFavorites: "Se agrego a favoritos",
   },
   en: {
     dataEmpty: "There is not data",
@@ -228,7 +232,7 @@ const translations: TranslationType = {
     filterBedroom: "Bethroom",
     filterSearch: "What are you looking for?",
     filterCustomPriceMin: "Price (Min)",
-    filterCustomPriceMax:"Price (Max)",
+    filterCustomPriceMax: "Price (Max)",
     filterCustomBedroom: "Bedroom",
     filterCustomBathroom: "Bathroom",
     filterCustomMinSize: "Squeare meter (Min)",
@@ -236,6 +240,7 @@ const translations: TranslationType = {
     filterCustomBtn: "Search",
     profileEditProfile: "Edit profile",
     profileCreatePublicate: "Create publication",
+    profileShowPublicate: "Show posts",
     profilePublication: "publications",
     profileFollower: "followers",
     profileFollow: "following",
@@ -262,6 +267,7 @@ const translations: TranslationType = {
     configurationLanguage: "Language:",
     languageValEn: "English",
     languageValEs: "Spanish",
+    msgFavorites: "It was added to favorites",
   },
 };
 

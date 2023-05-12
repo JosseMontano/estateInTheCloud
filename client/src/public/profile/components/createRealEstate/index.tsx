@@ -9,6 +9,8 @@ import useToast from "@/global/hooks/useToast";
 import funFormData from "@/global/utilities/formData";
 import Event from "@/global/interfaces/event";
 import SecondForm from "./secondForm";
+import MapForm from "./mapForm";
+import { MarkerPositionType } from "../../interfaces/map";
 
 const Container = styled.div`
   display: grid;
@@ -37,9 +39,17 @@ const Index = ({ createRealEstate }: Params) => {
     price: "",
     bathroom: "",
     squareMeter: "",
-    id_user: 0,
+    id_user: idUser,
     url: "",
   });
+
+  const [markerPosition, setMarkerPosition] =
+    useState<MarkerPositionType | null>(null);
+
+  const handleGetLatLng = (e: any) => {
+    const { lat, lng } = e.latlng;
+    setMarkerPosition({ lat, lng });
+  };
 
   const handleChange = (e: Event["inputChange"]) => {
     setFormData({
@@ -51,52 +61,16 @@ const Index = ({ createRealEstate }: Params) => {
   const sendData = async (photo?: any) => {
     setLoading(true);
 
-    let vecFormData = [
-      {
-        type: "url",
-        val: photo,
-      },
-      {
-        type: "title",
-        val: formData.title,
-      },
-      {
-        type: "description",
-        val: formData.description,
-      },
-      {
-        type: "id_type",
-        val: formData.id_type,
-      },
-      {
-        type: "id_user",
-        val: idUser,
-      },
-      {
-        type: "bedroom",
-        val: formData.bedroom,
-      },
-      {
-        type: "price",
-        val: formData.price,
-      },
-      {
-        type: "bathroom",
-        val: formData.bathroom,
-      },
-      {
-        type: "squareMeter",
-        val: formData.squareMeter,
-      },
-    ];
+    setFormData({
+      ...formData,
+      id_user: idUser,
+    });
 
-    const data = funFormData(vecFormData);
+    const res = await saveRealEstate(formData, photo, markerPosition);
 
-    const res = await saveRealEstate(data);
-
-    if (res?.status == 200) {
+    if (res != null) {
       handleToast("El proceso fue exitoso");
-      createRealEstate(await res.json());
+      createRealEstate(await res);
     } else {
       handleToast("Ha ocurrido un error");
     }
@@ -112,13 +86,21 @@ const Index = ({ createRealEstate }: Params) => {
 
   const mapForm: MapFormType = {
     1: (
+      <MapForm
+        markerPosition={markerPosition}
+        handleGetLatLng={handleGetLatLng}
+        changeForm={changeForm}
+        paginationForm={paginationForm}
+      />
+    ),
+    2: (
       <FirstForm
         handleChange={handleChange}
         changeForm={changeForm}
         paginationForm={paginationForm}
       />
     ),
-    2: (
+    3: (
       <SecondForm
         handleChange={handleChange}
         sendData={sendData}

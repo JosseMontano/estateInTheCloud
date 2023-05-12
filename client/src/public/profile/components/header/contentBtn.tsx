@@ -19,8 +19,9 @@ const SPAN = styled.span<{ marginInElements: string }>`
 
 interface Params {
   toggle: () => void;
+  isShown: boolean;
 }
-const ContentBtn = ({ toggle }: Params) => {
+const ContentBtn = ({ toggle, isShown }: Params) => {
   const { email } = useNameUser();
   const { text } = useLanguage();
   return (
@@ -28,7 +29,7 @@ const ContentBtn = ({ toggle }: Params) => {
       <SPAN marginInElements={marginInElements}>{email}</SPAN>
       <Btn marginInElements={marginInElements}>{text.profileEditProfile}</Btn>
       <Btn onClick={toggle} marginInElements={marginInElements}>
-        {text.profileCreatePublicate}
+        {isShown ? text.profileShowPublicate : text.profileCreatePublicate}
       </Btn>
     </Container>
   );

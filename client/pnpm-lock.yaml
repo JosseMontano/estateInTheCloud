@@ -7,6 +7,7 @@ specifiers:
   '@types/node': ^18.11.17
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.9
+  '@types/react-leaflet': ^3.0.0
   '@types/react-router-dom': ^5.3.3
   '@types/styled-components': ^5.1.26
   '@vitejs/plugin-react': ^2.1.0
@@ -20,8 +21,10 @@ specifiers:
   jsdom: ^21.0.0
   jz-modal: ^0.0.1
   jz-validation-form: ^2.0.0
+  leaflet: ^1.9.3
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-leaflet: ^4.2.1
   react-router-dom: ^6.3.0
   rm: ^0.1.8
   serve: ^14.1.2
@@ -44,8 +47,10 @@ dependencies:
   jsdom: 21.0.0
   jz-modal: 0.0.1_react@18.2.0
   jz-validation-form: 2.0.0_biqbaboplfbrettd7655fr4n2y
+  leaflet: 1.9.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-leaflet: 4.2.1_yydtlhsdonbqao6vgvkwhv2zki
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   rm: 0.1.8
   serve: 14.1.2
@@ -59,6 +64,7 @@ devDependencies:
   '@types/node': 18.11.17
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.9
+  '@types/react-leaflet': 3.0.0_yydtlhsdonbqao6vgvkwhv2zki
   '@types/react-router-dom': 5.3.3
   '@types/styled-components': 5.1.26
   '@vitejs/plugin-react': 2.1.0_vite@3.1.0
@@ -2296,6 +2302,17 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
+  /@react-leaflet/core/2.1.0_yydtlhsdonbqao6vgvkwhv2zki:
+    resolution: {integrity: sha512-Qk7Pfu8BSarKGqILj4x7bCSZ1pjuAPZ+qmRwH5S7mDS91VSbVVsJSrW4qA+GPrro8t69gFYVMWb1Zc4yFmPiVg==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      leaflet: 1.9.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+
   /@sinclair/typebox/0.24.51:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: false
@@ -2449,6 +2466,17 @@ packages:
     resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.28
+    dev: true
+
+  /@types/react-leaflet/3.0.0_yydtlhsdonbqao6vgvkwhv2zki:
+    resolution: {integrity: sha512-p8R9mVKbCDDqOdW+M6GyJJuFn6q+IgDFYavFiOIvaWHuOe5kIHZEtCy1pfM43JIA6JiB3D/aDoby7C51eO+XSg==}
+    deprecated: This is a stub types definition. react-leaflet provides its own type definitions, so you do not need this installed.
+    dependencies:
+      react-leaflet: 4.2.1_yydtlhsdonbqao6vgvkwhv2zki
+    transitivePeerDependencies:
+      - leaflet
+      - react
+      - react-dom
     dev: true
 
   /@types/react-router-dom/5.3.3:
@@ -5820,6 +5848,9 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /leaflet/1.9.3:
+    resolution: {integrity: sha512-iB2cR9vAkDOu5l3HAay2obcUHZ7xwUBBjph8+PGtmW/2lYhbLizWtG7nTeYht36WfOslixQF9D/uSIzhZgGMfQ==}
+
   /leven/3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
@@ -6676,6 +6707,18 @@ packages:
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
+
+  /react-leaflet/4.2.1_yydtlhsdonbqao6vgvkwhv2zki:
+    resolution: {integrity: sha512-p9chkvhcKrWn/H/1FFeVSqLdReGwn2qmiobOQGO3BifX+/vV/39qhY8dGqbdcPh1e6jxh/QHriLXr7a4eLFK4Q==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@react-leaflet/core': 2.1.0_yydtlhsdonbqao6vgvkwhv2zki
+      leaflet: 1.9.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
 
   /react-refresh/0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}

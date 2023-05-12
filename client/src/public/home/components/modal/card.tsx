@@ -21,7 +21,7 @@ const Card = ({ v }: Params) => {
 
   return (
     <ContainerSoon>
-      <CardCom v={v} toggle={toggle} visitUser={visitUser} />
+      <CardCom v={v} toggle={toggle} visitUser={visitUser}  />
       <Modal
         isShown={isShown}
         hide={toggle}

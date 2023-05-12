@@ -46,16 +46,13 @@ const Profile = () => {
               amountPublciation={data.GET_REAL_ESTATE_BY_ID_USER.length}
               idUser={idUser}
               toggle={toggle}
+              isShown={isShown}
             />
           )}
-          {idUser != 0 && showPublication()}
-        </Container>
+          {idUser != 0 && !isShown && showPublication()}
 
-        <Modal
-          isShown={isShown}
-          hide={toggle}
-          modalContent={<ContentModal createRealEstate={createRealEstate} />}
-        />
+          {isShown && <ContentModal createRealEstate={createRealEstate} /> }
+        </Container>
       </Suspense>
     );
   }

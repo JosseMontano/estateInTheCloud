@@ -18,9 +18,10 @@ const Container = styled.div`
 interface ParamsType {
   v: RealEstate;
   visitUser: (idUser: number, email: string) => void;
+  addFavorite: (realEstateId: number) => void;
 }
 
-const Index = ({ v, visitUser }: ParamsType) => {
+const Index = ({ v, visitUser, addFavorite }: ParamsType) => {
   const { isShown, toggle } = useModal({});
   return (
     <Container>
@@ -29,7 +30,7 @@ const Index = ({ v, visitUser }: ParamsType) => {
         hide={toggle}
         modalContent={<ContentModal {...v} />}
       />
-      <ContentCard toggle={toggle} v={v} visitUser={visitUser} />
+      <ContentCard toggle={toggle} v={v} visitUser={visitUser} addFavorite={addFavorite} />
     </Container>
   );
 };

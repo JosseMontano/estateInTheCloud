@@ -21,9 +21,11 @@ const useTranslate = ({ description, title }: Params) => {
     setLoadTxt(true);
     const des = await translate(description);
     const tit = await translate(title);
-    setLoadTxt(false);
     setDescriptionState(des!);
     setTitleState(tit!);
+   setTimeout(() => {
+    setLoadTxt(false);
+   }, 3000);
   };
 
   useEffect(() => {
