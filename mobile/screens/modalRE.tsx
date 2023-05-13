@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, Dimensions, ScrollView } from "react-native";
 import React from "react";
-import { useRoute } from "@react-navigation/native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MyStackParamList } from "../App";
-import { fiveColor } from "../constants/colors/color";
-import { sixColor } from "../constants/colors/color";
 import ContainerContent from "../components/modalRe/containerContent";
 import ContainerBtn from "../components/modalRe/containerBtn";
+import CarouselImages from "../components/modalRe/carousel";
+import Usefetch from "../hooks/usefetchParams";
+import { RealEstatePhotos } from "../interfaces/modalRe/realEstat";
+import { getRealEstatePhotos } from "../services/modalRe/realEstate";
+import { useEffect, useState } from "react";
+import { primaryColor } from "../constants/colors/color";
 
 type reactNav = StackScreenProps<MyStackParamList, "ModalRe">;
 
-interface Params {
-  reactNav: reactNav;
-}
+interface Params {}
+
+const widthScreen = Dimensions.get("window").width;
 
 const ModalRE = ({
   route,
@@ -24,12 +27,25 @@ const ModalRE = ({
     navigation.navigate("Home");
   };
 
+  const { data } = Usefetch<RealEstatePhotos>({
+    services: getRealEstatePhotos,
+    id: realEstate.id_real_estate,
+  });
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <ContainerBtn handleRedirectHome={handleRedirectHome} />
-      <Image source={{ uri: realEstate.url }} style={styles.image} />
+
+      {data[0] != undefined && (
+        <CarouselImages
+          data={data[0].photos}
+          width={widthScreen}
+          height={150}
+        />
+      )}
+
       <ContainerContent realEstate={realEstate} />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -37,10 +53,7 @@ export default ModalRE;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: primaryColor,
     flex: 1,
-  },
-  image: {
-    height: "50%",
-    width: "100%",
   },
 });

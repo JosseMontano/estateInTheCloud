@@ -1,6 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { sixColor } from "../../../constants/colors/color";
+import {
+  fiveColor,
+  primaryColor,
+  sixColor,
+} from "../../../constants/colors/color";
 import { RealEstate } from "../../../interfaces/home/realEstate";
 
 interface Params {
@@ -13,26 +17,28 @@ const ContainerContent = ({ realEstate }: Params) => {
       <Text style={styles.title}>{realEstate.title}</Text>
       <Text style={styles.description}>{realEstate.description}</Text>
       <Text style={styles.subtitle}>Ubicacion: </Text>
-      <Text>{realEstate.address}</Text>
+      <Text style={styles.subdescription}>{realEstate.address}</Text>
 
       <View style={styles.containerSubtitle}>
         <Text style={styles.subtitle}>Cantidad de baños: </Text>
-        <Text>{realEstate.amount_bathroom}</Text>
+        <Text style={styles.subdescription}>{realEstate.amount_bathroom}</Text>
       </View>
 
       <View style={styles.containerSubtitle}>
         <Text style={styles.subtitle}>Cantidad de cuartos: </Text>
-        <Text>{realEstate.amount_bedroom}</Text>
+        <Text style={styles.subdescription}>{realEstate.amount_bedroom}</Text>
       </View>
 
       <View style={styles.containerSubtitle}>
         <Text style={styles.subtitle}>Precio: </Text>
-        <Text>{realEstate.price}Bs</Text>
+        <Text style={styles.subdescription}>{realEstate.price}Bs</Text>
       </View>
 
       <View style={styles.containerSubtitle}>
         <Text style={styles.subtitle}>Metros: </Text>
-        <Text>{realEstate.square_meter} metros cuadrados</Text>
+        <Text style={styles.subdescription}>
+          {realEstate.square_meter} metros cuadrados
+        </Text>
       </View>
     </View>
   );
@@ -47,16 +53,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 27,
     fontWeight: "bold",
+    color: fiveColor,
   },
   description: {
     fontSize: 16,
+    color: fiveColor,
   },
   containerSubtitle: {
     display: "flex",
     flexDirection: "row",
+    color: fiveColor,
   },
   subtitle: {
     fontSize: 16,
     fontWeight: "bold",
+    color: fiveColor,
+  },
+  subdescription: {
+    color: fiveColor,
   },
 });
