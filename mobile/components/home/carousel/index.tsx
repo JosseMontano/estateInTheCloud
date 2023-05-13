@@ -7,6 +7,9 @@ import {
   secondaryColor,
   tertiaryColor,
 } from "../../../constants/colors/color";
+import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import { MyStackParamList } from "../../../App";
 
 interface Params {
   data: RealEstate[];
@@ -15,6 +18,13 @@ interface Params {
 }
 
 const CarouselImages = ({ data, height, width }: Params) => {
+  const navigation = useNavigation<MyStackParamList>();
+
+  const openModal = (realEstate: RealEstate) => {
+    //@ts-ignore
+    navigation.navigate("ModalRe", { realEstate });
+  };
+
   const renderItem = ({ item }: { item: RealEstate }) => {
     return (
       <View key={item.id_real_estate} style={styles.card}>
@@ -22,7 +32,7 @@ const CarouselImages = ({ data, height, width }: Params) => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.user}>{item.email}</Text>
         <View style={styles.containerBtn}>
-          <TouchableOpacity style={styles.btn} onPress={() => {}}>
+          <TouchableOpacity style={styles.btn} onPress={() => openModal(item)}>
             <Text>Mas info</Text>
           </TouchableOpacity>
 
@@ -37,15 +47,18 @@ const CarouselImages = ({ data, height, width }: Params) => {
       </View>
     );
   };
+
   return (
-    <Carousel
-      data={data}
-      renderItem={renderItem}
-      layout={"default"}
-      sliderWidth={width}
-      itemWidth={width / 2}
-      itemHeight={height}
-    />
+    <>
+      <Carousel
+        data={data}
+        renderItem={renderItem}
+        layout={"default"}
+        sliderWidth={width}
+        itemWidth={width / 2}
+        itemHeight={height}
+      />
+    </>
   );
 };
 
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 5,
   },
-  colorBtn:{
-    color:fiveColor,
-  }
+  colorBtn: {
+    color: fiveColor,
+  },
 });
