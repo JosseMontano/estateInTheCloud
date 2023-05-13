@@ -5,6 +5,8 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { MyStackParamList } from "../App";
 import { fiveColor } from "../constants/colors/color";
 import { sixColor } from "../constants/colors/color";
+import ContainerContent from "../components/modalRe/containerContent";
+import ContainerBtn from "../components/modalRe/containerBtn";
 
 type reactNav = StackScreenProps<MyStackParamList, "ModalRe">;
 
@@ -17,14 +19,16 @@ const ModalRE = ({
   navigation,
 }: StackScreenProps<MyStackParamList, "ModalRe">) => {
   const realEstate = route.params.realEstate;
+
+  const handleRedirectHome = () => {
+    navigation.navigate("Home");
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.btnBack} onPress={() => {}}>
-        <Text style={styles.btnText}>{"<"}</Text>
-      </TouchableOpacity>
-
+      <ContainerBtn handleRedirectHome={handleRedirectHome} />
       <Image source={{ uri: realEstate.url }} style={styles.image} />
-      <Text>{realEstate.address}</Text>
+      <ContainerContent realEstate={realEstate} />
     </View>
   );
 };
@@ -34,17 +38,6 @@ export default ModalRE;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  btnBack: {
-  
-    width: 30,
-    position: "absolute",
-    zIndex: 2,
-  },
-  btnText: {
-    textAlign:"center",
-    fontSize: 32,
-    color: sixColor,
   },
   image: {
     height: "50%",

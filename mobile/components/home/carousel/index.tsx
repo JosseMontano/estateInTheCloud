@@ -9,7 +9,7 @@ import {
 } from "../../../constants/colors/color";
 import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-import { MyStackParamList } from "../../../App";
+
 
 interface Params {
   data: RealEstate[];
@@ -18,7 +18,7 @@ interface Params {
 }
 
 const CarouselImages = ({ data, height, width }: Params) => {
-  const navigation = useNavigation<MyStackParamList>();
+  const navigation = useNavigation();
 
   const openModal = (realEstate: RealEstate) => {
     //@ts-ignore
