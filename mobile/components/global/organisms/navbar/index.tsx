@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { secondaryColor } from "../../../../constants/colors/color";
 import { fourtyColor } from "../../../../constants/colors/color";
 import Icon from "./icon";
+import { deleteCookie } from "../../../../utils/cookie";
 
 type Route = "Home" | "Profile";
 
@@ -39,7 +40,8 @@ const Navbar = ({ actual }: Params) => {
     {
       icon: AntDesign,
       name: "logout",
-      route: "logout",
+      route: "Login",
+      eventPress: () => deleteCookie("token"),
     },
   ];
 

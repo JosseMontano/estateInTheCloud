@@ -18,4 +18,11 @@ export const getCookie = async (name: string): Promise<{ token: string }> => {
   };
 };
 
-//await AsyncStorage.removeItem('key');
+export const deleteCookie = async (name: string) => {
+  try {
+    await AsyncStorage.removeItem(name);
+    return true;
+  } catch (exception) {
+    return false;
+  }
+};
