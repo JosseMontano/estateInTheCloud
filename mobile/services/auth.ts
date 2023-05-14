@@ -1,3 +1,4 @@
+import { SendCodeToEmailType } from "../interfaces/auth/SendCodeToEmailType";
 import { LoginFormValues } from "../interfaces/auth/login";
 import { SignUpType } from "../interfaces/auth/register";
 import post from "../utils/post";
@@ -8,4 +9,12 @@ export const loginServices = async (values: LoginFormValues) => {
 
 export const signUpServices = async (values: SignUpType) => {
   return await post("signup", values);
+};
+
+export const sendEmailServices = async (values: SendCodeToEmailType) => {
+  return await post("sendCodeGmail", values);
+};
+
+export const changePasswordServices = async (values: SendCodeToEmailType) => {
+  return await post("changePassword", values);
 };

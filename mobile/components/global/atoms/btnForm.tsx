@@ -6,15 +6,20 @@ interface Params {
   handleSubmit: () => void;
   colorBtn: string;
   colorTxt: string;
-  txt:string;
+  txt: string;
+  loading?: boolean;
 }
 
-export const BtnForm = ({ colorBtn, colorTxt, handleSubmit, txt }: Params) => {
+export const BtnForm = ({
+  colorBtn,
+  colorTxt,
+  handleSubmit,
+  txt,
+  loading,
+}: Params) => {
   return (
     <TouchableOpacity style={btnStyle(colorBtn)} onPress={() => handleSubmit()}>
-      <Text style={btnTxtStyle(colorTxt)}>{txt}</Text>
+      <Text style={btnTxtStyle(colorTxt)}>{loading ? "Cargando..." : txt}</Text>
     </TouchableOpacity>
   );
 };
-
- ;

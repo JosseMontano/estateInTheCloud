@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Dimensions, ScrollView } from "react-native";
+import { StyleSheet, View, Image, Dimensions, ScrollView, Text } from "react-native";
 import React from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MyStackParamList } from "../App";
@@ -10,6 +10,8 @@ import { RealEstatePhotos } from "../interfaces/modalRe/realEstat";
 import { getRealEstatePhotos } from "../services/modalRe/realEstate";
 import { useEffect, useState } from "react";
 import { primaryColor } from "../constants/colors/color";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 type reactNav = StackScreenProps<MyStackParamList, "ModalRe">;
 
@@ -45,6 +47,7 @@ const ModalRE = ({
       )}
 
       <ContainerContent realEstate={realEstate} />
+
     </ScrollView>
   );
 };
