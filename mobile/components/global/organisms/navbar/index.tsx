@@ -5,7 +5,6 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { secondaryColor } from "../../../../constants/colors/color";
-import { fourtyColor } from "../../../../constants/colors/color";
 import Icon from "./icon";
 import { deleteCookie } from "../../../../utils/cookie";
 
@@ -61,7 +60,7 @@ export default Navbar;
 const styles = StyleSheet.create({
   container: {},
   containerIcons: {
-    display: "flex",
+    display:"flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     backgroundColor: secondaryColor,

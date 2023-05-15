@@ -7,7 +7,7 @@ export const saveCookie = async (nameCookie: string, val: string) => {
 export const getCookie = async (name: string): Promise<{ token: string }> => {
   const token = await AsyncStorage.getItem(name);
 
-  if (token) {
+  if (token != null) {
     return {
       token,
     };

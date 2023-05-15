@@ -115,8 +115,8 @@ func SingIn(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(fiber.Map{
-		"auth":  true,
-		"token": tokenString,
+		"auth":    true,
+		"token":   tokenString,
 	})
 }
 
