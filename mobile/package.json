@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^18.0.1",
     "@react-native-async-storage/async-storage": "^1.18.1",
@@ -18,6 +19,8 @@
     "expo": "~48.0.15",
     "expo-status-bar": "~1.4.4",
     "formik": "^2.2.9",
+    "graphql": "^15.8.0",
+    "graphql-ws": "^5.13.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.7",
