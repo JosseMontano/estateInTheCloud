@@ -6,7 +6,7 @@ import { useLinkTo } from "@react-navigation/native";
 type Route = "Home" | "Profile";
 
 interface Params {
-  v: { icon: any; name: string; route: string };
+  v: { icon: any; name: string; route: string; eventPress?: () => void };
   actual: Route;
 }
 
@@ -19,6 +19,9 @@ const Icon = ({ v, actual }: Params) => {
   const navigate = useLinkTo();
   const handleRedirect = () => {
     navigate("/" + v.route);
+    if (v.eventPress) {
+      v.eventPress();
+    }
   };
 
   return (
@@ -29,4 +32,3 @@ const Icon = ({ v, actual }: Params) => {
 };
 
 export default Icon;
-

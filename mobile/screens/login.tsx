@@ -10,15 +10,13 @@ import { useLinkTo } from "@react-navigation/native";
 import { RecuperateAccount } from "../components/login/recuperateAccount";
 
 const Login = () => {
-  const { handleSubmit, msgPost } = useHandleSubmit();
+  const { handleSubmit, msgPost, loading } = useHandleSubmit();
 
   const navigate = useLinkTo();
 
   const createAccount = () => {
     navigate("/Register");
   };
-
-  
 
   return (
     <View style={styles.container}>
@@ -27,6 +25,7 @@ const Login = () => {
         handleSubmit={handleSubmit}
         msgPost={msgPost}
         recuperateAccountJSX={RecuperateAccount}
+        loading={loading}
       />
       <BtnForm
         colorBtn={fourtyColor}

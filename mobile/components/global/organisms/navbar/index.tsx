@@ -5,8 +5,8 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { secondaryColor } from "../../../../constants/colors/color";
-import { fourtyColor } from "../../../../constants/colors/color";
 import Icon from "./icon";
+import { deleteCookie } from "../../../../utils/cookie";
 
 type Route = "Home" | "Profile";
 
@@ -39,7 +39,8 @@ const Navbar = ({ actual }: Params) => {
     {
       icon: AntDesign,
       name: "logout",
-      route: "logout",
+      route: "Login",
+      eventPress: () => deleteCookie("token"),
     },
   ];
 
@@ -59,7 +60,7 @@ export default Navbar;
 const styles = StyleSheet.create({
   container: {},
   containerIcons: {
-    display: "flex",
+    display:"flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     backgroundColor: secondaryColor,

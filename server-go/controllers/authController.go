@@ -105,7 +105,6 @@ func SingIn(c *fiber.Ctx) error {
 		})
 	}
 
-
 	timeExp := time.Now().Add(720 * time.Hour) // 720 24 * 30
 	tokenString, err := middleware.GenerateJwt(user, timeExp)
 
@@ -116,8 +115,8 @@ func SingIn(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(fiber.Map{
-		"auth":  true,
-		"token": tokenString,
+		"auth":    true,
+		"token":   tokenString,
 	})
 }
 
@@ -214,6 +213,7 @@ func SendCodeToGmail(c *fiber.Ctx) error {
 	c.Status(200)
 	return c.JSON(fiber.Map{
 		"operation": true,
+		"message":   "Se envio el codigo a su correo",
 	})
 }
 
@@ -250,6 +250,7 @@ func ChangePassword(c *fiber.Ctx) error {
 	c.Status(200)
 	return c.JSON(fiber.Map{
 		"operation": true,
+		"message":   "Se cambio la contraseña",
 	})
 
 }

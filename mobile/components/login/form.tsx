@@ -13,9 +13,10 @@ interface Params {
   handleSubmit: (values: LoginFormValues) => void;
   recuperateAccountJSX: () => JSX.Element;
   msgPost: string;
+  loading: boolean;
 }
 
-const Form = ({ handleSubmit, msgPost, recuperateAccountJSX }: Params) => {
+const Form = ({ handleSubmit, msgPost, recuperateAccountJSX, loading }: Params) => {
   return (
     <>
       <Formik
@@ -68,6 +69,7 @@ const Form = ({ handleSubmit, msgPost, recuperateAccountJSX }: Params) => {
               colorTxt={fiveColor}
               handleSubmit={handleSubmit}
               txt="Login"
+              loading={loading}
             />
 
             {msgPost && <Toast msg={msgPost} />}

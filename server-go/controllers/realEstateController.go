@@ -29,15 +29,20 @@ func ValidateStructRE(realEstate models.RealEstate) []*models.ErrorResponseRE {
 }
 
 type AllREResult struct {
-	IdRealEstate      int    `json:"id_real_estate"`
-	IdRealEstatePhoto int    `json:"id_real_estate_photo"`
-	IdPhoto           int    `json:"id_photo"`
-	Url               string `json:"url"`
-	PublicId          string `json:"public_id"`
-	Title             string `json:"title"`
-	Description       string `json:"description"`
-	Email             string `json:"email"`
-	IdUser            int    `json:"id_user"`
+	IdRealEstate      int     `json:"id_real_estate"`
+	IdRealEstatePhoto int     `json:"id_real_estate_photo"`
+	IdPhoto           int     `json:"id_photo"`
+	Url               string  `json:"url"`
+	PublicId          string  `json:"public_id"`
+	Title             string  `json:"title"`
+	Description       string  `json:"description"`
+	Email             string  `json:"email"`
+	IdUser            int     `json:"id_user"`
+	AmountBedroom     int     `json:"amount_bedroom"`
+	Price             int     `json:"price"`
+	AmountBathroom    int     `json:"amount_bathroom"`
+	SquareMeter       float64 `json:"square_meter"`
+	Address           string  `json:"address"`
 }
 
 const from = "from real_estates_photos rp , photos p, real_estates re, users u"
@@ -45,7 +50,8 @@ const from = "from real_estates_photos rp , photos p, real_estates re, users u"
 const where = "where rp.photo_id = p.id and rp.real_estate_id = re.id and re.user_id = u.id"
 
 const selectQuery = `select DISTINCT on (re.id) re.id as id_real_estate, rp.id as id_real_estate_photo,
-p.id as id_photo, p.url, p.public_id, re.title,
+p.id as id_photo, p.url, p.public_id, re.title, re.amount_bedroom,
+re.price, re.amount_bathroom, re.square_meter, re.address,
 re.description, u.email, u.id as id_user`
 
 const query = selectQuery + " " + from + " " + where + " " + "and re.available=true ORDER BY re.id"

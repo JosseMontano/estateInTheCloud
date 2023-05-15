@@ -21,3 +21,13 @@ export const signUpValidationSchema = yup.object().shape({
     .max(11, maxRequired(11))
     .required(required),
 });
+
+export const SendEmailSchema = yup.object().shape({
+  email: yup.string().email(invalidGmail).required(required),
+});
+
+export const changePasswordSchema = yup.object().shape({
+  email: yup.string().email(invalidGmail).required(required),
+  code_recuperation: yup.string().min(4, minRequired(4)).required(required),
+  password: yup.string().min(6, minRequired(6)).required(required),
+});
