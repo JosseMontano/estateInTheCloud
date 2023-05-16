@@ -10,6 +10,7 @@ import RecuperateAccount from "./screens/sendCodeToEmail";
 import ChangePassword from "./screens/changePassword";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
 //graphql
 import { ApolloClient, HttpLink, split } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
