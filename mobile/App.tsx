@@ -9,7 +9,7 @@ import { RealEstate } from "./interfaces/home/realEstate";
 import RecuperateAccount from "./screens/sendCodeToEmail";
 import ChangePassword from "./screens/changePassword";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 //graphql
 import { ApolloClient, HttpLink, split } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client/cache";
@@ -61,12 +61,29 @@ const Stack = createStackNavigator<MyStackParamList>();
 
 const Tab = createBottomTabNavigator<MyStackParamList>();
 
-
 function HomeTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: "Inicio",
+          tabBarIcon: ({ size, focused, color }) => {
+            return <Ionicons name="ios-home" size={size} color={color} />;
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: "Perfil",
+          tabBarIcon: ({ size, focused, color }) => {
+            return <Ionicons name="ios-person" size={size} color={color} />;
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -88,8 +105,6 @@ export default function App() {
 
           <Stack.Screen name="Home" component={HomeTabs} />
           <Stack.Screen name="Profile" component={HomeTabs} />
-
-
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>
