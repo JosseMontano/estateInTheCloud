@@ -1,5 +1,3 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/login";
@@ -10,6 +8,7 @@ import ModalRe from "./screens/modalRE";
 import { RealEstate } from "./interfaces/home/realEstate";
 import RecuperateAccount from "./screens/sendCodeToEmail";
 import ChangePassword from "./screens/changePassword";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //graphql
 import { ApolloClient, HttpLink, split } from "@apollo/client";
@@ -51,31 +50,67 @@ const client = new ApolloClient({
 export type MyStackParamList = {
   Home: undefined;
   Profile: undefined;
-  Login: undefined;
+  Login: { visible: boolean };
   Register: undefined;
   ModalRe: { realEstate: RealEstate };
   RecuperateAccount: undefined;
   ChangePassword: undefined;
 };
 
-const Stack = createStackNavigator<MyStackParamList>();
+const Stack = createStackNavigator<MyStackParamList>(); 
+
+const Tab = createBottomTabNavigator<MyStackParamList>();
+
+/* const LoginStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Login" component={Login} />
+  </Stack.Navigator>
+); */
+
+function HomeTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="ModalRe" component={ModalRe} />
-          <Stack.Screen
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+
+               <Tab.Screen
+            name="Login"
+            component={Login}
+            options={{ tabBarButton: () => null, tabBarLabel: () => null}}
+          /> 
+
+          <Tab.Screen
+            name="Register"
+            component={Register}
+            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
+          />
+          <Tab.Screen
+            name="ModalRe"
+            component={ModalRe}
+            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
+          />
+          <Tab.Screen
             name="RecuperateAccount"
             component={RecuperateAccount}
+            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
           />
-          <Stack.Screen name="ChangePassword" component={ChangePassword} />
-        </Stack.Navigator>
+          <Tab.Screen
+            name="ChangePassword"
+            component={ChangePassword}
+            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
+          />
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Profile" component={Profile} />
+        </Tab.Navigator>
       </NavigationContainer>
     </ApolloProvider>
   );

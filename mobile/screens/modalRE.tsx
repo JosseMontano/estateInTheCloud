@@ -13,9 +13,8 @@ import { primaryColor } from "../constants/colors/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
-type reactNav = StackScreenProps<MyStackParamList, "ModalRe">;
 
-interface Params {}
+
 
 const widthScreen = Dimensions.get("window").width;
 

@@ -8,8 +8,13 @@ import { BtnForm } from "../components/global/atoms/btnForm";
 import { fiveColor, fourtyColor } from "../constants/colors/color";
 import { useLinkTo } from "@react-navigation/native";
 import { RecuperateAccount } from "../components/login/recuperateAccount";
+import { StackScreenProps } from "@react-navigation/stack";
+import { MyStackParamList } from "../App";
 
 const Login = () => {
+
+
+ 
   const { handleSubmit, msgPost, loading } = useHandleSubmit();
 
   const navigate = useLinkTo();
