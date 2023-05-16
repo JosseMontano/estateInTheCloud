@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
 import React from "react";
-import Navbar from "../components/global/organisms/navbar";
+
 import { fiveColor, primaryColor } from "../constants/colors/color";
 import Usefetch from "../hooks/usefetch";
 import {
@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Navbar actual={"Home"} />
+
       <View>
         <Text style={styles.subtitle}>Mas recientes</Text>
         <CarouselImages data={REMostRecent} width={widthScreen} height={250} />

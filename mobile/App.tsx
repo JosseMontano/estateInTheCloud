@@ -57,15 +57,10 @@ export type MyStackParamList = {
   ChangePassword: undefined;
 };
 
-const Stack = createStackNavigator<MyStackParamList>(); 
+const Stack = createStackNavigator<MyStackParamList>();
 
 const Tab = createBottomTabNavigator<MyStackParamList>();
 
-/* const LoginStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Login" component={Login} />
-  </Stack.Navigator>
-); */
 
 function HomeTabs() {
   return (
@@ -80,37 +75,22 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={Login} />
 
-               <Tab.Screen
-            name="Login"
-            component={Login}
-            options={{ tabBarButton: () => null, tabBarLabel: () => null}}
-          /> 
-
-          <Tab.Screen
-            name="Register"
-            component={Register}
-            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
-          />
-          <Tab.Screen
-            name="ModalRe"
-            component={ModalRe}
-            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
-          />
-          <Tab.Screen
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="ModalRe" component={ModalRe} />
+          <Stack.Screen
             name="RecuperateAccount"
             component={RecuperateAccount}
-            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
           />
-          <Tab.Screen
-            name="ChangePassword"
-            component={ChangePassword}
-            options={{ tabBarButton: () => null, tabBarLabel: () => null }}
-          />
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Profile" component={Profile} />
-        </Tab.Navigator>
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
+
+          <Stack.Screen name="Home" component={HomeTabs} />
+          <Stack.Screen name="Profile" component={HomeTabs} />
+
+
+        </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>
   );

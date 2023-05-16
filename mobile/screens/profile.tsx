@@ -1,6 +1,5 @@
 import { StyleSheet, ScrollView, Image } from "react-native";
 import React, { useEffect } from "react";
-import Navbar from "../components/global/organisms/navbar";
 import { secondaryColor } from "../constants/colors/color";
 import { UseUser } from "../store/user";
 import InforUser from "../components/profile/infoUser";
@@ -30,7 +29,7 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar actual={"Profile"} />
+
       <ScrollView style={styles.container}>
         <InforUser user={user} />
         {!loading && data.GET_REAL_ESTATE_BY_ID_USER.length > 0 && (
