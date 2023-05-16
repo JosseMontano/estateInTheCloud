@@ -27,8 +27,6 @@ const Profile = () => {
       getRealEstate(user.id);
     }
   }, [user.id]);
-  //.GET_REAL_ESTATE_BY_ID_USER
-  console.log(data);
 
   return (
     <>
