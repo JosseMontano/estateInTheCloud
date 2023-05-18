@@ -15,6 +15,12 @@ export const getREByProfile = gql`
       email
       cellphone_number
       available
+      amount_bedroom
+      price
+      amount_bathroom
+      square_meter
+      lat_long
+      address
     }
   }
 `;

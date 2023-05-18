@@ -1,5 +1,10 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
-import { ContainerContent, H2, P, ContainerBtn } from "@/global/styles/modal/perfil";
+import {
+  ContainerContent,
+  H2,
+  P,
+  ContainerBtn,
+} from "@/global/styles/modal/perfil";
 import { InputFile } from "@/global/styles/globals";
 import { useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
@@ -13,6 +18,8 @@ interface params {
   handleFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleAnswerQuestion: (id: number) => void;
   handleUpdateState: (id: number, available: number) => void;
+  handleShowMoreInfo: () => void;
+  showMoreInfo: boolean;
 }
 
 const ContentTextModal = (p: params) => {
@@ -48,8 +55,52 @@ const ContentTextModal = (p: params) => {
 
   return (
     <ContainerContent>
-      <H2>{p.v.title}</H2>
-      <P>{p.v.description}</P>
+      {/* Show basic info  */}
+      {!p.showMoreInfo && (
+        <>
+          <H2>{p.v.title}</H2>
+          <P>{p.v.description}</P>
+        </>
+      )}
+
+      {/* Show Complete info  */}
+      {p.showMoreInfo && (
+        <div>
+          <P>
+            {text.visitUseramount_bedroom}
+            {p.v.amount_bedroom}
+          </P>
+          <P>
+            {text.visitUserprice}
+            {p.v.price}
+          </P>
+
+          <P>
+            {text.visitUseramount_bathroom}
+            {p.v.amount_bathroom}
+          </P>
+
+          <P>
+            {text.visitUsersquare_meter}
+            {p.v.square_meter}
+          </P>
+
+          <P>
+            {text.visitUserprice}
+            {p.v.price}
+          </P>
+
+          <P>
+            {text.visitUserlat_long}
+            {p.v.lat_long}
+          </P>
+
+          <P>
+            {text.visitUseraddress}
+            {p.v.address}
+          </P>
+        </div>
+      )}
 
       {p.showbtn ? (
         <>
@@ -68,7 +119,14 @@ const ContentTextModal = (p: params) => {
           </ContainerBtn>
         </>
       ) : (
-        <Btn marginInElements="0px">{textBtn}</Btn>
+        <>
+          <Btn marginInElements="0px">{textBtn}</Btn>
+          <Btn marginInElements="0px" onClick={p.handleShowMoreInfo}>
+            {!p.showMoreInfo
+              ? text.visitUserShowMoreInfo
+              : text.visitUserShowLessInfo}
+          </Btn>
+        </>
       )}
     </ContainerContent>
   );
