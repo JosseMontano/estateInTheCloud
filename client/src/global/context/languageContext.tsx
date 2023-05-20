@@ -73,6 +73,14 @@ interface TextType {
   visitUserLoadTitle: string;
   visitUserTitle: string;
   visitUserNoEmpty: string;
+  visitUserShowMoreInfo: string;
+  visitUserShowLessInfo: string;
+  visitUseramount_bedroom: string;
+  visitUserprice: string;
+  visitUseramount_bathroom: string;
+  visitUsersquare_meter: string;
+  visitUserlat_long: string;
+  visitUseraddress: string;
   createPublicationTitle: string;
   createPublicationDescription: string;
   createPublicationType: string;
@@ -167,6 +175,14 @@ const translations: TranslationType = {
     visitUserLoadTitle: "Cargando publicaciones",
     visitUserTitle: "Publicaciones",
     visitUserNoEmpty: "No tiene Publicaciones",
+    visitUserShowMoreInfo: "Mas informacion",
+    visitUserShowLessInfo: "Menos informacion",
+    visitUseraddress: "Direccion:",
+    visitUseramount_bathroom: "Cantidad de baños:",
+    visitUseramount_bedroom: "Cantidad de cuartos: ",
+    visitUserlat_long: "Latitud y longitud: ",
+    visitUserprice: "Precio: ",
+    visitUsersquare_meter: "Cantidad de metros cuadrados",
     createPublicationTitle: "Titulo",
     createPublicationDescription: "Descripcion",
     createPublicationType: "Tipo",
@@ -254,6 +270,14 @@ const translations: TranslationType = {
     visitUserLoadTitle: "Loading publications",
     visitUserTitle: "Publications",
     visitUserNoEmpty: "You haven't Publications",
+    visitUserShowMoreInfo: "More info",
+    visitUserShowLessInfo:"Less info",
+    visitUseraddress: "Direction:",
+    visitUseramount_bathroom: "Amount bathrooms:",
+    visitUseramount_bedroom: "Amount bedrooms: ",
+    visitUserlat_long: "Latitude and longitude: ",
+    visitUserprice: "Price: ",
+    visitUsersquare_meter: "Amount square meter: ",
     createPublicationTitle: "Title",
     createPublicationDescription: "Description",
     createPublicationType: "Type",

@@ -20,7 +20,6 @@ interface Params {
 }
 
 export const ContentModal = ({ v, showbtn }: Params) => {
- 
   const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
@@ -68,9 +67,15 @@ export const ContentModal = ({ v, showbtn }: Params) => {
     await updateState(id, available);
   };
 
+  //show more information
+  const [showMoreInfo, setshowMoreInfo] = useState(false);
+  const handleShowMoreInfo = () => {
+    setshowMoreInfo(!showMoreInfo);
+  };
+
   return (
     <Container>
-    <ContentImg data={data} load={load} /> 
+      <ContentImg data={data} load={load} />
 
       <ContentTextModal
         v={v}
@@ -80,6 +85,8 @@ export const ContentModal = ({ v, showbtn }: Params) => {
         handleFile={handleFile}
         handleAnswerQuestion={handleAnswerQuestion}
         handleUpdateState={handleUpdateState}
+        handleShowMoreInfo={handleShowMoreInfo}
+        showMoreInfo={showMoreInfo}
       />
 
       <LoadAndResponse loading={loading} response={response} msg={toast} />

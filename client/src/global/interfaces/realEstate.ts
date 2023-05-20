@@ -10,6 +10,12 @@ export interface RealEstate {
   email: string;
   cellphone_number: string;
   available: boolean;
+  amount_bedroom:number;
+  price:number;
+  amount_bathroom:number;
+  square_meter:number;
+  lat_long:string;
+  address:string;
 }
 
 export interface FormDeleteType {

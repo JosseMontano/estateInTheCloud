@@ -10,6 +10,7 @@ interface Params {
 }
 
 const ModalCom = (params: Params) => {
+
   return (
     <Modal
       isShown={params.isShowTrue}
