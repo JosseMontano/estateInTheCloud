@@ -7,13 +7,14 @@ import { UserType } from "../../../interfaces/global/user";
 
 interface Params {
   user: UserType;
+  handleRedirectCreate:()=>void;
 }
 
-const InforUser = ({ user }: Params) => {
+const InforUser = ({ user, handleRedirectCreate }: Params) => {
   return (
     <View style={styles.containerContent}>
       <Pic user={user} />
-      <ContainerBtn />
+      <ContainerBtn handleRedirectCreate={handleRedirectCreate} />
       <Info />
     </View>
   );

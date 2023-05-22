@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 
-const ContainerBtn = () => {
+interface Params {
+  handleRedirectCreate:()=>void;
+}
+
+
+const ContainerBtn = ({handleRedirectCreate}:Params) => {
   return (
     <View style={styles.containerBtn}>
       <TouchableOpacity style={styles.btn} onPress={() => {}}>
         <Text style={styles.btnText}>Editar perfil</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btn} onPress={() => {}}>
+      <TouchableOpacity style={styles.btn} onPress={handleRedirectCreate}>
         <Text style={styles.btnText}>Crear publicacion</Text>
       </TouchableOpacity>
     </View>

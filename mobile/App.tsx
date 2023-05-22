@@ -19,6 +19,7 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import config from "./config/http";
+import ModalCreatePublication from "./screens/modalCreatePublication";
 
 const sLink = new HttpLink({
   uri: `${config.backendExpressUrl}graphql`,
@@ -56,6 +57,7 @@ export type MyStackParamList = {
   ModalRe: { realEstate: RealEstate };
   RecuperateAccount: undefined;
   ChangePassword: undefined;
+  ModalCreatePost: undefined;
 };
 
 const Stack = createStackNavigator<MyStackParamList>();
@@ -103,6 +105,11 @@ export default function App() {
             component={RecuperateAccount}
           />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
+
+          <Stack.Screen
+            name="ModalCreatePost"
+            component={ModalCreatePublication}
+          />
 
           <Stack.Screen name="Home" component={HomeTabs} />
           <Stack.Screen name="Profile" component={HomeTabs} />
