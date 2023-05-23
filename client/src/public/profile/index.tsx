@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "./components/header";
 import { marginGlobal, ColorText } from "@/global/styles/globals";
 import Publication from "@/global/components/dynamic/profileVisitUser/publication";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useNameUser } from "@/global/context/nameUserContext";
 import { useModal } from "jz-modal";
 import ContentModal from "./components/createRealEstate";
@@ -42,6 +42,12 @@ const Profile = () => {
   };
 
   //showFavorites
+  const [showFav, setShowFav] = useState(false);
+
+  const handleShowFav = () => {
+    setShowFav(!showFav);
+  };
+
   const { data: favorites, handleGetData } = useFetch<RealEstateFavType>(
     getREFavs,
     idUser
@@ -64,14 +70,18 @@ const Profile = () => {
               idUser={idUser}
               toggle={toggle}
               isShown={isShown}
+              handleShowFav={handleShowFav}
+              showFav={showFav}
             />
           )}
-          {idUser != 0 && !isShown && showPublication()}
+          {idUser != 0 && !isShown && !showFav && showPublication()}
 
-          <ShowFavorites
-            handleDeleteFavorite={handleDeleteFavorite}
-            data={favorites}
-          />
+          {showFav && (
+            <ShowFavorites
+              handleDeleteFavorite={handleDeleteFavorite}
+              data={favorites}
+            />
+          )}
 
           {isShown && <ContentModal createRealEstate={createRealEstate} />}
         </Container>

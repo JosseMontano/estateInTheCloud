@@ -20,8 +20,10 @@ const SPAN = styled.span<{ marginInElements: string }>`
 interface Params {
   toggle: () => void;
   isShown: boolean;
+  handleShowFav: () => void;
+  showFav:boolean;
 }
-const ContentBtn = ({ toggle, isShown }: Params) => {
+const ContentBtn = ({ toggle, isShown, handleShowFav, showFav }: Params) => {
   const { email } = useNameUser();
   const { text } = useLanguage();
   return (
@@ -30,6 +32,9 @@ const ContentBtn = ({ toggle, isShown }: Params) => {
       <Btn marginInElements={marginInElements}>{text.profileEditProfile}</Btn>
       <Btn onClick={toggle} marginInElements={marginInElements}>
         {isShown ? text.profileShowPublicate : text.profileCreatePublicate}
+      </Btn>
+      <Btn onClick={handleShowFav} marginInElements={marginInElements}>
+        {showFav ? text.favoriteHideFavorites : text.fvoriteShowFavorites}
       </Btn>
     </Container>
   );

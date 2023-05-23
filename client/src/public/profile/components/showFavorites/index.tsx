@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Btn } from "@/global/styles/card";
 import { RealEstateFavType } from "../../interfaces/realEstateFav";
+import { useLanguage } from "@/global/context/languageContext";
 
 const Title = styled.h2`
   text-align: center;
@@ -34,9 +35,10 @@ interface Params {
 }
 
 const ShowFavorites = ({ data, handleDeleteFavorite }: Params) => {
+    const {text} = useLanguage()
   return (
     <section>
-      <Title>Favoritos</Title>
+      <Title>{text.favoriteTitle}</Title>
       <div>
         {data &&
           data.map((v) => (
@@ -48,7 +50,7 @@ const ShowFavorites = ({ data, handleDeleteFavorite }: Params) => {
                 <h3>{v.title}</h3>
                 <p>{v.description}</p>
                 <Btn onClick={() => handleDeleteFavorite(v.favorito_id)}>
-                  Eliminar
+                  {text.favoriteBtnDelete }
                 </Btn>
               </div>
             </Card>

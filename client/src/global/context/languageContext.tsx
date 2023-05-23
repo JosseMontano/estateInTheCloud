@@ -95,6 +95,10 @@ interface TextType {
   languageValEn: string;
   languageValEs: string;
   msgFavorites: string;
+  favoriteTitle: string;
+  favoriteBtnDelete: string;
+  fvoriteShowFavorites: string;
+  favoriteHideFavorites: string;
 }
 
 interface TranslationType {
@@ -197,6 +201,10 @@ const translations: TranslationType = {
     languageValEn: "Ingles",
     languageValEs: "Español",
     msgFavorites: "Se agrego a favoritos",
+    favoriteTitle: "Favoritos",
+    favoriteBtnDelete: "Eliminar",
+    fvoriteShowFavorites: "Mostrar favoritos",
+    favoriteHideFavorites:"Ocultar favoritos",
   },
   en: {
     dataEmpty: "There is not data",
@@ -271,7 +279,7 @@ const translations: TranslationType = {
     visitUserTitle: "Publications",
     visitUserNoEmpty: "You haven't Publications",
     visitUserShowMoreInfo: "More info",
-    visitUserShowLessInfo:"Less info",
+    visitUserShowLessInfo: "Less info",
     visitUseraddress: "Direction:",
     visitUseramount_bathroom: "Amount bathrooms:",
     visitUseramount_bedroom: "Amount bedrooms: ",
@@ -292,6 +300,10 @@ const translations: TranslationType = {
     languageValEn: "English",
     languageValEs: "Spanish",
     msgFavorites: "It was added to favorites",
+    favoriteTitle: "Favorites",
+    favoriteBtnDelete: "Delete",
+    fvoriteShowFavorites: "Show favorites",
+    favoriteHideFavorites:"Hide favorites",
   },
 };
 
