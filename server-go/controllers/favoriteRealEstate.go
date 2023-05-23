@@ -59,10 +59,7 @@ func GetFavoritesRE(c *fiber.Ctx) error {
 	` + id).Scan(&favorites)
 
 	c.Status(200)
-	return c.JSON(fiber.Map{
-		"data":    favorites,
-		"message": "Operation completed successfully",
-	})
+	return c.JSON(favorites)
 }
 
 func DeleteFavorite(c *fiber.Ctx) error{
