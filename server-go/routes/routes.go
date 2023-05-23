@@ -45,6 +45,7 @@ func Setup(app *fiber.App) {
 	//======================= Favorite =======================
 	app.Post("/api/favorite-real-estate", controllers.AddFavorite)
 	app.Get("/api/favorite-real-estate/:user_id", controllers.GetFavoritesRE)
+	app.Delete("/api/favorite-real-estate/:id", controllers.DeleteFavorite)
 
 	//======================= IA =======================
 	app.Get("/api/filter-intelligent/:user_id", controllers.FilterIntelligente)
