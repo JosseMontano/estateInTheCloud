@@ -26,17 +26,14 @@ export const getRealEstateType = async () => {
   return res;
 };
 
-
-export const saveRealEstate = async (data: any, photo: any) => {
+export const saveRealEstate = async (data: any) => {
   try {
-    console.log("====================");
+    /*   console.log("====================");
     console.log(data);
-    console.log(photo);
-    console.log("====================");
+    console.log("===================="); */
 
- const { token } = await getCookie("token");
+    const { token } = await getCookie("token");
     //save realEstate in python
-    const ubicacion = "";
     const responsePython = await fetch(`${config.backendPython}real-estate`, {
       method: "POST",
       headers: new Headers({
@@ -48,28 +45,38 @@ export const saveRealEstate = async (data: any, photo: any) => {
         title: data.title,
         description: data.description,
         id_user: data.id_user,
-        id_type: data.id_type,
+        id_type: 6,
         bedroom: data.amountBedrooms,
         price: data.Price,
         bathroom: data.AmountBathrooms,
         squareMeter: data.SquareMeter,
-        ubication: ubicacion,
+        ubication: "",
       }),
     });
 
     const realEstate = await responsePython.json(); // get the new real estate
 
     //we create a new formdata to send the img to express
+    let filename = data.url.split("/").pop();
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+
     var formData = new FormData();
     formData.append("realEstateId", realEstate.data.id);
-    formData.append("url", photo);
-
-    await fetch(`${config.backendUrl}estate`, {
+    //@ts-ignore
+    formData.append("url", { uri: data.url, name: filename, type });
+    console.log(formData)
+    const res = await fetch(`${config.backendExpressUrl}estate`, {
       method: "POST",
       body: formData,
+      headers: new Headers({
+        "content-type": "multipart/form-data",
+      }),
     });
 
-    return realEstate.data; 
+    console.log(res);
+
+    return realEstate.data;
   } catch (error) {
     console.log(error);
   }

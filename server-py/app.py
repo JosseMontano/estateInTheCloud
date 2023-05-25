@@ -4,7 +4,8 @@ from routes.realEstate import get_realEstate, post_realEstate
 
 app = Flask(__name__)
 
-CORS(app, resources={"*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={
+     "*": {"origins": ["http://localhost:5173", "exp://192.168.1.13:19000"]}})
 
 
 @app.route('/')
@@ -26,7 +27,7 @@ def post_companyApi():
         "message": "El inmueble se creo con exito",
         "data":    new_created_company,
     }
-    
+
     return jsonify(response)
 
 

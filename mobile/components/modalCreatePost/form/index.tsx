@@ -182,7 +182,7 @@ const FormCreatePost = ({
                 colorBtn={tertiaryColor}
                 colorTxt={fiveColor}
                 handleSubmit={handleSubmit}
-                txt={loading ? "Cargando..." : "Publicar"}
+                txt={loading ? "Subiendo..." : "Publicar"}
               />
 
               {msgPost && <Toast msg={msgPost} />}

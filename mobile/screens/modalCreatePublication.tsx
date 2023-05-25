@@ -45,6 +45,7 @@ const ModalCreatePublication = () => {
 
   // ============= getImage =============
   const [image, setImage] = useState("");
+  const [file, setFile] = useState<any>();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -56,7 +57,8 @@ const ModalCreatePublication = () => {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0]?.uri);
+      setFile(result.assets[0])
     }
   };
 

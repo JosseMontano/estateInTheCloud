@@ -24,7 +24,11 @@ def post_realEstate():
     ubication = new_company['ubication']
 
     # * ========= Convert lat and long to Address =========
-    address = convertToAddres(ubication)
+    if ubication != "":
+        address = convertToAddres(ubication)
+
+    if ubication == "":
+        address = " "
 
     # * ========= Save in DB =========
     conn = get_conn()

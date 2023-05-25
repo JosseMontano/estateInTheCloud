@@ -163,6 +163,7 @@ export const createEstate = async (
 
     //save first photo
     let f = req.files?.url as UploadedFile;
+    console.log(req.files)
     if (f) {
       const resUpload = await uploadImage(f.tempFilePath);
       const resPhoto = await pool.query(
