@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import post from "../../utils/post";
 import config from "../../config/http";
 import { getCookie } from "../../utils/cookie";
+import { getServices } from "../../utils/getServices";
 
 export const getREByProfile = gql`
   query GET($idUser: Float!) {
@@ -20,27 +21,38 @@ export const getREByProfile = gql`
   }
 `;
 
+export const getRealEstateType = async () => {
+  const res = await getServices("typeRealEstate");
+  return res;
+};
+
+
 export const saveRealEstate = async (data: any, photo: any) => {
   try {
-    const { token } = await getCookie("token");
+    console.log("====================");
+    console.log(data);
+    console.log(photo);
+    console.log("====================");
+
+ const { token } = await getCookie("token");
     //save realEstate in python
     const ubicacion = "";
     const responsePython = await fetch(`${config.backendPython}real-estate`, {
       method: "POST",
-      headers: {
+      headers: new Headers({
         accept: "application/json",
         "Content-Type": "application/json",
         Authorization: token,
-      },
+      }),
       body: JSON.stringify({
         title: data.title,
         description: data.description,
         id_user: data.id_user,
         id_type: data.id_type,
-        bedroom: data.bedroom,
-        price: data.price,
-        bathroom: data.bathroom,
-        squareMeter: data.squareMeter,
+        bedroom: data.amountBedrooms,
+        price: data.Price,
+        bathroom: data.AmountBathrooms,
+        squareMeter: data.SquareMeter,
         ubication: ubicacion,
       }),
     });
@@ -57,7 +69,7 @@ export const saveRealEstate = async (data: any, photo: any) => {
       body: formData,
     });
 
-    return realEstate.data;
+    return realEstate.data; 
   } catch (error) {
     console.log(error);
   }
