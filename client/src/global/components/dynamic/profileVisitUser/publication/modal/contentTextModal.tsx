@@ -9,6 +9,7 @@ import { InputFile } from "@/global/styles/globals";
 import { useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
 import { Btn } from "@/global/styles/btn";
+import useTranslate from "@/public/profile/hooks/useTranslate";
 
 interface params {
   v: RealEstate;
@@ -53,13 +54,18 @@ const ContentTextModal = (p: params) => {
     setStateAvailable(!stateAvailable);
   };
 
+  const { descriptionState, titleState } = useTranslate({
+    title: p.v.title,
+    description: p.v.description,
+  });
+
   return (
     <ContainerContent>
       {/* Show basic info  */}
       {!p.showMoreInfo && (
         <>
-          <H2>{p.v.title}</H2>
-          <P>{p.v.description}</P>
+          <H2>{titleState}</H2>
+          <P>{descriptionState}</P>
         </>
       )}
 
