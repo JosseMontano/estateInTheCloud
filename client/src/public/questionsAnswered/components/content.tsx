@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import IAQ from "@/public/questionsAnswered/interfaces/answerQuestionInterested";
+import useTranslate from "../hooks/useTranslate";
 
 const Question = styled.div`
   text-align: center;
@@ -18,10 +19,11 @@ const Response = styled.div`
 `;
 
 const Content = (v: IAQ) => {
+  const {titleState, responseState} = useTranslate({ response: v.answer, title: v.question });
   return (
     <>
-      <Question>{v.question}</Question>
-      <Response>R. {v.answer}</Response>
+      <Question>{titleState}</Question>
+      <Response>R. {responseState}</Response>
     </>
   );
 };

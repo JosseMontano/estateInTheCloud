@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { marginInElements } from "@/global/styles/globals";
+import { useLanguage } from "@/global/context/languageContext";
 
 const Container = styled.div`
   display: flex;
@@ -15,13 +16,14 @@ interface Params {
 }
 
 const ContentMid = ({ amountPublication }: Params) => {
+  const {text} = useLanguage()
   return (
     <Container>
       <P marginInElements={marginInElements}>
-        {amountPublication} publicaciones
+        {amountPublication} {text.visitUserAmountPublications}
       </P>
-      <P marginInElements={marginInElements}>100 seguidores</P>
-      <P marginInElements={marginInElements}>100 seguidos</P>
+      <P marginInElements={marginInElements}>100 {text.visitUserFollowers}</P>
+      <P marginInElements={marginInElements}>100 {text.visitUserFollows}</P>
     </Container>
   );
 };

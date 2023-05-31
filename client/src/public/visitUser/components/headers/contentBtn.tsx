@@ -1,3 +1,4 @@
+import { useLanguage } from "@/global/context/languageContext";
 import { marginInElements } from "@/global/styles/globals";
 import handleSendWhatsapp from "@/global/utilities/sendWhatsapp";
 import styled from "styled-components";
@@ -35,6 +36,9 @@ interface Params {
   toggle: () => void;
 }
 const ContentBtn = ({ email, cellphonenumber, toggle }: Params) => {
+
+  const {text} = useLanguage()
+
   let data = [
     {
       element: SPAN,
@@ -43,17 +47,17 @@ const ContentBtn = ({ email, cellphonenumber, toggle }: Params) => {
     },
     {
       element: Btn,
-      text: "Enviar mensaje",
+      text: text.visitUserBtnSendMessage,
       onclick: () => handleSendWhatsapp(cellphonenumber),
     },
     {
       element: Btn,
-      text: "Seguir",
+      text: text.visitUserBtnFollower,
       onclick: () => {},
     },
     {
       element: Btn,
-      text: "Comentar a la persona",
+      text: text.visitUserBtnComment,
       onclick: toggle,
     },
   ];

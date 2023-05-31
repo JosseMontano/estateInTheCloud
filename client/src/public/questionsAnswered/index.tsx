@@ -5,7 +5,7 @@ import DataEmpty from "@/global/components/dataEmpty";
 import CardSoon from "./components/";
 import { Suspense } from "react";
 import { useQuery } from "@apollo/client";
-
+import { useLanguage } from "@/global/context/languageContext";
 const Container = styled.div`
   min-height: 100vh;
   display: grid;
@@ -24,12 +24,14 @@ const AnswerQuestionInterested = () => {
   const query = getAnswerByRealEstate(idNumer);
   const { data, loading, error } = useQuery(query);
 
+  const { text } = useLanguage();
+
   function validateData() {
     if (data) {
       const dataCut = data.getAnswerQuestionByRealEstate;
       if (dataCut.length > 0) return <CardSoon data={dataCut} />;
     }
-    return <DataEmpty msg="No hay respuestas" />;
+    return <DataEmpty msg={text.dataEmpty} />;
   }
 
   if (error) return <p>{error.message}</p>;

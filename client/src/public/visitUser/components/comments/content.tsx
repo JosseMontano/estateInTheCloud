@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Comments } from "@/public/visitUser/interfaces/comments";
 import { getUserById } from "@/global/services/user";
 import ShowStarts from "./showStarts";
+import useTranslate from "../../hooks/useTranslate";
 
 const Container = styled.div`
   align-self: center;
@@ -14,10 +15,13 @@ const NameUser = styled.h3`
   }
 `;
 const Content = (v: Comments) => {
+  const { descriptionState } = useTranslate({
+    description: v.description,
+  });
   return (
     <Container>
       <NameUser>{v.email}</NameUser>
-      <p>{v.description}</p>
+      <p>{descriptionState}</p>
       <ShowStarts sizeStart={v.amount_start} />
     </Container>
   );

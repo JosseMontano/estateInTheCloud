@@ -81,6 +81,12 @@ interface TextType {
   visitUsersquare_meter: string;
   visitUserlat_long: string;
   visitUseraddress: string;
+  visitUserBtnSendMessage: string;
+  visitUserBtnFollower: string;
+  visitUserBtnComment:string
+  visitUserAmountPublications:string
+  visitUserFollowers:string;
+  visitUserFollows:string;
   createPublicationTitle: string;
   createPublicationDescription: string;
   createPublicationType: string;
@@ -186,7 +192,15 @@ const translations: TranslationType = {
     visitUseramount_bedroom: "Cantidad de cuartos: ",
     visitUserlat_long: "Latitud y longitud: ",
     visitUserprice: "Precio: ",
+
     visitUsersquare_meter: "Cantidad de metros cuadrados",
+    visitUserBtnSendMessage: 'Enviar mensaje',
+    visitUserBtnFollower: 'Seguir',
+    visitUserBtnComment:'Agregar comentario',
+    visitUserAmountPublications:'Publicaciones',
+    visitUserFollowers:'Seguidores',
+    visitUserFollows:'Seguidos',
+
     createPublicationTitle: "Titulo",
     createPublicationDescription: "Descripcion",
     createPublicationType: "Tipo",
@@ -286,6 +300,14 @@ const translations: TranslationType = {
     visitUserlat_long: "Latitude and longitude: ",
     visitUserprice: "Price: ",
     visitUsersquare_meter: "Amount square meter: ",
+
+    visitUserBtnSendMessage: 'Send message',
+    visitUserBtnFollower: 'Follow',
+    visitUserBtnComment:'Add comment',
+    visitUserAmountPublications:'Posts',
+    visitUserFollowers:'Followers',
+    visitUserFollows:'Following',
+
     createPublicationTitle: "Title",
     createPublicationDescription: "Description",
     createPublicationType: "Type",
