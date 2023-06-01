@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import translate from "@/public/home/utilities/translate";
+import translate, { translateToSpanish } from "@/public/home/utilities/translate";
 import { useLanguage } from "@/global/context/languageContext";
 
 interface Params {
@@ -24,9 +24,22 @@ const useTranslate = ({ description }: Params) => {
     }, 3000);
   };
 
+  const handleTranslateToSpanish = async () => {
+    setLoadTxt(true);
+    //description
+    const des = await translateToSpanish(description);
+    setDescriptionState(des!);
+
+    setTimeout(() => {
+      setLoadTxt(false);
+    }, 3000);
+  };
+
+
   useEffect(() => {
     if (lanActually == Language.english) handleTranslate();
-  }, []);
+    if (lanActually != Language.english) handleTranslateToSpanish();
+  }, [lanActually]);
 
   return {
     loadTxt,

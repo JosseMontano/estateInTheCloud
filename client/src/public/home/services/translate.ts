@@ -42,3 +42,13 @@ const translate = async (
   return { json, status };
 };
 export default translate;
+
+export const translateEnglishToSpanish = async (
+  msg: string
+): Promise<{ json: TranslateType; status: number }> => {
+  const url = `https://api.mymemory.translated.net/get?q=${msg}&langpair=en|es`;
+  const { json, status } = await apisExternal<TranslateType>(url);
+  return { json, status };
+};
+
+
