@@ -1,4 +1,11 @@
-import { StyleSheet, View, Image, Dimensions, ScrollView, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Dimensions,
+  ScrollView,
+  Text,
+} from "react-native";
 import React from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MyStackParamList } from "../App";
@@ -11,10 +18,6 @@ import { getRealEstatePhotos } from "../services/modalRe/realEstate";
 import { useEffect, useState } from "react";
 import { primaryColor } from "../constants/colors/color";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-
-
-
 
 const widthScreen = Dimensions.get("window").width;
 
@@ -46,7 +49,6 @@ const ModalRE = ({
       )}
 
       <ContainerContent realEstate={realEstate} />
-
     </ScrollView>
   );
 };

@@ -10,7 +10,6 @@ import {
 import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
-
 interface Params {
   data: RealEstate[];
   height: number;
@@ -25,6 +24,11 @@ const CarouselImages = ({ data, height, width }: Params) => {
     navigation.navigate("ModalRe", { realEstate });
   };
 
+  const visitUser = (idUser: number) => {
+    //@ts-ignore
+    navigation.navigate("VisitUser", { idUser });
+  };
+
   const renderItem = ({ item }: { item: RealEstate }) => {
     return (
       <View key={item.id_real_estate} style={styles.card}>
@@ -36,7 +40,10 @@ const CarouselImages = ({ data, height, width }: Params) => {
             <Text>Mas info</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.btn} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => visitUser(item.id_user)}
+          >
             <Text>Visitar</Text>
           </TouchableOpacity>
 

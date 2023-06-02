@@ -20,6 +20,7 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import config from "./config/http";
 import ModalCreatePublication from "./screens/modalCreatePublication";
+import VisitUser from "./screens/visitUser";
 
 const sLink = new HttpLink({
   uri: `${config.backendExpressUrl}graphql`,
@@ -58,12 +59,14 @@ export type MyStackParamList = {
   RecuperateAccount: undefined;
   ChangePassword: undefined;
   ModalCreatePost: undefined;
+  VisitUser: { idUser: number };
 };
 
 const Stack = createStackNavigator<MyStackParamList>();
 
 const Tab = createBottomTabNavigator<MyStackParamList>();
 
+//show options in tab navigation
 function HomeTabs() {
   return (
     <Tab.Navigator>
@@ -94,27 +97,31 @@ function HomeTabs() {
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={Login} />
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Login" component={Login} />
 
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="ModalRe" component={ModalRe} />
-          <Stack.Screen
-            name="RecuperateAccount"
-            component={RecuperateAccount}
-          />
-          <Stack.Screen name="ChangePassword" component={ChangePassword} />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="ModalRe" component={ModalRe} />
 
-          <Stack.Screen
-            name="ModalCreatePost"
-            component={ModalCreatePublication}
-          />
+            <Stack.Screen name="VisitUser" component={VisitUser} />
 
-          <Stack.Screen name="Home" component={HomeTabs} />
-          <Stack.Screen name="Profile" component={HomeTabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
+            <Stack.Screen
+              name="RecuperateAccount"
+              component={RecuperateAccount}
+            />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} />
+
+            <Stack.Screen
+              name="ModalCreatePost"
+              component={ModalCreatePublication}
+            />
+
+            <Stack.Screen name="Home" component={HomeTabs} />
+            <Stack.Screen name="Profile" component={HomeTabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+  
     </ApolloProvider>
   );
 }

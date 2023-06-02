@@ -13,3 +13,13 @@ func GetUser(c *fiber.Ctx) error {
 	c.Status(200)
 	return c.JSON(user)
 }
+
+func GetUserData(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var user []models.User
+	database.DB.Where("id = ?", id).Find(&user)
+	c.Status(200)
+	return c.JSON(fiber.Map{
+		"data":user,
+	})
+}
