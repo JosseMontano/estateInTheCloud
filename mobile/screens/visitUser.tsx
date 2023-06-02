@@ -1,12 +1,14 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
 import { MyStackParamList } from "../App";
-import { View, Text } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { getUser } from "../services/visitUser/getUser";
 import { UserType } from "../interfaces/global/user";
-import Usefetch from "../hooks/usefetchParams";
 import { useComments } from "../hooks/visitUser/commentsContext";
 import { Comments } from "../interfaces/visitUser/comments";
+import { secondaryColor } from "../constants/colors/color";
+import { fiveColor } from "../constants/colors/color";
+import Profile from "../components/visitUser/profile";
 
 const VisitUser = ({
   route,
@@ -46,14 +48,21 @@ const VisitUser = ({
   }, [idUser, comments]);
 
   return (
-    <View>
-      <Text>{idUser}</Text>
-      {user[0] != undefined && <Text>{user[0].url_photo}</Text>}
+    <View style={styles.container}>
+      {user[0] != undefined && <Profile user={user[0]} />}
+
       {commentsState.map((v) => (
         <Text>{v.commentator}</Text>
       ))}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: secondaryColor,
+  },
+});
 
 export default VisitUser;
