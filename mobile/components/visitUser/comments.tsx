@@ -9,7 +9,6 @@ interface Params {
 }
 
 const CommentsComponent = ({ commentsState }: Params) => {
-
   return (
     <View style={styles.containerComments}>
       <Text style={styles.title}>Comentarios</Text>
@@ -18,9 +17,8 @@ const CommentsComponent = ({ commentsState }: Params) => {
         <View style={styles.cardComment}>
           <Image source={{ uri: v.url_photo }} style={styles.image} />
           <View style={styles.content}>
-            <Text>{v.email}</Text>
-            <Text>{v.description}</Text>
-            <Text>{v.amount_start}</Text>
+            <Text style={styles.email}>{v.email}</Text>
+            <Text style={styles.description}>{v.description}</Text>
             <View style={styles.containerStarts}>
               {Array.from({ length: v.amount_start }, (_, index) => (
                 <Ionicons
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    gap: 7,
   },
   cardComment: {
     display: "flex",
@@ -63,6 +62,15 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 10,
+  },
+  email: {
+    fontSize: 15,
+    color: fiveColor,
+    fontWeight: "bold",
+  },
+  description: {
+    fontSize: 14,
+    color: fiveColor,
   },
   containerStarts: {
     display: "flex",

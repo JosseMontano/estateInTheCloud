@@ -97,31 +97,29 @@ function HomeTabs() {
 export default function App() {
   return (
     <ApolloProvider client={client}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Login" component={Login} />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={Login} />
 
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="ModalRe" component={ModalRe} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="ModalRe" component={ModalRe} />
 
-            <Stack.Screen name="VisitUser" component={VisitUser} />
+          <Stack.Screen
+            name="RecuperateAccount"
+            component={RecuperateAccount}
+          />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
 
-            <Stack.Screen
-              name="RecuperateAccount"
-              component={RecuperateAccount}
-            />
-            <Stack.Screen name="ChangePassword" component={ChangePassword} />
+          <Stack.Screen
+            name="ModalCreatePost"
+            component={ModalCreatePublication}
+          />
 
-            <Stack.Screen
-              name="ModalCreatePost"
-              component={ModalCreatePublication}
-            />
-
-            <Stack.Screen name="Home" component={HomeTabs} />
-            <Stack.Screen name="Profile" component={HomeTabs} />
-          </Stack.Navigator>
-        </NavigationContainer>
-  
+          <Stack.Screen name="Home" component={HomeTabs} />
+          <Stack.Screen name="Profile" component={HomeTabs} />
+          <Stack.Screen name="VisitUser" component={VisitUser} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ApolloProvider>
   );
 }
