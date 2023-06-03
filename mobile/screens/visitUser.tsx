@@ -14,6 +14,7 @@ import { getREByProfile } from "../services/profile/realEstate";
 import InfoPost from "../components/profile/infoPost";
 import FormComment from "../components/visitUser/formComment";
 
+
 const VisitUser = ({
   route,
   navigation,
@@ -90,7 +91,7 @@ const VisitUser = ({
 
       {/* ============== SHOW COMMENTS ============== */}
 
-      <CommentsComponent commentsState={commentsState} />
+      <CommentsComponent commentsState={commentsState} handleDelete={handleDelete} />
     </ScrollView>
   );
 };

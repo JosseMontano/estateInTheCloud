@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { fiveColor } from "../../constants/colors/color";
+import {
+  fiveColor,
+  fourtyColor,
+  tertiaryColor,
+} from "../../constants/colors/color";
 import { Comments } from "../../interfaces/visitUser/comments";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { UseUser } from "../../store/user";
 
 interface Params {
   commentsState: Comments[];
+  handleDelete: (id: number) => Promise<void>;
 }
 
-const CommentsComponent = ({ commentsState }: Params) => {
+const CommentsComponent = ({ commentsState, handleDelete }: Params) => {
+  const { user } = UseUser();
+
   return (
     <View style={styles.containerComments}>
       <Text style={styles.title}>Comentarios</Text>
@@ -19,6 +27,8 @@ const CommentsComponent = ({ commentsState }: Params) => {
           <View style={styles.content}>
             <Text style={styles.email}>{v.email}</Text>
             <Text style={styles.description}>{v.description}</Text>
+            {/* ======== STARTS  ========*/}
+
             <View style={styles.containerStarts}>
               {Array.from({ length: v.amount_start }, (_, index) => (
                 <Ionicons
@@ -29,6 +39,16 @@ const CommentsComponent = ({ commentsState }: Params) => {
                 />
               ))}
             </View>
+
+            {/* ======== BTN DELETE  ========*/}
+            {user.id == v.commentator && (
+              <TouchableOpacity
+                style={styles.btnDelete}
+                onPress={() => handleDelete(v.id_comment)}
+              >
+                <Text style={styles.txtBtn}>Eliminar</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       ))}
@@ -75,5 +95,16 @@ const styles = StyleSheet.create({
   containerStarts: {
     display: "flex",
     flexDirection: "row",
+  },
+  btnDelete: {
+    backgroundColor: fourtyColor,
+    width: 80,
+    borderRadius: 10,
+    marginTop: 5,
+  },
+  txtBtn: {
+    color: fiveColor,
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });

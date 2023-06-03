@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { UseUser } from "../../store/user";
-import Icon from "react-native-vector-icons/FontAwesome";
 import StarRating from "react-native-star-rating";
 import { Formik } from "formik";
 import { validationSchemaComments } from "../../validations/visitUser";
