@@ -1,14 +1,14 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
 import { MyStackParamList } from "../App";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { getUser } from "../services/visitUser/getUser";
 import { UserType } from "../interfaces/global/user";
 import { useComments } from "../hooks/visitUser/commentsContext";
 import { Comments } from "../interfaces/visitUser/comments";
-import { secondaryColor } from "../constants/colors/color";
-import { fiveColor } from "../constants/colors/color";
+import { fiveColor, secondaryColor } from "../constants/colors/color";
 import Profile from "../components/visitUser/profile";
+import CommentsComponent from "../components/visitUser/comments";
 
 const VisitUser = ({
   route,
@@ -38,7 +38,6 @@ const VisitUser = ({
 
     const showComments = () => {
       const newData = comments.getAllCommentsByUser;
-      console.log(newData);
       setCommentsState(newData);
     };
 
@@ -48,13 +47,11 @@ const VisitUser = ({
   }, [idUser, comments]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {user[0] != undefined && <Profile user={user[0]} />}
 
-      {commentsState.map((v) => (
-        <Text>{v.commentator}</Text>
-      ))}
-    </View>
+      <CommentsComponent commentsState={commentsState} />
+    </ScrollView>
   );
 };
 
