@@ -18,7 +18,10 @@ export const BtnForm = ({
   loading,
 }: Params) => {
   return (
-    <TouchableOpacity style={btnStyle(colorBtn)} onPress={() => handleSubmit()}>
+    <TouchableOpacity
+      style={btnStyle(colorBtn)}
+      onPress={() => handleSubmit()}
+    >
       <Text style={btnTxtStyle(colorTxt)}>{loading ? "Cargando..." : txt}</Text>
     </TouchableOpacity>
   );

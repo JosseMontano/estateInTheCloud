@@ -12,6 +12,7 @@ import CommentsComponent from "../components/visitUser/comments";
 import { useQuery } from "@apollo/client";
 import { getREByProfile } from "../services/profile/realEstate";
 import InfoPost from "../components/profile/infoPost";
+import FormComment from "../components/visitUser/formComment";
 
 const VisitUser = ({
   route,
@@ -50,7 +51,13 @@ const VisitUser = ({
 
   // =================== comments ===================
 
-  const { data: comments, setIdCommentUser } = useComments();
+  const {
+    data: comments,
+    setIdCommentUser,
+    addComment,
+    deleteCommentState,
+    handleDelete,
+  } = useComments();
   const [commentsState, setCommentsState] = useState<Comments[]>([]);
 
   useEffect(() => {
@@ -68,11 +75,20 @@ const VisitUser = ({
 
   return (
     <ScrollView style={styles.container}>
+      {/* ============== SHOW INFO USER ============== */}
       {user[0] != undefined && <Profile user={user[0]} />}
 
+      {/* ============== SHOW INFO REAL ESTATES ============== */}
+
       {!loading && data.GET_REAL_ESTATE_BY_ID_USER.length > 0 && (
-          <InfoPost data={data.GET_REAL_ESTATE_BY_ID_USER} />
-        )}
+        <InfoPost data={data.GET_REAL_ESTATE_BY_ID_USER} />
+      )}
+
+      {/* ============== SHOW FORM COMMENTS ============== */}
+
+      <FormComment userVisited={idUser} addComment={addComment}/>
+
+      {/* ============== SHOW COMMENTS ============== */}
 
       <CommentsComponent commentsState={commentsState} />
     </ScrollView>

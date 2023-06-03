@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const btnStyle = (color: string) => {
+export const btnStyle = (color: string, margin=true,) => {
   const styles = StyleSheet.create({
     btn: {
       width: "80%",
@@ -8,7 +8,7 @@ export const btnStyle = (color: string) => {
       backgroundColor: color,
       borderRadius: 5,
       alignItems: "center",
-      marginTop: 10,
+      marginTop: margin ? 10 : 0,
     },
   });
   return styles.btn;

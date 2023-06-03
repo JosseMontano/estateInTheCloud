@@ -13,7 +13,6 @@ import {
   getCommentsByUser,
 } from "../../services/visitUser/comments";
 
-
 export const useComments = () => {
   const [idCommentUser, setIdCommentUser] = useState(0);
   const [deleteCommentState, setDeleteCommentState] = useState(false);
@@ -56,7 +55,7 @@ export const useComments = () => {
         amount_start: amountStart,
       },
     });
-    alert("guardado");
+    alert("Se publico tu comentario");
   };
 
   useSubscription(deleteCommentSubs, {
