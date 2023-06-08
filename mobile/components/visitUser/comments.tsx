@@ -1,10 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import {
-  fiveColor,
-  fourtyColor,
-  tertiaryColor,
-} from "../../constants/colors/color";
+import { fiveColor, fourtyColor } from "../../constants/colors/color";
 import { Comments } from "../../interfaces/visitUser/comments";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { UseUser } from "../../store/user";

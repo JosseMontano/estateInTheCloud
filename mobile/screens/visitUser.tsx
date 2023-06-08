@@ -56,7 +56,6 @@ const VisitUser = ({
     data: comments,
     setIdCommentUser,
     addComment,
-    deleteCommentState,
     handleDelete,
   } = useComments();
   const [commentsState, setCommentsState] = useState<Comments[]>([]);
