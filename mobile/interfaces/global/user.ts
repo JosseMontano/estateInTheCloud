@@ -3,4 +3,5 @@ export interface UserType {
   email: "";
   user_name: "";
   url_photo: "";
+  cellphone_number: "";
 }
