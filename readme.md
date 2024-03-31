@@ -52,7 +52,7 @@
 # Technologies used
 
 <p align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" width="100">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" width="100">
     <img src="https://styles.redditmedia.com/t5_2v6gg/styles/communityIcon_4w7vh6c21f871.png" width="100">
     <img src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png?width=256&s=3f7493995143d3cf40b1fedc582607cea194b579" width="100">
 </p>
