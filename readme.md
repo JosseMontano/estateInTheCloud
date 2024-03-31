@@ -10,7 +10,7 @@
 
 1. Clone the repository
 
-# Steps in the backend
+# Steps in the backend (node)
 
 <p align="center">
     <a href="" target="_blank">
@@ -22,6 +22,19 @@
 2. Clone the file `.copy.env` and rename it to `.env`
 3. Change the variables of environment
 4. `pnpm run dev`
+
+# Steps in the backend (go)
+
+<p align="center">
+    <a href="" target="_blank">
+        <img src="https://gofiber.io/assets/images/logo.svg" width="150">
+    </a>
+</p>
+
+1. Clone the file `.copy.env` and rename it to `.env`
+2. Change the variables of environment
+3. `air`
+
 
 # Steps in the frontend
 

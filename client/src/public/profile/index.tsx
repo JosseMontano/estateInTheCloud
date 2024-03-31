@@ -60,7 +60,9 @@ const Profile = () => {
     await handleGetData();
   };
 
-  if (data != undefined) {
+  console.log(data)
+  if (data != undefined && data.GET_REAL_ESTATE_BY_ID_USER != undefined) {
+ 
     return (
       <Suspense fallback={<p>Loading</p>}>
         <Container marginGlobal={marginGlobal} ColorText={ColorText}>
