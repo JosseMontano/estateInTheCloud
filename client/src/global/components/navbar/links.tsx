@@ -14,9 +14,10 @@ const Container = styled.li`
 `;
 
 const A = styled.span`
-  color: white;
+  color: #000;
   font-size: 17px;
   padding: 7px 13px;
+  cursor: pointer;
   border-radius: 3px;
   text-transform: uppercase;
   &:hover {

@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
+import { ColorBtn, ColorBtnFourth } from "@/global/styles/globals";
 
-const StyleBtn = styled.button<{ catActually: string }>`
+const StyleBtn = styled.button<{ catActually: string; borderColor: string }>`
   border-radius: 15px;
   padding: 8px;
   margin: 0px 5px;
   background: ${(props) => props.catActually};
-  color: #fff;
+  color: #000;
   margin-bottom: 7px;
+  border: 1px solid ${(props) => props.borderColor};
   &:hover {
     cursor: pointer;
-    background: #0a1113;
+    background: ${ColorBtnFourth};
+    border: 1px solid ${ColorBtn};
   }
 `;
 
@@ -25,10 +28,15 @@ const Btn = ({ v, catActually, changeData }: Params) => {
     changeData(name);
   };
 
-  const backbround = catActually === v.name ? "#0a1113" : "#243f47";
+  const backbround = catActually === v.name ? ColorBtnFourth : "#fff";
+  const borderColor = catActually === v.name ? ColorBtn : "#fff";
 
   return (
-    <StyleBtn catActually={backbround} onClick={() => handleChangeData(v.name)}>
+    <StyleBtn
+      catActually={backbround}
+      borderColor={borderColor}
+      onClick={() => handleChangeData(v.name)}
+    >
       {v.name}
     </StyleBtn>
   );

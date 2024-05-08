@@ -17,9 +17,9 @@ import Event from "@/global/interfaces/event";
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: #0f2027;
+/*   background: #0f2027;
   background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027); */
 `;
 
 const TypeRealEstate = () => {

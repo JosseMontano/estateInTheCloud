@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useLanguage } from "@/global/context/languageContext";
 import { RealEstate } from "@/global/interfaces/realEstate";
+import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +15,12 @@ const Btn = styled.button`
   padding: 5px;
   border-radius: 10px;
   margin-left: 15px;
+  cursor: pointer;
+  &:hover{
+    background-color: ${ColorBtn};
+    color: #fff;
+  
+  }
 `;
 
 interface Params {

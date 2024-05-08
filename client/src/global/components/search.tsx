@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useLanguage } from "@/global/context/languageContext";
+import { ColorBtn, ColorBtnSecond, ColorBtnThird, ColorText } from "../styles/globals";
 const Container = styled.div`
   width: 100%;
   position: relative;
@@ -8,7 +9,7 @@ const Container = styled.div`
 
 const SearchTerm = styled.input`
   width: 100%;
-  border: 3px solid #0299ad;
+  border: 3px solid ColorText;
   border-right: none;
   padding: 5px;
   height: 20px;
@@ -17,15 +18,15 @@ const SearchTerm = styled.input`
   color: #9dbfaf;
   margin: 15px 0px 15px 10px;
   &:focus {
-    color: #027685;
+    color: #000;
   }
 `;
 
 const SearchButton = styled.button`
   width: 40px;
   height: 33px;
-  border: 1px solid #027685;
-  background: #027685;
+  border: 1px solid ${ColorText};
+  background: ${ColorText};
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;

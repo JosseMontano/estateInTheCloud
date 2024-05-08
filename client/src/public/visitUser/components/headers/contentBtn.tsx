@@ -1,5 +1,5 @@
 import { useLanguage } from "@/global/context/languageContext";
-import { marginInElements } from "@/global/styles/globals";
+import { ColorBtn, marginInElements } from "@/global/styles/globals";
 import handleSendWhatsapp from "@/global/utilities/sendWhatsapp";
 import styled from "styled-components";
 
@@ -18,8 +18,8 @@ const SPAN = styled.span<{ marginInElements: string }>`
 const Btn = styled.button<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
   margin-bottom: ${(props) => props.marginInElements};
-  color: #fff;
-  border: 1px solid #f2f2f2;
+  color: #000;
+  border: 1px solid #000;
   border-radius: 0.2rem;
   font-size: 16px;
   background: transparent;
@@ -28,6 +28,8 @@ const Btn = styled.button<{ marginInElements: string }>`
 
   &:hover {
     cursor: pointer;
+    background: ${ColorBtn};
+    color: #fff;
   }
 `;
 interface Params {

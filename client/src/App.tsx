@@ -20,7 +20,7 @@ const App = () => {
   };
   useEffect(() => {
     handle();
-    changeBackground("#203a43");
+    changeBackground("#f2f2f2");
     changeColor("#fff");
   }, []);
 

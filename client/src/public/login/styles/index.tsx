@@ -5,9 +5,10 @@ export const Container = styled.div`
   place-content: center;
   height: 100vh;
   width: 100%;
-  background: #0f2027;
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+/*   background: #0f2027; */
+/*   background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027); */
+  background-color: #f2f2f2;
 `;
 export const ContainerSoon = styled.div`
   display: grid;

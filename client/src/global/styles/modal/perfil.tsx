@@ -47,9 +47,11 @@ export const Button = styled.button<{ ColorBtn: string }>`
 export const H2 = styled.h2`
   text-align: center;
   text-transform: uppercase;
+  color:#000;
 `;
 export const P = styled.p`
   margin-top: 10px;
+  color:#000;
 `;
 export const ContainerLoader = styled.div`
   height: 100%;

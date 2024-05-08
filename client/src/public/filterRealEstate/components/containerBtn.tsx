@@ -4,6 +4,7 @@ import useLoadData from "@/global/hooks/useFetch";
 import ParamsTypeRealEstate from "@/global/interfaces/typeRealEstate";
 import { getTypeRealEstate } from "@/global/services/realEstate";
 import Btn from "./btn";
+import { ColorBtn, ColorBtnFourth } from "@/global/styles/globals";
 
 const ContainerBtn = styled.div`
   display: flex;
@@ -17,11 +18,13 @@ const StyleBtn = styled.button<{ catActually: string }>`
   padding: 8px;
   margin: 0px 5px;
   background: ${(props) => props.catActually};
-  color: #fff;
+  color: #000;
   margin-bottom: 7px;
+  border: none;
   &:hover {
     cursor: pointer;
-    background: #0a1113;
+    background: ${ColorBtnFourth};
+    border: 1px solid ${ColorBtn};
   }
 `;
 
@@ -34,7 +37,7 @@ interface ParamsType {
 const Index = ({ catActually, changeData, toggle }: ParamsType) => {
   const { text } = useLanguage();
   const { data } = useLoadData<ParamsTypeRealEstate>(getTypeRealEstate);
-  const background = catActually == "Custom" ? "#0a1113" : "#243f47";
+  const background = catActually == "Custom" ? ColorBtnFourth : "#fff";
   
   return (
     <ContainerBtn>

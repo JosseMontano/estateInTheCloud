@@ -13,6 +13,7 @@ import NameUser from "./nameUser";
 import { getEmail } from "@/global/services/auth";
 import AuxNav from "./auxNav";
 import { useLanguage } from "@/global/context/languageContext";
+import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/global/styles/globals";
 const Nav = styled.nav<{ ColorBtn: string }>`
   background: ${(props) => props.ColorBtn};
   height: 80px;
@@ -22,7 +23,7 @@ const Nav = styled.nav<{ ColorBtn: string }>`
   z-index: 999;
 `;
 const Logo = styled.label`
-  color: white;
+  color: ${ColorBtn};
   font-size: 35px;
   line-height: 80px;
   padding: 0 100px;
@@ -62,7 +63,7 @@ const Index = () => {
     <>
       <Suspense fallback={<p>Loading</p>}>
         <AuxNav margin={"1700px"} />
-        <Nav ColorBtn={"#162b33"}>
+        <Nav ColorBtn={"#fff"}>
           <Check />
           <Logo onClick={() => handleRedirect("/home")}>
             <NameUser msg={text.navbarTitle} textBig={textBig} />

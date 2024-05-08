@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-export const ColorBtn = "#a4bbf5";
-export const ColorBtnSecond = "#ff5861";
-export const ColorBtnThird = "#e559ae";
-export const ColorText = "#fff";
+export const ColorBtn = "#e63c19"; //#a4bbf5
+export const ColorBtnSecond = "#b83014"; //#ff5861
+export const ColorBtnThird = "#872612"; //#e559ae
+export const ColorBtnFourth = "#fce6e3"; //#e559ae
+export const ColorText = "#000";
+export const ColorTextP = "#2c2c2c";
+
 
 export const ContainerInputFile = styled.div`
   margin-top: 15px;
@@ -26,7 +29,7 @@ export const ContainerInputFile = styled.div`
 `;
 export const InputFile = styled.input`
   margin-top: 15px;
-  color: #fff;
+  color: #000;
 `;
 
 export const Title = styled.h2<{ colorText: string }>`

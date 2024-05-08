@@ -8,9 +8,9 @@
 }
 
 body {
-  background: #0f2027;
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  background: #f2f2f2;
+/*   background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to bottom, #2c5364, #203a43, #0f2027); */
 }
 
 .msgError {

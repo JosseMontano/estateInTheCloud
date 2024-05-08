@@ -11,6 +11,7 @@ const Container = styled.div`
     text-align: center;
     text-transform: uppercase;
     font-size: 22px;
+    color: #000;
   }
 `;
 const Index = () => {

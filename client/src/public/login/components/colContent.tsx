@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorText, Title } from "@/global/styles/globals";
+import { ColorBtnSecond, ColorBtnThird, Title } from "@/global/styles/globals";
 
 const Container = styled.div`
   display: grid;
@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const TextP = styled.p`
   margin: 10px 0px;
-  color: #b9b9b9;
+  color: ${ColorBtnSecond};
   font-size: 22px;
 `;
 interface Params {
@@ -20,7 +20,7 @@ interface Params {
 const ColContent = (params: Params) => {
   return (
     <Container>
-      <Title colorText={ColorText}>{params.title}</Title>
+      <Title colorText={ColorBtnThird}>{params.title}</Title>
       <TextP>{params.text}</TextP>
      {params.form}
     </Container>

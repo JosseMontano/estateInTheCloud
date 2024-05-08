@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import ContainterBtn from "./containterBtn";
+import { ColorText, ColorTextP } from "@/global/styles/globals";
 
 const Content = styled.div`
   padding: 2px 16px;
@@ -13,11 +14,11 @@ const Img = styled.img`
 `;
 const H4 = styled.h4`
   font-size: 22px;
-  color: #fff;
+  color: ${ColorText};
 `;
 const P = styled.p`
   font-size: 18px;
-  color: #fff;
+  color: ${ColorTextP};
 `;
 
 interface Params {

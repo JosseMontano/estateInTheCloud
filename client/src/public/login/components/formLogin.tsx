@@ -6,8 +6,14 @@ import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import Language from "@/global/components/language";
 
-
 const Container = styled.form``;
+
+const ContainerBtn = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:5px;
+`;
 
 interface BtnType {
   onclick: (e: any) => void;
@@ -55,9 +61,11 @@ const Form = (props: ParamsType) => {
           EyeJSX={props.EyeJSX}
         />
       ))}
-      {props.dataBtn.map((v, i) => (
-        <Button key={i} {...v} />
-      ))}
+      <ContainerBtn>
+        {props.dataBtn.map((v, i) => (
+          <Button key={i} {...v} />
+        ))}
+      </ContainerBtn>
 
       <Language />
 

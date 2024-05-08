@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { useLanguage } from "@/global/context/languageContext";
+import { ColorBtnSecond, ColorBtnThird } from "../styles/globals";
 
 const ContainerLabel = styled.div`
   text-align: center;
-  color: #fff;
+  color: ${ColorBtnSecond};
   font-size: 22px;
+  margin-top: 15px;
   input {
     margin: 0px 5px;
     background-color: transparent;
-    color: #fff;
+    color: ${ColorBtnSecond};
     border: none;
-    border: 2px solid #fff;
+    border: 2px solid ${ColorBtnThird};
     padding: 7px;
     border-radius: 15px;
     &:hover {

@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { ColorBtn, ColorBtnSecond, ColorText } from "./globals";
 
 export const Btn = styled.button<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
   margin-bottom: ${(props) => props.marginInElements};
-  color: #fff;
-  border: 1px solid #f2f2f2;
+  color: ${ColorText};
+  border: 1px solid ${ColorText};
   border-radius: 0.2rem;
   font-size: 16px;
   background: transparent;
@@ -12,7 +13,7 @@ export const Btn = styled.button<{ marginInElements: string }>`
   width: 100%;
   cursor: pointer;
   &:hover {
-    background-color: #fff;
-    color:#000;
+    background-color: ${ColorBtn};
+    color:#fff;
   }
 `;

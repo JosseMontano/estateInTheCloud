@@ -10,6 +10,7 @@ const ContainerInput = styled.div`
   background-color: #fff;
   width: 95%;
   border-radius: 3px;
+
   &:focus-within {
     border: 2px double rgba(7, 7, 204,.5) ;
   }

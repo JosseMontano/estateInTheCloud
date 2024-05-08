@@ -1,5 +1,6 @@
 import { RefObject, useRef, useState } from "react";
 import styled from "styled-components";
+import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "../styles/globals";
 
 const Container = styled.div`
   margin: 1rem;
@@ -35,13 +36,14 @@ const Btn = styled.button`
   bottom: 0px;
   margin: auto;
   height: 4rem;
-  background-color: white;
+  background-color: ${ColorBtn};
+  color:#fff;
   border: none;
   width: 2rem;
   font-size: 2rem;
   padding: 0;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.8;
   transition: opacity 100ms;
   z-index: 999;
   &:hover,
