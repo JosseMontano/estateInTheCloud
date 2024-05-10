@@ -1,21 +1,15 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
-import {
-  ContainerContent,
-  H2,
-  P,
-  ContainerBtn,
-} from "@/global/styles/modal/perfil";
-import { ColorBtn, InputFile, Title } from "@/global/styles/globals";
-import { useEffect, useState } from "react";
+import { ContainerContent } from "@/global/styles/modal/perfil";
+import { useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
-import { Btn } from "@/global/styles/btn";
 import useTranslate from "@/public/profile/hooks/useTranslate";
-import { isWithin10Blocks } from "@/global/utilities/coordinates";
-import { schools } from "@/global/data/education";
-import { hospitals } from "@/global/data/hospital";
 import { ShowInfo } from "../types/showInfo";
-import styled from "styled-components";
 import GeneralInfo from "./generalInfo";
+import MoreInfo from "./moreInfo";
+import NearPlaces from "./nearPlaces";
+import { PlacesType, PropertiesPlaces } from "../types/places";
+import BtnsToVisitor from "./btnsToVistitor";
+import BtnsToOwner from "./btnsToOwner";
 
 interface params {
   v: RealEstate;
@@ -27,14 +21,9 @@ interface params {
   handleUpdateState: (id: number, available: number) => void;
   handleShowMoreInfo: (val: ShowInfo) => void;
   showMoreInfo: ShowInfo;
+  placesNear: PlacesType[];
+  handleRedirectToMaps: (v: PropertiesPlaces) => void
 }
-
-const ContainerNearPlaces = styled.div`
-  height: 250px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: black transparent;
-`;
 
 const ContentTextModal = (p: params) => {
   const { text } = useLanguage();
@@ -71,172 +60,33 @@ const ContentTextModal = (p: params) => {
     title: p.v.title,
     description: p.v.description,
   });
-
-  interface Properties {
-    OBJECTID: number;
-    NOMBRE: string;
-    TIPO?: string;
-    SUB_SECTOR?: string;
-    NIVEL?: string;
-    TIPO_ESTAB?: string;
-    Prueba?: string;
-    //school
-    DEPENDENCI?: string;
-    CICLOS?: string;
-  }
-
-  interface placesNear {
-    title: string;
-    properties: Properties[];
-  }
-
-  const [placesNear, setPlacesNear] = useState([] as placesNear[]);
-  useEffect(() => {
-    if (p.v.lat_long === null) return;
-
-    const [lat, long] = p.v.lat_long.split(",");
-
-    const point1 = {
-      type: "Point",
-      coordinates: [Number(long), Number(lat)],
-    };
-    let nearPlacesSchool = [] as Properties[];
-    for (let educ of schools.features) {
-      const res = isWithin10Blocks(point1, educ.geometry);
-      if (res) {
-        nearPlacesSchool.push(educ.properties);
-      }
-    }
-
-    let nearPlacesHospital = [] as Properties[];
-    for (let hosp of hospitals.features) {
-      const res = isWithin10Blocks(point1, hosp.geometry);
-      if (res) {
-        nearPlacesHospital.push(hosp.properties);
-      }
-    }
-
-    setPlacesNear([
-      { title: "Educacion", properties: nearPlacesSchool },
-      { title: "Hospitales", properties: nearPlacesHospital },
-    ]);
-  }, []);
-
+  
   return (
     <ContainerContent>
-      {/* Show basic info  */}
       {p.showMoreInfo == "General" && (
         <GeneralInfo description={descriptionState} title={titleState} />
       )}
 
-      {/* Show Complete info  */}
-      {p.showMoreInfo == "Specific" && (
-        <div>
-          <P>
-            {text.visitUseramount_bedroom}
-            {p.v.amount_bedroom}
-          </P>
-          <P>
-            {text.visitUserprice}
-            {p.v.price}
-          </P>
-
-          <P>
-            {text.visitUseramount_bathroom}
-            {p.v.amount_bathroom}
-          </P>
-
-          <P>
-            {text.visitUsersquare_meter}
-            {p.v.square_meter}
-          </P>
-
-          <P>
-            {text.visitUserprice}
-            {p.v.price}
-          </P>
-
-          {/*   <P>
-            {text.visitUserlat_long}
-            {p.v.lat_long}
-          </P> */}
-
-          <P>
-            {text.visitUseraddress}
-            {p.v.address}
-          </P>
-        </div>
-      )}
+      {p.showMoreInfo == "Specific" && <MoreInfo v={p.v} />}
 
       {p.showMoreInfo === "Near places" && (
-        <ContainerNearPlaces>
-          {placesNear.map((v, i) => (
-            <>
-              <Title colorText={ColorBtn}>{v.title}</Title>
-              {v.properties.map((va, i) => (
-                <P key={i}>
-                  {i + 1}. {va.NOMBRE} - {va.DEPENDENCI} - {va.NIVEL}
-                </P>
-              ))}
-            </>
-          ))}
-        </ContainerNearPlaces>
+        <NearPlaces placesNear={p.placesNear} handleRedirectToMaps={p.handleRedirectToMaps}/>
       )}
 
       {p.showbtn ? (
-        <>
-          <InputFile type="file" onChange={(e) => p.handleFile(e)} />
-          <ContainerBtn>
-            {btnJSX.map((v, i) => (
-              <Btn key={i} marginInElements="0px" onClick={v.click}>
-                {v.txt}
-              </Btn>
-            ))}
-            <Btn marginInElements="0px" onClick={handleUpdateStateRE}>
-              {stateAvailable
-                ? text.profileBtnAvailable
-                : text.profileBtnNoAvailable}
-            </Btn>
-          </ContainerBtn>
-        </>
+        <BtnsToOwner
+          btnJSX={btnJSX}
+          handleFile={p.handleFile}
+          handleUpdateStateRE={handleUpdateStateRE}
+          stateAvailable={stateAvailable}
+        />
       ) : (
         <>
-          <Btn marginInElements="0px">{textBtn}</Btn>
-          {p.showMoreInfo == "General" && (
-            <Btn
-              marginInElements="0px"
-              onClick={() => p.handleShowMoreInfo("Specific")}
-            >
-              {text.visitUserShowMoreInfo}
-            </Btn>
-          )}
-          {p.showMoreInfo == "Specific" && (
-            <>
-              <Btn
-                marginInElements="0px"
-                onClick={() => p.handleShowMoreInfo("General")}
-              >
-                {text.visitUserShowLessInfo}
-              </Btn>
-              <Btn
-                marginInElements="0px"
-                onClick={() => p.handleShowMoreInfo("Near places")}
-              >
-                Lugares cercanos
-              </Btn>
-            </>
-          )}
-
-          {p.showMoreInfo == "Near places" && (
-            <>
-              <Btn
-                marginInElements="0px"
-                onClick={() => p.handleShowMoreInfo("General")}
-              >
-                {text.visitUserShowLessInfo}
-              </Btn>
-            </>
-          )}
+          <BtnsToVisitor
+            handleShowMoreInfo={p.handleShowMoreInfo}
+            showMoreInfo={p.showMoreInfo}
+            textBtn={textBtn}
+          />
         </>
       )}
     </ContainerContent>
@@ -246,4 +96,5 @@ const ContentTextModal = (p: params) => {
 ContentTextModal.defaultProps = {
   showbtn: true,
 };
+
 export default ContentTextModal;

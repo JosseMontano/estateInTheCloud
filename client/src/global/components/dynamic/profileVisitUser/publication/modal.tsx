@@ -1,6 +1,7 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { Modal } from "jz-modal";
 import { ContentModal } from "./modal/indexModal";
+import UsePlacesNear from "@/public/visitUser/hooks/usePlacesNear";
 
 interface Params {
   isShowTrue: boolean;
@@ -10,12 +11,20 @@ interface Params {
 }
 
 const ModalCom = (params: Params) => {
+  const { placesNear, handleRedirectToMaps } = UsePlacesNear({ v: params.v });
 
   return (
     <Modal
       isShown={params.isShowTrue}
       hide={params.toggleTrue}
-      modalContent={<ContentModal v={params.v} showbtn={params.showbtn} />}
+      modalContent={
+        <ContentModal
+          v={params.v}
+          showbtn={params.showbtn}
+          placesNear={placesNear}
+          handleRedirectToMaps={handleRedirectToMaps}
+        />
+      }
     />
   );
 };
