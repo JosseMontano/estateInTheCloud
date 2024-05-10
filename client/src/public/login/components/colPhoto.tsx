@@ -10,8 +10,8 @@ const Container = styled.div<{ ColorBtn: string }>`
   }
 `;
 const Image = styled.img`
-  width: 500px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   object-fit: cover;
 `;
 const ColPhoto = () => {

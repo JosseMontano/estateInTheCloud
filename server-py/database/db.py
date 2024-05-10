@@ -8,10 +8,10 @@ user = config('USER')
 password = config('PASSWORD') """
 
 host = 'localhost'
-port = '5632'
+port = '5532'
 dbname = 'realEstatePrueba1'
 user = 'postgres'
-password = '8021947cbba'
+password = 'admin'
 
 
 

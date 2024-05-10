@@ -26,8 +26,6 @@ export function Login(): JSX.Element {
   const { isShown: isShownRegister, toggle: toggleRegister } = useModal({});
   const { isShown: isShownRA, toggle: toggleRA } = useModal({});
 
-
-
   let dataBtn = [
     {
       onclick: handleSubmit,

@@ -5,11 +5,17 @@ import {
   P,
   ContainerBtn,
 } from "@/global/styles/modal/perfil";
-import { InputFile } from "@/global/styles/globals";
-import { useState } from "react";
+import { ColorBtn, InputFile, Title } from "@/global/styles/globals";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
 import { Btn } from "@/global/styles/btn";
 import useTranslate from "@/public/profile/hooks/useTranslate";
+import { isWithin10Blocks } from "@/global/utilities/coordinates";
+import { schools } from "@/global/data/education";
+import { hospitals } from "@/global/data/hospital";
+import { ShowInfo } from "../types/showInfo";
+import styled from "styled-components";
+import GeneralInfo from "./generalInfo";
 
 interface params {
   v: RealEstate;
@@ -19,9 +25,16 @@ interface params {
   handleFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleAnswerQuestion: (id: number) => void;
   handleUpdateState: (id: number, available: number) => void;
-  handleShowMoreInfo: () => void;
-  showMoreInfo: boolean;
+  handleShowMoreInfo: (val: ShowInfo) => void;
+  showMoreInfo: ShowInfo;
 }
+
+const ContainerNearPlaces = styled.div`
+  height: 250px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+`;
 
 const ContentTextModal = (p: params) => {
   const { text } = useLanguage();
@@ -59,18 +72,65 @@ const ContentTextModal = (p: params) => {
     description: p.v.description,
   });
 
+  interface Properties {
+    OBJECTID: number;
+    NOMBRE: string;
+    TIPO?: string;
+    SUB_SECTOR?: string;
+    NIVEL?: string;
+    TIPO_ESTAB?: string;
+    Prueba?: string;
+    //school
+    DEPENDENCI?: string;
+    CICLOS?: string;
+  }
+
+  interface placesNear {
+    title: string;
+    properties: Properties[];
+  }
+
+  const [placesNear, setPlacesNear] = useState([] as placesNear[]);
+  useEffect(() => {
+    if (p.v.lat_long === null) return;
+
+    const [lat, long] = p.v.lat_long.split(",");
+
+    const point1 = {
+      type: "Point",
+      coordinates: [Number(long), Number(lat)],
+    };
+    let nearPlacesSchool = [] as Properties[];
+    for (let educ of schools.features) {
+      const res = isWithin10Blocks(point1, educ.geometry);
+      if (res) {
+        nearPlacesSchool.push(educ.properties);
+      }
+    }
+
+    let nearPlacesHospital = [] as Properties[];
+    for (let hosp of hospitals.features) {
+      const res = isWithin10Blocks(point1, hosp.geometry);
+      if (res) {
+        nearPlacesHospital.push(hosp.properties);
+      }
+    }
+
+    setPlacesNear([
+      { title: "Educacion", properties: nearPlacesSchool },
+      { title: "Hospitales", properties: nearPlacesHospital },
+    ]);
+  }, []);
+
   return (
     <ContainerContent>
       {/* Show basic info  */}
-      {!p.showMoreInfo && (
-        <>
-          <H2>{titleState}</H2>
-          <P>{descriptionState}</P>
-        </>
+      {p.showMoreInfo == "General" && (
+        <GeneralInfo description={descriptionState} title={titleState} />
       )}
 
       {/* Show Complete info  */}
-      {p.showMoreInfo && (
+      {p.showMoreInfo == "Specific" && (
         <div>
           <P>
             {text.visitUseramount_bedroom}
@@ -96,16 +156,31 @@ const ContentTextModal = (p: params) => {
             {p.v.price}
           </P>
 
-          <P>
+          {/*   <P>
             {text.visitUserlat_long}
             {p.v.lat_long}
-          </P>
+          </P> */}
 
           <P>
             {text.visitUseraddress}
             {p.v.address}
           </P>
         </div>
+      )}
+
+      {p.showMoreInfo === "Near places" && (
+        <ContainerNearPlaces>
+          {placesNear.map((v, i) => (
+            <>
+              <Title colorText={ColorBtn}>{v.title}</Title>
+              {v.properties.map((va, i) => (
+                <P key={i}>
+                  {i + 1}. {va.NOMBRE} - {va.DEPENDENCI} - {va.NIVEL}
+                </P>
+              ))}
+            </>
+          ))}
+        </ContainerNearPlaces>
       )}
 
       {p.showbtn ? (
@@ -127,11 +202,41 @@ const ContentTextModal = (p: params) => {
       ) : (
         <>
           <Btn marginInElements="0px">{textBtn}</Btn>
-          <Btn marginInElements="0px" onClick={p.handleShowMoreInfo}>
-            {!p.showMoreInfo
-              ? text.visitUserShowMoreInfo
-              : text.visitUserShowLessInfo}
-          </Btn>
+          {p.showMoreInfo == "General" && (
+            <Btn
+              marginInElements="0px"
+              onClick={() => p.handleShowMoreInfo("Specific")}
+            >
+              {text.visitUserShowMoreInfo}
+            </Btn>
+          )}
+          {p.showMoreInfo == "Specific" && (
+            <>
+              <Btn
+                marginInElements="0px"
+                onClick={() => p.handleShowMoreInfo("General")}
+              >
+                {text.visitUserShowLessInfo}
+              </Btn>
+              <Btn
+                marginInElements="0px"
+                onClick={() => p.handleShowMoreInfo("Near places")}
+              >
+                Lugares cercanos
+              </Btn>
+            </>
+          )}
+
+          {p.showMoreInfo == "Near places" && (
+            <>
+              <Btn
+                marginInElements="0px"
+                onClick={() => p.handleShowMoreInfo("General")}
+              >
+                {text.visitUserShowLessInfo}
+              </Btn>
+            </>
+          )}
         </>
       )}
     </ContainerContent>

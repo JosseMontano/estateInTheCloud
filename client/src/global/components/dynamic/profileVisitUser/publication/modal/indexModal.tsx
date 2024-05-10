@@ -14,6 +14,7 @@ import useLoadData from "@/global/hooks/useFetch";
 import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import Event from "@/global/interfaces/event";
 import { useProfile } from "@/global/context/profileContext";
+import { ShowInfo } from "../types/showInfo";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
@@ -68,9 +69,9 @@ export const ContentModal = ({ v, showbtn }: Params) => {
   };
 
   //show more information
-  const [showMoreInfo, setshowMoreInfo] = useState(false);
-  const handleShowMoreInfo = () => {
-    setshowMoreInfo(!showMoreInfo);
+  const [showMoreInfo, setshowMoreInfo] = useState<ShowInfo>("General");
+  const handleShowMoreInfo = (show: ShowInfo) => {
+    setshowMoreInfo(show);
   };
 
   return (

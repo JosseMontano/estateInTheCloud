@@ -115,7 +115,7 @@ interface TranslationType {
 const translations: TranslationType = {
   es: {
     dataEmpty: "No hay datos",
-    loginTitle: "Inicia sesion o create una cuenta",
+    loginTitle: "Bienvenido",
     loginSubtitle: "Hola de nuevo",
     loginLabelGmail: "Email",
     loginLabelPassword: "Contraseña",
@@ -222,7 +222,7 @@ const translations: TranslationType = {
   },
   en: {
     dataEmpty: "There is not data",
-    loginTitle: "sign in o sign up",
+    loginTitle: "Welcome",
     loginSubtitle: "Hello again",
     loginLabelGmail: "Gmail",
     loginLabelPassword: "Password",

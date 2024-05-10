@@ -5,7 +5,7 @@ from routes.realEstate import get_realEstate, post_realEstate
 app = Flask(__name__)
 
 CORS(app, resources={
-     "*": {"origins": ["http://localhost:5173", "exp://192.168.1.13:19000"]}})
+     "*": {"origins": ["http://localhost:5173", "exp://192.168.1.13:19000","http://127.0.0.1:5173"]}})
 
 
 @app.route('/')
