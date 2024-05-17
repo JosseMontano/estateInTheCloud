@@ -3,6 +3,8 @@ import { uploadImage, deleteImage } from "../libs/cloudinary";
 import { UploadedFile } from "express-fileupload";
 import fs from "fs-extra";
 import RealEstateType from "../interfaces/realEstate";
+import { PropertiesPlacesMaps } from "../interfaces/infoMaps";
+const { googleMaps } = require("../config");
 const pool = require("../db");
 
 const queryRealEstate = `
@@ -21,6 +23,26 @@ export const getAllEstates = async (
     const allEstate = await pool.query(`${queryRealEstate}`);
     res.json(allEstate.rows);
   } catch (error: any) {
+    next(error);
+  }
+};
+
+export const getPlaces = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let radius = 1 * 1000;
+
+  const { lat, long } = req.body;
+  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=${radius}&key=${googleMaps.key}`;
+
+  try {
+    const response = await fetch(url);
+    const { results } = await response.json();
+    const resultsData = results as PropertiesPlacesMaps[];
+    res.json(resultsData);
+  } catch (error) {
     next(error);
   }
 };

@@ -12,6 +12,7 @@ import {
   getTypeRealEstat,
   getAllEstatesByType,
   getAllEstatesByFilterCustom,
+  getPlaces,
 } from "../controllers/realEstate.controller";
 
 router.get("/estate", getAllEstates);
@@ -21,7 +22,7 @@ router.get("/estateRecommendedByUser", getRealEstatesByUSerRecommended);
 router.get("/estateOfOnePublication/:idRealEstate", getEstateOfOnePublication);
 router.put("/estate/:id", updateEstate);
 router.get("/estateByType/:type", getAllEstatesByType);
-
+router.post("/getPlaces/", getPlaces);
 
 
 

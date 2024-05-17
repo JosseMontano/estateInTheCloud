@@ -23,10 +23,12 @@ const useTranslate = ({ description, title }: Params) => {
     const tit = await translate(title);
     setDescriptionState(des!);
     setTitleState(tit!);
-   setTimeout(() => {
-    setLoadTxt(false);
-   }, 3000);
+    setTimeout(() => {
+      setLoadTxt(false);
+    }, 3000);
   };
+
+  
 
   useEffect(() => {
     if (lanActually == Language.english) handleTranslate();

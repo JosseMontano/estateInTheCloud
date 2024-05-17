@@ -6,6 +6,7 @@ DB_NAME=estatedb
 
 JWT_SECRET=8021947cbbas
 
+API_MAPS=YOURAPI
 
 #method 1 to conect to postgres
 DB_USER=kfverbrwlktnfy

@@ -7,7 +7,6 @@ export const ColorBtnFourth = "#fce6e3"; //#e559ae
 export const ColorText = "#000";
 export const ColorTextP = "#2c2c2c";
 
-
 export const ContainerInputFile = styled.div`
   margin-top: 15px;
   position: relative;
@@ -31,6 +30,45 @@ export const InputFile = styled.input`
   margin-top: 15px;
   color: #000;
 `;
+
+export const Select = styled.select`
+  width: max-content;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  color: #2c2c2c;
+  scrollbar-width: thin;
+  scrollbar-color: #e63c19 transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e63c19;
+    border-radius: 20px;
+    border: 3px solid transparent;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #e63c19;
+  }
+`;
+
+export const styleMap = (height = "350px") => {
+  return {
+    height: height,
+    width: "350px",
+    marginBottom: "20px",
+  };
+};
 
 export const Title = styled.h2<{ colorText: string }>`
   font-size: 32px;

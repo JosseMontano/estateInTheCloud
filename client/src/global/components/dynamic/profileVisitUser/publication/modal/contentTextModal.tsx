@@ -7,7 +7,7 @@ import { ShowInfo } from "../types/showInfo";
 import GeneralInfo from "./generalInfo";
 import MoreInfo from "./moreInfo";
 import NearPlaces from "./nearPlaces";
-import { PlacesType, PropertiesPlaces } from "../types/places";
+import { PlacesType, PropertiesPlaces, PropertiesPlacesMaps } from "../types/places";
 import BtnsToVisitor from "./btnsToVistitor";
 import BtnsToOwner from "./btnsToOwner";
 
@@ -21,8 +21,9 @@ interface params {
   handleUpdateState: (id: number, available: number) => void;
   handleShowMoreInfo: (val: ShowInfo) => void;
   showMoreInfo: ShowInfo;
-  placesNear: PlacesType[];
+  placesNear: PropertiesPlacesMaps[];
   handleRedirectToMaps: (v: PropertiesPlaces) => void
+  types: string[]
 }
 
 const ContentTextModal = (p: params) => {
@@ -70,7 +71,7 @@ const ContentTextModal = (p: params) => {
       {p.showMoreInfo == "Specific" && <MoreInfo v={p.v} />}
 
       {p.showMoreInfo === "Near places" && (
-        <NearPlaces placesNear={p.placesNear} handleRedirectToMaps={p.handleRedirectToMaps}/>
+        <NearPlaces placesNear={p.placesNear} handleRedirectToMaps={p.handleRedirectToMaps} types={p.types}/>
       )}
 
       {p.showbtn ? (

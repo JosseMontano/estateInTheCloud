@@ -1,5 +1,5 @@
 import { Button, Label } from "jz-validation-form";
-import { ColorBtnSecond } from "@/global/styles/globals";
+import { ColorBtnSecond, styleMap } from "@/global/styles/globals";
 import { useLanguage } from "@/global/context/languageContext";
 import styled from "styled-components";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -7,11 +7,6 @@ import "leaflet/dist/leaflet.css";
 import LocationMarker from "./locationMarket";
 import { MarkerPositionType } from "../../interfaces/map";
 
-const styleMap = {
-  height: "350px",
-  width: "350px",
-  marginBottom: "20px",
-};
 
 interface Params {
   changeForm: (pagination: number) => void;
@@ -44,9 +39,10 @@ const MapForm = ({
   const { text } = useLanguage();
 
   function showMapJSX() {
+    const styles = styleMap()
     return (
       <MapContainer
-        style={styleMap}
+        style={styles}
         /* @ts-ignore */
         center={[-17.372443032788112, -66.16351643329834]}
         zoom={13}

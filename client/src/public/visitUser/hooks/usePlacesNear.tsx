@@ -1,62 +1,35 @@
 import {
-  PlacesType,
   PropertiesPlaces,
+  PropertiesPlacesMaps,
 } from "@/global/components/dynamic/profileVisitUser/publication/types/places";
-import { schools } from "@/global/data/education";
-import { hospitals } from "@/global/data/hospital";
 import { RealEstate } from "@/global/interfaces/realEstate";
-import { Point, isNearUbi } from "@/global/utilities/coordinates";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { getPlaces } from "../services/getplaces";
 
 interface Props {
   v: RealEstate;
 }
 const UsePlacesNear = ({ v }: Props) => {
-  const [placesNear, setPlacesNear] = useState([] as PlacesType[]);
+  const [placesNear, setPlacesNear] = useState([] as PropertiesPlacesMaps[]);
+  const [types, setTypes] = useState([] as string[]);
+
+  const handleGetPlaces = async (lat: string, long: string) => {
+    const res = await getPlaces<PropertiesPlacesMaps[]>(lat, long);
+    const allTypes = res.map((v) => v.types).flat();
+
+    //clear duplicates in allTypes
+    const uniqueTypes = [...new Set(allTypes)];
+
+    setPlacesNear(res);
+    setTypes(uniqueTypes);
+  };
+
 
   useEffect(() => {
     if (v.lat_long === null) return;
 
     const [lat, long] = v.lat_long.split(",");
-
-    const point1: Point = {
-      type: "Point",
-      coordinates: [Number(long), Number(lat)],
-    };
-    let nearPlacesSchool = [] as PropertiesPlaces[];
-
-    for (let educ of schools.features) {
-      const res = isNearUbi(point1, educ.geometry as Point);
-      if (res) {
-        nearPlacesSchool.push({
-          coordinates: educ.geometry as Point,
-          ...educ.properties,
-        });
-      }
-    }
-
-    let nearPlacesHospital = [] as PropertiesPlaces[];
-
-    for (let hosp of hospitals.features) {
-      const res = isNearUbi(point1, hosp.geometry as Point);
-      if (res) {
-        nearPlacesHospital.push({
-          coordinates: hosp.geometry as Point,
-          ...hosp.properties,
-        });
-      }
-    }
-
-    setPlacesNear([
-      {
-        title: "Escuelas",
-        properties: nearPlacesSchool,
-      },
-      {
-        title: "Hospitales",
-        properties: nearPlacesHospital,
-      },
-    ]);
+    handleGetPlaces(lat, long);
   }, []);
 
   const handleRedirectToMaps = (v: PropertiesPlaces) => {
@@ -65,7 +38,7 @@ const UsePlacesNear = ({ v }: Props) => {
     );
   };
 
-  return { placesNear, handleRedirectToMaps };
+  return { types, placesNear, handleRedirectToMaps };
 };
 
 export default UsePlacesNear;
