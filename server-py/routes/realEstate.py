@@ -2,10 +2,26 @@ from flask import request
 from psycopg2 import extras
 from database.db import get_conn
 from utils.geopy import convertToAddres
+from googletrans import Translator
 
 
 def get_realEstate():
     return 'getting'
+
+def translate_textEsToEn(text):
+    translator = Translator()
+    translation = translator.translate(text, src='es', dest='en')
+    return translation.text
+
+def translate_textEsToPt(text):
+    translator = Translator()
+    translation = translator.translate(text, src='es', dest='pt')
+    return translation.text
+
+def translate_textEnToEs(text):
+    translator = Translator()
+    translation = translator.translate(text, src='en', dest='es')
+    return translation.text
 
 
 def post_realEstate():

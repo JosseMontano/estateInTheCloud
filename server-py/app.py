@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from routes.realEstate import get_realEstate, post_realEstate
+from routes.realEstate import get_realEstate, post_realEstate,translate_textEsToEn, translate_textEsToPt, translate_textEnToEs
 
 app = Flask(__name__)
 
@@ -18,6 +18,20 @@ def get_companyApi():
     value = get_realEstate()
     return value
 
+@app.route('/api/translate-es-en/<val>', methods=['GET'])
+def translateEsEn(val):
+    value = translate_textEsToEn(val)
+    return jsonify({"val": value})
+
+@app.route('/api/translate-es-pt/<val>', methods=['GET'])
+def transltateEsPt(val):
+    value = translate_textEsToPt(val)
+    return jsonify({"val": value})
+
+@app.route('/api/translate-en-es/<val>', methods=['GET'])
+def transltateEnEs(val):
+    value = translate_textEnToEs(val)
+    return jsonify({"val": value})
 
 @app.route('/api/real-estate', methods=['POST'])
 def post_companyApi():

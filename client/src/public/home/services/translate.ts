@@ -1,4 +1,5 @@
-import { apisExternal } from "@/global/utilities/getServices";
+import { httpPy } from "@/config/http";
+import { apisExternal, index } from "@/global/utilities/getServices";
 
 interface TranslateType {
   responseData: ResponseData;
@@ -30,25 +31,31 @@ interface Match {
 }
 
 interface ResponseData {
-  translatedText: string;
-  match: number;
+  val: string;
 }
 
-const translate = async (
-  msg: string
-): Promise<{ json: TranslateType; status: number }> => {
-  const url = `https://api.mymemory.translated.net/get?q=${msg}&langpair=es|en`;
-  const { json, status } = await apisExternal<TranslateType>(url);
-  return { json, status };
+const translate = async (msg: string): Promise<string> => {
+  const url = httpPy + "translate-es-en/" + msg;
+  const { json } = await index<ResponseData>(url);
+  const { val } = json;
+  return val;
 };
 export default translate;
 
 export const translateEnglishToSpanish = async (
   msg: string
-): Promise<{ json: TranslateType; status: number }> => {
-  const url = `https://api.mymemory.translated.net/get?q=${msg}&langpair=en|es`;
-  const { json, status } = await apisExternal<TranslateType>(url);
-  return { json, status };
+): Promise<string> => {
+  const url = httpPy + "translate-en-es/" + msg;
+  const { json } = await index<ResponseData>(url);
+  const { val } = json;
+  return val;
 };
 
-
+export const translateSpanishToPortuguese = async (
+  msg: string
+): Promise<string> => {
+  const url = httpPy + "translate-es-pt/" + msg;
+  const { json } = await index<ResponseData>(url);
+  const { val } = json;
+  return val;
+};

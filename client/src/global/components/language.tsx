@@ -33,6 +33,10 @@ const Index = () => {
       click: () => changeLanguage("es"),
       val: text.languageValEs,
     },
+    {
+      click: () => changeLanguage("pt"),
+      val: text.languageValPt,
+    },
   ];
   return (
     <ContainerLabel>

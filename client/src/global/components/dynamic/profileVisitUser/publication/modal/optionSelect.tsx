@@ -4,7 +4,7 @@ import { translateToSpanish } from "@/public/home/utilities/translate";
 interface Props {
   type: string;
 }
-const OptionSelect = ({  type }: Props) => {
+const OptionSelect = ({ type }: Props) => {
   const [text, setText] = useState("");
 
   const handleChangeText = async () => {
@@ -16,11 +16,7 @@ const OptionSelect = ({  type }: Props) => {
     handleChangeText();
   }, []);
 
-  return (
-    <option value={type}>
-      {text}
-    </option>
-  );
+  return <option value={type}>{text}</option>;
 };
 
 export default OptionSelect;

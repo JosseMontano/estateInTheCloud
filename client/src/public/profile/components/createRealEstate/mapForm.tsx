@@ -50,7 +50,7 @@ const MapForm = ({
         {markerPosition != null && (
           <Marker position={[markerPosition.lat, markerPosition.lng]}>
             <Popup>
-              Aquí se encuentra <br /> tu compañia
+              Aquí esta marcado <br />
             </Popup>
           </Marker>
         )}

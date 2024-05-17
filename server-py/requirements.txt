@@ -8,3 +8,4 @@ Werkzeug==1.0.1
 geopy==2.2.0
 flask_cors
 psycopg2-binary
+googletrans==4.0.0-rc1

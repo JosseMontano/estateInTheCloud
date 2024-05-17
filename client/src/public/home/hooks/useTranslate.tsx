@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import translate from "@/public/home/utilities/translate";
+import translate, {
+  translateToPortuguese,
+} from "@/public/home/utilities/translate";
 import { useLanguage } from "@/global/context/languageContext";
 
 interface Params {
@@ -19,19 +21,30 @@ const useTranslate = ({ description, title }: Params) => {
 
   const handleTranslate = async () => {
     setLoadTxt(true);
-    const des = await translate(description);
-    const tit = await translate(title);
-    setDescriptionState(des!);
-    setTitleState(tit!);
-    setTimeout(() => {
-      setLoadTxt(false);
-    }, 3000);
+
+    if (lanActually == "en") {
+      const des = await translate(description);
+      const tit = await translate(title);
+      setDescriptionState(des!);
+      setTitleState(tit!);
+      setTimeout(() => {
+        setLoadTxt(false);
+      }, 3000);
+    }
+
+    if (lanActually == "pt") {
+      const des = await translateToPortuguese(description);
+      const tit = await translateToPortuguese(title);
+      setDescriptionState(des!);
+      setTitleState(tit!);
+      setTimeout(() => {
+        setLoadTxt(false);
+      }, 3000);
+    }
   };
 
-  
-
   useEffect(() => {
-    if (lanActually == Language.english) handleTranslate();
+    if (lanActually == "en" || lanActually == "pt") handleTranslate();
   }, []);
 
   return {

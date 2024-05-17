@@ -100,6 +100,7 @@ interface TextType {
   configurationLanguage: string;
   languageValEn: string;
   languageValEs: string;
+  languageValPt: string;
   msgFavorites: string;
   favoriteTitle: string;
   favoriteBtnDelete: string;
@@ -110,7 +111,10 @@ interface TextType {
 interface TranslationType {
   es: TextType;
   en: TextType;
+  pt:TextType;
 }
+
+type langs = "es" | "en" | "pt";
 
 const translations: TranslationType = {
   es: {
@@ -214,6 +218,7 @@ const translations: TranslationType = {
     configurationLanguage: "Idioma:",
     languageValEn: "Ingles",
     languageValEs: "Español",
+    languageValPt: "Portugues",
     msgFavorites: "Se agrego a favoritos",
     favoriteTitle: "Favoritos",
     favoriteBtnDelete: "Eliminar",
@@ -321,18 +326,127 @@ const translations: TranslationType = {
     configurationLanguage: "Language:",
     languageValEn: "English",
     languageValEs: "Spanish",
+    languageValPt: "Portuguese",
     msgFavorites: "It was added to favorites",
     favoriteTitle: "Favorites",
     favoriteBtnDelete: "Delete",
     fvoriteShowFavorites: "Show favorites",
     favoriteHideFavorites:"Hide favorites",
   },
+  pt: {
+    dataEmpty: "Não há dados",
+    loginTitle: "Bem-vindo",
+    loginSubtitle: "Olá novamente",
+    loginLabelGmail: "Gmail",
+    loginLabelPassword: "Senha",
+    loginBtnGetInto: "Começar",
+    loginBtnCreateAccount: "Criar uma conta",
+    loginBtnRecuperateAccount: "Recuperar conta",
+    registerTitle: "Criar uma conta",
+    registerSubtitle: "Bem-vindo",
+    registerLabelGmail: "Gmail",
+    registerLabelNameUser: "Nome do usuário",
+    registerLabelCellphone: "Celular",
+    registerLabelPassword: "Senha",
+    registerLabelSecretKey: "Chave secreta",
+    registerBtnCreateAccount: "Criar uma conta",
+    registerBtnReturn: "Retornar",
+    recuperateAccountTitle: "Recuperar conta",
+    recuperateAccountSubtitle: "Nova senha",
+    recuperateAccountGmail: "Email",
+    recuperateAccountPasswordNew: "Nova senha",
+    recuperateAccountCodeGmail: "Código do email",
+    recuperateAccountSecretKey: "Chave secreta",
+    recuperateAccountSave: "Salvar nova senha",
+    recuperateAccountSendEmail: "Enviar código para sua conta",
+    recuperateAccountReturn: "Retornar",
+    navbarTitle: "Início",
+    navbarFilter: "Filtro",
+    navbarQuestion: "Perguntas",
+    navbarConfigure: "Configuração",
+    navbarGoOut: "Sair",
+    homeMoreRecent: "Mais recente",
+    homeAll: "Todos",
+    homeRecommendedOwner: "Recomendado pelo proprietário",
+    homeForYou: "Só para você",
+    homeMoreInfor: "Mais informações",
+    homeVist: "para visitar",
+    homeBtnCopyText: "Compartilhar URL",
+    homeBtnQuestionFrequent: "Pergunta frequente",
+    homeBtnDownload: "Baixar foto",
+    homeBtnSee360: "Ver 360",
+    homeBtnTranslate: "Traduzir",
+    questionTitle: "faça sua própria pergunta",
+    questionPlaceholder: "escreva sua pergunta",
+    questionBtnSave: "Publicar",
+    filterCustom: "Personalizado",
+    filterBedroom: "Quarto",
+    filterSearch: "O que você está procurando?",
+    filterCustomPriceMin: "Preço (Min)",
+    filterCustomPriceMax: "Preço (Max)",
+    filterCustomBedroom: "Quarto",
+    filterCustomBathroom: "Banheiro",
+    filterCustomMinSize: "Metros quadrados (Min)",
+    filterCustomMaxSize: "Metros quadrados (Max)",
+    filterCustomBtn: "Pesquisar",
+    profileEditProfile: "Editar perfil",
+    profileCreatePublicate: "Criar publicação",
+    profileShowPublicate: "Mostrar postagens",
+    profilePublication: "publicações",
+    profileFollower: "seguidores",
+    profileFollow: "seguindo",
+    profileBtnAddPhoto: "Adicionar foto",
+    profileBtnDeletePhoto: "Deletar foto",
+    profileBtnQuestion: "Pergunta",
+    profileBtnAvailable: "Disponível",
+    profileBtnNoAvailable: "Indisponível",
+    comentsTitle: "Comentários",
+    comentsDelete: "Deletar comentário",
+    visitUserLoadTitle: "Carregando publicações",
+    visitUserTitle: "Publicações",
+    visitUserNoEmpty: "Você não tem publicações",
+    visitUserShowMoreInfo: "Mais info",
+    visitUserShowLessInfo: "Menos info",
+    visitUseraddress: "Endereço:",
+    visitUseramount_bathroom: "Quantidade de banheiros:",
+    visitUseramount_bedroom: "Quantidade de quartos: ",
+    visitUserlat_long: "Latitude e longitude: ",
+    visitUserprice: "Preço: ",
+    visitUsersquare_meter: "Quantidade de metros quadrados: ",
+
+    visitUserBtnSendMessage: 'Enviar mensagem',
+    visitUserBtnFollower: 'Seguir',
+    visitUserBtnComment:'Adicionar comentário',
+    visitUserAmountPublications:'Postagens',
+    visitUserFollowers:'Seguidores',
+    visitUserFollows:'Seguindo',
+
+    createPublicationTitle: "Título",
+    createPublicationDescription: "Descrição",
+    createPublicationType: "Tipo",
+    createPublicationBedrom: "Quarto",
+    createPublicationPrice: "Preço",
+    createPublicationBathroom: "Banheiro",
+    createPublicationSquareMert: "Metros quadrados",
+    createPublciationBtnNext: "próximo",
+    createPublciationBtnBack: "voltar",
+    createPublciationBtnSave: "salvar",
+    configurationLanguage: "Idioma:",
+    languageValEn: "Inglês",
+    languageValEs: "Espanhol",
+    languageValPt: "Português",
+    msgFavorites: "Foi adicionado aos favoritos",
+    favoriteTitle: "Favoritos",
+    favoriteBtnDelete: "Deletar",
+    fvoriteShowFavorites: "Mostrar favoritos",
+    favoriteHideFavorites:"Esconder favoritos",
+  },
 };
 
 interface ContextType {
   text: TextType;
-  changeLanguage: (len: string) => void;
-  lanActually: string;
+  changeLanguage: (len: langs) => void;
+  lanActually: langs;
 }
 
 const initialText: TextType = translations["es"];
@@ -340,7 +454,7 @@ const initialText: TextType = translations["es"];
 const initialValue: ContextType = {
   text: initialText,
   changeLanguage: () => {},
-  lanActually: "",
+  lanActually: "es",
 };
 
 const LanguageContext = createContext<ContextType>(initialValue);
@@ -357,11 +471,16 @@ export const useLanguage = () => {
 
 export const LanguageContextProvider = ({ children }: Children) => {
   const [text, setText] = useState<TextType>(translations["es"]);
-  const [lanActually, setLanActually] = useState("es");
-  const changeLanguage = (lan: string) => {
+  const [lanActually, setLanActually] = useState<langs>("es");
+  const changeLanguage = (lan: langs) => {
     if (lan === "en") {
       setText(translations["en"]);
       setLanActually("en");
+      return;
+    }
+    if(lan === "pt"){
+      setText(translations["pt"]);
+      setLanActually("pt");
       return;
     }
     setText(translations["es"]);
