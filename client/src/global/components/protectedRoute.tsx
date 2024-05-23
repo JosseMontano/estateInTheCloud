@@ -1,5 +1,4 @@
 /* import { validateTokenExits } from "../services/auth"; */
-import { useNavigate } from "react-router-dom";
 import Navbar from "@/global/components/navbar";
 
 interface Params {
@@ -12,7 +11,6 @@ interface routesType {
 }
 
 const ProtectedRoute = ({ children, path }: Params) => {
-  const navigate = useNavigate();
 
 /*   const verifyFun = async () => {
     const res = await validateTokenExits();

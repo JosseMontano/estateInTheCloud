@@ -17,6 +17,7 @@ func Setup(app *fiber.App) {
 	app.Post("/api/signin", controllers.SingIn)
 	app.Post("/api/sendCodeGmail", controllers.SendCodeToGmail)
 	app.Post("/api/changePassword", controllers.ChangePassword)
+	app.Post("/api/loginGoogle", controllers.LoginGoogle)
 
 	app.Use(middleware.ValidateJwt)
 

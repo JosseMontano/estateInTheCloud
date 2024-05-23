@@ -115,8 +115,67 @@ func SingIn(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(fiber.Map{
-		"auth":    true,
-		"token":   tokenString,
+		"auth":  true,
+		"token": tokenString,
+	})
+}
+
+func LoginGoogle(c *fiber.Ctx) error {
+	var data map[string]string
+
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	var user models.User
+	database.DB.Where("email=?", data["email"]).First(&user)
+
+	var photo models.Photo
+
+	timeExp := time.Now().Add(720 * time.Hour) // 720 24 * 30
+
+	//if the user does not exist create in the database and generate the token
+	if user.Id == 0 {
+		//save in the table photos
+		photo.Url = data["photoURL"]
+		photo.PublicId = data["uid"]
+		database.DB.Create(&photo)
+
+		//save in the table users
+		user.UserName = data["displayName"]
+		user.Email = data["email"]
+		user.UrlPhoto = data["photoURL"]
+		user.CellphoneNumber = data["phoneNumber"]
+		user.Password = []byte("000000000")
+		database.DB.Create(&user)
+
+		tokenString, err := middleware.GenerateJwt(user, timeExp)
+
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"message": err.Error(),
+			})
+		}
+
+		return c.JSON(fiber.Map{
+			"auth":  true,
+			"token": tokenString,
+		})
+	}
+
+	//if the user exists generate the token
+
+	tokenString, err := middleware.GenerateJwt(user, timeExp)
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": err.Error(),
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"auth":  true,
+		"token": tokenString,
 	})
 }
 

@@ -10,6 +10,7 @@ interface TextType {
   loginBtnGetInto: string;
   loginBtnCreateAccount: string;
   loginBtnRecuperateAccount: string;
+  loginBtnGoogle: string;
   registerTitle: string;
   registerSubtitle: string;
   registerLabelGmail: string;
@@ -126,6 +127,7 @@ const translations: TranslationType = {
     loginBtnGetInto: "Ingresar",
     loginBtnCreateAccount: "Create una cuenta",
     loginBtnRecuperateAccount: "recuperar cuenta",
+    loginBtnGoogle: "Ingresar con Google",
     registerTitle: "Create una cuenta",
     registerSubtitle: "Bienvenido",
     registerLabelGmail: "Email",
@@ -234,6 +236,7 @@ const translations: TranslationType = {
     loginBtnGetInto: "Start",
     loginBtnCreateAccount: "Create an account",
     loginBtnRecuperateAccount: "Recuperate account",
+    loginBtnGoogle: "Sign in with Google",
     registerTitle: "Create an account",
     registerSubtitle: "Welcome",
     registerLabelGmail: "Gmail",
@@ -342,6 +345,7 @@ const translations: TranslationType = {
     loginBtnGetInto: "Começar",
     loginBtnCreateAccount: "Criar uma conta",
     loginBtnRecuperateAccount: "Recuperar conta",
+    loginBtnGoogle: "Entrar com Google",
     registerTitle: "Criar uma conta",
     registerSubtitle: "Bem-vindo",
     registerLabelGmail: "Gmail",

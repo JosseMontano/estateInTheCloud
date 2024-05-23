@@ -2,7 +2,7 @@ import Form from "./components/formLogin";
 import ColContent from "./components/colContent";
 import ColPhoto from "./components/colPhoto";
 import { initialForm, validationsForm } from "./validations/login";
-import { signIn } from "./services/auth";
+import { signIn, signInGoogle } from "./services/auth";
 import {
   ColorBtn,
   ColorBtnSecond,
@@ -17,6 +17,11 @@ import { Modal, useModal } from "jz-modal";
 import FormRegister from "./components/formRegister";
 import FormRecuperate from "./components/formRecuperateAccount";
 import { Container, ContainerSoon } from "@/public/login/styles";
+import { useNameUser } from "@/global/context/nameUserContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "@/config/firebase";
+import { useNavigate } from "react-router-dom";
+import saveCookie from "@/global/utilities/saveCookie";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
@@ -25,6 +30,35 @@ export function Login(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const { isShown: isShownRegister, toggle: toggleRegister } = useModal({});
   const { isShown: isShownRA, toggle: toggleRA } = useModal({});
+
+  const { handlenameUser } = useNameUser();
+
+  const navigate = useNavigate();
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const token = await result.user.getIdToken();
+      localStorage.setItem("token", token);
+
+      if (result.user.email) {
+        const { displayName, email, phoneNumber, photoURL } = result.user;
+        console.log(result.user);
+        handlenameUser(displayName || "", 1, email);
+       const res= await signInGoogle({
+          displayName: displayName || "",
+          email,
+          phoneNumber: phoneNumber || "",
+          photoURL: photoURL || "",
+          uid: result.user.uid,
+        });
+        if(res) navigate(`/home`);
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   let dataBtn = [
     {
@@ -41,6 +75,11 @@ export function Login(): JSX.Element {
       onclick: toggleRA,
       color: ColorBtnThird,
       text: text.loginBtnRecuperateAccount,
+    },
+    {
+      onclick: handleGoogleLogin,
+      color: ColorBtnThird,
+      text: text.loginBtnGoogle,
     },
   ];
 

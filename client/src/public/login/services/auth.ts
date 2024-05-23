@@ -1,4 +1,8 @@
-import { FormLogin, FormRegister } from "@/public/login/interfaces/formAuth";
+import {
+  FormLogin,
+  FormLoginGoogle,
+  FormRegister,
+} from "@/public/login/interfaces/formAuth";
 import saveCookie from "@/global/utilities/saveCookie";
 import { http, headers, httpGo } from "@/config/http";
 import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
@@ -16,6 +20,35 @@ export const signIn = async (form: FormLogin) => {
     });
 
     const res = await response.json();
+    if (res.auth) {
+      saveCookie(res.token, "token");
+    }
+    if (response.ok) {
+      return true;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const signInGoogle = async (form: FormLoginGoogle) => {
+  try {
+    const { displayName, email, phoneNumber, photoURL, uid } = form;
+    const response = await fetch(`${httpGo}loginGoogle`, {
+      method: "POST",
+      headers: headers,
+      credentials: "include", // This here
+      body: JSON.stringify({
+        email,
+        displayName,
+        phoneNumber,
+        photoURL,
+        uid,
+      }),
+    });
+
+    const res = await response.json();
+    console.log(res);
     if (res.auth) {
       saveCookie(res.token, "token");
     }
@@ -53,7 +86,7 @@ export const sendCodeGmail = async (form: FormRecuperateAccount) => {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
-        email:form.email
+        email: form.email,
       }),
     });
     if (response.status === 200) {
@@ -75,8 +108,8 @@ export const recuperateAccount = async (form: FormRecuperateAccount) => {
         code_recuperation: form.codeGmail,
       }),
     });
-    const ok=await response.json()
-    console.log(ok)
+    const ok = await response.json();
+    console.log(ok);
     if (response.status === 200) {
       return true;
     }
