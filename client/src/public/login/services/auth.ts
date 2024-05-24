@@ -48,7 +48,6 @@ export const signInGoogle = async (form: FormLoginGoogle) => {
     });
 
     const res = await response.json();
-    console.log(res);
     if (res.auth) {
       saveCookie(res.token, "token");
     }

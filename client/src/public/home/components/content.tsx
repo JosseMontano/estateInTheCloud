@@ -13,19 +13,20 @@ const ContainerCard = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  padding: 15px 0px;
 `;
 
 interface Params {
   title: string;
   data: RealEstate[];
   visitUser: (idUser: number, email: string) => void;
-  addFavorite: (realEstateId:number) => void
+  addFavorite: (realEstateId: number) => void;
 }
 
 const Index = ({ data, title, visitUser, addFavorite }: Params) => {
   const slide = useRef<HTMLDivElement>(null);
   const { text } = useLanguage();
-  
+
   function content(v: RealEstate, i: number) {
     return (
       <ContainerCard key={i}>

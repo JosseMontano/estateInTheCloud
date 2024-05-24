@@ -1,12 +1,13 @@
-import { params } from "@/global/components/navbar/auxNav";
+import { borderImg } from "@/global/styles/globals";
 import styled from "styled-components";
 
 
 const Img = styled.img`
   height: 300px;
-  width: 200px;
+  width: 100%;
   object-fit: cover;
   margin-top: 15px;
+  border-radius: ${borderImg};
   @media screen and (max-width: 572px) {
     width: 100%;
   }
@@ -22,7 +23,7 @@ interface Params{
 const ImgCom = ({url}:Params) => {
   return (
     <>
-      <Img src={url} alt="" />
+      <Img src={url} alt="photo" />
     </>
   );
 };

@@ -1,9 +1,8 @@
 import { RefObject, useRef, useState } from "react";
 import styled from "styled-components";
-import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "../styles/globals";
+import { ColorBtn } from "../styles/globals";
 
 const Container = styled.div`
-  margin: 1rem;
   position: relative;
   .slide {
     width: 100%;
@@ -28,28 +27,36 @@ const ContainerSlide = styled.div`
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: #000 transparent;
 `;
-const Btn = styled.button`
+
+const ContainerBtn = styled.div`
   position: absolute;
-  bottom: 0px;
-  margin: auto;
-  height: 4rem;
+  bottom: 0%;
+`;
+
+const Btn = styled.button`
   background-color: ${ColorBtn};
-  color:#fff;
+  color: #fff;
   border: none;
-  width: 2rem;
-  font-size: 2rem;
-  padding: 0;
+
+  height: 30px;
+  padding: 5px;
+  margin: 0px 5px;
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 100ms;
   z-index: 999;
+  span{
+    font-size: 18px;
+  }
   &:hover,
   &:focus {
     opacity: 1;
   }
+  
 `;
 
 interface Params {
@@ -86,11 +93,14 @@ function Carousel({ slide, children }: Params) {
 
   return (
     <Container>
-      {JSXBtn.map((v) => (
-        <Btn onClick={v.click} id={v.id} key={v.id}>
-          <span>{v.txt}</span>
-        </Btn>
-      ))}
+      <ContainerBtn>
+        {JSXBtn.map((v) => (
+          <Btn onClick={v.click} id={v.id} key={v.id}>
+            <span>{v.txt}</span>
+          </Btn>
+        ))}
+      </ContainerBtn>
+
       <ContainerSlide ref={slidesContainer}>{children}</ContainerSlide>
     </Container>
   );

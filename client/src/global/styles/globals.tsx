@@ -6,6 +6,7 @@ export const ColorBtnThird = "#872612"; //#e559ae
 export const ColorBtnFourth = "#fce6e3"; //#e559ae
 export const ColorText = "#000";
 export const ColorTextP = "#2c2c2c";
+export const borderImg = "10px";
 
 export const ContainerInputFile = styled.div`
   margin-top: 15px;

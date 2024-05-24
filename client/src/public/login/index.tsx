@@ -25,35 +25,31 @@ import saveCookie from "@/global/utilities/saveCookie";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
+  const navigate = useNavigate();
+  const { handlenameUser } = useNameUser();
+
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signIn);
   const [showPassword, setShowPassword] = useState(false);
   const { isShown: isShownRegister, toggle: toggleRegister } = useModal({});
   const { isShown: isShownRA, toggle: toggleRA } = useModal({});
 
-  const { handlenameUser } = useNameUser();
-
-  const navigate = useNavigate();
-
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const token = await result.user.getIdToken();
-      localStorage.setItem("token", token);
 
       if (result.user.email) {
         const { displayName, email, phoneNumber, photoURL } = result.user;
-        console.log(result.user);
         handlenameUser(displayName || "", 1, email);
-       const res= await signInGoogle({
+        const res = await signInGoogle({
           displayName: displayName || "",
           email,
           phoneNumber: phoneNumber || "",
           photoURL: photoURL || "",
           uid: result.user.uid,
         });
-        if(res) navigate(`/home`);
+        if (res) navigate(`/home`);
       }
     } catch (error: any) {
       console.log(error);

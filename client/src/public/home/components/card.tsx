@@ -10,6 +10,8 @@ const Container = styled.div`
   transition: 0.3s;
   width: 300px;
   height: 380px;
+  border-radius: 10px;
+  margin: 0px 10px;
   &:hover {
     transform: scale(1.1);
   }
