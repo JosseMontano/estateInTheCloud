@@ -1,4 +1,4 @@
-import { Title, ColorText } from "@/global/styles/globals";
+import { Title, ColorText, SubTitle } from "@/global/styles/globals";
 import { postQuestion } from "@/public/answerQuestion/services/question";
 import { initialForm, validationsForm } from "@/public/answerQuestion/validations/question";
 import FormComponent from "./form";
@@ -19,7 +19,7 @@ const Index = () => {
   };
   return (
     <Container>
-      <Title colorText={ColorText}>{text.questionTitle}</Title>
+      <SubTitle colorText={ColorText}>{text.questionTitle}</SubTitle>
 
       <FormComponent
         err={errors.question}

@@ -21,7 +21,7 @@ import { useNameUser } from "@/global/context/nameUserContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/config/firebase";
 import { useNavigate } from "react-router-dom";
-import saveCookie from "@/global/utilities/saveCookie";
+import ModalConfig from "@/global/components/navbar/modalConfig";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
@@ -107,6 +107,8 @@ export function Login(): JSX.Element {
     return <ShowPassword />;
   }
 
+  const { isShown: isShownConfig, toggle: toggleConfig } = useModal({});
+
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Container>
@@ -124,6 +126,7 @@ export function Login(): JSX.Element {
                 msg={msg}
                 response={response}
                 EyeJSX={showIconEye}
+                toggleConfig={toggleConfig}
               />
             }
           />
@@ -140,6 +143,12 @@ export function Login(): JSX.Element {
         isShown={isShownRA}
         hide={toggleRA}
         modalContent={<FormRecuperate />}
+      />
+
+      <Modal
+        isShown={isShownConfig}
+        hide={toggleConfig}
+        modalContent={<ModalConfig />}
       />
     </Suspense>
   );

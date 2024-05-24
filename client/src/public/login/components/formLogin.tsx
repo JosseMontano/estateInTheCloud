@@ -5,8 +5,11 @@ import Button from "./button";
 import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import Language from "@/global/components/language";
+import { useLanguage } from "@/global/context/languageContext";
 
-const Container = styled.form``;
+const Container = styled.form`
+
+`;
 
 const ContainerBtn = styled.div`
   display: flex;
@@ -15,10 +18,21 @@ const ContainerBtn = styled.div`
   gap:5px;
 `;
 
+const ContainerConfig = styled.div`
+position: absolute;
+bottom: 5px;
+left: 5px;
+& p{
+  cursor: pointer;
+  
+}
+`
+
 interface BtnType {
   onclick: (e: any) => void;
   color: string;
   text: string;
+
 }
 
 interface DataformType {
@@ -38,10 +52,12 @@ interface ParamsType {
   handleChange: (e: any) => void;
   handleShowPass: () => void;
   EyeJSX: () => JSX.Element;
+  toggleConfig: () => void
 }
 
 const Form = (props: ParamsType) => {
   const navigate = useNavigate();
+  const { text } = useLanguage();
 
   useEffect(() => {
     if (props.msg === "El proceso fue exitoso") {
@@ -67,7 +83,11 @@ const Form = (props: ParamsType) => {
         ))}
       </ContainerBtn>
 
-      <Language />
+      {/* <Language /> */}
+      <ContainerConfig>
+        <p onClick={props.toggleConfig}>{text.navbarConfigure}</p>
+      </ContainerConfig>
+
 
       <LoadingAndResponse
         loading={props.loading}

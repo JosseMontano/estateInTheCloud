@@ -6,6 +6,7 @@ import { RealEstate } from "@/global/interfaces/realEstate";
 export const ContainerCardCss = styled.div`
   display: flex;
   flex-direction: row;
+  gap:10px;
   flex-wrap: wrap;
   justify-content: center;
 `;

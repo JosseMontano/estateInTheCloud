@@ -4,6 +4,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   width: 500px;
+  gap:15px;
+ 
   .load {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -22,14 +24,16 @@ export const Container = styled.div`
 export const ContainerContent = styled.div`
   display: grid;
   place-content: center;
+  padding: 0px 10px;
 `;
 
 export const ContainerBtn = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+
 `;
 
 export const Button = styled.button<{ ColorBtn: string }>`
@@ -48,10 +52,16 @@ export const H2 = styled.h2`
   text-align: center;
   text-transform: uppercase;
   color:#000;
+  max-width: 85%;
 `;
 export const P = styled.p`
   margin-top: 10px;
   color:#000;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
+  padding: 10px 0px;
 `;
 export const ContainerLoader = styled.div`
   height: 100%;

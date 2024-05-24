@@ -30,6 +30,7 @@ export const ContainerInputFile = styled.div`
 export const InputFile = styled.input`
   margin-top: 15px;
   color: #000;
+  width: 100%;
 `;
 
 export const Select = styled.select`
@@ -76,6 +77,13 @@ export const Title = styled.h2<{ colorText: string }>`
   font-weight: bold;
   color: ${(props) => props.colorText};
 `;
+
+export const SubTitle = styled.h3<{ colorText: string }>`
+  font-size: 26px;
+  font-weight: bold;
+  color: ${(props) => props.colorText};
+`;
+
 export const ContainerMargin = styled.div`
   margin: 50px;
 `;

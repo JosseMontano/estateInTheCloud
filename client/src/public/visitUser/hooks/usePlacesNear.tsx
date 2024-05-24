@@ -15,6 +15,7 @@ const UsePlacesNear = ({ v }: Props) => {
 
   const handleGetPlaces = async (lat: string, long: string) => {
     const res = await getPlaces<PropertiesPlacesMaps[]>(lat, long);
+  
     const allTypes = res.map((v) => v.types).flat();
 
     //clear duplicates in allTypes

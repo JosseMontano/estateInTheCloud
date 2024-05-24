@@ -6,13 +6,10 @@ interface Params {
 }
 
 const Img = styled.img`
-  height: 300px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
   margin-top: 15px;
-  @media screen and (max-width: 1450px) {
-    height: 200px;
-  }
   @media screen and (max-width: 730px) {
     height: 300px;
   }

@@ -30,6 +30,7 @@ const ContainerSlide = styled.div`
   overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: #000 transparent;
+  height: 100%;
 `;
 
 const ContainerBtn = styled.div`

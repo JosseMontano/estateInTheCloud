@@ -14,6 +14,7 @@ const SPAN = styled.span<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
   margin-bottom: ${(props) => props.marginInElements};
   align-self: center;
+
 `;
 const Btn = styled.button<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};

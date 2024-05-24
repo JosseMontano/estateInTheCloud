@@ -3,15 +3,13 @@ import ImgLogin from "../assets/imgLogin2.jpg";
 import { ColorBtn } from "@/global/styles/globals";
 const Container = styled.div<{ ColorBtn: string }>`
 /*   background-color: ${(props) => props.ColorBtn}; */
-  display: grid;
-  place-content: center;
   @media screen and (max-width: 820px) {
     display: none;
   }
 `;
 const Image = styled.img`
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  min-height: 100%;
   object-fit: cover;
 `;
 const ColPhoto = () => {

@@ -12,6 +12,8 @@ export const Container = styled.div`
 `;
 export const ContainerSoon = styled.div`
   display: flex;
+  width: 700px;
+  position: relative;
   /* grid-template-columns: repeat(2, 1fr); */
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 `;

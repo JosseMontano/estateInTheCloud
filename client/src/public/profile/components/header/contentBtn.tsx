@@ -10,11 +10,18 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+  & button{
+    max-width: 120px;
+  }
 `;
 const SPAN = styled.span<{ marginInElements: string }>`
   margin-right: ${(props) => props.marginInElements};
   margin-bottom: ${(props) => props.marginInElements};
   align-self: center;
+  min-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
 `;
 
 interface Params {

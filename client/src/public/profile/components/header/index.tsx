@@ -9,8 +9,9 @@ import UseLoadData from "@/global/hooks/useFetch";
 import  UserType from "@/global/interfaces/user";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 30% 40%;
+  display: flex;
+  flex-direction: row;
+  gap:10px;
   justify-content: center;
   border-bottom: 1px solid #a0a0a0;
   padding: 10px;

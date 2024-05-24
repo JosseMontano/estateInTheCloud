@@ -2,6 +2,7 @@ import React from "react";
 import { ColorBtn } from "@/global/styles/globals";
 import { Input, Button, MsgError } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
+import styled from "styled-components";
 
 interface params {
   handleChange: (
@@ -11,8 +12,19 @@ interface params {
   val: string;
   err: string;
 }
+
+const ContainerBtn = styled.div`
+  width: 130px;
+  & button{
+    height: 35px;
+    padding: 5px;
+
+  }
+  
+`
+
 const Form = (p: params) => {
-  const {text} = useLanguage()
+  const { text } = useLanguage()
   return (
     <>
       <Input
@@ -23,9 +35,12 @@ const Form = (p: params) => {
         placeholder={text.questionPlaceholder}
       />
       {p.err && <MsgError>{p.err}</MsgError>}
-      <Button ColorBtn={ColorBtn} onClick={(e: any) => p.sendData(e)}>
-        {text.questionBtnSave}
-      </Button>
+      <ContainerBtn>
+        <Button ColorBtn={ColorBtn} onClick={(e: any) => p.sendData(e)}>
+          {text.questionBtnSave}
+        </Button>
+      </ContainerBtn>
+
     </>
   );
 };
