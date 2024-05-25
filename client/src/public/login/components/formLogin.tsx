@@ -24,8 +24,15 @@ bottom: 5px;
 left: 5px;
 & p{
   cursor: pointer;
-  
 }
+`
+
+const ContainerSocialMedia = styled.div`
+  text-align: center;
+  p{
+    color:#2c325b;
+    font-weight: bold;
+  }
 `
 
 interface BtnType {
@@ -53,6 +60,7 @@ interface ParamsType {
   handleShowPass: () => void;
   EyeJSX: () => JSX.Element;
   toggleConfig: () => void
+  handleGoogleLogin: () => Promise<void>
 }
 
 const Form = (props: ParamsType) => {
@@ -82,6 +90,10 @@ const Form = (props: ParamsType) => {
           <Button key={i} {...v} />
         ))}
       </ContainerBtn>
+      <ContainerSocialMedia>
+        <p onClick={props.handleGoogleLogin}>{text.loginBtnGoogle}</p>
+      </ContainerSocialMedia>
+
 
       {/* <Language /> */}
       <ContainerConfig>

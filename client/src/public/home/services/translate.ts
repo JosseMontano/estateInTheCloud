@@ -1,5 +1,5 @@
 import { httpPy } from "@/config/http";
-import { apisExternal, index } from "@/global/utilities/getServices";
+import { apisExternal, index, postService } from "@/global/utilities/getServices";
 
 interface TranslateType {
   responseData: ResponseData;
@@ -35,8 +35,8 @@ interface ResponseData {
 }
 
 const translate = async (msg: string): Promise<string> => {
-  const url = httpPy + "translate-es-en/" + msg;
-  const { json } = await index<ResponseData>(url);
+  const url = httpPy + "translate-es-en" ;
+  const { json } = await postService<ResponseData>(url, msg);
   const { val } = json;
   return val;
 };
@@ -45,8 +45,8 @@ export default translate;
 export const translateEnglishToSpanish = async (
   msg: string
 ): Promise<string> => {
-  const url = httpPy + "translate-en-es/" + msg;
-  const { json } = await index<ResponseData>(url);
+  const url = httpPy + "translate-en-es" ;
+  const { json } = await postService<ResponseData>(url, msg);
   const { val } = json;
   return val;
 };
@@ -54,8 +54,8 @@ export const translateEnglishToSpanish = async (
 export const translateSpanishToPortuguese = async (
   msg: string
 ): Promise<string> => {
-  const url = httpPy + "translate-es-pt/" + msg;
-  const { json } = await index<ResponseData>(url);
+  const url = httpPy + "translate-es-pt" ;
+  const { json } = await postService<ResponseData>(url, msg);
   const { val } = json;
   return val;
 };

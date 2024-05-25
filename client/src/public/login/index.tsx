@@ -72,11 +72,6 @@ export function Login(): JSX.Element {
       color: ColorBtnThird,
       text: text.loginBtnRecuperateAccount,
     },
-    {
-      onclick: handleGoogleLogin,
-      color: ColorBtnThird,
-      text: text.loginBtnGoogle,
-    },
   ];
 
   let dataForm = [
@@ -127,6 +122,7 @@ export function Login(): JSX.Element {
                 response={response}
                 EyeJSX={showIconEye}
                 toggleConfig={toggleConfig}
+                handleGoogleLogin={handleGoogleLogin}
               />
             }
           />
