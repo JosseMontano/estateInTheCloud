@@ -73,7 +73,7 @@ export const styleMap = (height = "350px") => {
 };
 
 export const Title = styled.h2<{ colorText: string }>`
-  font-size: 32px;
+  font-size: 27px;
   font-weight: bold;
   color: ${(props) => props.colorText};
 `;

@@ -2,6 +2,7 @@ import { lazy, LazyExoticComponent } from "react";
 import AnswerQuestion from "./public/answerQuestion";
 import AnswerQuestionInterested from "./public/questionsAnswered";
 import Img360 from "./public/img360";
+import Register from "./public/register/register";
 
 type JSXComponent = () => JSX.Element;
 
@@ -23,6 +24,11 @@ export const routes: RouteType[] = [
     path: "/",
     Component: Login,
     name: "Login",
+  },
+  {
+    path: "/register",
+    Component: Register,
+    name: "Register",
   },
   {
     path: "/home",

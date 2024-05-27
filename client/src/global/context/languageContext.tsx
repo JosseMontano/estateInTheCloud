@@ -11,6 +11,7 @@ interface TextType {
   loginBtnCreateAccount: string;
   loginBtnRecuperateAccount: string;
   loginBtnGoogle: string;
+  loginBtnRedirectLogin: string;
   registerTitle: string;
   registerSubtitle: string;
   registerLabelGmail: string;
@@ -125,9 +126,10 @@ const translations: TranslationType = {
     loginLabelGmail: "Email",
     loginLabelPassword: "Contraseña",
     loginBtnGetInto: "Ingresar",
-    loginBtnCreateAccount: "Create una cuenta",
+    loginBtnCreateAccount: "Nueva cuenta",
     loginBtnRecuperateAccount: "recuperar cuenta",
     loginBtnGoogle: "Ingresar con Google",
+    loginBtnRedirectLogin: "Iniciar sesion",
     registerTitle: "Create una cuenta",
     registerSubtitle: "Bienvenido",
     registerLabelGmail: "Email",
@@ -234,9 +236,10 @@ const translations: TranslationType = {
     loginLabelGmail: "Gmail",
     loginLabelPassword: "Password",
     loginBtnGetInto: "Start",
-    loginBtnCreateAccount: "Create an account",
+    loginBtnCreateAccount: "New account",
     loginBtnRecuperateAccount: "Recuperate account",
     loginBtnGoogle: "Sign in with Google",
+    loginBtnRedirectLogin: "Sign in",
     registerTitle: "Create an account",
     registerSubtitle: "Welcome",
     registerLabelGmail: "Gmail",
@@ -343,9 +346,10 @@ const translations: TranslationType = {
     loginLabelGmail: "Gmail",
     loginLabelPassword: "Senha",
     loginBtnGetInto: "Começar",
-    loginBtnCreateAccount: "Criar uma conta",
+    loginBtnCreateAccount: "Nova conta",
     loginBtnRecuperateAccount: "Recuperar conta",
     loginBtnGoogle: "Entrar com Google",
+    loginBtnRedirectLogin: "Iniciar sessão",
     registerTitle: "Criar uma conta",
     registerSubtitle: "Bem-vindo",
     registerLabelGmail: "Gmail",

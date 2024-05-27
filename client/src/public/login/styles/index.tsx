@@ -11,9 +11,35 @@ export const Container = styled.div`
   background-color: #f2f2f2;
 `;
 export const ContainerSoon = styled.div`
-  display: flex;
-  width: 700px;
+  display: grid;
   position: relative;
-  /* grid-template-columns: repeat(2, 1fr); */
+   grid-template-columns: 1fr 1fr; 
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 `;
+
+export const ContainerColPhoto = styled.div`
+  width: 100%;
+  div {
+    height: 100%;
+  }
+  div img {
+    width: 100%;
+    height: 450px;
+  }
+`;
+export const ContainerBtn = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap:5px;
+`;
+
+export const ContainerSocialMedia = styled.div`
+  text-align: center;
+  margin-top: 5px;
+  cursor: pointer;
+  p{
+    color:#2c325b;
+    font-weight: bold;
+  }
+`

@@ -14,9 +14,11 @@ import NoShowPassword from "./icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
 import { Modal, useModal } from "jz-modal";
-import FormRegister from "./components/formRegister";
-import FormRecuperate from "./components/formRecuperateAccount";
-import { Container, ContainerSoon } from "@/public/login/styles";
+import {
+  Container,
+  ContainerColPhoto,
+  ContainerSoon,
+} from "@/public/login/styles";
 import { useNameUser } from "@/global/context/nameUserContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/config/firebase";
@@ -31,8 +33,6 @@ export function Login(): JSX.Element {
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm(initialForm, validationsForm, signIn);
   const [showPassword, setShowPassword] = useState(false);
-  const { isShown: isShownRegister, toggle: toggleRegister } = useModal({});
-  const { isShown: isShownRA, toggle: toggleRA } = useModal({});
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
@@ -63,14 +63,11 @@ export function Login(): JSX.Element {
       text: text.loginBtnGetInto,
     },
     {
-      onclick: toggleRegister,
+      onclick: () => {
+        navigate("/register");
+      },
       color: ColorBtn,
       text: text.loginBtnCreateAccount,
-    },
-    {
-      onclick: toggleRA,
-      color: ColorBtnThird,
-      text: text.loginBtnRecuperateAccount,
     },
   ];
 
@@ -126,20 +123,11 @@ export function Login(): JSX.Element {
               />
             }
           />
-          <ColPhoto />
+          <ContainerColPhoto>
+            <ColPhoto />
+          </ContainerColPhoto>
         </ContainerSoon>
       </Container>
-
-      <Modal
-        isShown={isShownRegister}
-        hide={toggleRegister}
-        modalContent={<FormRegister />}
-      />
-      <Modal
-        isShown={isShownRA}
-        hide={toggleRA}
-        modalContent={<FormRecuperate />}
-      />
 
       <Modal
         isShown={isShownConfig}

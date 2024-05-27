@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorBtnSecond } from "@/global/styles/globals";
+import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 import Button from "./button";
 import { initialForm, validationsForm } from "@/public/login/validations/register";
 import { signUp } from "../services/auth";
@@ -11,13 +11,12 @@ import NoShowPassword from "../icons/noShowPassword";
 import { UseForm } from "jz-validation-form";
 import { useLanguage } from "@/global/context/languageContext";
 import { FormRegister } from "@/public/login/interfaces/formAuth";
+import { useNavigate } from "react-router-dom";
+import { ContainerBtn, ContainerSocialMedia } from "../styles";
+
 
 const Container = styled.form`
-  padding: 15px;
-  width: 380px;
-  @media screen and (max-width:455px) {
-    width: 250px;
-  }
+
 `;
 
 interface V {
@@ -29,8 +28,13 @@ interface V {
   type: string;
 }
 
-const FormRegisterCom = () => {
+interface Params{
+  toggleRA: () => void
+}
+
+const FormRegisterCom = ({toggleRA}:Params) => {
   const { text } = useLanguage();
+  const navigate = useNavigate();
   const { form, errors, loading, response, handleChange, handleSubmit, msg } =
     UseForm<FormRegister>(initialForm, validationsForm, signUp);
 
@@ -40,8 +44,13 @@ const FormRegisterCom = () => {
     {
       onclick: handleSubmit,
       color: ColorBtnSecond,
-      text: text.registerBtnCreateAccount,
+      text: text.loginBtnCreateAccount,
     },
+    {
+      onclick: () => navigate(-1),
+      color: ColorBtn,
+      text: text.loginBtnRedirectLogin,
+    }
   ];
 
   let dataForm: V[] = [
@@ -105,10 +114,15 @@ const FormRegisterCom = () => {
   return (
     <Container>
       {dataForm.map((v, i) => showDataFor(i, v))}
-
+      <ContainerBtn>
       {dataBtn.map((v, i) => (
         <Button key={i} {...v} />
       ))}
+      </ContainerBtn>
+
+      <ContainerSocialMedia>
+        <p onClick={toggleRA}>{text.loginBtnRecuperateAccount}</p>
+      </ContainerSocialMedia>
 
       <LoadingAndResponse loading={loading} msg={msg} response={response} />
     </Container>

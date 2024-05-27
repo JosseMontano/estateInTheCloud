@@ -19,7 +19,7 @@
     "graphql-ws": "^5.11.2",
     "jsdom": "^21.0.0",
     "jz-modal": "^0.0.1",
-    "jz-validation-form": "^2.3.0",
+    "jz-validation-form": "^2.4.0",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

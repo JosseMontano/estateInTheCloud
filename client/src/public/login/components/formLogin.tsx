@@ -6,17 +6,13 @@ import ContentFormLogin from "./contentFormLogin";
 import LoadingAndResponse from "@/global/components/toast/loadAndResponse";
 import Language from "@/global/components/language";
 import { useLanguage } from "@/global/context/languageContext";
+import { ContainerBtn, ContainerSocialMedia } from "../styles";
 
 const Container = styled.form`
 
 `;
 
-const ContainerBtn = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap:5px;
-`;
+
 
 const ContainerConfig = styled.div`
 position: absolute;
@@ -27,13 +23,6 @@ left: 5px;
 }
 `
 
-const ContainerSocialMedia = styled.div`
-  text-align: center;
-  p{
-    color:#2c325b;
-    font-weight: bold;
-  }
-`
 
 interface BtnType {
   onclick: (e: any) => void;

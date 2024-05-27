@@ -1,18 +1,49 @@
 import { ColorText } from "@/global/styles/globals";
 import { MsgError, Input, Label } from "jz-validation-form";
 import styled from "styled-components";
-import { FormRegister } from "@/public/login/interfaces/formAuth";
 import Event from "@/global/interfaces/event";
 
-const ContainerEye = styled.div`
-  & svg {
-    position: relative;
-    bottom: 50px;
-    left: 320px;
-    margin-bottom: -32px;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  label {
+    font-size: 18px;
   }
-  position: absolute;
+  input {
+    padding: 5px;
+    margin-top: 0px;
+  }
 `;
+
+const ContainerInput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 95%;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+
+  &:focus-within {
+    border: 2px double rgba(7, 7, 204, 0.5);
+  }
+  input {
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    padding: 5px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  div {
+    margin-top: 5px;
+  }
+`;
+
+
 interface V {
   label: string;
   name: string;
@@ -32,22 +63,23 @@ interface Params {
 const ContentFormRegister = (props: Params) => {
   function showInputPassword() {
     return (
-      <>
-        <Input
+      <ContainerInput>
+          <input
+          autoComplete="off"
           type={props.v.type}
           name={props.v.name}
           onChange={props.handleChange}
           value={props.v.value}
           required
         />
-        <ContainerEye onClick={props.handleShowPass}>
+        <div onClick={props.handleShowPass}>
           <props.EyeJSX />
-        </ContainerEye>
-      </>
+        </div>
+      </ContainerInput>
     );
   }
   return (
-    <>
+    <Container>
       <Label colorText={ColorText}>{props.v.label}</Label>
       {props.v.name === "password" ? (
         showInputPassword()
@@ -63,7 +95,7 @@ const ContentFormRegister = (props: Params) => {
       )}
 
       {props.v.errors && <MsgError>{props.v.errors}</MsgError>}
-    </>
+    </Container>
   );
 };
 

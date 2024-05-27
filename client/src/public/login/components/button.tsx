@@ -4,6 +4,9 @@ import { Button } from "jz-validation-form";
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  button{
+    font-size: 14px;
+  }
 `;
 interface Params {
   onclick: any

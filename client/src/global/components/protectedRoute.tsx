@@ -22,6 +22,7 @@ const ProtectedRoute = ({ children, path }: Params) => {
   const showNavbar = () => {
     const routesWithOutNavbar: routesType = {
       "/": <p></p>,
+      "/register": <p></p>,
     };
 
     return routesWithOutNavbar[path] ?? <Navbar />;

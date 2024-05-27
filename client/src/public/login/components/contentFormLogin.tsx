@@ -3,6 +3,19 @@ import { ColorText } from "@/global/styles/globals";
 import { Label, MsgError, Input } from "jz-validation-form";
 import styled from "styled-components";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  label {
+    font-size: 18px;
+  }
+  input {
+    padding: 5px;
+    margin-top: 0px;
+  }
+`;
+
 const ContainerInput = styled.div`
   display: flex;
   align-items: center;
@@ -10,19 +23,22 @@ const ContainerInput = styled.div`
   background-color: #fff;
   width: 95%;
   border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 
   &:focus-within {
-    border: 2px double rgba(7, 7, 204,.5) ;
+    border: 2px double rgba(7, 7, 204, 0.5);
   }
   input {
     border: none;
     background-color: transparent;
     width: 90%;
+    padding: 5px;
+
     &:focus {
       outline: none;
     }
   }
-  div{
+  div {
     margin-top: 5px;
   }
 `;
@@ -50,6 +66,7 @@ const ContentFormLogin = (props: Params) => {
     return (
       <ContainerInput>
         <input
+          autoComplete="off"
           type={props.v.type}
           name={props.v.name}
           onChange={props.handleChange}
@@ -64,7 +81,7 @@ const ContentFormLogin = (props: Params) => {
   }
 
   return (
-    <>
+    <Container>
       <Label colorText={ColorText}>{props.v.label}</Label>
       {isPassword ? (
         showInputPass()
@@ -79,7 +96,7 @@ const ContentFormLogin = (props: Params) => {
       )}
 
       {props.v.errors && <MsgError>{props.v.errors}</MsgError>}
-    </>
+    </Container>
   );
 };
 
