@@ -14,6 +14,7 @@ const Container = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+  margin-top: 10px;
 `;
 
 interface ParamsType {

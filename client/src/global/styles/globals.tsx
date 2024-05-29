@@ -78,6 +78,13 @@ export const Title = styled.h2<{ colorText: string }>`
   color: ${(props) => props.colorText};
 `;
 
+export const TitleHome = styled.h2<{ colorText: string }>`
+  font-size: 27px;
+  font-weight: bold;
+  color: ${(props) => props.colorText};
+  border-bottom: 1px solid #c7c7c7;
+`;
+
 export const SubTitle = styled.h3<{ colorText: string }>`
   font-size: 26px;
   font-weight: bold;

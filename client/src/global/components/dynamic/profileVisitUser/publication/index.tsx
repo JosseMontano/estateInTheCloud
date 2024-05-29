@@ -11,7 +11,7 @@ const Title = styled.h2`
   margin-top: 15px;
 `;
 const ContainerFather = styled.div`
-  display: grid;
+ /*  display: grid;
   gap: 1px;
   grid-template-columns: repeat(3, 1fr);
   place-content: center;
@@ -20,7 +20,11 @@ const ContainerFather = styled.div`
   }
   @media screen and (max-width: 730px) {
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  flex-wrap: wrap;
 `;
 const TextEmpty = styled.div`
   text-align: center;

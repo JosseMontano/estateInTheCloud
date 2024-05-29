@@ -1,4 +1,4 @@
-import { Title, ColorText, ContainerMargin } from "@/global/styles/globals";
+import {ColorText, ContainerMargin, TitleHome } from "@/global/styles/globals";
 
 interface Params {
   title: string;
@@ -6,7 +6,7 @@ interface Params {
 const TitleComponent = (v: Params) => {
   return (
     <ContainerMargin>
-      <Title colorText={ColorText}>{v.title}</Title>
+      <TitleHome colorText={ColorText}>{v.title}</TitleHome>
     </ContainerMargin>
   );
 };

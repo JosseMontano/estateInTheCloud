@@ -46,12 +46,12 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
         handleRedirect(`/profile/${emailState}`);
       },
     },
-    {
+    /*     {
       text: text.navbarFilter,
       click: () => {
         handleRedirect(`/realEstateFilter`);
       },
-    },
+    }, */
     {
       text: text.navbarQuestion,
       click: () => {
