@@ -11,8 +11,7 @@ interface routesType {
 }
 
 const ProtectedRoute = ({ children, path }: Params) => {
-
-/*   const verifyFun = async () => {
+  /*   const verifyFun = async () => {
     const res = await validateTokenExits();
     if (res.message == "jwt must be provided") {
       navigate("/");
@@ -20,15 +19,14 @@ const ProtectedRoute = ({ children, path }: Params) => {
   }; */
 
   const showNavbar = () => {
+    let isHome = false;
     const routesWithOutNavbar: routesType = {
       "/": <p></p>,
       "/register": <p></p>,
     };
-
-    return routesWithOutNavbar[path] ?? <Navbar />;
+    if (path == "/home") isHome = true;
+    return routesWithOutNavbar[path] ?? <Navbar isHome={isHome} />;
   };
-
-
 
   return (
     <>

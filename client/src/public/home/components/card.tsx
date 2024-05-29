@@ -8,12 +8,11 @@ import { ContentModal } from "./modal/contentModal";
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 300px;
+  width: 380px;
   height: 380px;
   border-radius: 10px;
-  margin: 0px 10px;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 

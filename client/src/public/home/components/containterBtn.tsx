@@ -5,7 +5,8 @@ import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 
 const Container = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: flex-start;
+  gap:5px;
 `;
 
 const Btn = styled.button`
@@ -14,7 +15,6 @@ const Btn = styled.button`
   border: none;
   padding: 5px;
   border-radius: 10px;
-  margin-left: 15px;
   cursor: pointer;
   &:hover{
     background-color: ${ColorBtn};

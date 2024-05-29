@@ -1,38 +1,36 @@
 import styled from "styled-components";
 import { useLanguage } from "@/global/context/languageContext";
-import { ColorBtn, ColorBtnSecond, ColorBtnThird, ColorText } from "../styles/globals";
+import SearchIcon from "@/global/assets/icons/search";
+
 const Container = styled.div`
-  width: 100%;
   position: relative;
   display: flex;
 `;
 
 const SearchTerm = styled.input`
-  width: 100%;
+  width: 400px;
   border: 3px solid ColorText;
-  border-right: none;
+  border: none;
+  border-radius: 30px;
   padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
+  height: 35px;
   outline: none;
   color: #9dbfaf;
-  margin: 15px 0px 15px 10px;
+  padding-left: 30px;
   &:focus {
     color: #000;
   }
 `;
 
-const SearchButton = styled.button`
-  width: 40px;
-  height: 33px;
-  border: 1px solid ${ColorText};
-  background: ${ColorText};
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-  margin: 15px 10px 15px 0px;
+const SearchIconStyled = styled.div`
+  position: absolute;
+  width: 20px;
+  left: 15px; // Adjust as needed
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 interface Params {
@@ -40,15 +38,17 @@ interface Params {
 }
 
 const Search = ({ getValueSearch }: Params) => {
-  const {text} = useLanguage();
+  const { text } = useLanguage();
   return (
-    <Container className="search">
+    <Container>
       <SearchTerm
         onChange={(e) => getValueSearch(e.target.value)}
         type="text"
         placeholder={text.filterSearch}
       />
-      <SearchButton type="submit">🔎</SearchButton>
+      <SearchIconStyled>
+        <SearchIcon />
+      </SearchIconStyled>
     </Container>
   );
 };

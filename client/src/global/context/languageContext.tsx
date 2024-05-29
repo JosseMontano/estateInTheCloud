@@ -2,6 +2,11 @@ import { createContext, useContext, useState } from "react";
 import Children from "@/global/interfaces/children";
 
 interface TextType {
+  homeTitle: string;
+  homeDescription: string;
+  homeFooter1: string;
+  homeFooter2: string;
+  homeFooter3: string;
   dataEmpty: string;
   loginTitle: string;
   loginSubtitle: string;
@@ -120,6 +125,12 @@ type langs = "es" | "en" | "pt";
 
 const translations: TranslationType = {
   es: {
+    homeTitle: "Inmuebles en la nube",
+    homeDescription:
+      "Encuentra la propiedad ideal con nuestra amplia selección de inmuebles. Ofrecemos una experiencia de búsqueda sencilla y segura. Si necesitas ayuda, estamos aquí para asistirte en cada paso.",
+    homeFooter1: "¡Esperamos ayudarte a",
+    homeFooter2: "encontrar",
+    homeFooter3: "tu próximo hogar!",
     dataEmpty: "No hay datos",
     loginTitle: "Bienvenido",
     loginSubtitle: "Hola de nuevo",
@@ -153,9 +164,9 @@ const translations: TranslationType = {
     navbarQuestion: "Preguntas",
     navbarGoOut: "Salir",
     navbarConfigure: "Configuracion",
-    homeMoreRecent: "Mas reciente",
+    homeMoreRecent: "Mas recientes",
     homeAll: "Todos",
-    homeRecommendedOwner: "Propietarios Recomendados",
+    homeRecommendedOwner: "Propietarios",
     homeForYou: "Solo para ti",
     homeMoreInfor: "Mas informacion",
     homeVist: "Visitar",
@@ -230,6 +241,12 @@ const translations: TranslationType = {
     favoriteHideFavorites:"Ocultar favoritos",
   },
   en: {
+    homeTitle: "Real Estate in the cloud",
+    homeDescription:
+      "Find the ideal property with our wide selection of real estate. We offer a simple and secure search experience. If you need help, we are here to assist you at every step.",
+    homeFooter1: "We hope to help you",
+    homeFooter2: "find",
+    homeFooter3: "your next home!",
     dataEmpty: "There is not data",
     loginTitle: "Welcome",
     loginSubtitle: "Hello again",
@@ -265,7 +282,7 @@ const translations: TranslationType = {
     navbarGoOut: "Go out",
     homeMoreRecent: "More recent",
     homeAll: "All",
-    homeRecommendedOwner: "Owner Recommended",
+    homeRecommendedOwner: "Owner",
     homeForYou: "Just for you",
     homeMoreInfor: "More information",
     homeVist: "to visit",
@@ -340,6 +357,12 @@ const translations: TranslationType = {
     favoriteHideFavorites:"Hide favorites",
   },
   pt: {
+    homeTitle: "Imóveis na nuvem",
+    homeDescription:
+      "Encontre a propriedade ideal com nossa ampla seleção de imóveis. Oferecemos uma experiência de busca simples e segura. Se precisar de ajuda, estamos aqui para ajudá-lo em cada etapa.",
+    homeFooter1: "Esperamos ajudá-lo a",
+    homeFooter2: "encontrar",
+    homeFooter3: "sua próxima casa!",
     dataEmpty: "Não há dados",
     loginTitle: "Bem-vindo",
     loginSubtitle: "Olá novamente",
@@ -375,7 +398,7 @@ const translations: TranslationType = {
     navbarGoOut: "Sair",
     homeMoreRecent: "Mais recente",
     homeAll: "Todos",
-    homeRecommendedOwner: "Recomendado pelo proprietário",
+    homeRecommendedOwner: "Proprietário",
     homeForYou: "Só para você",
     homeMoreInfor: "Mais informações",
     homeVist: "para visitar",

@@ -1,19 +1,29 @@
 import { useNameUser } from "@/global/context/nameUserContext";
 import { FavsPostType } from "../interfaces/favs";
 import Slider from "./content";
-import { RealEstate } from "@/global/interfaces/realEstate";
 import { postFavs } from "../services/favs";
 import Toast from "@/global/components/toast/message";
 import { useState } from "react";
 import { useLanguage } from "@/global/context/languageContext";
+import { dataTypeEnum } from "../interfaces/dataTypeEnum";
+import { dataCompleteType } from "../interfaces/dataCompleteType";
+import { BtnsDataType } from "../interfaces/btnsDataType";
 
-type dataCompleteType = { title: string; data: RealEstate[] };
 interface Params {
   dataComplete: dataCompleteType[];
   visitUser: (idUser: number, email: string) => void;
+  dataTypeState: dataTypeEnum;
+  btnsDataType: BtnsDataType[];
+  handleDataTypeState: (dataType: dataTypeEnum) => void;
 }
 
-const index = ({ dataComplete, visitUser }: Params) => {
+const index = ({
+  dataComplete,
+  visitUser,
+  dataTypeState,
+  btnsDataType,
+  handleDataTypeState,
+}: Params) => {
   const { idUser } = useNameUser();
   const { text } = useLanguage();
 
@@ -36,14 +46,21 @@ const index = ({ dataComplete, visitUser }: Params) => {
   function showSlider(v: dataCompleteType, i: number) {
     return (
       <div key={i}>
-        <Slider {...v} visitUser={visitUser} addFavorite={addFavorite} />
+        <Slider
+          {...v}
+          visitUser={visitUser}
+          addFavorite={addFavorite}
+          dataTypeState={dataTypeState}
+        />
       </div>
     );
   }
 
   return (
     <>
-      {dataComplete.map((v, i) => showSlider(v, i))}
+      {dataComplete
+        .filter((x) => x.dataType == dataTypeState)
+        .map((v, i) => showSlider(v, i))}
       {saveFav && <Toast msg={text.msgFavorites} />}
     </>
   );

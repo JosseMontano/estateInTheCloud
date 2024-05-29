@@ -4,24 +4,27 @@ import ContainterBtn from "./containterBtn";
 import { ColorText, ColorTextP, borderImg } from "@/global/styles/globals";
 
 const Content = styled.div`
-  padding: 2px 16px;
   margin: ${borderImg};
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap:5px;
 `;
 const Img = styled.img`
-  height: 250px;
+  height: calc(250px - 20px);
   object-fit: cover;
   border-radius: ${borderImg};
-  border-bottom-right-radius:0px;
-  border-bottom-left-radius:0px;
-  width: 100%;
+  margin:10px;
+  margin-bottom: 0px;
+  width: calc(100% - 20px);
 `;
 const H4 = styled.h4`
-  font-size: 22px;
-  color: ${ColorText};
+  font-size: 18px;
+  color: #323232;
 `;
 const P = styled.p`
-  font-size: 18px;
-  color: ${ColorTextP};
+  font-size: 16px;
+  color: #4e4e4e;
 `;
 
 interface Params {

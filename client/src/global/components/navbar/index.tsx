@@ -1,9 +1,4 @@
-import {
-  startTransition,
-  Suspense,
-  useEffect,
-  useState,
-} from "react";
+import { startTransition, Suspense, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Check from "./check";
@@ -13,14 +8,24 @@ import NameUser from "./nameUser";
 import { getEmail } from "@/global/services/auth";
 import AuxNav from "./auxNav";
 import { useLanguage } from "@/global/context/languageContext";
-import { ColorBtn, ColorBtnSecond, ColorBtnThird } from "@/global/styles/globals";
-const Nav = styled.nav<{ ColorBtn: string }>`
-  background: ${(props) => props.ColorBtn};
-  height: 80px;
-  width: 100%;
+import {
+  ColorBtn,
+} from "@/global/styles/globals";
+import Header from "@/public/home/components/header";
+
+const Container = styled.div`
   position: fixed;
   top: 0px;
   z-index: 999;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+`;
+
+const Nav = styled.nav<{ ColorBtn: string }>`
+  background: ${(props) => props.ColorBtn};
+  height: 80px;
 `;
 const Logo = styled.label`
   color: ${ColorBtn};
@@ -35,7 +40,11 @@ const Logo = styled.label`
   }
 `;
 
-const Index = () => {
+interface Params {
+  isHome?: boolean;
+}
+
+const Index = ({ isHome }: Params) => {
   const { text } = useLanguage();
   const { nameUser, handlenameUser } = useNameUser();
   const [emailState, setEmailState] = useState("");
@@ -62,18 +71,21 @@ const Index = () => {
   return (
     <>
       <Suspense fallback={<p>Loading</p>}>
-        <AuxNav margin={"1700px"} />
-        <Nav ColorBtn={"#fff"}>
-          <Check />
-          <Logo onClick={() => handleRedirect("/home")}>
-            <NameUser msg={text.navbarTitle} textBig={textBig} />
-          </Logo>
-          <ContainerLinks
-            handleRedirect={handleRedirect}
-            nameUser={nameUser}
-            emailState={emailState}
-          />
-        </Nav>
+        <AuxNav margin={"1700px"} isHome={isHome} />
+        <Container>
+          <Nav ColorBtn={"#fff"}>
+            <Check />
+            <Logo onClick={() => handleRedirect("/home")}>
+              <NameUser msg={text.navbarTitle} textBig={textBig} />
+            </Logo>
+            <ContainerLinks
+              handleRedirect={handleRedirect}
+              nameUser={nameUser}
+              emailState={emailState}
+            />
+          </Nav>
+          {isHome && <Header />}
+        </Container>
       </Suspense>
     </>
   );

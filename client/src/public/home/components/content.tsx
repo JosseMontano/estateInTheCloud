@@ -6,48 +6,56 @@ import Carousel from "@/global/components/carousel";
 import { useRef } from "react";
 import DataEmpty from "@/global/components/dataEmpty";
 import { useLanguage } from "@/global/context/languageContext";
+import { dataTypeEnum } from "../interfaces/dataTypeEnum";
+import { BtnsDataType } from "../interfaces/btnsDataType";
 
 const ContainerCard = styled.div`
-  display: flex;
-  flex-direction: column !important;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 15px 0px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); // we’ve a max of 1fr and a min of 100px
+  overflow: hidden;
+  
 `;
 
 interface Params {
   title: string;
   data: RealEstate[];
+  dataType: dataTypeEnum;
+  dataTypeState: dataTypeEnum;
   visitUser: (idUser: number, email: string) => void;
   addFavorite: (realEstateId: number) => void;
 }
 
-const Index = ({ data, title, visitUser, addFavorite }: Params) => {
-  const slide = useRef<HTMLDivElement>(null);
+const Index = ({
+  data,
+  dataTypeState,
+  dataType,
+  title,
+  visitUser,
+  addFavorite,
+}: Params) => {
   const { text } = useLanguage();
 
   function content(v: RealEstate, i: number) {
     return (
-      <ContainerCard key={i}>
-        <div className="slide" ref={slide}>
-          <Card v={v} visitUser={visitUser} addFavorite={addFavorite} />
-        </div>
-      </ContainerCard>
+      <Card key={i} v={v} visitUser={visitUser} addFavorite={addFavorite} />
     );
   }
 
   function children() {
-    return data.map((v, i) => content(v, i));
+    return <ContainerCard>{data.map((v, i) => content(v, i))}</ContainerCard>;
   }
 
   return (
     <>
-      <Title title={title} />
-      {data.length > 0 ? (
-        <Carousel slide={slide} children={children()} />
-      ) : (
-        <DataEmpty msg={text.dataEmpty} />
+      {dataTypeState === dataType && (
+        <>
+          <Title title={title} />
+          {data.length > 0 ? children() : <DataEmpty msg={text.dataEmpty} />}
+        </>
       )}
     </>
   );

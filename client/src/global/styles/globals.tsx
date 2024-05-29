@@ -85,7 +85,7 @@ export const SubTitle = styled.h3<{ colorText: string }>`
 `;
 
 export const ContainerMargin = styled.div`
-  margin: 50px;
+  margin: 0px 10px;
 `;
 export const marginGlobal = "50px";
 export const marginInElements = "15px";
