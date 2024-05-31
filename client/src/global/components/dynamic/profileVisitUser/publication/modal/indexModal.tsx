@@ -15,16 +15,13 @@ import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication
 import Event from "@/global/interfaces/event";
 import { useProfile } from "@/global/context/profileContext";
 import { ShowInfo } from "../types/showInfo";
-import { PlacesType, PropertiesPlaces, PropertiesPlacesMaps } from "../types/places";
+import UsePlacesNear from "@/public/visitUser/hooks/usePlacesNear";
 interface Params {
   v: RealEstate;
   showbtn: boolean;
-  placesNear: PropertiesPlacesMaps[];
-  handleRedirectToMaps: (v: PropertiesPlaces) => void
-  types: string[]
 }
 
-export const ContentModal = ({ v, showbtn, placesNear,handleRedirectToMaps, types }: Params) => {
+export const ContentModal = ({ v, showbtn }: Params) => {
   const { toast, handleToast } = useToast();
 
   const [response, setResponse] = useState(false);
@@ -78,6 +75,11 @@ export const ContentModal = ({ v, showbtn, placesNear,handleRedirectToMaps, type
     setshowMoreInfo(show);
   };
 
+  const { placesNear, handleRedirectToMaps, types, loadingPlacesNear } =
+    UsePlacesNear({
+      v: v,
+    });
+
   return (
     <Container>
       <ContentImg data={data} load={load} />
@@ -95,6 +97,7 @@ export const ContentModal = ({ v, showbtn, placesNear,handleRedirectToMaps, type
         placesNear={placesNear}
         handleRedirectToMaps={handleRedirectToMaps}
         types={types}
+        loading={loadingPlacesNear}
       />
 
       <LoadAndResponse loading={loading} response={response} msg={toast} />

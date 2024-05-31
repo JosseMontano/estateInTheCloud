@@ -9,10 +9,12 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Icon from "@/global/assets/markerIcon.png";
 import OptionSelect from "./optionSelect";
+import { translateToSpanish } from "@/public/home/utilities/translate";
 interface Props {
   placesNear: PropertiesPlacesMaps[];
   handleRedirectToMaps: (v: PropertiesPlaces) => void;
   types: string[];
+  loading: boolean;
 }
 
 const ContainerNearPlaces = styled.div`
@@ -25,7 +27,7 @@ const ContainerNearPlaces = styled.div`
   gap: 5px;
 `;
 
-const NearPlaces = ({ placesNear, types }: Props) => {
+const NearPlaces = ({ placesNear, types, loading }: Props) => {
   const styles = styleMap("200px");
 
   const [selectedType, setSelectedType] = useState("");
@@ -50,33 +52,38 @@ const NearPlaces = ({ placesNear, types }: Props) => {
 
   return (
     <ContainerNearPlaces>
-      <Select onChange={(e) => setSelectedType(e.target.value)}>
-        <option value="">Todo</option>
-        {types.map((type, index) => (
-          <OptionSelect key={index} type={type} />
-        ))}
-      </Select>
+      {!loading && (
+        <>
+          <Select onChange={(e) => setSelectedType(e.target.value)}>
+            <option value="">Todo</option>
+            {types.map((type, index) => (
+              <OptionSelect key={index} type={type} />
+            ))}
+          </Select>
 
-      <MapContainer
-        style={styles}
-        /* @ts-ignore */
-        center={[-17.372443032788112, -66.16351643329834]}
-        zoom={13}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {filteredPlaces.map((place, index) => (
-          <Marker
-            key={index}
-            position={[
-              place.geometry.location.lat,
-              place.geometry.location.lng,
-            ]}
-            icon={iconPerson}
+          <MapContainer
+            style={styles}
+            /* @ts-ignore */
+            center={[-17.372443032788112, -66.16351643329834]}
+            zoom={13}
           >
-            <Popup>{place.name}</Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {filteredPlaces.map((place, index) => (
+              <Marker
+                key={index}
+                position={[
+                  place.geometry.location.lat,
+                  place.geometry.location.lng,
+                ]}
+                icon={iconPerson}
+              >
+                <Popup>{place.name}</Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </>
+      )}
+      {loading && <P>Cargando...</P>}
     </ContainerNearPlaces>
   );
 };

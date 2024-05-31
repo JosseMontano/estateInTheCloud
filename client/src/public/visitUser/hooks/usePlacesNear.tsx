@@ -12,19 +12,19 @@ interface Props {
 const UsePlacesNear = ({ v }: Props) => {
   const [placesNear, setPlacesNear] = useState([] as PropertiesPlacesMaps[]);
   const [types, setTypes] = useState([] as string[]);
+  const [loadingPlacesNear, setLoadingPlacesNear] = useState(true);
 
   const handleGetPlaces = async (lat: string, long: string) => {
+    setLoadingPlacesNear(true);
     const res = await getPlaces<PropertiesPlacesMaps[]>(lat, long);
-  
+
     const allTypes = res.map((v) => v.types).flat();
 
-    //clear duplicates in allTypes
-    const uniqueTypes = [...new Set(allTypes)];
-
     setPlacesNear(res);
-    setTypes(uniqueTypes);
-  };
+    setTypes(allTypes);
 
+    setLoadingPlacesNear(false);
+  };
 
   useEffect(() => {
     if (v.lat_long === null) return;
@@ -39,7 +39,7 @@ const UsePlacesNear = ({ v }: Props) => {
     );
   };
 
-  return { types, placesNear, handleRedirectToMaps };
+  return { types, placesNear, handleRedirectToMaps, loadingPlacesNear };
 };
 
 export default UsePlacesNear;

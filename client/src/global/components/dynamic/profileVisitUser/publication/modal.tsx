@@ -11,7 +11,7 @@ interface Params {
 }
 
 const ModalCom = (params: Params) => {
-  const { placesNear, handleRedirectToMaps, types } = UsePlacesNear({ v: params.v });
+ 
 
   return (
     <Modal
@@ -21,9 +21,6 @@ const ModalCom = (params: Params) => {
         <ContentModal
           v={params.v}
           showbtn={params.showbtn}
-          placesNear={placesNear}
-          handleRedirectToMaps={handleRedirectToMaps}
-          types={types}
         />
       }
     />

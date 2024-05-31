@@ -20,3 +20,6 @@ DATABASE_URL =postgres://kfverbrwlktnfy:586591508869ee26ba2b2e6a95892601a89ebae9
 
 #JWT
 JWT_SECRET=8021947cbbas
+
+#servers
+SERVER_PYTHON=http://127.0.0.1:5000/api/

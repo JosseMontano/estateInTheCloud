@@ -7,7 +7,11 @@ import { ShowInfo } from "../types/showInfo";
 import GeneralInfo from "./generalInfo";
 import MoreInfo from "./moreInfo";
 import NearPlaces from "./nearPlaces";
-import { PlacesType, PropertiesPlaces, PropertiesPlacesMaps } from "../types/places";
+import {
+  PlacesType,
+  PropertiesPlaces,
+  PropertiesPlacesMaps,
+} from "../types/places";
 import BtnsToVisitor from "./btnsToVistitor";
 import BtnsToOwner from "./btnsToOwner";
 
@@ -22,8 +26,9 @@ interface params {
   handleShowMoreInfo: (val: ShowInfo) => void;
   showMoreInfo: ShowInfo;
   placesNear: PropertiesPlacesMaps[];
-  handleRedirectToMaps: (v: PropertiesPlaces) => void
-  types: string[]
+  handleRedirectToMaps: (v: PropertiesPlaces) => void;
+  types: string[];
+  loading: boolean;
 }
 
 const ContentTextModal = (p: params) => {
@@ -61,7 +66,7 @@ const ContentTextModal = (p: params) => {
     title: p.v.title,
     description: p.v.description,
   });
-  
+
   return (
     <ContainerContent>
       {p.showMoreInfo == "General" && (
@@ -71,7 +76,12 @@ const ContentTextModal = (p: params) => {
       {p.showMoreInfo == "Specific" && <MoreInfo v={p.v} />}
 
       {p.showMoreInfo === "Near places" && (
-        <NearPlaces placesNear={p.placesNear} handleRedirectToMaps={p.handleRedirectToMaps} types={p.types}/>
+        <NearPlaces
+          placesNear={p.placesNear}
+          handleRedirectToMaps={p.handleRedirectToMaps}
+          types={p.types}
+          loading={p.loading}
+        />
       )}
 
       {p.showbtn ? (

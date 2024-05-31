@@ -29,4 +29,7 @@ module.exports = {
   googleMaps: {
     key: process.env.API_MAPS,
   },
+  servers:{
+    serverPy: process.env.SERVER_PYTHON,
+  }
 };
