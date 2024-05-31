@@ -94,6 +94,23 @@ export const SubTitle = styled.h3<{ colorText: string }>`
 export const ContainerMargin = styled.div`
   margin: 0px 10px;
 `;
+
+export const Button = styled.button<{ ColorBtn: string; ColorTxt?: string }>`
+  background-color: ${props => props.ColorBtn};
+  color: ${props => (props.ColorTxt ? props.ColorTxt : '#fff')};
+  border: none;
+  border-radius: 2rem;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 15px;
+  height: 35px;
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+    cursor: pointer;
+  }
+`;
+
 export const marginGlobal = "50px";
 export const marginInElements = "15px";
 //the margin global is 10px

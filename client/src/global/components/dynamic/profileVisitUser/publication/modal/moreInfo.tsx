@@ -1,48 +1,58 @@
 import { useLanguage } from "@/global/context/languageContext";
 import { RealEstate } from "@/global/interfaces/realEstate";
-import { H2, P } from "@/global/styles/modal/perfil";
+import styled from "styled-components";
 
 interface Props {
   v: RealEstate;
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  p {
+    color: #3e3e3e;
+    margin: 5px 0;
+    font-size: 16px;
+
+    span {
+      font-weight: 300;
+    }
+  }
+`;
+
 const MoreInfo = ({ v }: Props) => {
   const { text } = useLanguage();
   return (
-    <div>
-      <P>
+    <Container>
+      <p>
         {text.visitUseramount_bedroom}
-        {v.amount_bedroom}
-      </P>
-      <P>
+        <span>{v.amount_bedroom}</span>
+      </p>
+      <p>
         {text.visitUserprice}
-        {v.price}
-      </P>
+        <span> {v.price}</span>
+      </p>
 
-      <P>
+      <p>
         {text.visitUseramount_bathroom}
-        {v.amount_bathroom}
-      </P>
+        <span>{v.amount_bathroom}</span>
+      </p>
 
-      <P>
+      <p>
         {text.visitUsersquare_meter}
-        {v.square_meter}
-      </P>
+        <span> {v.square_meter}</span>
+      </p>
 
-      <P>
+      <p>
         {text.visitUserprice}
-        {v.price}
-      </P>
+        <span> {v.price}</span>
+      </p>
 
-      {/*   <P>
-      {text.visitUserlat_long}
-      {p.v.lat_long}
-    </P> */}
-
-      <P>
+      <p>
         {text.visitUseraddress}
-        {v.address}
-      </P>
-    </div>
+        <span> {v.address}</span>
+      </p>
+    </Container>
   );
 };
 

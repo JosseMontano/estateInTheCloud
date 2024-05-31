@@ -8,10 +8,9 @@ import NameUser from "./nameUser";
 import { getEmail } from "@/global/services/auth";
 import AuxNav from "./auxNav";
 import { useLanguage } from "@/global/context/languageContext";
-import {
-  ColorBtn,
-} from "@/global/styles/globals";
+import { ColorBtn } from "@/global/styles/globals";
 import Header from "@/public/home/components/header";
+import { currentLink } from "@/global/interfaces/nav";
 
 const Container = styled.div`
   position: fixed;
@@ -58,7 +57,14 @@ const Index = ({ isHome }: Params) => {
     if (user_name.length > 10) setTextBig(true);
   };
 
-  const handleRedirect = (url: string) => {
+  const [currentLink, setCurrentLink] = useState<currentLink>("inicio");
+
+  const handleChangeCurrentLink = (value: currentLink) => {
+    setCurrentLink(value);
+  }
+
+  const handleRedirect = (url: string, value: currentLink) => {
+    handleChangeCurrentLink(value);
     startTransition(() => {
       navigate(url);
     });
@@ -75,13 +81,15 @@ const Index = ({ isHome }: Params) => {
         <Container>
           <Nav ColorBtn={"#fff"}>
             <Check />
-            <Logo onClick={() => handleRedirect("/home")}>
+            <Logo onClick={() => handleRedirect("/home", "inicio")}>
               <NameUser msg={text.navbarTitle} textBig={textBig} />
             </Logo>
             <ContainerLinks
               handleRedirect={handleRedirect}
               nameUser={nameUser}
               emailState={emailState}
+              currentLink={currentLink}
+              handleChangeCurrentLink={handleChangeCurrentLink}
             />
           </Nav>
           {isHome && <Header />}

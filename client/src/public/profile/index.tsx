@@ -28,6 +28,7 @@ const Profile = () => {
 
   const createRealEstate = (newData: RealEstate) => {
     /* setData([...data, newData]); */
+    getRealEstate(idUser);
   };
 
   useEffect(() => {
@@ -56,13 +57,11 @@ const Profile = () => {
   //deleteFavorite
 
   const handleDeleteFavorite = async (id: number) => {
-    const response = await deleteFav(id);
+    await deleteFav(id);
     await handleGetData();
   };
 
-  console.log(data)
   if (data != undefined && data.GET_REAL_ESTATE_BY_ID_USER != undefined) {
- 
     return (
       <Suspense fallback={<p>Loading</p>}>
         <Container marginGlobal={marginGlobal} ColorText={ColorText}>

@@ -6,6 +6,8 @@ import { logOut } from "@/global/services/auth";
 import { useLanguage } from "@/global/context/languageContext";
 import ModalQuestion from "@/public/home/components/modalQuestion";
 import ModalConfig from "./modalConfig";
+import { useState } from "react";
+import { Enlace, currentLink } from "@/global/interfaces/nav";
 const Ul = styled.ul`
   float: right;
   margin-right: 20px;
@@ -30,21 +32,30 @@ const Ul = styled.ul`
 interface Params {
   nameUser: string;
   emailState: string;
-  handleRedirect: (msg: string) => void;
+  handleRedirect: (msg: string, value: currentLink) => void;
+  currentLink: currentLink;
+  handleChangeCurrentLink: (value: currentLink) => void
 }
 
-const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
+const ContainerLinks = ({
+  nameUser,
+  emailState,
+  handleRedirect,
+  currentLink,
+  handleChangeCurrentLink
+}: Params) => {
   const { text } = useLanguage();
   const navigate = useNavigate();
   const { isShown, toggle } = useModal({});
   const { isShown: isShownConfig, toggle: toggleConfig } = useModal({});
 
-  let dataJSX = [
+  let dataJSX: Enlace[] = [
     {
       text: nameUser,
       click: () => {
-        handleRedirect(`/profile/${emailState}`);
+        handleRedirect(`/profile/${emailState}`, "profile");
       },
+      val: "profile",
     },
     /*     {
       text: text.navbarFilter,
@@ -56,13 +67,17 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
       text: text.navbarQuestion,
       click: () => {
         toggle();
+        handleChangeCurrentLink("question");
       },
+      val: "question",
     },
     {
       text: text.navbarConfigure,
       click: () => {
         toggleConfig();
+        handleChangeCurrentLink("configure");
       },
+      val: "configure",
     },
     {
       text: text.navbarGoOut,
@@ -70,15 +85,17 @@ const ContainerLinks = ({ nameUser, emailState, handleRedirect }: Params) => {
         var resp = await logOut();
         if (!resp) {
           navigate("/");
+          handleChangeCurrentLink("goOut");
         }
       },
+      val: "goOut",
     },
   ];
 
   return (
     <Ul>
       {dataJSX.map((v, i) => (
-        <Links v={v} key={i} />
+        <Links v={v} currentLink={currentLink} key={i} />
       ))}
       <Modal isShown={isShown} hide={toggle} modalContent={<ModalQuestion />} />
       <Modal

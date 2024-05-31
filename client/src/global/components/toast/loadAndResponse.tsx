@@ -9,7 +9,7 @@ interface props {
 const LoadAndResponse = (p: props) => {
   return (
     <div>
-      {p.loading && <Loader />}
+  {/*     {p.loading && <Loader />} */}
       {p.response && <Message msg={p.msg} />}
     </div>
   );

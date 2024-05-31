@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import Children from "@/global/interfaces/children";
 
 interface TextType {
+  loadingBtn: string;
   homeTitle: string;
   homeDescription: string;
   homeFooter1: string;
@@ -125,6 +126,7 @@ type langs = "es" | "en" | "pt";
 
 const translations: TranslationType = {
   es: {
+    loadingBtn: "Cargando...",
     homeTitle: "Inmuebles en la nube",
     homeDescription:
       "Encuentra la propiedad ideal con nuestra amplia selección de inmuebles. Ofrecemos una experiencia de búsqueda sencilla y segura. Si necesitas ayuda, estamos aquí para asistirte en cada paso.",
@@ -212,7 +214,7 @@ const translations: TranslationType = {
     visitUserlat_long: "Latitud y longitud: ",
     visitUserprice: "Precio: ",
 
-    visitUsersquare_meter: "Cantidad de metros cuadrados",
+    visitUsersquare_meter: "Metros cuadrados",
     visitUserBtnSendMessage: 'Enviar mensaje',
     visitUserBtnFollower: 'Seguir',
     visitUserBtnComment:'Agregar comentario',
@@ -241,6 +243,7 @@ const translations: TranslationType = {
     favoriteHideFavorites:"Ocultar favoritos",
   },
   en: {
+    loadingBtn: "Loading...",
     homeTitle: "Real Estate in the cloud",
     homeDescription:
       "Find the ideal property with our wide selection of real estate. We offer a simple and secure search experience. If you need help, we are here to assist you at every step.",
@@ -327,7 +330,7 @@ const translations: TranslationType = {
     visitUseramount_bedroom: "Amount bedrooms: ",
     visitUserlat_long: "Latitude and longitude: ",
     visitUserprice: "Price: ",
-    visitUsersquare_meter: "Amount square meter: ",
+    visitUsersquare_meter: "Square meter: ",
 
     visitUserBtnSendMessage: 'Send message',
     visitUserBtnFollower: 'Follow',
@@ -357,6 +360,7 @@ const translations: TranslationType = {
     favoriteHideFavorites:"Hide favorites",
   },
   pt: {
+    loadingBtn: "Carregando...",
     homeTitle: "Imóveis na nuvem",
     homeDescription:
       "Encontre a propriedade ideal com nossa ampla seleção de imóveis. Oferecemos uma experiência de busca simples e segura. Se precisar de ajuda, estamos aqui para ajudá-lo em cada etapa.",
@@ -443,7 +447,7 @@ const translations: TranslationType = {
     visitUseramount_bedroom: "Quantidade de quartos: ",
     visitUserlat_long: "Latitude e longitude: ",
     visitUserprice: "Preço: ",
-    visitUsersquare_meter: "Quantidade de metros quadrados: ",
+    visitUsersquare_meter: "Metros quadrados: ",
 
     visitUserBtnSendMessage: 'Enviar mensagem',
     visitUserBtnFollower: 'Seguir',

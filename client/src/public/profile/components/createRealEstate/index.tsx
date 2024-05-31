@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNameUser } from "@/global/context/nameUserContext";
 import { saveRealEstate } from "@/public/profile/services/post";
-import Loading from "@/global/components/toast/loadAndResponse";
 import FirstForm from "./firstForm";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import useToast from "@/global/hooks/useToast";
@@ -11,7 +10,7 @@ import Event from "@/global/interfaces/event";
 import SecondForm from "./secondForm";
 import MapForm from "./mapForm";
 import { MarkerPositionType } from "../../interfaces/map";
-
+import Loading from "@/global/components/toast/loadAndResponse";
 const Container = styled.div`
   display: grid;
   place-content: center;
@@ -106,6 +105,7 @@ const Index = ({ createRealEstate }: Params) => {
         sendData={sendData}
         paginationForm={paginationForm}
         changeForm={changeForm}
+        loading={loading}
       />
     ),
   };

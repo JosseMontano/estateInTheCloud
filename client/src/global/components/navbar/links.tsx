@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Enlace } from "@/global/interfaces/nav";
-
+import { Enlace, currentLink } from "@/global/interfaces/nav";
+import { ColorBtn } from "@/global/styles/globals";
 
 const Container = styled.li`
   display: inline-block;
@@ -13,13 +13,15 @@ const Container = styled.li`
   }
 `;
 
-const A = styled.span`
+const A = styled.span<{ border: string }>`
   color: #000;
   font-size: 17px;
   padding: 7px 13px;
   cursor: pointer;
   border-radius: 3px;
   text-transform: uppercase;
+  border: none;
+  border-bottom: 2px solid ${(props) => props.border};
   &:hover {
     background: #ffffff;
     color: #000;
@@ -39,12 +41,16 @@ const A = styled.span`
 
 interface Params {
   v: Enlace;
+  currentLink: currentLink;
 }
 
-const Links = ({ v }: Params) => {
+const Links = ({ v, currentLink }: Params) => {
+  const border = v.val === currentLink ? ColorBtn : "transparent";
   return (
     <Container>
-      <A onClick={v.click}>{v.text}</A>
+      <A border={border} onClick={v.click}>
+        {v.text}
+      </A>
     </Container>
   );
 };

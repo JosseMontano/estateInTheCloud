@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
-const Con = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
 
 const Container = styled.div`
-  display: inline-block;
+  display: grid;
+  place-content: center;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 30px;
+  height: 30px;
   @keyframes lds-ring {
     0% {
       transform: rotate(0deg);
@@ -24,9 +20,9 @@ const Cont = styled.div`
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
+  top:0px;
+  width: 25px;
+  height: 25px;
   border: 8px solid #000;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -43,14 +39,13 @@ const Cont = styled.div`
 `;
 const Loader = () => {
   return (
-    <Con>
       <Container className="lds-ring">
         <Cont></Cont>
         <Cont></Cont>
         <Cont></Cont>
         <Cont></Cont>
       </Container>
-    </Con>
+
   );
 };
 
