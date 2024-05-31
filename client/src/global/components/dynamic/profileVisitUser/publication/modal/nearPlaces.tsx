@@ -10,6 +10,7 @@ import L from "leaflet";
 import Icon from "@/global/assets/markerIcon.png";
 import OptionSelect from "./optionSelect";
 import { translateToSpanish } from "@/public/home/utilities/translate";
+import LoaderContent from "@/global/components/toast/loaderContent";
 interface Props {
   placesNear: PropertiesPlacesMaps[];
   handleRedirectToMaps: (v: PropertiesPlaces) => void;
@@ -83,7 +84,7 @@ const NearPlaces = ({ placesNear, types, loading }: Props) => {
           </MapContainer>
         </>
       )}
-      {loading && <P>Cargando...</P>}
+      {loading && <LoaderContent />}
     </ContainerNearPlaces>
   );
 };

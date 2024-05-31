@@ -5,6 +5,7 @@ import REOnePublicationType, {
 import Carousel from "@/global/components/carousel";
 import { useRef } from "react";
 import ImgCom from "./img";
+import LoaderContent from "@/global/components/toast/loaderContent";
 interface Params {
   load: boolean;
   data: REOnePublicationType[];
@@ -27,7 +28,7 @@ const ContentImg = ({ load, data }: Params) => {
   }
 
   return (
-    <>{load ? <Loader /> : <Carousel children={children()} slide={slide} />}</>
+    <>{load ? <LoaderContent /> : <Carousel children={children()} slide={slide} />}</>
   );
 };
 

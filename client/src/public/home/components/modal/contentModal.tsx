@@ -12,6 +12,7 @@ import handleDownloadImg from "@/global/utilities/downloadImg";
 import useModal from "../../hooks/useModal";
 import useTranslate from "../../hooks/useTranslate";
 import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
+import LoaderContent from "@/global/components/toast/loaderContent";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();
@@ -65,7 +66,7 @@ export const ContentModal = (v: RealEstate) => {
     <Container>
       {loading && loadTxt ? (
         <div className="load">
-          <Loader />
+          <LoaderContent />
         </div>
       ) : (
         <>
