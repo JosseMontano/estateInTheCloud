@@ -11,6 +11,7 @@ import { useLanguage } from "@/global/context/languageContext";
 import { ColorBtn } from "@/global/styles/globals";
 import Header from "@/public/home/components/header";
 import { currentLink } from "@/global/interfaces/nav";
+import { Toaster } from "react-hot-toast";
 
 const Container = styled.div`
   position: fixed;
@@ -95,6 +96,7 @@ const Index = ({ isHome }: Params) => {
           {isHome && <Header />}
         </Container>
       </Suspense>
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };

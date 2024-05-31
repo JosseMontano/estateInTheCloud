@@ -6,10 +6,14 @@ import CardSoon from "./components/";
 import { Suspense } from "react";
 import { useQuery } from "@apollo/client";
 import { useLanguage } from "@/global/context/languageContext";
+
 const Container = styled.div`
   min-height: 100vh;
   display: grid;
   place-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
 `;
 
 const Card = styled.div`

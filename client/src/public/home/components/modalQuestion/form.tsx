@@ -11,6 +11,7 @@ interface params {
   sendData: (e: any) => void;
   val: string;
   err: string;
+  handleShowToast: () => void;
 }
 
 const ContainerBtn = styled.div`
@@ -20,11 +21,15 @@ const ContainerBtn = styled.div`
     padding: 5px;
 
   }
-  
+
 `
 
 const Form = (p: params) => {
   const { text } = useLanguage()
+  const handleSave = (e:any)=>{
+    p.sendData(e)
+    p.handleShowToast()
+  }
   return (
     <>
       <Input
@@ -36,7 +41,7 @@ const Form = (p: params) => {
       />
       {p.err && <MsgError>{p.err}</MsgError>}
       <ContainerBtn>
-        <Button ColorBtn={ColorBtn} onClick={(e: any) => p.sendData(e)}>
+        <Button ColorBtn={ColorBtn} onClick={(e:any) => handleSave(e)}>
           {text.questionBtnSave}
         </Button>
       </ContainerBtn>

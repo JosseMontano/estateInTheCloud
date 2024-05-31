@@ -13,6 +13,11 @@ function useFetch <T>(services: serviceType, id?: number) {
   const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const deleteData = (id: number) => {
+    const newData = data.filter((v: any) => v.id !== id);
+    setData(newData);
+  }
+
   const handleGetData = async () => {
     setLoading(true);
     let res;
@@ -42,7 +47,8 @@ function useFetch <T>(services: serviceType, id?: number) {
     data,
     loading,
     handleGetData,
-    setData
+    setData,
+    deleteData
   };
 };
 

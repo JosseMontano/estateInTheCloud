@@ -24,6 +24,8 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/config/firebase";
 import { useNavigate } from "react-router-dom";
 import ModalConfig from "@/global/components/navbar/modalConfig";
+import { getEmail } from "@/global/services/auth";
+import { useProfile } from "@/global/context/profileContext";
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
@@ -49,7 +51,10 @@ export function Login(): JSX.Element {
           photoURL: photoURL || "",
           uid: result.user.uid,
         });
-        if (res) navigate(`/home`);
+        if (res) {
+          navigate(`/home`);
+          window.location.reload();
+        }
       }
     } catch (error: any) {
       console.log(error);

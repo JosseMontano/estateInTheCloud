@@ -10,6 +10,7 @@ import { addAnswer } from "./services/answer";
 import styled from "styled-components";
 import QuestionType from "@/public/answerQuestion/interfaces/question";
 import { useMutation } from "@apollo/client";
+import { showToast } from "@/global/utilities/toast";
 
 const Container = styled.div`
   width: calc(100%-15px);
@@ -21,7 +22,7 @@ const AnswerQuestion = () => {
   const { id } = useParams();
   const id_real_estate = parseInt(id!);
   //get data
-  const { data, loading } = useLoadData<QuestionType>(
+  const { data, loading, deleteData } = useLoadData<QuestionType>(
     getQuestions,
     id_real_estate
   );
@@ -32,6 +33,7 @@ const AnswerQuestion = () => {
 
   const handleAddAnswer = (answer: string) => {
     const id_question = idQuestion;
+    console.log(answer);
     createAnswer({
       variables: {
         answer: answer,
@@ -39,7 +41,9 @@ const AnswerQuestion = () => {
         id_question: id_question,
       },
     });
-    alert("guardado");
+    showToast("guardado");
+    deleteData(id_question);
+    toggle();
   };
 
   const handleClick = (id?: number) => {
