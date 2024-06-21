@@ -114,6 +114,7 @@ interface TextType {
   favoriteBtnDelete: string;
   fvoriteShowFavorites: string;
   favoriteHideFavorites: string;
+  saveComment: string;
 }
 
 interface TranslationType {
@@ -241,6 +242,7 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Eliminar",
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Ocultar favoritos",
+    saveComment: "Se guardo el comentario",
   },
   en: {
     loadingBtn: "Loading...",
@@ -358,6 +360,7 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Delete",
     fvoriteShowFavorites: "Show favorites",
     favoriteHideFavorites:"Hide favorites",
+    saveComment: "The comment was saved",
   },
   pt: {
     loadingBtn: "Carregando...",
@@ -475,6 +478,7 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Deletar",
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Esconder favoritos",
+    saveComment: "O comentário foi salvo",
   },
 };
 

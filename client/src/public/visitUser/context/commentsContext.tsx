@@ -13,6 +13,8 @@ import { Comments } from "@/public/visitUser/interfaces/comments";
 import { useApolloClient } from "@apollo/client";
 import { postComment } from "@/public/visitUser/services/comment";
 import { CommentsPostType } from "@/public/visitUser/interfaces/comments";
+import { showToast } from "@/global/utilities/toast";
+import { useLanguage } from "@/global/context/languageContext";
 interface ContextType {
   data: any;
   setIdCommentUser: React.Dispatch<React.SetStateAction<number>>;
@@ -46,6 +48,7 @@ export const useComments = () => {
 export const CommentsContextProvider = ({ children }: Children) => {
   const [idCommentUser, setIdCommentUser] = useState(0);
   const [deleteCommentState, setDeleteCommentState] = useState(false);
+  const {text} = useLanguage()
 
   const client = useApolloClient();
 
@@ -55,12 +58,10 @@ export const CommentsContextProvider = ({ children }: Children) => {
 
   useSubscription(addCommentSubs, {
     onData: ({ data }) => {
-      console.log(data.data);
       const { ADD_A_COMMENT } = data.data;
       const dataInStore = client.readQuery({
         query: getCommentsByUser(idCommentUser),
       });
-      console.log(dataInStore);
       client.writeQuery({
         query: getCommentsByUser(idCommentUser),
         data: {
@@ -85,7 +86,7 @@ export const CommentsContextProvider = ({ children }: Children) => {
         amount_start: amountStart,
       },
     });
-    alert("guardado");
+    showToast(text.saveComment);
   };
 
   useSubscription(deleteCommentSubs, {

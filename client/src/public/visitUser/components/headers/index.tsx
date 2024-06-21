@@ -51,6 +51,7 @@ const Header = (params: Params) => {
     const form:CommentsPostType = { amountStart, description, id_user_commentator, id_user_visited };
  
     await addComment(form);
+    toggle();
   };
 
   useEffect(() => {

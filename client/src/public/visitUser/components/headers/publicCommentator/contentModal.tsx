@@ -1,4 +1,4 @@
-import { ColorText, Title } from "@/global/styles/globals";
+import { ColorBtn, ColorText, Title } from "@/global/styles/globals";
 import Starts from "./starts";
 import { Button } from "jz-validation-form";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -37,7 +37,7 @@ const ContentModal = (params: params) => {
 
         <Starts getStart={params.getStart} />
 
-        <Button type="submit" ColorBtn={"#02ffcc1f"}>
+        <Button type="submit" ColorBtn={ColorBtn}>
           Guardar
         </Button>
       </Form>
