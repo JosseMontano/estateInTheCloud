@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Comments } from "@/public/visitUser/interfaces/comments";
-import { getUserById } from "@/global/services/user";
 import ShowStarts from "./showStarts";
 import useTranslate from "../../hooks/useTranslate";
+import { useLanguage } from "@/global/context/languageContext";
 
 const Container = styled.div`
   align-self: center;
@@ -15,13 +14,16 @@ const NameUser = styled.h3`
   }
 `;
 const Content = (v: Comments) => {
-  const { descriptionState } = useTranslate({
+  const { descriptionState, loadTxt } = useTranslate({
     description: v.description,
   });
+
+  const {text} = useLanguage()
+
   return (
     <Container>
       <NameUser>{v.email}</NameUser>
-      <p>{descriptionState}</p>
+      <p>{loadTxt ? text.laodingTheText : descriptionState}</p>
       <ShowStarts sizeStart={v.amount_start} />
     </Container>
   );

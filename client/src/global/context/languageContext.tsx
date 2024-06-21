@@ -83,6 +83,7 @@ interface TextType {
   visitUserNoEmpty: string;
   visitUserShowMoreInfo: string;
   visitUserShowLessInfo: string;
+  visitUserPlaces:string;
   visitUseramount_bedroom: string;
   visitUserprice: string;
   visitUseramount_bathroom: string;
@@ -115,6 +116,7 @@ interface TextType {
   fvoriteShowFavorites: string;
   favoriteHideFavorites: string;
   saveComment: string;
+  laodingTheText: string;
 }
 
 interface TranslationType {
@@ -209,6 +211,7 @@ const translations: TranslationType = {
     visitUserNoEmpty: "No tiene Publicaciones",
     visitUserShowMoreInfo: "Mas informacion",
     visitUserShowLessInfo: "Menos informacion",
+    visitUserPlaces:"Lugares cercanos",
     visitUseraddress: "Direccion:",
     visitUseramount_bathroom: "Cantidad de baños:",
     visitUseramount_bedroom: "Cantidad de cuartos: ",
@@ -243,6 +246,7 @@ const translations: TranslationType = {
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Ocultar favoritos",
     saveComment: "Se guardo el comentario",
+    laodingTheText:"Traduciendo...",
   },
   en: {
     loadingBtn: "Loading...",
@@ -327,6 +331,7 @@ const translations: TranslationType = {
     visitUserNoEmpty: "You haven't Publications",
     visitUserShowMoreInfo: "More info",
     visitUserShowLessInfo: "Less info",
+    visitUserPlaces:"Near places",
     visitUseraddress: "Direction:",
     visitUseramount_bathroom: "Amount bathrooms:",
     visitUseramount_bedroom: "Amount bedrooms: ",
@@ -361,6 +366,7 @@ const translations: TranslationType = {
     fvoriteShowFavorites: "Show favorites",
     favoriteHideFavorites:"Hide favorites",
     saveComment: "The comment was saved",
+    laodingTheText:"Translating...",
   },
   pt: {
     loadingBtn: "Carregando...",
@@ -445,6 +451,7 @@ const translations: TranslationType = {
     visitUserNoEmpty: "Você não tem publicações",
     visitUserShowMoreInfo: "Mais info",
     visitUserShowLessInfo: "Menos info",
+    visitUserPlaces:"Lugares próximos",
     visitUseraddress: "Endereço:",
     visitUseramount_bathroom: "Quantidade de banheiros:",
     visitUseramount_bedroom: "Quantidade de quartos: ",
@@ -479,6 +486,7 @@ const translations: TranslationType = {
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Esconder favoritos",
     saveComment: "O comentário foi salvo",
+    laodingTheText:"Traduzindo...",
   },
 };
 

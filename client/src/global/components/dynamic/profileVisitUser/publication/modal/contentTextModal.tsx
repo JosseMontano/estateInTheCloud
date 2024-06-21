@@ -62,7 +62,7 @@ const ContentTextModal = (p: params) => {
     setStateAvailable(!stateAvailable);
   };
 
-  const { descriptionState, titleState } = useTranslate({
+  const { descriptionState, titleState, loadTxt } = useTranslate({
     title: p.v.title,
     description: p.v.description,
   });
@@ -70,7 +70,11 @@ const ContentTextModal = (p: params) => {
   return (
     <ContainerContent>
       {p.showMoreInfo == "General" && (
-        <GeneralInfo description={descriptionState} title={titleState} />
+        <GeneralInfo
+          description={descriptionState}
+          title={titleState}
+          loadTxt={loadTxt}
+        />
       )}
 
       {p.showMoreInfo == "Specific" && <MoreInfo v={p.v} />}

@@ -23,7 +23,7 @@ const useTranslate = ({ description }: Params) => {
     setDescriptionState(des!);
     setTimeout(() => {
       setLoadTxt(false);
-    }, 3000);
+    }, 500);
   };
 
   const handleTranslateToSpanish = async () => {
@@ -34,7 +34,7 @@ const useTranslate = ({ description }: Params) => {
 
     setTimeout(() => {
       setLoadTxt(false);
-    }, 3000);
+    }, 500);
   };
 
   const handleTranslateToPortugues = async () => {
@@ -46,7 +46,7 @@ const useTranslate = ({ description }: Params) => {
 
     setTimeout(() => {
       setLoadTxt(false);
-    }, 3000);
+    }, 500);
   };
 
 
@@ -55,7 +55,6 @@ const useTranslate = ({ description }: Params) => {
     if (lanActually == Language.english) handleTranslate();
     if (lanActually == Language.portuguese) handleTranslateToPortugues();
     if (lanActually == Language.spanish) handleTranslateToSpanish();
-    console.log(lanActually);
   }, [lanActually]);
 
   return {

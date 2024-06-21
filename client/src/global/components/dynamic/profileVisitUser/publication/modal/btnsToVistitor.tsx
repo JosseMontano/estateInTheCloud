@@ -1,12 +1,20 @@
 import { Btn } from "@/global/styles/btn";
 import { ShowInfo } from "../types/showInfo";
 import { useLanguage } from "@/global/context/languageContext";
+import styled from "styled-components";
+
+const Container= styled.div`
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+`;
 
 interface Props {
   showMoreInfo: ShowInfo;
   handleShowMoreInfo: (val: ShowInfo) => void;
   textBtn: string;
 }
+
 const BtnsToVisitor = ({
   showMoreInfo,
   handleShowMoreInfo,
@@ -14,7 +22,7 @@ const BtnsToVisitor = ({
 }: Props) => {
   const { text } = useLanguage();
   return (
-    <>
+    <Container>
       <Btn marginInElements="0px">{textBtn}</Btn>
       {showMoreInfo == "General" && (
         <Btn
@@ -36,7 +44,7 @@ const BtnsToVisitor = ({
             marginInElements="0px"
             onClick={() => handleShowMoreInfo("Near places")}
           >
-            Lugares cercanos
+            {text.visitUserPlaces}
           </Btn>
         </>
       )}
@@ -51,7 +59,7 @@ const BtnsToVisitor = ({
           </Btn>
         </>
       )}
-    </>
+    </Container>
   );
 };
 

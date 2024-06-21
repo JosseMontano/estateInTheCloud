@@ -1,7 +1,6 @@
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { Modal } from "jz-modal";
 import { ContentModal } from "./modal/indexModal";
-import UsePlacesNear from "@/public/visitUser/hooks/usePlacesNear";
 
 interface Params {
   isShowTrue: boolean;
