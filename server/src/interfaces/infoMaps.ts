@@ -1,4 +1,10 @@
 
+
+export interface LocationRes {
+  location: Location;
+  name: string;
+  types: string[];
+}
 export interface PropertiesPlacesMaps {
   business_status: string
   geometry: Geometry

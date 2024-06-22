@@ -8,9 +8,10 @@ import GeneralInfo from "./generalInfo";
 import MoreInfo from "./moreInfo";
 import NearPlaces from "./nearPlaces";
 import {
+  LocationRes,
   PlacesType,
   PropertiesPlaces,
-  PropertiesPlacesMaps,
+
 } from "../types/places";
 import BtnsToVisitor from "./btnsToVistitor";
 import BtnsToOwner from "./btnsToOwner";
@@ -25,7 +26,7 @@ interface params {
   handleUpdateState: (id: number, available: number) => void;
   handleShowMoreInfo: (val: ShowInfo) => void;
   showMoreInfo: ShowInfo;
-  placesNear: PropertiesPlacesMaps[];
+  placesNear: LocationRes[];
   handleRedirectToMaps: (v: PropertiesPlaces) => void;
   types: string[];
   loading: boolean;

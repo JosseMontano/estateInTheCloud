@@ -3,7 +3,7 @@ import { uploadImage, deleteImage } from "../libs/cloudinary";
 import { UploadedFile } from "express-fileupload";
 import fs from "fs-extra";
 import RealEstateType from "../interfaces/realEstate";
-import { PropertiesPlacesMaps } from "../interfaces/infoMaps";
+import { LocationRes, PropertiesPlacesMaps } from "../interfaces/infoMaps";
 import { translateToSpanish } from "../utilities/translate";
 const { googleMaps } = require("../config");
 const pool = require("../db");
@@ -36,6 +36,7 @@ export const getPlaces = async (
   let radius = 1 * 1000;
 
   const { lat, long } = req.body;
+  //-17.37140523445971  -66.17990255355836
   const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=${radius}&key=${googleMaps.key}`;
 
   try {
@@ -43,35 +44,31 @@ export const getPlaces = async (
     const { results } = await response.json();
     const resultsData = results as PropertiesPlacesMaps[];
 
-    //get all types
-    let types = [] as string[];
-    resultsData.forEach((v) => {
-      types.push(...v.types);
-    });
-    //clear duplicates in allTypes
-    const uniqueTypes = [...new Set(types)];
-    //delete the emptis types
-    const resFiltered = uniqueTypes.filter((v) => v !== "");
+    //save only the location, name and types
+    let data: LocationRes[] = resultsData.map((v) => {
+      return {
+        location: v.geometry.location,
+        name: v.name,
+        types: v.types,
+      };
+    })
 
-    //translate types to spanish
-    let newTypes = [] as string[];
-    for (let i = 0; i < resFiltered.length; i++) {
-      try {
-        const res = await translateToSpanish(resFiltered[i]);
-        newTypes.push(res);
-      } catch (error) {
-        console.error(`Error translating item at index ${i}:`, error);
+
+
+    let newDataSpanish = [] as LocationRes[];
+    for (let i = 0; i < data.length; i++) {
+      for (let j = 0; j < data[i].types.length; j++) {
+        try {
+          const res = await translateToSpanish(data[i].types[j]);
+          newDataSpanish.push({ location: data[i].location, name: data[i].name, types: [res] });
+        } catch (error) {
+          console.error(`Error translating item at index ${i}:`, error);
+        }
       }
-    }
-    //change types to spanish
-    resultsData.forEach((v) => {
-      v.types = v.types.map((v) => {
-        const index = resFiltered.indexOf(v);
-        return newTypes[index];
-      });
-    });
 
-    res.json(resultsData);
+    }
+    console.log(newDataSpanish);
+    res.json(newDataSpanish);
   } catch (error) {
     next(error);
   }

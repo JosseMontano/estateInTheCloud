@@ -1,6 +1,6 @@
 import {
+  LocationRes,
   PropertiesPlaces,
-  PropertiesPlacesMaps,
 } from "@/global/components/dynamic/profileVisitUser/publication/types/places";
 import { RealEstate } from "@/global/interfaces/realEstate";
 import { useEffect, useState, useRef } from "react";
@@ -10,13 +10,13 @@ interface Props {
   v: RealEstate;
 }
 const UsePlacesNear = ({ v }: Props) => {
-  const [placesNear, setPlacesNear] = useState([] as PropertiesPlacesMaps[]);
+  const [placesNear, setPlacesNear] = useState([] as LocationRes[]);
   const [types, setTypes] = useState([] as string[]);
   const [loadingPlacesNear, setLoadingPlacesNear] = useState(true);
 
   const handleGetPlaces = async (lat: string, long: string) => {
     setLoadingPlacesNear(true);
-    const res = await getPlaces<PropertiesPlacesMaps[]>(lat, long);
+    const res = await getPlaces<LocationRes[]>(lat, long);
 
     const allTypes = res.map((v) => v.types).flat();
 

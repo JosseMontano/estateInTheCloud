@@ -1,7 +1,7 @@
 import { ColorBtn, Title, styleMap } from "@/global/styles/globals";
 import { P } from "@/global/styles/modal/perfil";
 import styled from "styled-components";
-import { PropertiesPlaces, PropertiesPlacesMaps } from "../types/places";
+import { PropertiesPlaces, LocationRes } from "../types/places";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Select } from "@/global/styles/globals";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import OptionSelect from "./optionSelect";
 import { translateToSpanish } from "@/public/home/utilities/translate";
 import LoaderContent from "@/global/components/toast/loaderContent";
 interface Props {
-  placesNear: PropertiesPlacesMaps[];
+  placesNear: LocationRes[];
   handleRedirectToMaps: (v: PropertiesPlaces) => void;
   types: string[];
   loading: boolean;
@@ -73,8 +73,8 @@ const NearPlaces = ({ placesNear, types, loading }: Props) => {
               <Marker
                 key={index}
                 position={[
-                  place.geometry.location.lat,
-                  place.geometry.location.lng,
+                  place.location.lat,
+                  place.location.lng,
                 ]}
                 icon={iconPerson}
               >
