@@ -54,17 +54,15 @@ export const getPlaces = async (
     })
 
 
-
     let newDataSpanish = [] as LocationRes[];
     for (let i = 0; i < data.length; i++) {
-      for (let j = 0; j < data[i].types.length; j++) {
         try {
-          const res = await translateToSpanish(data[i].types[j]);
+          const res = await translateToSpanish(data[i].types[0]);
           newDataSpanish.push({ location: data[i].location, name: data[i].name, types: [res] });
         } catch (error) {
           console.error(`Error translating item at index ${i}:`, error);
         }
-      }
+      
 
     }
     console.log(newDataSpanish);
