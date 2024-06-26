@@ -23,7 +23,7 @@ const BtnsToVisitor = ({
   const { text } = useLanguage();
   return (
     <Container>
-      <Btn marginInElements="0px">{textBtn}</Btn>
+
       {showMoreInfo == "General" && (
         <Btn
           marginInElements="0px"

@@ -25,6 +25,7 @@ const Container = styled.div`
 const ContainerContent = styled.div`
   display: grid;
   place-content: center;
+  gap:10px;
 `;
 
 interface Params {
@@ -53,7 +54,7 @@ const Header = ({ amountPublciation, idUser, toggle, isShown, handleShowFav, sho
       <ContainerContent>
         <ContentBtn isShown={isShown} toggle={toggle} handleShowFav={handleShowFav} showFav={showFav} />
         <ContentMid amountPublciation={amountPublciation} />
-        <ContentUser />
+       {/*  <ContentUser /> */}
       </ContainerContent>
     </Container>
   );

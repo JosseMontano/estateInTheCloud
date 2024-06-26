@@ -4,15 +4,15 @@ import { H2, P, Container, ContainerContent } from "@/global/styles/modal/perfil
 import Loader from "@/global/components/toast/loading";
 import ImgCom from "./img";
 import useLoadData from "@/global/hooks/useFetch";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ContainerBtnModal from "./containerBtnModal";
 import Carousel from "@/global/components/carousel";
 import { useLanguage } from "@/global/context/languageContext";
 import handleDownloadImg from "@/global/utilities/downloadImg";
 import useModal from "../../hooks/useModal";
-import useTranslate from "../../hooks/useTranslate";
 import REOnePublicationType from "@/global/interfaces/realEstateOfOnePublication";
 import LoaderContent from "@/global/components/toast/loaderContent";
+import useTranslate from "@/public/profile/hooks/useTranslate";
 
 export const ContentModal = (v: RealEstate) => {
   const { text } = useLanguage();
@@ -27,12 +27,14 @@ export const ContentModal = (v: RealEstate) => {
   const { handleSeeQuestions, handle360 } = useModal(formHookModal);
 
   // ? Paramaters that received useTranslate
-  const formHookTranslate = {
+/*   const formHookTranslate = {
     description: v.description,
     title: v.title,
-  };
-  const { descriptionState, loadTxt, titleState } =
-    useTranslate(formHookTranslate);
+  }; */
+  const { descriptionState, titleState, loadTxt } = useTranslate({
+    title: v.title,
+    description: v.description,
+  });
 
   let btnJSX = [
     {
@@ -72,8 +74,8 @@ export const ContentModal = (v: RealEstate) => {
         <>
           {showCarousel()}
           <ContainerContent>
-            <H2>{titleState}</H2>
-            <P>{descriptionState}</P>
+            <H2>{loadTxt ? text.laodingTheText : titleState}</H2>
+            <P>{loadTxt ? text.laodingTheText : descriptionState}</P>
             <ContainerBtnModal v={v} btnJSX={btnJSX} />
           </ContainerContent>
         </>

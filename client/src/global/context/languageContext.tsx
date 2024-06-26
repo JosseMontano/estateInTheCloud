@@ -69,6 +69,7 @@ interface TextType {
   profileCreatePublicate: string;
   profileShowPublicate: string;
   profilePublication: string;
+  profilePublications: string;
   profileFollower: string;
   profileFollow: string;
   profileBtnAddPhoto: string;
@@ -197,6 +198,7 @@ const translations: TranslationType = {
     profileCreatePublicate: "Crear publicacion",
     profileShowPublicate: "Mostrar publicaciones",
     profilePublication: "publicaciones",
+    profilePublications:"publicacion",
     profileFollower: "seguidores",
     profileFollow: "seguidos",
     profileBtnAddPhoto: "Agregar foto",
@@ -317,6 +319,7 @@ const translations: TranslationType = {
     profileCreatePublicate: "Create publication",
     profileShowPublicate: "Show posts",
     profilePublication: "publications",
+    profilePublications:"publication",
     profileFollower: "followers",
     profileFollow: "following",
     profileBtnAddPhoto: "Add Photo",
@@ -437,6 +440,7 @@ const translations: TranslationType = {
     profileCreatePublicate: "Criar publicação",
     profileShowPublicate: "Mostrar postagens",
     profilePublication: "publicações",
+    profilePublications:"publicação",
     profileFollower: "seguidores",
     profileFollow: "seguindo",
     profileBtnAddPhoto: "Adicionar foto",

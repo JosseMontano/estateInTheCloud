@@ -6,6 +6,8 @@ import { useNameUser } from "@/global/context/nameUserContext";
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
+  gap:10px;
   @media screen and (max-width: 450px) {
     display: flex;
     flex-direction: column;
@@ -14,11 +16,8 @@ const Container = styled.div`
     max-width: 120px;
   }
 `;
-const SPAN = styled.span<{ marginInElements: string }>`
-  margin-right: ${(props) => props.marginInElements};
-  margin-bottom: ${(props) => props.marginInElements};
+const SPAN = styled.span`
   align-self: center;
-  min-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; 
@@ -30,13 +29,14 @@ interface Params {
   handleShowFav: () => void;
   showFav:boolean;
 }
+
 const ContentBtn = ({ toggle, isShown, handleShowFav, showFav }: Params) => {
-  const { email } = useNameUser();
+  const { nameUser } = useNameUser();
   const { text } = useLanguage();
   return (
     <Container>
-      <SPAN marginInElements={marginInElements}>{email}</SPAN>
-      <Btn marginInElements={marginInElements}>{text.profileEditProfile}</Btn>
+      <SPAN>{nameUser}</SPAN>
+     {/*  <Btn marginInElements={marginInElements}>{text.profileEditProfile}</Btn> */}
       <Btn onClick={toggle} marginInElements={marginInElements}>
         {isShown ? text.profileShowPublicate : text.profileCreatePublicate}
       </Btn>
