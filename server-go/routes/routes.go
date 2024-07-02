@@ -18,6 +18,7 @@ func Setup(app *fiber.App) {
 	app.Post("/api/sendCodeGmail", controllers.SendCodeToGmail)
 	app.Post("/api/changePassword", controllers.ChangePassword)
 	app.Post("/api/loginGoogle", controllers.LoginGoogle)
+	app.Get("/api/me", controllers.User)
 
 	app.Use(middleware.ValidateJwt)
 
@@ -26,7 +27,7 @@ func Setup(app *fiber.App) {
 	app.Get("/api/getUserCompleteData/:id", controllers.GetUserData)
 
 	//======================= AUTH =======================
-	app.Get("/api/me", controllers.User)
+
 	app.Post("/api/logout", controllers.Logout)
 
 	//======================= REAL ESTATE =======================

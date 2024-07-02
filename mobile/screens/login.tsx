@@ -12,9 +12,6 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { MyStackParamList } from "../App";
 
 const Login = () => {
-
-
- 
   const { handleSubmit, msgPost, loading } = useHandleSubmit();
 
   const navigate = useLinkTo();

@@ -9,6 +9,7 @@ type User struct {
 	Qualification      int    `json:"qualification"`
 	UrlPhoto           string `json:"url_photo"`
 	CodeRecuperation   string `json:"code_recuperation"`
+	Role 			   int 	  `json:"role" gorm:"default:2"` // 1: admin, 2: user
 	FavoriteRealEstate FavoriteRealEstate `json:"favorite_real_estate"`
 }
 

@@ -3,11 +3,7 @@ import ColContent from "./components/colContent";
 import ColPhoto from "./components/colPhoto";
 import { initialForm, validationsForm } from "./validations/login";
 import { signIn, signInGoogle } from "./services/auth";
-import {
-  ColorBtn,
-  ColorBtnSecond,
-  ColorBtnThird,
-} from "@/global/styles/globals";
+import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 import { Suspense, useState } from "react";
 import ShowPassword from "@/public/login/icons/eye";
 import NoShowPassword from "./icons/noShowPassword";
@@ -24,8 +20,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/config/firebase";
 import { useNavigate } from "react-router-dom";
 import ModalConfig from "@/global/components/navbar/modalConfig";
-import { getEmail } from "@/global/services/auth";
-import { useProfile } from "@/global/context/profileContext";
+
 
 export function Login(): JSX.Element {
   const { text } = useLanguage();
@@ -43,7 +38,7 @@ export function Login(): JSX.Element {
 
       if (result.user.email) {
         const { displayName, email, phoneNumber, photoURL } = result.user;
-        handlenameUser(displayName || "", 1, email);
+        handlenameUser(displayName || "", 1, email,2);
         const res = await signInGoogle({
           displayName: displayName || "",
           email,

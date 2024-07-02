@@ -52,8 +52,8 @@ const Index = ({ isHome }: Params) => {
   const navigate = useNavigate();
 
   const CallGetEmail = async () => {
-    const { email, id, user_name } = await getEmail();
-    handlenameUser(user_name, id, email);
+    const { email, id, user_name, role } = await getEmail();
+    handlenameUser(user_name, id, email, role);
     setEmailState(email);
     if (user_name.length > 10) setTextBig(true);
   };

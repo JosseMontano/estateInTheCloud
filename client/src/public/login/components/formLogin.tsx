@@ -8,27 +8,21 @@ import Language from "@/global/components/language";
 import { useLanguage } from "@/global/context/languageContext";
 import { ContainerBtn, ContainerSocialMedia } from "../styles";
 
-const Container = styled.form`
-
-`;
-
-
+const Container = styled.form``;
 
 const ContainerConfig = styled.div`
-position: absolute;
-bottom: 5px;
-left: 5px;
-& p{
-  cursor: pointer;
-}
-`
-
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  & p {
+    cursor: pointer;
+  }
+`;
 
 interface BtnType {
   onclick: (e: any) => void;
   color: string;
   text: string;
-
 }
 
 interface DataformType {
@@ -48,13 +42,14 @@ interface ParamsType {
   handleChange: (e: any) => void;
   handleShowPass: () => void;
   EyeJSX: () => JSX.Element;
-  toggleConfig: () => void
-  handleGoogleLogin: () => Promise<void>
+  toggleConfig: () => void;
+  handleGoogleLogin: () => Promise<void>;
 }
 
 const Form = (props: ParamsType) => {
   const navigate = useNavigate();
   const { text } = useLanguage();
+
 
   useEffect(() => {
     if (props.msg === "El proceso fue exitoso") {
@@ -83,12 +78,10 @@ const Form = (props: ParamsType) => {
         <p onClick={props.handleGoogleLogin}>{text.loginBtnGoogle}</p>
       </ContainerSocialMedia>
 
-
       {/* <Language /> */}
       <ContainerConfig>
         <p onClick={props.toggleConfig}>{text.navbarConfigure}</p>
       </ContainerConfig>
-
 
       <LoadingAndResponse
         loading={props.loading}

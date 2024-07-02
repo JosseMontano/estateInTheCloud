@@ -12,6 +12,7 @@ import ShowFavorites from "./components/showFavorites";
 import useFetch from "@/global/hooks/useFetch";
 import { RealEstateFavType } from "./interfaces/realEstateFav";
 import { deleteFav, getREFavs } from "./services/favorites";
+import { Dashboard } from "./components/dashboard";
 
 const Container = styled.div<{ marginGlobal: string; ColorText: string }>`
   min-height: 100vh;
@@ -25,6 +26,12 @@ const Profile = () => {
   const { data, loading, getRealEstate } = useProfile();
 
   const { isShown, toggle } = useModal({});
+
+  const [showDashboad, setShowdashboard] = useState(false);
+
+  const handleDashboard = () => {
+    setShowdashboard(!showDashboad);
+  };
 
   const createRealEstate = (newData: RealEstate) => {
     /* setData([...data, newData]); */
@@ -73,9 +80,15 @@ const Profile = () => {
               isShown={isShown}
               handleShowFav={handleShowFav}
               showFav={showFav}
+              handleDashboard={handleDashboard}
+              showDashboad={showDashboad}
             />
           )}
-          {idUser != 0 && !isShown && !showFav && showPublication()}
+          {idUser != 0 &&
+            !isShown &&
+            !showFav &&
+            !showDashboad &&
+            showPublication()}
 
           {showFav && (
             <ShowFavorites
@@ -85,6 +98,8 @@ const Profile = () => {
           )}
 
           {isShown && <ContentModal createRealEstate={createRealEstate} />}
+
+          {showDashboad && <Dashboard />}
         </Container>
       </Suspense>
     );

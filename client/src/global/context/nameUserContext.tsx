@@ -4,7 +4,8 @@ interface LoadContextState {
   nameUser: string;
   idUser: number;
   email: string;
-  handlenameUser: (sendL: string, id: number, email: string) => void;
+  role:number;
+  handlenameUser: (sendL: string, id: number, email: string, role:number) => void;
 }
 interface MyContextProp {
   children: JSX.Element;
@@ -13,6 +14,7 @@ const contextDefaultValue: LoadContextState = {
   nameUser: "",
   idUser: 0,
   email: "",
+  role:2,
   handlenameUser: () => {},
 };
 export const NameUserContext = createContext(contextDefaultValue);
@@ -34,11 +36,13 @@ export const NameUserProvider = ({ children }: MyContextProp) => {
   );
   const [idUser, setidUser] = useState<number>(contextDefaultValue.idUser);
   const [email, setEmail] = useState<string>(contextDefaultValue.email);
+  const [role, setRole] = useState<number>(contextDefaultValue.role);
 
-  const handlenameUser = (sendload: string, id: number, email: string) => {
+  const handlenameUser = (sendload: string, id: number, email: string, role:number) => {
     setnameUser(sendload);
     setidUser(id);
     setEmail(email);
+    setRole(role);
   };
   
   return (
@@ -47,6 +51,7 @@ export const NameUserProvider = ({ children }: MyContextProp) => {
         nameUser,
         idUser,
         email,
+        role,
         handlenameUser,
       }}
     >

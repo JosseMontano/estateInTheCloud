@@ -34,6 +34,7 @@ export const useHandleSubmit = () => {
       id: resGetMe?.data.id,
       user_name: resGetMe?.data.user_name,
       url_photo: resGetMe?.data.url_photo,
+      cellphone_number: resGetMe?.data.cellphone_number,
     };
     loadUser(userApi);
 

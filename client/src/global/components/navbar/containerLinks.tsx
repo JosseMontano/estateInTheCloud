@@ -8,6 +8,7 @@ import ModalQuestion from "@/public/home/components/modalQuestion";
 import ModalConfig from "./modalConfig";
 import { useState } from "react";
 import { Enlace, currentLink } from "@/global/interfaces/nav";
+import { deleteCookie } from "@/global/utilities/getTokenCookie";
 const Ul = styled.ul`
   float: right;
   margin-right: 20px;
@@ -84,8 +85,10 @@ const ContainerLinks = ({
       click: async () => {
         var resp = await logOut();
         if (!resp) {
+          deleteCookie();
           navigate("/");
           handleChangeCurrentLink("goOut");
+          location.reload(); 
         }
       },
       val: "goOut",

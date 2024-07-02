@@ -116,6 +116,11 @@ interface TextType {
   favoriteBtnDelete: string;
   fvoriteShowFavorites: string;
   favoriteHideFavorites: string;
+  showDashboardAdmin: string;
+  hideDashboardAdmin: string;
+  titleDashboard: string;
+  dashboardSectionUsers : string;
+  dashboardSectionRealEstate : string;
   saveComment: string;
   laodingTheText: string;
 }
@@ -247,6 +252,11 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Eliminar",
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Ocultar favoritos",
+    showDashboardAdmin: "Mostrar dashboard",
+    hideDashboardAdmin: "Ocultar dashboard",
+    titleDashboard: "Panel de control",
+    dashboardSectionUsers : "Usuarios",
+    dashboardSectionRealEstate : "Inmuebles",
     saveComment: "Se guardo el comentario",
     laodingTheText:"Traduciendo...",
   },
@@ -341,14 +351,12 @@ const translations: TranslationType = {
     visitUserlat_long: "Latitude and longitude: ",
     visitUserprice: "Price: ",
     visitUsersquare_meter: "Square meter: ",
-
     visitUserBtnSendMessage: 'Send message',
     visitUserBtnFollower: 'Follow',
     visitUserBtnComment:'Add comment',
     visitUserAmountPublications:'Posts',
     visitUserFollowers:'Followers',
     visitUserFollows:'Following',
-
     createPublicationTitle: "Title",
     createPublicationDescription: "Description",
     createPublicationType: "Type",
@@ -368,6 +376,11 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Delete",
     fvoriteShowFavorites: "Show favorites",
     favoriteHideFavorites:"Hide favorites",
+    showDashboardAdmin: "Show dashboard",
+    hideDashboardAdmin: "Hide dashboard",
+    titleDashboard: "Dashboard",
+    dashboardSectionUsers : "Users",
+    dashboardSectionRealEstate : "Real Estate",
     saveComment: "The comment was saved",
     laodingTheText:"Translating...",
   },
@@ -462,14 +475,12 @@ const translations: TranslationType = {
     visitUserlat_long: "Latitude e longitude: ",
     visitUserprice: "Preço: ",
     visitUsersquare_meter: "Metros quadrados: ",
-
     visitUserBtnSendMessage: 'Enviar mensagem',
     visitUserBtnFollower: 'Seguir',
     visitUserBtnComment:'Adicionar comentário',
     visitUserAmountPublications:'Postagens',
     visitUserFollowers:'Seguidores',
     visitUserFollows:'Seguindo',
-
     createPublicationTitle: "Título",
     createPublicationDescription: "Descrição",
     createPublicationType: "Tipo",
@@ -489,6 +500,11 @@ const translations: TranslationType = {
     favoriteBtnDelete: "Deletar",
     fvoriteShowFavorites: "Mostrar favoritos",
     favoriteHideFavorites:"Esconder favoritos",
+    showDashboardAdmin: "Mostrar painel",
+    hideDashboardAdmin: "Ocultar painel",
+    titleDashboard: "Painel",
+    dashboardSectionUsers : "Usuários",
+    dashboardSectionRealEstate : "Imóveis",
     saveComment: "O comentário foi salvo",
     laodingTheText:"Traduzindo...",
   },

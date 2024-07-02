@@ -114,9 +114,12 @@ func SingIn(c *fiber.Ctx) error {
 		})
 	}
 
+	isAdmin := user.Role == 1
+
 	return c.JSON(fiber.Map{
 		"auth":  true,
 		"token": tokenString,
+		"isAdmin": isAdmin,
 	})
 }
 
@@ -182,6 +185,8 @@ func LoginGoogle(c *fiber.Ctx) error {
 func User(c *fiber.Ctx) error {
 	/* 	cookie := c.Cookies("jwt") */
 	cookie := c.Get("authorization")
+	//delete the Bearer of the token
+	//cookie = cookie[7:]
 
 	token, err := jwt.Parse(cookie, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {

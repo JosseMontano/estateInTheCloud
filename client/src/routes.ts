@@ -19,6 +19,7 @@ const Home = lazy(() => import("./public/home"));
 const Profile = lazy(() => import("./public/profile"));
 const TypeRealEstate = lazy(() => import("./public/filterRealEstate"));
 
+
 export const routes: RouteType[] = [
   {
     path: "/",

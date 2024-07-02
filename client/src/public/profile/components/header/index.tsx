@@ -6,12 +6,12 @@ import ContentMid from "./contentMid";
 import ContentUser from "./contentUser";
 import { getUserById } from "@/global/services/user";
 import UseLoadData from "@/global/hooks/useFetch";
-import  UserType from "@/global/interfaces/user";
+import UserType from "@/global/interfaces/user";
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  gap:10px;
+  gap: 10px;
   justify-content: center;
   border-bottom: 1px solid #a0a0a0;
   padding: 10px;
@@ -25,23 +25,34 @@ const Container = styled.div`
 const ContainerContent = styled.div`
   display: grid;
   place-content: center;
-  gap:10px;
+  gap: 10px;
 `;
 
 interface Params {
   amountPublciation: number;
   idUser: number;
   toggle: () => void;
-  isShown:boolean
+  isShown: boolean;
   handleShowFav: () => void;
-  showFav:boolean;
+  showFav: boolean;
+  handleDashboard: () => void;
+  showDashboad: boolean;
 }
-const Header = ({ amountPublciation, idUser, toggle, isShown, handleShowFav, showFav }: Params) => {
+const Header = ({
+  amountPublciation,
+  idUser,
+  toggle,
+  isShown,
+  handleShowFav,
+  showFav,
+  handleDashboard,
+  showDashboad,
+}: Params) => {
   const { data } = UseLoadData<UserType>(getUserById, idUser);
   const [exists, setExists] = useState(false);
 
-  //Parse the vec to object 
-  const dataObj = Object.assign({}, data[0])
+  //Parse the vec to object
+  const dataObj = Object.assign({}, data[0]);
 
   useEffect(() => {
     if (data) {
@@ -52,9 +63,16 @@ const Header = ({ amountPublciation, idUser, toggle, isShown, handleShowFav, sho
     <Container>
       <ContentImg data={dataObj} exists={exists} />
       <ContainerContent>
-        <ContentBtn isShown={isShown} toggle={toggle} handleShowFav={handleShowFav} showFav={showFav} />
+        <ContentBtn
+          isShown={isShown}
+          toggle={toggle}
+          handleShowFav={handleShowFav}
+          showFav={showFav}
+          handleDashboard={handleDashboard}
+          showDashboad={showDashboad}
+        />
         <ContentMid amountPublciation={amountPublciation} />
-       {/*  <ContentUser /> */}
+        {/*  <ContentUser /> */}
       </ContainerContent>
     </Container>
   );

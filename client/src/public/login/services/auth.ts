@@ -6,6 +6,31 @@ import {
 import saveCookie from "@/global/utilities/saveCookie";
 import { http, headers, httpGo } from "@/config/http";
 import { FormRecuperateAccount } from "@/public/login/interfaces/formAuth";
+import { Token } from "@/global/utilities/getTokenCookie";
+
+export const getMe = async () => {
+  try {
+    
+    const response = await fetch(`${httpGo}me`, {
+      method: "GET",
+      headers: headers,
+      credentials: "include", // This here
+    });
+
+    const res = await response.json();
+
+    return {
+      role: res.role,
+    }
+
+  } catch (error) {
+    console.log(error);
+    return {
+      role: 2,
+    }
+  }
+
+}
 
 export const signIn = async (form: FormLogin) => {
   try {
