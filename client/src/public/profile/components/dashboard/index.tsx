@@ -5,6 +5,7 @@ import { sectionType } from "../../interfaces/dashboard";
 import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 import ArrowRight from "@/global/icons/arrowRight";
 import InfoUsers from "./infoUsers";
+import InfoQuestions from "./infoQuestions";
 
 const Title = styled.h2`
   text-align: center;
@@ -16,7 +17,7 @@ const Title = styled.h2`
 const AccordionSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 `;
 
 const AccordionTitle = styled.div<{ isOpen: boolean }>`
@@ -49,6 +50,7 @@ export const Dashboard = () => {
   const [sections, setSections] = useState({
     sectionUsers: false,
     sectionRealEstate: false,
+    sectionQuestions: false,
   });
   const toggleAccordion = (section: sectionType) => {
     setSections({ ...sections, [section]: !sections[section] });
@@ -89,6 +91,7 @@ export const Dashboard = () => {
           </span>
           {text.dashboardSectionRealEstate}
         </AccordionTitle>
+
         {sections.sectionRealEstate && (
           <AccordionContent isOpen={sections.sectionRealEstate}>
             {
@@ -97,6 +100,25 @@ export const Dashboard = () => {
                 <span>saosa</span>
               </div>
             }
+          </AccordionContent>
+        )}
+
+        <AccordionTitle
+          onClick={() => toggleAccordion("sectionQuestions")}
+          isOpen={sections.sectionQuestions}
+        >
+          <span>
+            <ArrowRight
+              size="25"
+              color={!sections.sectionQuestions ? ColorBtn : ""}
+            />
+          </span>
+          {text.dashboardSectionQuestions}
+        </AccordionTitle>
+
+        {sections.sectionQuestions && (
+          <AccordionContent isOpen={sections.sectionQuestions}>
+            {<InfoQuestions />}
           </AccordionContent>
         )}
       </AccordionSection>

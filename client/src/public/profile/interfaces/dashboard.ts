@@ -1,4 +1,4 @@
-export type sectionType = "sectionUsers" | "sectionRealEstate";
+export type sectionType = "sectionUsers" | "sectionRealEstate" | "sectionQuestions";
 export type stateUser = "available" | "noAvailable";
 export interface User {
   cellphone_number: string;

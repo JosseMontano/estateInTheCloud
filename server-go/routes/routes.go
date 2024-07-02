@@ -30,7 +30,7 @@ func Setup(app *fiber.App) {
 	app.Get("/api/enableUser/:id", controllers.EnableUser)
 
 	//======================= AUTH =======================
-
+	
 	app.Post("/api/logout", controllers.Logout)
 
 	//======================= REAL ESTATE =======================
@@ -42,9 +42,11 @@ func Setup(app *fiber.App) {
 	app.Get("/api/realEstateByType/:type", controllers.RealEstateByType)
 
 	//======================= Question =======================
+	
 	app.Get("/api/question/:idReal_Estate", controllers.GetQuestion)
 	app.Post("/api/question", controllers.CreateQuestion)
-
+	app.Delete("/api/question/:id", controllers.DeleteQuestion)
+	app.Get("/api/questions", controllers.GetAllQuestions)
 	//======================= Photo =======================
 	app.Get("/api/photo/:id", controllers.GetPhoto)
 

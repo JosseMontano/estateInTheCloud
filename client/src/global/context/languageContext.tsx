@@ -121,6 +121,7 @@ interface TextType {
   titleDashboard: string;
   dashboardSectionUsers : string;
   dashboardSectionRealEstate : string;
+  dashboardSectionQuestions: string
   saveComment: string;
   laodingTheText: string;
   tableUserColGmail: string;
@@ -129,8 +130,11 @@ interface TextType {
   tableUserActions: string;
   tableUserAvailable: string;
   tableUserNoAvailable: string;
+  tableMsgDelete: string;
+  tableQuestion: string;
   msgUserDisabled: string;
   msgUserAvailable: string;
+  msgDataDeleted: string;
 }
 
 interface TranslationType {
@@ -265,6 +269,7 @@ const translations: TranslationType = {
     titleDashboard: "Panel de control",
     dashboardSectionUsers : "Usuarios",
     dashboardSectionRealEstate : "Inmuebles",
+    dashboardSectionQuestions: "Preguntas",
     saveComment: "Se guardo el comentario",
     laodingTheText:"Traduciendo...",
     tableUserColGmail: "Email",
@@ -273,8 +278,11 @@ const translations: TranslationType = {
     tableUserActions: "Acciones",
     tableUserAvailable: "Habilitado",
     tableUserNoAvailable: "Deshabilitado",
+    tableQuestion: "Pregunta",
+    tableMsgDelete: "Eliminar",
     msgUserAvailable: "El usuario esta habilitado",
     msgUserDisabled: "El usuario esta deshabilitado",
+    msgDataDeleted:"Se elimino el dato",
   },
   en: {
     loadingBtn: "Loading...",
@@ -397,6 +405,7 @@ const translations: TranslationType = {
     titleDashboard: "Dashboard",
     dashboardSectionUsers : "Users",
     dashboardSectionRealEstate : "Real Estate",
+    dashboardSectionQuestions: "Questions",
     saveComment: "The comment was saved",
     laodingTheText:"Translating...",
     tableUserColGmail: "Gmail",
@@ -405,8 +414,11 @@ const translations: TranslationType = {
     tableUserActions: "Actions",
     tableUserAvailable: "Available",
     tableUserNoAvailable: "Disabled",
+    tableQuestion: "Question",
+    tableMsgDelete: "Delete",
     msgUserAvailable: "The user is available",
     msgUserDisabled: "The user is disabled",
+    msgDataDeleted:"The data was deleted",
   },
   pt: {
     loadingBtn: "Carregando...",
@@ -529,6 +541,7 @@ const translations: TranslationType = {
     titleDashboard: "Painel",
     dashboardSectionUsers : "Usuários",
     dashboardSectionRealEstate : "Imóveis",
+    dashboardSectionQuestions: "Perguntas",
     saveComment: "O comentário foi salvo",
     laodingTheText:"Traduzindo...",
     tableUserColGmail: "Gmail",
@@ -537,8 +550,11 @@ const translations: TranslationType = {
     tableUserActions: "Ações",
     tableUserAvailable: "Disponível",
     tableUserNoAvailable: "Desabilitado",
+    tableQuestion: "Pergunta",
+    tableMsgDelete: "Deletar",
     msgUserAvailable: "O usuário está disponível",
     msgUserDisabled: "O usuário está desabilitado",
+    msgDataDeleted:"Os dados foram excluídos",
   },
 };
 
