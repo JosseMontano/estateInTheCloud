@@ -25,6 +25,9 @@ func Setup(app *fiber.App) {
 	//======================= USER =======================
 	app.Get("/api/getUserComplete/:id", controllers.GetUser)
 	app.Get("/api/getUserCompleteData/:id", controllers.GetUserData)
+	app.Get("/api/getUsers", controllers.GetUsers)
+	app.Get("/api/disableUser/:id", controllers.DisableUser)
+	app.Get("/api/enableUser/:id", controllers.EnableUser)
 
 	//======================= AUTH =======================
 

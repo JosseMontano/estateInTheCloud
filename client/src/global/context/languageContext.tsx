@@ -123,6 +123,14 @@ interface TextType {
   dashboardSectionRealEstate : string;
   saveComment: string;
   laodingTheText: string;
+  tableUserColGmail: string;
+  tableUserPhoto: string;
+  tableUserCellphone: string;
+  tableUserActions: string;
+  tableUserAvailable: string;
+  tableUserNoAvailable: string;
+  msgUserDisabled: string;
+  msgUserAvailable: string;
 }
 
 interface TranslationType {
@@ -259,6 +267,14 @@ const translations: TranslationType = {
     dashboardSectionRealEstate : "Inmuebles",
     saveComment: "Se guardo el comentario",
     laodingTheText:"Traduciendo...",
+    tableUserColGmail: "Email",
+    tableUserCellphone: "Celular",
+    tableUserPhoto: "Foto",
+    tableUserActions: "Acciones",
+    tableUserAvailable: "Habilitado",
+    tableUserNoAvailable: "Deshabilitado",
+    msgUserAvailable: "El usuario esta habilitado",
+    msgUserDisabled: "El usuario esta deshabilitado",
   },
   en: {
     loadingBtn: "Loading...",
@@ -383,6 +399,14 @@ const translations: TranslationType = {
     dashboardSectionRealEstate : "Real Estate",
     saveComment: "The comment was saved",
     laodingTheText:"Translating...",
+    tableUserColGmail: "Gmail",
+    tableUserCellphone: "Cellphone",
+    tableUserPhoto: "Photo",
+    tableUserActions: "Actions",
+    tableUserAvailable: "Available",
+    tableUserNoAvailable: "Disabled",
+    msgUserAvailable: "The user is available",
+    msgUserDisabled: "The user is disabled",
   },
   pt: {
     loadingBtn: "Carregando...",
@@ -507,6 +531,14 @@ const translations: TranslationType = {
     dashboardSectionRealEstate : "Imóveis",
     saveComment: "O comentário foi salvo",
     laodingTheText:"Traduzindo...",
+    tableUserColGmail: "Gmail",
+    tableUserCellphone: "Celular",
+    tableUserPhoto: "Foto",
+    tableUserActions: "Ações",
+    tableUserAvailable: "Disponível",
+    tableUserNoAvailable: "Desabilitado",
+    msgUserAvailable: "O usuário está disponível",
+    msgUserDisabled: "O usuário está desabilitado",
   },
 };
 

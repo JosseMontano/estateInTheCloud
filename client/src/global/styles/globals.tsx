@@ -95,15 +95,20 @@ export const ContainerMargin = styled.div`
   margin: 0px 10px;
 `;
 
-export const Button = styled.button<{ ColorBtn: string; ColorTxt?: string }>`
-  background-color: ${props => props.ColorBtn};
-  color: ${props => (props.ColorTxt ? props.ColorTxt : '#fff')};
+export const Button = styled.button<{
+  ColorBtn: string;
+  ColorTxt?: string;
+  padding?: boolean;
+}>`
+  background-color: ${(props) => props.ColorBtn};
+  color: ${(props) => (props.ColorTxt ? props.ColorTxt : "#fff")};
   border: none;
   border-radius: 2rem;
   width: 100%;
   margin-top: 10px;
   font-size: 15px;
   height: 35px;
+  padding: ${(props) => (props.padding ? "5px" : "0px")};
   &:hover {
     transform: scale(1.1);
     opacity: 0.9;

@@ -10,6 +10,7 @@ export async function index<T>(
       authorization: Token,
     },
   });
+  
   const json = await response.json();
   const status = response.status;
   return { json, status };
@@ -37,7 +38,6 @@ export async function postService<T>(
       val: msg,
     }),
   });
-  console.log(msg)
   const json = await response.json();
   const status = response.status;
   return { json, status };

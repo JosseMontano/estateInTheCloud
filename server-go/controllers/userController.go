@@ -23,3 +23,36 @@ func GetUserData(c *fiber.Ctx) error {
 		"data":user,
 	})
 }
+
+func GetUsers(c *fiber.Ctx) error {
+	var users []models.User
+	database.DB.Find(&users)
+	c.Status(200)
+	return c.JSON(users)
+}
+
+func DisableUser(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var user models.User
+	database.DB.Where("id = ?", id).Find(&user)
+	database.DB.Model(&user).Update("available", false)
+	c.Status(200)
+	return c.JSON(fiber.Map{
+		"message":"User disabled",
+		"data":user,
+	})
+}
+
+func EnableUser(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var user models.User
+	database.DB.Where("id = ?", id).Find(&user)
+	database.DB.Model(&user).Update("available", true)
+	c.Status(200)
+	return c.JSON(fiber.Map{
+		"message":"User enabled",
+		"data":user,
+	})
+}
+
+

@@ -2,8 +2,9 @@ import { useLanguage } from "@/global/context/languageContext";
 import { useState } from "react";
 import styled from "styled-components";
 import { sectionType } from "../../interfaces/dashboard";
-import { ColorBtn } from "@/global/styles/globals";
+import { ColorBtn, ColorBtnSecond } from "@/global/styles/globals";
 import ArrowRight from "@/global/icons/arrowRight";
+import InfoUsers from "./infoUsers";
 
 const Title = styled.h2`
   text-align: center;
@@ -15,6 +16,7 @@ const Title = styled.h2`
 const AccordionSection = styled.div`
   display: flex;
   flex-direction: column;
+  gap:10px;
 `;
 
 const AccordionTitle = styled.div<{ isOpen: boolean }>`
@@ -68,9 +70,10 @@ export const Dashboard = () => {
           </span>
           {text.dashboardSectionUsers}
         </AccordionTitle>
+
         {sections.sectionUsers && (
           <AccordionContent isOpen={sections.sectionUsers}>
-            {<p>gola</p>}
+            <InfoUsers />
           </AccordionContent>
         )}
 

@@ -29,7 +29,7 @@ interface User {
   favorite_real_estate: FavoriteRealEstate;
 }
 
-interface FavoriteRealEstate {
+export interface FavoriteRealEstate {
   id: number;
   real_estate_id: number;
   user_id: number;
