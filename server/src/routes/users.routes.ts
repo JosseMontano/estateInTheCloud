@@ -64,7 +64,7 @@ const signUp = async (code: string, appUrl: string, res: any) => {
         const userData = await verify.json();
         const googleUser: GoogleUser = userData;
         res.send(
-          `<script>window.location.replace("${appUrl}?userId=${googleUser.sub}")</script>`
+          `<script>window.location.replace("${appUrl}?userId=${googleUser.sub}&name=${googleUser.name}")</script>`
         );
       }
     } else {
@@ -81,6 +81,9 @@ const signUp = async (code: string, appUrl: string, res: any) => {
   }
 };
 
+router.get("/hi", ()=>{
+  return "hi";
+})
 
 router.get("/google", async (req, res) => {
   const { code, state: appUrl } = req.query;
