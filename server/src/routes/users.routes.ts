@@ -8,10 +8,6 @@ import {
   changePassword
 } from "../controllers/users.controller";
 
-router.put("/editPhotoUser/:email", updatePhotoUser);
-router.post("/recuperateAccount/:email", sendEmailCode);
-router.post("/changePassword/", changePassword);
-router.get("/getUserComplete/:id", getUserById);
 
 
 export const getParamsStr = (params: Record<string, string | undefined>) => {
@@ -81,9 +77,7 @@ const signUp = async (code: string, appUrl: string, res: any) => {
   }
 };
 
-router.get("/hi", ()=>{
-  return "hi";
-})
+
 
 router.get("/google", async (req, res) => {
   const { code, state: appUrl } = req.query;
@@ -95,5 +89,15 @@ router.get("/google", async (req, res) => {
   signUp(code as string, appUrl as string, res);
 });
 
+
+
+router.put("/editPhotoUser/:email", updatePhotoUser);
+router.post("/recuperateAccount/:email", sendEmailCode);
+router.post("/changePassword/", changePassword);
+router.get("/getUserComplete/:id", getUserById);
+
+router.get("/", (req, res)=>{
+  return res.send("Hello");
+})
 
 module.exports = router;
