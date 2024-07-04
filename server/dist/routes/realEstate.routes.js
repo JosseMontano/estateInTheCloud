@@ -10,6 +10,7 @@ router.get("/estateRecommendedByUser", realEstate_controller_1.getRealEstatesByU
 router.get("/estateOfOnePublication/:idRealEstate", realEstate_controller_1.getEstateOfOnePublication);
 router.put("/estate/:id", realEstate_controller_1.updateEstate);
 router.get("/estateByType/:type", realEstate_controller_1.getAllEstatesByType);
+router.post("/getPlaces/", realEstate_controller_1.getPlaces);
 router.post("/estateByFilterCustom", realEstate_controller_1.getAllEstatesByFilterCustom);
 router.post("/estate", realEstate_controller_1.createEstate);
 router.post("/addPhotoToRealEstate/:id_real_estate", realEstate_controller_1.addNewPhotoToRealEstate);

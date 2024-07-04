@@ -39,7 +39,7 @@ function start() {
         /* cors */
         app.use((0, cors_1.default)({
             credentials: true,
-            origin: [urlCors.secret],
+            origin: [urlCors.secret, "exp://192.168.1.13:19000"],
         }));
         //    origin: urlCors.secret
         app.use((0, morgan_1.default)("dev"));

@@ -26,4 +26,10 @@ module.exports = {
         user: process.env.USER,
         pass: process.env.PASS,
     },
+    googleMaps: {
+        key: process.env.API_MAPS,
+    },
+    servers: {
+        serverPy: process.env.SERVER_PYTHON,
+    }
 };

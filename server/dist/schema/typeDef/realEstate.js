@@ -16,6 +16,12 @@ exports.realEstateType = new graphql_1.GraphQLObjectType({
         email: { type: graphql_1.GraphQLString },
         cellphone_number: { type: graphql_1.GraphQLFloat },
         available: { type: graphql_1.GraphQLBoolean },
+        amount_bedroom: { type: graphql_1.GraphQLFloat },
+        price: { type: graphql_1.GraphQLFloat },
+        amount_bathroom: { type: graphql_1.GraphQLFloat },
+        square_meter: { type: graphql_1.GraphQLFloat },
+        lat_long: { type: graphql_1.GraphQLString },
+        address: { type: graphql_1.GraphQLString },
     },
 });
 exports.realEstateDeleteType = new graphql_1.GraphQLObjectType({
