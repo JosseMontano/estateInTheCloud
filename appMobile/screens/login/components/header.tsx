@@ -6,8 +6,8 @@ import { fiveColor, seventyColor } from "../../../global/constants/colors/color"
 const Header = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Inicia sesion o create una cuenta</Text>
-      <Text style={styles.subTitle}>Hola de nuevo</Text>
+      <Text style={styles.title}>Hola de nuevo!</Text>
+      <Text style={styles.subTitle}>Inicia sesion en tu cuenta</Text>
     </View>
   );
 };
@@ -17,15 +17,18 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    width: "80%",
+    flexDirection:"column",
+    alignItems: "center",
+    width: "100%",
     margin: 10,
+  
   },
   title: {
-    color: fiveColor,
-    fontSize: 30,
+    color: seventyColor,
+    fontSize: 36,
   },
   subTitle: {
-    color: seventyColor,
-    fontSize: 22,
+     color:seventyColor,
+    fontSize: 16,
   },
 });

@@ -8,6 +8,7 @@ import { RegisterScreen } from "./screens/register/register";
 import { RecuperateAccount } from "./screens/sendCodeToEmail/sendCodeToEmail";
 import { ChangePassword } from "./screens/changePassword/changePassword";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -23,12 +24,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

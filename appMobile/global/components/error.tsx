@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 import React from "react";
-import { stylesLogin } from "../../screens/login/login";
+import { styleError } from "../styles/global";
 
 interface Params {
   val: string | undefined;
@@ -9,7 +9,7 @@ interface Params {
 }
 
 const Error = ({ msg, touched, val }: Params) => {
-  return <>{val && touched && <Text style={stylesLogin.error}>{msg}</Text>}</>;
+  return <>{val && touched && <Text style={styleError.text}>{msg}</Text>}</>;
 };
 
 export default Error;

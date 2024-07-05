@@ -3,12 +3,11 @@ import { StyleSheet } from "react-native";
 export const btnStyle = (color: string, margin=true,) => {
   const styles = StyleSheet.create({
     btn: {
-      width: "80%",
+      width: "50%",
       padding: 10,
       backgroundColor: color,
-      borderRadius: 5,
+      borderRadius: 30,
       alignItems: "center",
-      marginTop: margin ? 10 : 0,
     },
   });
   return styles.btn;
